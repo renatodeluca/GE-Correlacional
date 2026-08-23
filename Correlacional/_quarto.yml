@@ -11,6 +11,17 @@ website:
       - href: sesiones.qmd
         text: Sesiones
 
+  sidebar:
+    - title: "Sesiones"
+      style: "docked"
+      search: false
+      contents:
+        - sesiones.qmd
+        - section: "Todas las sesiones"
+          contents:
+            - sesiones/sesion-1.qmd
+            
+
 format:
   html:
     theme: minty

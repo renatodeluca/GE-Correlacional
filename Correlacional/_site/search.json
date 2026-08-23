@@ -18,13 +18,50 @@
     "href": "presentacion.html",
     "title": "Grupo de Estudio para Estadística Correlacional",
     "section": "",
-    "text": "Presentación\n¡Bienvenidx a la página del Grupo de Estudio de Estadística Correlacional, organizado por el Centro IDEA!\n\n\n¿Para qué?\nEste espacio tiene como objetivo principal fortalecer sus habilidades en R y Positron, facilitando el aprendizaje del ramo y aliviando su carga académica. Buscamos apoyar el análisis de datos mediante inferencia estadística y estadística correlacional, además de fomentar la colaboración y el intercambio de conocimientos entre quienes participan.\n\n\n\n\n\n\nNote\n\n\n\nRecuerda que puedes solicitar tutorías personalizadas pinchando aquí."
+    "text": "Presentación\n¡Bienvenidx a la página del Grupo de Estudio de Estadística Correlacional, organizado por el Centro IDEA!\n\n\n¿Dónde me inscribo?\nEl grupo de estudio tiene cupos limitados, pero puedes inscribirte pinchando aquí.\n\n\n¿Para qué?\nEste espacio tiene como objetivo principal fortalecer sus habilidades en R y Positron, facilitando el aprendizaje del ramo y aliviando su carga académica. Buscamos apoyar en los contenidos de inferencia estadística y estadística correlacional, además de fomentar la colaboración y el intercambio de conocimientos entre quienes participan.\n\n\n\n\n\n\nNote\n\n\n\nRecuerda que puedes solicitar tutorías personalizadas pinchando aquí."
   },
   {
     "objectID": "sesiones.html",
     "href": "sesiones.html",
-    "title": "About",
+    "title": "Sesiones",
     "section": "",
-    "text": "About this site"
+    "text": "Las clases se acompañan de guías prácticas. Selecciona una sesión desde el menú lateral.",
+    "crumbs": [
+      "Sesiones"
+    ]
+  },
+  {
+    "objectID": "sesiones.html#descripción",
+    "href": "sesiones.html#descripción",
+    "title": "Sesiones",
+    "section": "",
+    "text": "Las clases se acompañan de guías prácticas. Selecciona una sesión desde el menú lateral.",
+    "crumbs": [
+      "Sesiones"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html",
+    "href": "sesiones/sesion-1.html",
+    "title": "Sesión 1",
+    "section": "",
+    "text": "En esta sesión, aprenderemos los conceptos básicos de Positron y R, dos herramientas fundamentales para el análisis de datos en estadística.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#introduccion-a-positron-y-r",
+    "href": "sesiones/sesion-1.html#introduccion-a-positron-y-r",
+    "title": "Sesión 1",
+    "section": "",
+    "text": "En esta sesión, aprenderemos los conceptos básicos de Positron y R, dos herramientas fundamentales para el análisis de datos en estadística.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1"
+    ]
   }
 ]

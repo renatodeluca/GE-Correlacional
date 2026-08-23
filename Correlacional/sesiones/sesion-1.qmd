@@ -1,0 +1,13 @@
+---
+title: "Sesión 1"
+subtitle: "Grupo de Estudio de Estadística Correlacional"
+toc: true
+toc-location: left
+---
+
+
+## Introduccion a Positron y R
+
+En esta sesión, aprenderemos los conceptos básicos de **Positron** y **R**, dos herramientas fundamentales para el análisis de datos en estadística.
+
+# Pudieron agarrrlae la mana a positron?

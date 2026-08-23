@@ -1,5 +1,7 @@
 ---
-title: "About"
+title: "Sesiones"
 ---
 
-About this site
+## Descripción
+
+Las clases se acompañan de guías prácticas. Selecciona una sesión desde el menú lateral.

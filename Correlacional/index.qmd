@@ -5,6 +5,7 @@ toc: false
 page-layout: full
 execute:
   freeze: auto
+  theme: cosmo
 ---
 
 ![](images/logoidea.png){fig-align="center" width="250px"}

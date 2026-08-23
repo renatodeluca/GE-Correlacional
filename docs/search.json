@@ -125,5 +125,15 @@
       "Todas las sesiones",
       "Sesión 1: Primeros pasos en R"
     ]
+  },
+  {
+    "objectID": "sesiones.html",
+    "href": "sesiones.html",
+    "title": "Sesiones",
+    "section": "",
+    "text": "Descripción\nLas sesiones se realizarán en 2 partes.\n\nEn primer lugar, se presentará un tema del ramo y se explicará cómo implementarlo en R y Positron.\nEn segundo lugar, se abrirá un espacio para preguntas y respuestas.\n\nSelecciona una sesión desde el menú lateral.",
+    "crumbs": [
+      "Sesiones"
+    ]
   }
 ]

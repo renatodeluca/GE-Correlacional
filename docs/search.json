@@ -1,0 +1,129 @@
+[
+  {
+    "objectID": "presentacion.html",
+    "href": "presentacion.html",
+    "title": "Grupo de Estudio para Estadística Correlacional",
+    "section": "",
+    "text": "Presentación\n¡Bienvenidx a la página del Grupo de Estudio de Estadística Correlacional, organizado por el Centro IDEA!\n\n\n¿Dónde me inscribo?\nEl grupo de estudio tiene cupos limitados, pero puedes inscribirte pinchando aquí.\n\n\n¿Para qué?\nEste espacio tiene como objetivo principal fortalecer sus habilidades en R y Positron, facilitando el aprendizaje del ramo y aliviando su carga académica. Buscamos apoyar en los contenidos de inferencia estadística y estadística correlacional, además de fomentar la colaboración y el intercambio de conocimientos entre quienes participan.\n\n\n\n\n\n\nNote\n\n\n\nRecuerda que puedes solicitar tutorías personalizadas pinchando aquí."
+  },
+  {
+    "objectID": "sesiones/sesion-1.html",
+    "href": "sesiones/sesion-1.html",
+    "title": "Sesión 1: Primeros pasos en R",
+    "section": "",
+    "text": "En esta sesión aprenderemos los conceptos básicos de Positron y R, dos herramientas fundamentales para el análisis de datos en estadística.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1: Primeros pasos en R"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#introducción-a-positron-y-r",
+    "href": "sesiones/sesion-1.html#introducción-a-positron-y-r",
+    "title": "Sesión 1: Primeros pasos en R",
+    "section": "",
+    "text": "En esta sesión aprenderemos los conceptos básicos de Positron y R, dos herramientas fundamentales para el análisis de datos en estadística.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1: Primeros pasos en R"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#objetivos-de-la-sesión",
+    "href": "sesiones/sesion-1.html#objetivos-de-la-sesión",
+    "title": "Sesión 1: Primeros pasos en R",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\nEsta es nuestra primera sesión práctica, así que partimos desde cero. Al finalizar vas a poder:\n\nCalcular e interpretar estadísticos descriptivos básicos (media, mediana, desviación estándar, varianza, rango).\nEntender qué es el tidyverse y por qué se usa en análisis de datos con R.\nManipular bases de datos con las funciones principales de dplyr.\nUsar el operador pipe (|&gt; o %&gt;%) para encadenar transformaciones.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1: Primeros pasos en R"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#abriendo-positron",
+    "href": "sesiones/sesion-1.html#abriendo-positron",
+    "title": "Sesión 1: Primeros pasos en R",
+    "section": "0. Abriendo Positron",
+    "text": "0. Abriendo Positron\nAbre Positron y crea un nuevo proyecto. Siguiendo los pasos a continuación:",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1: Primeros pasos en R"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#nuestra-base-de-datos-superhéroes",
+    "href": "sesiones/sesion-1.html#nuestra-base-de-datos-superhéroes",
+    "title": "Sesión 1: Primeros pasos en R",
+    "section": "1. Nuestra base de datos: Superhéroes",
+    "text": "1. Nuestra base de datos: Superhéroes\nVamos a trabajar con una base de datos real de personajes de distintos universos (cómics, animes, películas), con estadísticas de combate como velocidad, fuerza e inteligencia.\nNecesitas tener instalado el paquete tidyverse y haber desactivo la notación científica. Si no lo has hecho, corre una vez en la consola:\n\nlibrary(tidyverse)\noptions(scipen = 999)\n\nsuperheroes &lt;- read_csv(\"https://zenodo.org/records/22071337/files/Superheroes.csv\")\n\nLa base original trae muchas columnas, incluyendo una llamada History con textos narrativos larguísimos que no necesitamos para el análisis estadístico. Nos quedamos solo con las columnas relevantes:\n\nsuperheroes &lt;- superheroes |&gt; \n  select(Character, Alignment, Gender, Universe, Species,\n         Speed, Speed_velocity, Strength, Combat, Durability, Intelligence) |&gt; \n  filter(Alignment %in% c(\"Good\", \"Bad\", \"Neutral\"))\n\nglimpse(superheroes)\n\nRows: 19,472\nColumns: 11\n$ Character      &lt;chr&gt; \"Alucard\", \"Alucard\", \"Alucard\", \"Alucard\", \"Alucard\", …\n$ Alignment      &lt;chr&gt; \"Good\", \"Good\", \"Good\", \"Good\", \"Good\", \"Good\", \"Neutra…\n$ Gender         &lt;chr&gt; \"Male\", \"Male\", \"Male\", \"Male\", \"Male\", \"Male\", \"Female…\n$ Universe       &lt;chr&gt; \"C17S\", \"C17S\", \"Castlevania\", \"Castlevania\", \"ML\", \"ML…\n$ Species        &lt;chr&gt; \"Human\", \"Human\", \"Vampire\", \"Vampire\", \"None\", \"None\",…\n$ Speed          &lt;dbl&gt; 30, 30, 100, 100, 50, 50, 50, 50, 10, 10, 1, 1, 1, 80, …\n$ Speed_velocity &lt;dbl&gt; 2000, 2000, 1000000000, 1000000000, 10000, 10000, 29979…\n$ Strength       &lt;dbl&gt; 30, 30, 100, 100, 50, 50, 55, 55, 25, 25, 1, 1, 1, 50, …\n$ Combat         &lt;dbl&gt; 80, 80, 90, 90, 100, 100, 90, 90, 40, 40, 11, 11, 11, 6…\n$ Durability     &lt;dbl&gt; 35, 35, 100, 100, 45, 45, 75, 75, 15, 15, 5, 5, 5, 60, …\n$ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50, 65,…\n\n\nLas columnas con las que vamos a trabajar hoy:\n\n\n\nVariable\nDescripción\n\n\n\n\nCharacter\nNombre del personaje\n\n\nAlignment\nAlineamiento (Good, Bad, Neutral)\n\n\nGender\nGénero del personaje\n\n\nUniverse\nUniverso/franquicia de origen\n\n\nSpecies\nEspecie (humano, alien, androide, etc.)\n\n\nSpeed\nVelocidad en una escala de 0 a 100\n\n\nSpeed_velocity\nVelocidad estimada en km/h\n\n\nStrength\nFuerza en una escala de 0 a 100\n\n\nCombat\nHabilidad de combate (0 a 100)\n\n\nDurability\nDurabilidad/resistencia (0 a 100)\n\n\nIntelligence\nInteligencia (0 a 100)",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1: Primeros pasos en R"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#explorando-la-base-de-datos",
+    "href": "sesiones/sesion-1.html#explorando-la-base-de-datos",
+    "title": "Sesión 1: Primeros pasos en R",
+    "section": "2. Explorando la base de datos",
+    "text": "2. Explorando la base de datos\nAntes de calcular cualquier cosa, siempre es buena idea mirar la estructura de los datos.\n\nglimpse(superheroes)\n\nRows: 19,472\nColumns: 11\n$ Character      &lt;chr&gt; \"Alucard\", \"Alucard\", \"Alucard\", \"Alucard\", \"Alucard\", …\n$ Alignment      &lt;chr&gt; \"Good\", \"Good\", \"Good\", \"Good\", \"Good\", \"Good\", \"Neutra…\n$ Gender         &lt;chr&gt; \"Male\", \"Male\", \"Male\", \"Male\", \"Male\", \"Male\", \"Female…\n$ Universe       &lt;chr&gt; \"C17S\", \"C17S\", \"Castlevania\", \"Castlevania\", \"ML\", \"ML…\n$ Species        &lt;chr&gt; \"Human\", \"Human\", \"Vampire\", \"Vampire\", \"None\", \"None\",…\n$ Speed          &lt;dbl&gt; 30, 30, 100, 100, 50, 50, 50, 50, 10, 10, 1, 1, 1, 80, …\n$ Speed_velocity &lt;dbl&gt; 2000, 2000, 1000000000, 1000000000, 10000, 10000, 29979…\n$ Strength       &lt;dbl&gt; 30, 30, 100, 100, 50, 50, 55, 55, 25, 25, 1, 1, 1, 50, …\n$ Combat         &lt;dbl&gt; 80, 80, 90, 90, 100, 100, 90, 90, 40, 40, 11, 11, 11, 6…\n$ Durability     &lt;dbl&gt; 35, 35, 100, 100, 45, 45, 75, 75, 15, 15, 5, 5, 5, 60, …\n$ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50, 65,…\n\n\n\nnrow(superheroes)  # número de filas (personajes)\n\n[1] 19472\n\nncol(superheroes)  # número de columnas (variables)\n\n[1] 11\n\n\nPregunta para pensar: ¿cuántos personajes tiene nuestra base? ¿Cuántas variables estamos midiendo por cada uno?\n\n\n\n\n\n\nNoteOjo: personajes repetidos\n\n\n\n\n\nEsta base tiene varias filas para un mismo personaje (por ejemplo, distintas versiones o actualizaciones de “Alucard” o “Android 17”). Para efectos de esta clase lo dejamos así, pero en las siguientes sesiones, podemos ver como limpiar duplicados con distinct().",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1: Primeros pasos en R"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#estadística-descriptiva-básica",
+    "href": "sesiones/sesion-1.html#estadística-descriptiva-básica",
+    "title": "Sesión 1: Primeros pasos en R",
+    "section": "3. Estadística descriptiva básica",
+    "text": "3. Estadística descriptiva básica\nNos vamos a concentrar en la variable Speed_velocity, o sea la velocidad máxima estimada de cada personaje, en km/h.\n\n3.1 Medidas de tendencia central\nMedia (promedio): suma todos los valores y divide por el número de casos.\n\nmean(superheroes$Speed_velocity, na.rm = TRUE)\n\n[1] 250460578\n\n\nMediana: el valor que queda justo al medio cuando ordenamos los datos de menor a mayor.\n\nmedian(superheroes$Speed_velocity, na.rm = TRUE)\n\n[1] 400\n\n\n\n\n\n\n\n\nImportantMedia vs. mediana\n\n\n\nSi la media y la mediana son parecidas, los datos están relativamente “equilibrados”. Si son muy distintas, probablemente hay valores extremos (muy altos o muy bajos) que están “tirando” la media hacia un lado. En nuestra base hay personajes con velocidades extremas (miles de millones de km/h), lo que probablemente infla mucho la media respecto a la mediana. ¿Por qué crees que pasa esto con personajes de fantasía/ciencia ficción?\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip¿Qué es na.rm = TRUE?\n\n\n\n\n\nLe indica a R que ignore los valores faltantes (NA) al calcular. Si no lo incluimos y hay algún valor faltante en la columna, R no puede calcular el promedio y devuelve NA como resultado. También podemos utilizar la función na.omit() para eliminar los valores faltantes de la columna antes de calcular la media, mediana, etc. Por ejemplo, si hacemos mean(na.omit(superheroes$Speed_velocity)) obtendremos el mismo resultado que con mean(superheroes$Speed_velocity, na.rm = TRUE).\n\n\n\n\n\n3.2 Medidas de dispersión\nRango: la distancia entre el valor mínimo y el máximo.\n\nmin(superheroes$Speed_velocity, na.rm = TRUE)\n\n[1] 0\n\nmax(superheroes$Speed_velocity, na.rm = TRUE)\n\n[1] 1000000000\n\nrange(superheroes$Speed_velocity, na.rm = TRUE)\n\n[1]          0 1000000000\n\n\nVarianza: mide en promedio qué tan lejos está cada valor de la media (elevado al cuadrado).\n\nvar(superheroes$Speed_velocity, na.rm = TRUE)\n\n[1] 169608825520675360\n\n\nDesviación estándar: es la raíz cuadrada de la varianza. Se usa más que la varianza porque queda en las mismas unidades que la variable original (km/h en este caso).\n\nsd(superheroes$Speed_velocity, na.rm = TRUE)\n\n[1] 411835921\n\n\n\n\n\n\n\n\nTip¿Cómo se interpreta la desviación estándar?\n\n\n\n\n\nNos dice, en promedio, cuánto se alejan los personajes de la velocidad promedio. Si la desviación estándar es baja, la mayoría tiene velocidades parecidas entre sí. Si es muy alta (como probablemente ocurra acá), hay mucha variedad: desde personajes sin poderes especiales hasta superhéroes que se mueven a velocidades absurdas.\n\n\n\n\n\n3.3 Todo junto con summary()\nR tiene una función que calcula varios estadísticos de una sola vez:\n\nsummary(superheroes$Speed_velocity)\n\n      Min.    1st Qu.     Median       Mean    3rd Qu.       Max. \n         0         20        400  250460578  333333339 1000000000",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1: Primeros pasos en R"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#primeros-pasos-con-dplyr",
+    "href": "sesiones/sesion-1.html#primeros-pasos-con-dplyr",
+    "title": "Sesión 1: Primeros pasos en R",
+    "section": "4. Primeros pasos con dplyr",
+    "text": "4. Primeros pasos con dplyr\n\n\n\n\n\ndplyr nos permite explorar y manipular la base de datos de forma más flexible. Vamos a ver funciones básicas.\n\n4.1 select() — elegir columnas\n\nsuperheroes |&gt; \n  select(Character, Speed_velocity)\n\n# A tibble: 19,472 × 2\n   Character Speed_velocity\n   &lt;chr&gt;              &lt;dbl&gt;\n 1 Alucard             2000\n 2 Alucard             2000\n 3 Alucard       1000000000\n 4 Alucard       1000000000\n 5 Alucard            10000\n 6 Alucard            10000\n 7 Bayonetta        2997925\n 8 Bayonetta        2997925\n 9 Adam                  18\n10 Adam                  18\n# ℹ 19,462 more rows\n\n\n\n\n4.2 filter() — elegir filas según una condición\nPor ejemplo, ¿qué personajes son del bando “Bad” (villanos)?\n\nsuperheroes |&gt; \n  filter(Alignment == \"Bad\")\n\n# A tibble: 6,366 × 11\n   Character     Alignment Gender Universe Species Speed Speed_velocity Strength\n   &lt;chr&gt;         &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt;          &lt;dbl&gt;    &lt;dbl&gt;\n 1 Alessi        Bad       Male   JJBA     Human       1              2        1\n 2 Alessi        Bad       Male   JJBA     Human       1              2        1\n 3 Alessi        Bad       Male   JJBA     Human       1              2        1\n 4 Bad Ben       Bad       Male   &lt;NA&gt;     None       80      290000000       50\n 5 Bad Ben       Bad       Male   &lt;NA&gt;     None       80      290000000       50\n 6 Bad Ben       Bad       Male   &lt;NA&gt;     None       80      290000000       50\n 7 Aldrich Kill… Bad       Male   Earth-1… Metahu…     6             10        5\n 8 Aldrich Kill… Bad       Male   Earth-1… Metahu…     6             10        5\n 9 Aldrich Kill… Bad       Male   Earth-1… Metahu…     6             10        5\n10 Archangel     Bad       Male   Earth-8… Human      25            806        6\n# ℹ 6,356 more rows\n# ℹ 3 more variables: Combat &lt;dbl&gt;, Durability &lt;dbl&gt;, Intelligence &lt;dbl&gt;\n\n\n¿Y quiénes tienen una velocidad de combate (Combat) mayor o igual a 90?\n\nsuperheroes |&gt; \n  filter(Combat &gt;= 90)\n\n# A tibble: 5,176 × 11\n   Character  Alignment Gender Universe    Species Speed Speed_velocity Strength\n   &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;   &lt;dbl&gt;          &lt;dbl&gt;    &lt;dbl&gt;\n 1 Alucard    Good      Male   Castlevania Vampire   100     1000000000      100\n 2 Alucard    Good      Male   Castlevania Vampire   100     1000000000      100\n 3 Alucard    Good      Male   ML          None       50          10000       50\n 4 Alucard    Good      Male   ML          None       50          10000       50\n 5 Bayonetta  Neutral   Female Bayonetta   Human      50        2997925       55\n 6 Bayonetta  Neutral   Female Bayonetta   Human      50        2997925       55\n 7 Android 16 Neutral   Male   DB          Android    80      265000000      100\n 8 Android 16 Neutral   Male   DB          Android    80      265000000      100\n 9 Android 16 Neutral   Male   DB          Android    80      265000000      100\n10 Android 17 Good      Male   DB          Android   100     1000000000      100\n# ℹ 5,166 more rows\n# ℹ 3 more variables: Combat &lt;dbl&gt;, Durability &lt;dbl&gt;, Intelligence &lt;dbl&gt;\n\n\n\n\n4.3 arrange() — ordenar\nDel más veloz al más lento:\n\nsuperheroes |&gt; \n  arrange(desc(Speed_velocity)) |&gt; \n  select(Character, Universe, Speed_velocity)\n\n# A tibble: 19,472 × 3\n   Character       Universe    Speed_velocity\n   &lt;chr&gt;           &lt;chr&gt;                &lt;dbl&gt;\n 1 Alucard         Castlevania     1000000000\n 2 Alucard         Castlevania     1000000000\n 3 Alpha-Hydranoid Bakugan         1000000000\n 4 Alpha-Hydranoid Bakugan         1000000000\n 5 Android 17      DB              1000000000\n 6 Android 17      DB              1000000000\n 7 Alduin          TES             1000000000\n 8 Alduin          TES             1000000000\n 9 Alduin          TES             1000000000\n10 Actrise         Castlevania     1000000000\n# ℹ 19,462 more rows\n\n\n\n\n4.4 group_by() + summarise() — resumir por grupo\n¿Cuál es la velocidad promedio según el alineamiento del personaje?\n\nsuperheroes |&gt; \n  group_by(Alignment) |&gt; \n  summarise(\n    velocidad_promedio = mean(Speed_velocity, na.rm = TRUE),\n    desviacion = sd(Speed_velocity, na.rm = TRUE),\n    n_personajes = n()\n  )\n\n# A tibble: 3 × 4\n  Alignment velocidad_promedio desviacion n_personajes\n  &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;        &lt;int&gt;\n1 Bad               274477736. 425913240.         6366\n2 Good              221977686. 392206592.        10256\n3 Neutral           299312270. 439993228.         2850\n\n\n¿Y según el universo de origen? (mostramos solo los 10 universos con más personajes)\n\nsuperheroes |&gt; \n  group_by(Universe) |&gt; \n  summarise(\n    velocidad_promedio = mean(Speed_velocity, na.rm = TRUE),\n    n_personajes = n()\n  ) |&gt; \n  arrange(desc(n_personajes)) |&gt; \n  slice_head(n = 10)\n\n# A tibble: 10 × 3\n   Universe          velocidad_promedio n_personajes\n   &lt;chr&gt;                          &lt;dbl&gt;        &lt;int&gt;\n 1 Earth-616                 365266219.         2102\n 2 &lt;NA&gt;                      317131958.         1979\n 3 Prime Earth               451161178.         1258\n 4 MCU                        31858137.          479\n 5 DB                        587931134.          466\n 6 League Of Legends          16227995.          387\n 7 MtG                        44785772.          291\n 8 Cv                         28037976.          264\n 9 Digimon                   192627895.          230\n10 Star Wars                 161946505.          218\n\n\n\n\n\n\n\n\n\nNoteRecuerda que así se ve la diferencia entre variables cualitativas y cuantitativas, y sus niveles de medición\n\n\n\n\n\n\n\n\n\n\n\n\nNaturaleza\nNivel de medición\n¿Cuándo se usa?\nEjemplo\n\n\n\n\nCualitativa\nNominal\nCuando las categorías no tienen ningún orden lógico entre sí\nSexo, nacionalidad, color de ojos\n\n\nCualitativa\nOrdinal\nCuando las categorías sí tienen un orden, pero la distancia entre ellas no es constante ni medible\nNivel educacional, escala Likert (muy en desacuerdo a muy de acuerdo)\n\n\nCuantitativa discreta\nIntervalo\nCuando los valores son numéricos enteros/contables, con distancias iguales pero sin cero absoluto (el cero es arbitrario)\nAño calendario, número de siglo o década\n\n\nCuantitativa discreta\nRazón\nCuando los valores son numéricos enteros/contables, con distancias iguales y con cero absoluto\nNúmero de hijos, número de goles, cantidad de hermanos\n\n\nCuantitativa continua\nIntervalo\nCuando los valores pueden tomar cualquier valor dentro de un rango (decimales incluidos), con distancias iguales pero sin cero absoluto\nTemperatura en °C\n\n\nCuantitativa continua\nRazón\nCuando los valores pueden tomar cualquier valor dentro de un rango (decimales incluidos), con distancias iguales y con cero absoluto\nEdad, ingreso, peso, velocidad (km/h)",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1: Primeros pasos en R"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#ahora-te-toca-a-ti",
+    "href": "sesiones/sesion-1.html#ahora-te-toca-a-ti",
+    "title": "Sesión 1: Primeros pasos en R",
+    "section": "7. Ahora te toca a ti!",
+    "text": "7. Ahora te toca a ti!\n\n\n\n\n\n\nTipEjercicio 1: Estadísticos descriptivos\n\n\n\n\n\nUsando la variable Combat (habilidad de combate):\n\nCalcula la media, mediana, varianza y desviación estándar (recuerda usar na.rm = TRUE).\n¿La media y la mediana son parecidas? ¿Qué te dice eso sobre la distribución?\n¿Cuál es el personaje con mayor Combat? (pista: usa arrange())\n\n\n\n\n\n\n\n\n\n\nTipEjercicio 2: dplyr\n\n\n\n\n\n\nFiltra los personajes que sean del género \"Female\".\nDe ese grupo, ordénalos de mayor a menor Intelligence.\nCalcula el promedio de Intelligence de ese subgrupo con summarise(). ¿Es mayor o menor que el promedio general de la base completa?",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1: Primeros pasos en R"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#resumen-de-funciones-vistas-hoy",
+    "href": "sesiones/sesion-1.html#resumen-de-funciones-vistas-hoy",
+    "title": "Sesión 1: Primeros pasos en R",
+    "section": "8. Resumen de funciones vistas hoy",
+    "text": "8. Resumen de funciones vistas hoy\n\n\n\nFunción\nPaquete\nQué hace\n\n\n\n\nmean()\nbase R\nCalcula el promedio\n\n\nmedian()\nbase R\nCalcula la mediana\n\n\nsd()\nbase R\nCalcula la desviación estándar\n\n\nvar()\nbase R\nCalcula la varianza\n\n\nrange()\nbase R\nEntrega el mínimo y máximo\n\n\nsummary()\nbase R\nResumen rápido de estadísticos\n\n\nselect()\ndplyr\nElige columnas\n\n\nfilter()\ndplyr\nElige filas según condición\n\n\narrange()\ndplyr\nOrdena filas\n\n\ngroup_by() + summarise()\ndplyr\nResume datos por grupo\n\n\nslice_head()\ndplyr\nSe queda con las primeras n filas",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1: Primeros pasos en R"
+    ]
+  }
+]

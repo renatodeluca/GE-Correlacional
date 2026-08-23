@@ -1,29 +1,31 @@
 ---
-title: "Sesión 1"
-subtitle: "Grupo de Estudio de Estadística Correlacional"
+title: "Sesión 1: Primeros pasos en R"
+subtitle: "Estadística descriptiva, dplyr y ggplot2 con datos de superhéroes"
 toc: true
 toc-location: left
+execute:
+  warning: false
+  message: false
 ---
 
+## Introducción a Positron y R
 
-## Introduccion a Positron y R
-
-En esta sesión, aprenderemos los conceptos básicos de **Positron** y **R**, dos herramientas fundamentales para el análisis de datos en estadística.
-
+En esta sesión aprenderemos los conceptos básicos de **Positron** y **R**, dos herramientas fundamentales para el análisis de datos en estadística.
 
 ## Objetivos de la sesión
 
-Al finalizar esta clase vas a poder:
+Esta es nuestra primera sesión práctica, así que partimos desde cero. Al finalizar vas a poder:
 
+- Calcular e interpretar estadísticos descriptivos básicos (media, mediana, desviación estándar, varianza, rango).
 - Entender qué es el **tidyverse** y por qué se usa en análisis de datos con R.
 - Manipular bases de datos con las funciones principales de **dplyr**.
 - Usar el operador *pipe* (`|>` o `%>%`) para encadenar transformaciones.
-- Construir visualizaciones con la lógica de capas de **ggplot2**.
+- Construir tus primeros gráficos con **ggplot2**.
 
 ::: {.callout-note}
 ## Antes de empezar
 
-Asegúrate de tener **R** y **Positron** instalados, y de haber corrido al menos una vez:
+Necesitas tener instalado el paquete `tidyverse`. Si no lo has hecho, corre una vez en la consola:
 
 ```r
 install.packages("tidyverse")
@@ -32,253 +34,326 @@ install.packages("tidyverse")
 
 ---
 
-## 1. ¿Qué es el tidyverse?
+## 1. Nuestra base de datos: Superhéroes
 
-El **tidyverse** no es un solo paquete, sino una colección de paquetes de R diseñados para trabajar juntos bajo una misma filosofía: los datos "ordenados" (*tidy data*), donde:
+Vamos a trabajar con una base de datos real de personajes de distintos universos (cómics, animes, películas), con estadísticas de combate como velocidad, fuerza e inteligencia.
 
-- cada **variable** es una columna,
-- cada **observación** es una fila,
-- cada **valor** ocupa una celda.
+```{r}
+library(tidyverse)
 
-Al cargar `tidyverse` se cargan automáticamente varios paquetes, entre los que destacan:
+superheroes <- read_csv("https://zenodo.org/records/22070395/files/Superheroes.csv")
+```
 
-| Paquete | Función principal |
+La base original trae muchas columnas, incluyendo una llamada `History` con textos narrativos larguísimos que no necesitamos para el análisis estadístico. Nos quedamos solo con las columnas relevantes:
+
+```{r}
+superheroes <- superheroes |> 
+  select(Character, Alignment, Gender, Universe, Species,
+         Speed, Speed_velocity, Strength, Combat, Durability, Intelligence)
+
+glimpse(superheroes)
+```
+
+Las columnas con las que vamos a trabajar hoy:
+
+| Variable | Descripción |
 |---|---|
-| `dplyr` | Manipulación de datos (filtrar, seleccionar, transformar) |
-| `ggplot2` | Visualización de datos por capas |
-| `tidyr` | Ordenar y reestructurar bases de datos |
-| `readr` | Importar datos (csv, txt) |
-| `tibble` | Una versión mejorada de los `data.frame` |
-| `purrr` | Programación funcional (iteraciones) |
-| `stringr` | Manipulación de texto |
-
-```{r}
-#| eval: false
-library(tidyverse)
-```
-
-Para esta clase usaremos la base de datos `mpg`, que viene incluida con `ggplot2` y contiene información sobre el consumo de combustible de distintos modelos de auto.
-
-```{r}
-library(tidyverse)
-
-glimpse(mpg)
-```
+| `Character` | Nombre del personaje |
+| `Alignment` | Alineamiento (Good, Bad, Neutral) |
+| `Gender` | Género del personaje |
+| `Universe` | Universo/franquicia de origen |
+| `Species` | Especie (humano, alien, androide, etc.) |
+| `Speed` | Velocidad en una escala de 0 a 100 |
+| `Speed_velocity` | Velocidad estimada en km/h |
+| `Strength` | Fuerza en una escala de 0 a 100 |
+| `Combat` | Habilidad de combate (0 a 100) |
+| `Durability` | Durabilidad/resistencia (0 a 100) |
+| `Intelligence` | Inteligencia (0 a 100) |
 
 ---
 
-## 2. dplyr: los verbos básicos
+## 2. Explorando la base de datos
 
-`dplyr` organiza la manipulación de datos en torno a un puñado de **verbos** (funciones) que hacen una cosa cada uno, y se combinan entre sí.
-
-### 2.1 `select()` — elegir columnas
+Antes de calcular cualquier cosa, siempre es buena idea mirar la estructura de los datos.
 
 ```{r}
-mpg |> 
-  select(manufacturer, model, year, cty, hwy)
+glimpse(superheroes)
 ```
-
-También puedes **excluir** columnas con `-`:
 
 ```{r}
-mpg |> 
-  select(-class, -trans)
+nrow(superheroes)  # número de filas (personajes)
+ncol(superheroes)  # número de columnas (variables)
 ```
 
-### 2.2 `filter()` — elegir filas según una condición
+**Pregunta para pensar:** ¿cuántos personajes tiene nuestra base? ¿Cuántas variables estamos midiendo por cada uno?
 
-```{r}
-mpg |> 
-  filter(year == 2008)
-```
+::: {.callout-note collapse="true"}
+## Ojo: personajes repetidos
 
-Se pueden combinar condiciones con `&` (Y) o `|` (O):
-
-```{r}
-mpg |> 
-  filter(manufacturer == "audi" & year == 2008)
-```
-
-### 2.3 `mutate()` — crear o modificar variables
-
-```{r}
-mpg |> 
-  mutate(promedio_consumo = (cty + hwy) / 2) |> 
-  select(manufacturer, model, cty, hwy, promedio_consumo)
-```
-
-### 2.4 `arrange()` — ordenar filas
-
-```{r}
-mpg |> 
-  arrange(desc(hwy)) |> 
-  select(manufacturer, model, hwy)
-```
-
-### 2.5 `summarise()` y `group_by()` — resumir datos
-
-`summarise()` reduce muchas filas a un resumen (por ejemplo, un promedio). Se vuelve mucho más útil combinado con `group_by()`, que agrupa los datos antes de resumir:
-
-```{r}
-mpg |> 
-  group_by(class) |> 
-  summarise(
-    promedio_hwy = mean(hwy),
-    n_autos = n()
-  ) |> 
-  arrange(desc(promedio_hwy))
-```
-
-::: {.callout-tip collapse="true"}
-## ¿Qué es el operador `|>`?
-
-El operador *pipe* (`|>` en R base, o `%>%` si usas `magrittr`) toma lo que está a su izquierda y lo pasa como primer argumento a la función de la derecha. Esto permite leer el código como una secuencia de pasos, de arriba hacia abajo, en vez de anidar funciones unas dentro de otras.
-
-```r
-# Sin pipe (difícil de leer)
-arrange(summarise(group_by(mpg, class), promedio = mean(hwy)), desc(promedio))
-
-# Con pipe (más claro)
-mpg |> 
-  group_by(class) |> 
-  summarise(promedio = mean(hwy)) |> 
-  arrange(desc(promedio))
-```
+Esta base tiene varias filas para un mismo personaje (por ejemplo, distintas versiones o actualizaciones de "Alucard" o "Android 17"). Para efectos de esta clase lo dejamos así, peroen las siguientes sesiones, podemos ver como limpiar duplicados con `distinct()`.
 :::
 
-### 2.6 Encadenando todo junto
-
-Un flujo típico de trabajo combina varios verbos en una sola secuencia:
-
-```{r}
-mpg |> 
-  filter(class %in% c("compact", "suv")) |> 
-  group_by(class, drv) |> 
-  summarise(promedio_hwy = mean(hwy), .groups = "drop") |> 
-  arrange(class, desc(promedio_hwy))
-```
-
 ---
 
-## 3. ggplot2: la gramática de gráficos
+## 3. Estadística descriptiva básica
 
-`ggplot2` construye gráficos por **capas**. La estructura básica siempre parte igual:
+Nos vamos a concentrar en la variable `Speed_velocity`, osea la velocidad máxima estimada de cada personaje, en km/h.
 
-```r
-ggplot(data = <datos>, mapping = aes(<variables>)) +
-  <geometría>()
-```
+### 3.1 Medidas de tendencia central
 
-- **`data`**: la base de datos.
-- **`aes()`** (*aesthetic mappings*): qué variables van en qué ejes/colores/formas.
-- **`geom_*()`**: qué tipo de gráfico (puntos, barras, líneas, etc.).
-
-### 3.1 Gráfico de dispersión (`geom_point`)
+**Media (promedio):** suma todos los valores y divide por el número de casos.
 
 ```{r}
-ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point()
+mean(superheroes$Speed_velocity, na.rm = TRUE)
 ```
 
-### 3.2 Agregando una tercera variable con color
+**Mediana:** el valor que queda justo al medio cuando ordenamos los datos de menor a mayor.
 
 ```{r}
-ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
-  geom_point()
-```
-
-### 3.3 Gráfico de barras (`geom_bar` / `geom_col`)
-
-`geom_bar()` cuenta observaciones automáticamente:
-
-```{r}
-ggplot(mpg, aes(x = class)) +
-  geom_bar()
-```
-
-Si ya tienes los valores calculados (por ejemplo, con `summarise()`), usa `geom_col()`:
-
-```{r}
-mpg |> 
-  group_by(class) |> 
-  summarise(promedio_hwy = mean(hwy)) |> 
-  ggplot(aes(x = reorder(class, promedio_hwy), y = promedio_hwy)) +
-  geom_col() +
-  coord_flip()
-```
-
-### 3.4 Boxplot (`geom_boxplot`)
-
-Útil para comparar la distribución de una variable numérica entre grupos:
-
-```{r}
-ggplot(mpg, aes(x = class, y = hwy)) +
-  geom_boxplot()
-```
-
-### 3.5 Facetas: un panel por categoría
-
-```{r}
-ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point() +
-  facet_wrap(~ drv)
-```
-
-### 3.6 Personalizando el gráfico
-
-```{r}
-ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
-  geom_point(size = 2, alpha = 0.7) +
-  labs(
-    title = "Relación entre cilindrada y rendimiento en autopista",
-    subtitle = "Datos de mpg (ggplot2)",
-    x = "Cilindrada del motor (litros)",
-    y = "Rendimiento en autopista (millas/galón)",
-    color = "Tipo de vehículo"
-  ) +
-  theme_minimal()
+median(superheroes$Speed_velocity, na.rm = TRUE)
 ```
 
 ::: {.callout-important}
-## Combinando dplyr y ggplot2
+## Media vs. mediana
 
-En la práctica, casi siempre vas a **transformar los datos con dplyr y graficarlos con ggplot2 en un mismo flujo**, encadenando todo con el pipe:
+Si la media y la mediana son parecidas, los datos están relativamente "equilibrados". Si son muy distintas, probablemente hay valores extremos (muy altos o muy bajos) que están "tirando" la media hacia un lado. En nuestra base hay personajes con velocidades extremas (miles de millones de km/h), lo que probablemente infla mucho la media respecto a la mediana. ¿Por qué crees que pasa esto con personajes de fantasía/ciencia ficción?
 
-```{r}
-mpg |> 
-  filter(class != "2seater") |> 
-  group_by(class) |> 
-  summarise(promedio_hwy = mean(hwy)) |> 
-  ggplot(aes(x = reorder(class, promedio_hwy), y = promedio_hwy, fill = class)) +
-  geom_col(show.legend = FALSE) +
-  coord_flip() +
-  labs(x = NULL, y = "Rendimiento promedio en autopista", 
-       title = "Rendimiento promedio en autopista por tipo de vehículo")
-```
+
+![](Correlacional/img/nicanor.png){fig-align="center" width="200px"}
+
 :::
-
----
-
-## 4. Ejercicio propuesto
 
 ::: {.callout-tip collapse="true"}
-## Haz clic para ver el ejercicio
+## ¿Qué es `na.rm = TRUE`?
 
-Usando la base `mpg`:
+Le indica a R que ignore los valores faltantes (`NA`) al calcular. Si no lo incluimos y hay algún valor faltante en la columna, R no puede calcular el promedio y devuelve `NA` como resultado.
+:::
 
-1. Filtra los datos para quedarte solo con autos con `cyl` (número de cilindros) igual a 4 o 6.
-2. Crea una nueva variable llamada `eficiencia`, que sea el promedio entre `cty` y `hwy`.
-3. Agrupa por `manufacturer` y calcula el promedio de `eficiencia`.
-4. Ordena de mayor a menor eficiencia.
-5. Grafica los 5 fabricantes más eficientes usando `geom_col()`.
+### 3.2 Medidas de dispersión
 
-**Pista:** vas a necesitar `filter()`, `mutate()`, `group_by()`, `summarise()`, `arrange()`, `slice_head()` y `ggplot()`.
+**Rango:** la distancia entre el valor mínimo y el máximo.
+
+```{r}
+min(superheroes$Speed_velocity, na.rm = TRUE)
+max(superheroes$Speed_velocity, na.rm = TRUE)
+range(superheroes$Speed_velocity, na.rm = TRUE)
+```
+
+**Varianza:** mide en promedio qué tan lejos está cada valor de la media (elevado al cuadrado).
+
+```{r}
+var(superheroes$Speed_velocity, na.rm = TRUE)
+```
+
+**Desviación estándar:** es la raíz cuadrada de la varianza. Se usa más que la varianza porque queda en las mismas unidades que la variable original (km/h en este caso).
+
+```{r}
+sd(superheroes$Speed_velocity, na.rm = TRUE)
+```
+
+::: {.callout-tip collapse="true"}
+## ¿Cómo se interpreta la desviación estándar?
+
+Nos dice, en promedio, cuánto se alejan los personajes de la velocidad promedio. Si la desviación estándar es baja, la mayoría tiene velocidades parecidas entre sí. Si es muy alta —como probablemente ocurra acá—, hay mucha variedad: desde personajes sin poderes especiales hasta seres que se mueven a velocidades absurdas.
+:::
+
+### 3.3 Todo junto con `summary()`
+
+R tiene una función que calcula varios estadísticos de una sola vez:
+
+```{r}
+summary(superheroes$Speed_velocity)
+```
+
+---
+
+## 4. Primeros pasos con dplyr
+
+`dplyr` nos permite explorar y manipular la base de datos de forma más flexible. Vamos a ver funciones básicas.
+
+### 4.1 `select()` — elegir columnas
+
+```{r}
+superheroes |> 
+  select(Character, Speed_velocity)
+```
+
+### 4.2 `filter()` — elegir filas según una condición
+
+Por ejemplo, ¿qué personajes son del bando "Bad" (villanos)?
+
+```{r}
+superheroes |> 
+  filter(Alignment == "Bad")
+```
+
+¿Y quiénes tienen una velocidad de combate (`Combat`) mayor o igual a 90?
+
+```{r}
+superheroes |> 
+  filter(Combat >= 90)
+```
+
+### 4.3 `arrange()` — ordenar
+
+Del más veloz al más lento:
+
+```{r}
+superheroes |> 
+  arrange(desc(Speed_velocity)) |> 
+  select(Character, Universe, Speed_velocity)
+```
+
+### 4.4 `group_by()` + `summarise()` — resumir por grupo
+
+¿Cuál es la velocidad promedio según el alineamiento del personaje?
+
+```{r}
+superheroes |> 
+  group_by(Alignment) |> 
+  summarise(
+    velocidad_promedio = mean(Speed_velocity, na.rm = TRUE),
+    desviacion = sd(Speed_velocity, na.rm = TRUE),
+    n_personajes = n()
+  )
+```
+
+¿Y según el universo de origen? (mostramos solo los 10 universos con más personajes)
+
+```{r}
+superheroes |> 
+  group_by(Universe) |> 
+  summarise(
+    velocidad_promedio = mean(Speed_velocity, na.rm = TRUE),
+    n_personajes = n()
+  ) |> 
+  arrange(desc(n_personajes)) |> 
+  slice_head(n = 10)
+```
+
+---
+
+## 5. Primeros gráficos con ggplot2
+
+Como la variable `Speed_velocity` tiene valores extremadamente altos (personajes que se mueven a velocidades cósmicas), vamos a trabajar en escala logarítmica para que los gráficos se puedan interpretar mejor.
+
+### 5.1 Histograma: ¿cómo se distribuye la velocidad?
+
+```{r}
+superheroes |> 
+  filter(!is.na(Speed_velocity), Speed_velocity > 0) |> 
+  ggplot(aes(x = Speed_velocity)) +
+  geom_histogram(bins = 30, fill = "steelblue", color = "white") +
+  scale_x_log10() +
+  labs(
+    title = "Distribución de la velocidad máxima (escala log)",
+    x = "Velocidad (km/h, escala logarítmica)",
+    y = "Número de personajes"
+  )
+```
+
+### 5.2 Boxplot: comparando velocidad según alineamiento
+
+```{r}
+superheroes |> 
+  filter(!is.na(Speed_velocity), Speed_velocity > 0) |> 
+  ggplot(aes(x = Alignment, y = Speed_velocity)) +
+  geom_boxplot(fill = "tomato") +
+  scale_y_log10() +
+  labs(
+    title = "Velocidad máxima según alineamiento",
+    x = "Alineamiento",
+    y = "Velocidad (km/h, escala logarítmica)"
+  )
+```
+
+### 5.3 Gráfico de barras: velocidad promedio por universo
+
+```{r}
+superheroes |> 
+  group_by(Universe) |> 
+  summarise(
+    velocidad_promedio = mean(Speed_velocity, na.rm = TRUE),
+    n_personajes = n()
+  ) |> 
+  filter(n_personajes >= 3) |> 
+  arrange(desc(velocidad_promedio)) |> 
+  slice_head(n = 10) |> 
+  ggplot(aes(x = reorder(Universe, velocidad_promedio), y = velocidad_promedio)) +
+  geom_col(fill = "darkorange") +
+  coord_flip() +
+  scale_y_log10() +
+  labs(
+    title = "Top 10 universos con mayor velocidad promedio",
+    subtitle = "Solo universos con 3 o más personajes en la base",
+    x = NULL,
+    y = "Velocidad promedio (km/h, escala logarítmica)"
+  )
+```
+
+### 5.4 Dispersión: ¿la fuerza se relaciona con la velocidad?
+
+```{r}
+superheroes |> 
+  filter(!is.na(Speed_velocity), !is.na(Strength), Speed_velocity > 0) |> 
+  ggplot(aes(x = Strength, y = Speed_velocity, color = Alignment)) +
+  geom_point(alpha = 0.5) +
+  scale_y_log10() +
+  labs(
+    title = "Relación entre fuerza y velocidad máxima",
+    x = "Fuerza (escala 0-100)",
+    y = "Velocidad (km/h, escala logarítmica)",
+    color = "Alineamiento"
+  )
+```
+
+---
+
+## 6. Actividad práctica
+
+::: {.callout-tip collapse="true"}
+## Ejercicio 1: Estadísticos descriptivos
+
+Usando la variable `Combat` (habilidad de combate):
+
+1. Calcula la media, mediana, varianza y desviación estándar (recuerda usar `na.rm = TRUE`).
+2. ¿La media y la mediana son parecidas? ¿Qué te dice eso sobre la distribución?
+3. ¿Cuál es el personaje con mayor `Combat`? (pista: usa `arrange()`)
+:::
+
+::: {.callout-tip collapse="true"}
+## Ejercicio 2: dplyr
+
+1. Filtra los personajes que sean del género `"Female"`.
+2. De ese grupo, ordénalos de mayor a menor `Intelligence`.
+3. Calcula el promedio de `Intelligence` de ese subgrupo con `summarise()`. ¿Es mayor o menor que el promedio general de la base completa?
+:::
+
+::: {.callout-tip collapse="true"}
+## Ejercicio 3: ggplot2
+
+1. Crea un histograma de la variable `Durability` (sin necesidad de escala logarítmica, ya que va de 0 a 100).
+2. Crea un gráfico de dispersión entre `Intelligence` (eje x) y `Combat` (eje y), coloreado por `Alignment`.
+3. ¿Se observa alguna relación entre la inteligencia y la habilidad de combate de los personajes?
 :::
 
 ---
 
-## 5. Recursos para seguir practicando
+## 7. Resumen de funciones vistas hoy
 
-- [R for Data Science (2ª edición) — Hadley Wickham](https://r4ds.hadley.nz/) (gratuito, en inglés)
-- [Cheatsheet de dplyr (Posit)](https://rstudio.github.io/cheatsheets/html/data-transformation.html)
-- [Cheatsheet de ggplot2 (Posit)](https://rstudio.github.io/cheatsheets/html/data-visualization.html)
+| Función | Paquete | Qué hace |
+|---|---|---|
+| `read_csv()` | readr | Lee un archivo `.csv` (local o desde una URL) |
+| `mean()` | base R | Calcula el promedio |
+| `median()` | base R | Calcula la mediana |
+| `sd()` | base R | Calcula la desviación estándar |
+| `var()` | base R | Calcula la varianza |
+| `range()` | base R | Entrega el mínimo y máximo |
+| `summary()` | base R | Resumen rápido de estadísticos |
+| `select()` | dplyr | Elige columnas |
+| `filter()` | dplyr | Elige filas según condición |
+| `arrange()` | dplyr | Ordena filas |
+| `group_by()` + `summarise()` | dplyr | Resume datos por grupo |
+| `slice_head()` | dplyr | Se queda con las primeras n filas |
+| `ggplot()` + `geom_*()` | ggplot2 | Construye gráficos por capas |
+| `scale_x_log10()` / `scale_y_log10()` | ggplot2 | Transforma un eje a escala logarítmica |

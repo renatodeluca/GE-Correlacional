@@ -4,7 +4,7 @@ project:
 website:
   title: "Grupo de Estudio para Estadística Correlacional"
   navbar:
-    logo: docs/img/logoidea.png
+    logo: img/logoidea.png
     left:
       - href: presentacion.qmd
         text: Presentación

@@ -4,11 +4,25 @@
     "href": "index.html",
     "title": "Grupo de Estudio para Estadística Correlacional",
     "section": "",
-    "text": "Contenido…\n\n\nPresentación\nBienvenidx a la página del Grupo de Estudio de Estadística Correlacional organizado por el Centro IDEA."
+    "text": "Presentación\nBienvenidx a la página del Grupo de Estudio de Estadística Correlacional organizado por el Centro IDEA."
   },
   {
     "objectID": "about.html",
     "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "presentacion.html",
+    "href": "presentacion.html",
+    "title": "Grupo de Estudio para Estadística Correlacional",
+    "section": "",
+    "text": "Presentación\n¡Bienvenidx a la página del Grupo de Estudio de Estadística Correlacional, organizado por el Centro IDEA!\n\n\n¿Para qué?\nEste espacio tiene como objetivo principal fortalecer sus habilidades en R y Positron, facilitando el aprendizaje del ramo y aliviando su carga académica. Buscamos apoyar el análisis de datos mediante inferencia estadística y estadística correlacional, además de fomentar la colaboración y el intercambio de conocimientos entre quienes participan.\n\n\n\n\n\n\nNote\n\n\n\nRecuerda que puedes solicitar tutorías personalizadas pinchando aquí."
+  },
+  {
+    "objectID": "sesiones.html",
+    "href": "sesiones.html",
     "title": "About",
     "section": "",
     "text": "About this site"

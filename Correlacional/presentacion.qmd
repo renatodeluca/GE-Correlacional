@@ -1,0 +1,26 @@
+---
+title: "Grupo de Estudio para Estadística Correlacional"
+subtitle: "R, Positron y Estadística"
+toc: false
+page-layout: full
+execute:
+  freeze: auto
+format:
+  html:
+    theme: minty
+    css: styles.css
+    toc: true
+---
+
+![](img/logoidea.png){fig-align="center" width="500px"}
+
+
+# Presentación
+¡Bienvenidx a la página del Grupo de Estudio de Estadística Correlacional, organizado por el [Centro IDEA](https://www.instagram.com/tutorias_centroidea/)!
+
+# ¿Para qué?
+Este espacio tiene como objetivo principal fortalecer sus habilidades en **R** y **Positron**, facilitando el aprendizaje del ramo y aliviando su carga académica. Buscamos apoyar el análisis de datos mediante inferencia estadística y estadística correlacional, además de fomentar la colaboración y el intercambio de conocimientos entre quienes participan.
+
+::: {.callout-note}
+Recuerda que puedes solicitar tutorías personalizadas pinchando [aquí](https://docs.google.com/forms/d/e/1FAIpQLSdozpnwgwkn50egxmO57ObDrW-NCXBNNribf9urWjNZmU73uw/viewform).
+

@@ -2,20 +2,17 @@ project:
   type: website
 
 website:
-  title: "pagina"
+  title: "Grupo de Estudio para Estadística Correlacional"
   navbar:
+    logo: Correlacional/img/logoidea.png
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - href: presentacion.qmd
+        text: Presentación
+      - href: sesiones.qmd
+        text: Sesiones
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: minty
     css: styles.css
     toc: true
-
-
-

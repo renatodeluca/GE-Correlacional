@@ -4,5 +4,11 @@
   },
   "about.qmd": {
     "about.html": "132c5eed"
+  },
+  "presentacion.qmd": {
+    "presentacion.html": "94596f6d"
+  },
+  "sesiones.qmd": {
+    "sesiones.html": "dc479bca"
   }
 }

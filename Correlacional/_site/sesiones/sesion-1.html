@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -157,7 +192,28 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduccion-a-positron-y-r" id="toc-introduccion-a-positron-y-r" class="nav-link active" data-scroll-target="#introduccion-a-positron-y-r">Introduccion a Positron y R</a></li>
-  <li><a href="#pudieron-agarrrlae-la-mana-a-positron" id="toc-pudieron-agarrrlae-la-mana-a-positron" class="nav-link" data-scroll-target="#pudieron-agarrrlae-la-mana-a-positron">Pudieron agarrrlae la mana a positron?</a></li>
+  <li><a href="#objetivos-de-la-sesión" id="toc-objetivos-de-la-sesión" class="nav-link" data-scroll-target="#objetivos-de-la-sesión">Objetivos de la sesión</a></li>
+  <li><a href="#qué-es-el-tidyverse" id="toc-qué-es-el-tidyverse" class="nav-link" data-scroll-target="#qué-es-el-tidyverse">1. ¿Qué es el tidyverse?</a></li>
+  <li><a href="#dplyr-los-verbos-básicos" id="toc-dplyr-los-verbos-básicos" class="nav-link" data-scroll-target="#dplyr-los-verbos-básicos">2. dplyr: los verbos básicos</a>
+  <ul class="collapse">
+  <li><a href="#select-elegir-columnas" id="toc-select-elegir-columnas" class="nav-link" data-scroll-target="#select-elegir-columnas">2.1 <code>select()</code> — elegir columnas</a></li>
+  <li><a href="#filter-elegir-filas-según-una-condición" id="toc-filter-elegir-filas-según-una-condición" class="nav-link" data-scroll-target="#filter-elegir-filas-según-una-condición">2.2 <code>filter()</code> — elegir filas según una condición</a></li>
+  <li><a href="#mutate-crear-o-modificar-variables" id="toc-mutate-crear-o-modificar-variables" class="nav-link" data-scroll-target="#mutate-crear-o-modificar-variables">2.3 <code>mutate()</code> — crear o modificar variables</a></li>
+  <li><a href="#arrange-ordenar-filas" id="toc-arrange-ordenar-filas" class="nav-link" data-scroll-target="#arrange-ordenar-filas">2.4 <code>arrange()</code> — ordenar filas</a></li>
+  <li><a href="#summarise-y-group_by-resumir-datos" id="toc-summarise-y-group_by-resumir-datos" class="nav-link" data-scroll-target="#summarise-y-group_by-resumir-datos">2.5 <code>summarise()</code> y <code>group_by()</code> — resumir datos</a></li>
+  <li><a href="#encadenando-todo-junto" id="toc-encadenando-todo-junto" class="nav-link" data-scroll-target="#encadenando-todo-junto">2.6 Encadenando todo junto</a></li>
+  </ul></li>
+  <li><a href="#ggplot2-la-gramática-de-gráficos" id="toc-ggplot2-la-gramática-de-gráficos" class="nav-link" data-scroll-target="#ggplot2-la-gramática-de-gráficos">3. ggplot2: la gramática de gráficos</a>
+  <ul class="collapse">
+  <li><a href="#gráfico-de-dispersión-geom_point" id="toc-gráfico-de-dispersión-geom_point" class="nav-link" data-scroll-target="#gráfico-de-dispersión-geom_point">3.1 Gráfico de dispersión (<code>geom_point</code>)</a></li>
+  <li><a href="#agregando-una-tercera-variable-con-color" id="toc-agregando-una-tercera-variable-con-color" class="nav-link" data-scroll-target="#agregando-una-tercera-variable-con-color">3.2 Agregando una tercera variable con color</a></li>
+  <li><a href="#gráfico-de-barras-geom_bar-geom_col" id="toc-gráfico-de-barras-geom_bar-geom_col" class="nav-link" data-scroll-target="#gráfico-de-barras-geom_bar-geom_col">3.3 Gráfico de barras (<code>geom_bar</code> / <code>geom_col</code>)</a></li>
+  <li><a href="#boxplot-geom_boxplot" id="toc-boxplot-geom_boxplot" class="nav-link" data-scroll-target="#boxplot-geom_boxplot">3.4 Boxplot (<code>geom_boxplot</code>)</a></li>
+  <li><a href="#facetas-un-panel-por-categoría" id="toc-facetas-un-panel-por-categoría" class="nav-link" data-scroll-target="#facetas-un-panel-por-categoría">3.5 Facetas: un panel por categoría</a></li>
+  <li><a href="#personalizando-el-gráfico" id="toc-personalizando-el-gráfico" class="nav-link" data-scroll-target="#personalizando-el-gráfico">3.6 Personalizando el gráfico</a></li>
+  </ul></li>
+  <li><a href="#ejercicio-propuesto" id="toc-ejercicio-propuesto" class="nav-link" data-scroll-target="#ejercicio-propuesto">4. Ejercicio propuesto</a></li>
+  <li><a href="#recursos-para-seguir-practicando" id="toc-recursos-para-seguir-practicando" class="nav-link" data-scroll-target="#recursos-para-seguir-practicando">5. Recursos para seguir practicando</a></li>
   </ul>
 </nav>
 </nav>
@@ -192,8 +248,512 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="introduccion-a-positron-y-r">Introduccion a Positron y R</h2>
 <p>En esta sesión, aprenderemos los conceptos básicos de <strong>Positron</strong> y <strong>R</strong>, dos herramientas fundamentales para el análisis de datos en estadística.</p>
 </section>
-<section id="pudieron-agarrrlae-la-mana-a-positron" class="level1">
-<h1>Pudieron agarrrlae la mana a positron?</h1>
+<section id="objetivos-de-la-sesión" class="level2">
+<h2 class="anchored" data-anchor-id="objetivos-de-la-sesión">Objetivos de la sesión</h2>
+<p>Al finalizar esta clase vas a poder:</p>
+<ul>
+<li>Entender qué es el <strong>tidyverse</strong> y por qué se usa en análisis de datos con R.</li>
+<li>Manipular bases de datos con las funciones principales de <strong>dplyr</strong>.</li>
+<li>Usar el operador <em>pipe</em> (<code>|&gt;</code> o <code>%&gt;%</code>) para encadenar transformaciones.</li>
+<li>Construir visualizaciones con la lógica de capas de <strong>ggplot2</strong>.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Antes de empezar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Asegúrate de tener <strong>R</strong> y <strong>Positron</strong> instalados, y de haber corrido al menos una vez:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<hr>
+</section>
+<section id="qué-es-el-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-el-tidyverse">1. ¿Qué es el tidyverse?</h2>
+<p>El <strong>tidyverse</strong> no es un solo paquete, sino una colección de paquetes de R diseñados para trabajar juntos bajo una misma filosofía: los datos “ordenados” (<em>tidy data</em>), donde:</p>
+<ul>
+<li>cada <strong>variable</strong> es una columna,</li>
+<li>cada <strong>observación</strong> es una fila,</li>
+<li>cada <strong>valor</strong> ocupa una celda.</li>
+</ul>
+<p>Al cargar <code>tidyverse</code> se cargan automáticamente varios paquetes, entre los que destacan:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Paquete</th>
+<th>Función principal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>dplyr</code></td>
+<td>Manipulación de datos (filtrar, seleccionar, transformar)</td>
+</tr>
+<tr class="even">
+<td><code>ggplot2</code></td>
+<td>Visualización de datos por capas</td>
+</tr>
+<tr class="odd">
+<td><code>tidyr</code></td>
+<td>Ordenar y reestructurar bases de datos</td>
+</tr>
+<tr class="even">
+<td><code>readr</code></td>
+<td>Importar datos (csv, txt)</td>
+</tr>
+<tr class="odd">
+<td><code>tibble</code></td>
+<td>Una versión mejorada de los <code>data.frame</code></td>
+</tr>
+<tr class="even">
+<td><code>purrr</code></td>
+<td>Programación funcional (iteraciones)</td>
+</tr>
+<tr class="odd">
+<td><code>stringr</code></td>
+<td>Manipulación de texto</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Para esta clase usaremos la base de datos <code>mpg</code>, que viene incluida con <code>ggplot2</code> y contiene información sobre el consumo de combustible de distintos modelos de auto.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.1     ✔ readr     2.2.0
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.3     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+✔ purrr     1.2.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mpg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 234
+Columns: 11
+$ manufacturer &lt;chr&gt; "audi", "audi", "audi", "audi", "audi", "audi", "audi", "…
+$ model        &lt;chr&gt; "a4", "a4", "a4", "a4", "a4", "a4", "a4", "a4 quattro", "…
+$ displ        &lt;dbl&gt; 1.8, 1.8, 2.0, 2.0, 2.8, 2.8, 3.1, 1.8, 1.8, 2.0, 2.0, 2.…
+$ year         &lt;int&gt; 1999, 1999, 2008, 2008, 1999, 1999, 2008, 1999, 1999, 200…
+$ cyl          &lt;int&gt; 4, 4, 4, 4, 6, 6, 6, 4, 4, 4, 4, 6, 6, 6, 6, 6, 6, 8, 8, …
+$ trans        &lt;chr&gt; "auto(l5)", "manual(m5)", "manual(m6)", "auto(av)", "auto…
+$ drv          &lt;chr&gt; "f", "f", "f", "f", "f", "f", "f", "4", "4", "4", "4", "4…
+$ cty          &lt;int&gt; 18, 21, 20, 21, 16, 18, 18, 18, 16, 20, 19, 15, 17, 17, 1…
+$ hwy          &lt;int&gt; 29, 29, 31, 30, 26, 26, 27, 26, 25, 28, 27, 25, 25, 25, 2…
+$ fl           &lt;chr&gt; "p", "p", "p", "p", "p", "p", "p", "p", "p", "p", "p", "p…
+$ class        &lt;chr&gt; "compact", "compact", "compact", "compact", "compact", "c…</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="dplyr-los-verbos-básicos" class="level2">
+<h2 class="anchored" data-anchor-id="dplyr-los-verbos-básicos">2. dplyr: los verbos básicos</h2>
+<p><code>dplyr</code> organiza la manipulación de datos en torno a un puñado de <strong>verbos</strong> (funciones) que hacen una cosa cada uno, y se combinan entre sí.</p>
+<section id="select-elegir-columnas" class="level3">
+<h3 class="anchored" data-anchor-id="select-elegir-columnas">2.1 <code>select()</code> — elegir columnas</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, year, cty, hwy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 234 × 5
+   manufacturer model       year   cty   hwy
+   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1 audi         a4          1999    18    29
+ 2 audi         a4          1999    21    29
+ 3 audi         a4          2008    20    31
+ 4 audi         a4          2008    21    30
+ 5 audi         a4          1999    16    26
+ 6 audi         a4          1999    18    26
+ 7 audi         a4          2008    18    27
+ 8 audi         a4 quattro  1999    18    26
+ 9 audi         a4 quattro  1999    16    25
+10 audi         a4 quattro  2008    20    28
+# ℹ 224 more rows</code></pre>
+</div>
+</div>
+<p>También puedes <strong>excluir</strong> columnas con <code>-</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>class, <span class="sc">-</span>trans)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 234 × 9
+   manufacturer model      displ  year   cyl drv     cty   hwy fl   
+   &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;
+ 1 audi         a4           1.8  1999     4 f        18    29 p    
+ 2 audi         a4           1.8  1999     4 f        21    29 p    
+ 3 audi         a4           2    2008     4 f        20    31 p    
+ 4 audi         a4           2    2008     4 f        21    30 p    
+ 5 audi         a4           2.8  1999     6 f        16    26 p    
+ 6 audi         a4           2.8  1999     6 f        18    26 p    
+ 7 audi         a4           3.1  2008     6 f        18    27 p    
+ 8 audi         a4 quattro   1.8  1999     4 4        18    26 p    
+ 9 audi         a4 quattro   1.8  1999     4 4        16    25 p    
+10 audi         a4 quattro   2    2008     4 4        20    28 p    
+# ℹ 224 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="filter-elegir-filas-según-una-condición" class="level3">
+<h3 class="anchored" data-anchor-id="filter-elegir-filas-según-una-condición">2.2 <code>filter()</code> — elegir filas según una condición</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2008</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 117 × 11
+   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class
+   &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
+ 1 audi         a4           2    2008     4 manu… f        20    31 p     comp…
+ 2 audi         a4           2    2008     4 auto… f        21    30 p     comp…
+ 3 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…
+ 4 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…
+ 5 audi         a4 quattro   2    2008     4 auto… 4        19    27 p     comp…
+ 6 audi         a4 quattro   3.1  2008     6 auto… 4        17    25 p     comp…
+ 7 audi         a4 quattro   3.1  2008     6 manu… 4        15    25 p     comp…
+ 8 audi         a6 quattro   3.1  2008     6 auto… 4        17    25 p     mids…
+ 9 audi         a6 quattro   4.2  2008     8 auto… 4        16    23 p     mids…
+10 chevrolet    c1500 sub…   5.3  2008     8 auto… r        14    20 r     suv  
+# ℹ 107 more rows</code></pre>
+</div>
+</div>
+<p>Se pueden combinar condiciones con <code>&amp;</code> (Y) o <code>|</code> (O):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(manufacturer <span class="sc">==</span> <span class="st">"audi"</span> <span class="sc">&amp;</span> year <span class="sc">==</span> <span class="dv">2008</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 11
+  manufacturer model      displ  year   cyl trans  drv     cty   hwy fl    class
+  &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
+1 audi         a4           2    2008     4 manua… f        20    31 p     comp…
+2 audi         a4           2    2008     4 auto(… f        21    30 p     comp…
+3 audi         a4           3.1  2008     6 auto(… f        18    27 p     comp…
+4 audi         a4 quattro   2    2008     4 manua… 4        20    28 p     comp…
+5 audi         a4 quattro   2    2008     4 auto(… 4        19    27 p     comp…
+6 audi         a4 quattro   3.1  2008     6 auto(… 4        17    25 p     comp…
+7 audi         a4 quattro   3.1  2008     6 manua… 4        15    25 p     comp…
+8 audi         a6 quattro   3.1  2008     6 auto(… 4        17    25 p     mids…
+9 audi         a6 quattro   4.2  2008     8 auto(… 4        16    23 p     mids…</code></pre>
+</div>
+</div>
+</section>
+<section id="mutate-crear-o-modificar-variables" class="level3">
+<h3 class="anchored" data-anchor-id="mutate-crear-o-modificar-variables">2.3 <code>mutate()</code> — crear o modificar variables</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">promedio_consumo =</span> (cty <span class="sc">+</span> hwy) <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, cty, hwy, promedio_consumo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 234 × 5
+   manufacturer model        cty   hwy promedio_consumo
+   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt; &lt;int&gt;            &lt;dbl&gt;
+ 1 audi         a4            18    29             23.5
+ 2 audi         a4            21    29             25  
+ 3 audi         a4            20    31             25.5
+ 4 audi         a4            21    30             25.5
+ 5 audi         a4            16    26             21  
+ 6 audi         a4            18    26             22  
+ 7 audi         a4            18    27             22.5
+ 8 audi         a4 quattro    18    26             22  
+ 9 audi         a4 quattro    16    25             20.5
+10 audi         a4 quattro    20    28             24  
+# ℹ 224 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="arrange-ordenar-filas" class="level3">
+<h3 class="anchored" data-anchor-id="arrange-ordenar-filas">2.4 <code>arrange()</code> — ordenar filas</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(hwy)) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(manufacturer, model, hwy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 234 × 3
+   manufacturer model        hwy
+   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt;
+ 1 volkswagen   jetta         44
+ 2 volkswagen   new beetle    44
+ 3 volkswagen   new beetle    41
+ 4 toyota       corolla       37
+ 5 honda        civic         36
+ 6 honda        civic         36
+ 7 toyota       corolla       35
+ 8 toyota       corolla       35
+ 9 honda        civic         34
+10 honda        civic         33
+# ℹ 224 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="summarise-y-group_by-resumir-datos" class="level3">
+<h3 class="anchored" data-anchor-id="summarise-y-group_by-resumir-datos">2.5 <code>summarise()</code> y <code>group_by()</code> — resumir datos</h3>
+<p><code>summarise()</code> reduce muchas filas a un resumen (por ejemplo, un promedio). Se vuelve mucho más útil combinado con <code>group_by()</code>, que agrupa los datos antes de resumir:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(class) <span class="sc">|&gt;</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">promedio_hwy =</span> <span class="fu">mean</span>(hwy),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_autos =</span> <span class="fu">n</span>()</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(promedio_hwy))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 3
+  class      promedio_hwy n_autos
+  &lt;chr&gt;             &lt;dbl&gt;   &lt;int&gt;
+1 compact            28.3      47
+2 subcompact         28.1      35
+3 midsize            27.3      41
+4 2seater            24.8       5
+5 minivan            22.4      11
+6 suv                18.1      62
+7 pickup             16.9      33</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>¿Qué es el operador <code>|&gt;</code>?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>El operador <em>pipe</em> (<code>|&gt;</code> en R base, o <code>%&gt;%</code> si usas <code>magrittr</code>) toma lo que está a su izquierda y lo pasa como primer argumento a la función de la derecha. Esto permite leer el código como una secuencia de pasos, de arriba hacia abajo, en vez de anidar funciones unas dentro de otras.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sin pipe (difícil de leer)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(<span class="fu">summarise</span>(<span class="fu">group_by</span>(mpg, class), <span class="at">promedio =</span> <span class="fu">mean</span>(hwy)), <span class="fu">desc</span>(promedio))</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Con pipe (más claro)</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(class) <span class="sc">|&gt;</span> </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">promedio =</span> <span class="fu">mean</span>(hwy)) <span class="sc">|&gt;</span> </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(promedio))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="encadenando-todo-junto" class="level3">
+<h3 class="anchored" data-anchor-id="encadenando-todo-junto">2.6 Encadenando todo junto</h3>
+<p>Un flujo típico de trabajo combina varios verbos en una sola secuencia:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"compact"</span>, <span class="st">"suv"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(class, drv) <span class="sc">|&gt;</span> </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">promedio_hwy =</span> <span class="fu">mean</span>(hwy), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(class, <span class="fu">desc</span>(promedio_hwy))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  class   drv   promedio_hwy
+  &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;
+1 compact f             29.1
+2 compact 4             25.8
+3 suv     4             18.3
+4 suv     r             17.5</code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="ggplot2-la-gramática-de-gráficos" class="level2">
+<h2 class="anchored" data-anchor-id="ggplot2-la-gramática-de-gráficos">3. ggplot2: la gramática de gráficos</h2>
+<p><code>ggplot2</code> construye gráficos por <strong>capas</strong>. La estructura básica siempre parte igual:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>datos<span class="sc">&gt;</span>, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>variables<span class="sc">&gt;</span>)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">&lt;</span>geometría<span class="sc">&gt;</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong><code>data</code></strong>: la base de datos.</li>
+<li><strong><code>aes()</code></strong> (<em>aesthetic mappings</em>): qué variables van en qué ejes/colores/formas.</li>
+<li><strong><code>geom_*()</code></strong>: qué tipo de gráfico (puntos, barras, líneas, etc.).</li>
+</ul>
+<section id="gráfico-de-dispersión-geom_point" class="level3">
+<h3 class="anchored" data-anchor-id="gráfico-de-dispersión-geom_point">3.1 Gráfico de dispersión (<code>geom_point</code>)</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sesion-1_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="agregando-una-tercera-variable-con-color" class="level3">
+<h3 class="anchored" data-anchor-id="agregando-una-tercera-variable-con-color">3.2 Agregando una tercera variable con color</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sesion-1_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="gráfico-de-barras-geom_bar-geom_col" class="level3">
+<h3 class="anchored" data-anchor-id="gráfico-de-barras-geom_bar-geom_col">3.3 Gráfico de barras (<code>geom_bar</code> / <code>geom_col</code>)</h3>
+<p><code>geom_bar()</code> cuenta observaciones automáticamente:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> class)) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sesion-1_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Si ya tienes los valores calculados (por ejemplo, con <code>summarise()</code>), usa <code>geom_col()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(class) <span class="sc">|&gt;</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">promedio_hwy =</span> <span class="fu">mean</span>(hwy)) <span class="sc">|&gt;</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(class, promedio_hwy), <span class="at">y =</span> promedio_hwy)) <span class="sc">+</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sesion-1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="boxplot-geom_boxplot" class="level3">
+<h3 class="anchored" data-anchor-id="boxplot-geom_boxplot">3.4 Boxplot (<code>geom_boxplot</code>)</h3>
+<p>Útil para comparar la distribución de una variable numérica entre grupos:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sesion-1_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="facetas-un-panel-por-categoría" class="level3">
+<h3 class="anchored" data-anchor-id="facetas-un-panel-por-categoría">3.5 Facetas: un panel por categoría</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> drv)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sesion-1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="personalizando-el-gráfico" class="level3">
+<h3 class="anchored" data-anchor-id="personalizando-el-gráfico">3.6 Personalizando el gráfico</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class)) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relación entre cilindrada y rendimiento en autopista"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Datos de mpg (ggplot2)"</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Cilindrada del motor (litros)"</span>,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Rendimiento en autopista (millas/galón)"</span>,</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Tipo de vehículo"</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sesion-1_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Combinando dplyr y ggplot2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En la práctica, casi siempre vas a <strong>transformar los datos con dplyr y graficarlos con ggplot2 en un mismo flujo</strong>, encadenando todo con el pipe:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">!=</span> <span class="st">"2seater"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(class) <span class="sc">|&gt;</span> </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">promedio_hwy =</span> <span class="fu">mean</span>(hwy)) <span class="sc">|&gt;</span> </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(class, promedio_hwy), <span class="at">y =</span> promedio_hwy, <span class="at">fill =</span> class)) <span class="sc">+</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Rendimiento promedio en autopista"</span>, </span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Rendimiento promedio en autopista por tipo de vehículo"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sesion-1_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="ejercicio-propuesto" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-propuesto">4. Ejercicio propuesto</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Haz clic para ver el ejercicio
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Usando la base <code>mpg</code>:</p>
+<ol type="1">
+<li>Filtra los datos para quedarte solo con autos con <code>cyl</code> (número de cilindros) igual a 4 o 6.</li>
+<li>Crea una nueva variable llamada <code>eficiencia</code>, que sea el promedio entre <code>cty</code> y <code>hwy</code>.</li>
+<li>Agrupa por <code>manufacturer</code> y calcula el promedio de <code>eficiencia</code>.</li>
+<li>Ordena de mayor a menor eficiencia.</li>
+<li>Grafica los 5 fabricantes más eficientes usando <code>geom_col()</code>.</li>
+</ol>
+<p><strong>Pista:</strong> vas a necesitar <code>filter()</code>, <code>mutate()</code>, <code>group_by()</code>, <code>summarise()</code>, <code>arrange()</code>, <code>slice_head()</code> y <code>ggplot()</code>.</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="recursos-para-seguir-practicando" class="level2">
+<h2 class="anchored" data-anchor-id="recursos-para-seguir-practicando">5. Recursos para seguir practicando</h2>
+<ul>
+<li><a href="https://r4ds.hadley.nz/">R for Data Science (2ª edición) — Hadley Wickham</a> (gratuito, en inglés)</li>
+<li><a href="https://rstudio.github.io/cheatsheets/html/data-transformation.html">Cheatsheet de dplyr (Posit)</a></li>
+<li><a href="https://rstudio.github.io/cheatsheets/html/data-visualization.html">Cheatsheet de ggplot2 (Posit)</a></li>
+</ul>
 
 
 </section>

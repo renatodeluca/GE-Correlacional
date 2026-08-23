@@ -2,6 +2,12 @@
 title: "Sesiones"
 ---
 
-## Descripción
+### Descripción
 
-Las clases se acompañan de guías prácticas. Selecciona una sesión desde el menú lateral.
+Las sesiones se realizarán en 2 partes. 
+
+- En primer lugar, se presentará un tema del ramo y se explicará cómo implementarlo en **R** y **Positron**.
+
+- En segundo lugar, se abrirá un espacio para preguntas y respuestas.
+
+Selecciona una sesión desde el menú lateral.

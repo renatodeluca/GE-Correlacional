@@ -10,4 +10,275 @@ toc-location: left
 
 En esta sesión, aprenderemos los conceptos básicos de **Positron** y **R**, dos herramientas fundamentales para el análisis de datos en estadística.
 
-# Pudieron agarrrlae la mana a positron?
+
+## Objetivos de la sesión
+
+Al finalizar esta clase vas a poder:
+
+- Entender qué es el **tidyverse** y por qué se usa en análisis de datos con R.
+- Manipular bases de datos con las funciones principales de **dplyr**.
+- Usar el operador *pipe* (`|>` o `%>%`) para encadenar transformaciones.
+- Construir visualizaciones con la lógica de capas de **ggplot2**.
+
+::: {.callout-note}
+## Antes de empezar
+
+Asegúrate de tener **R** y **Positron** instalados, y de haber corrido al menos una vez:
+
+```r
+install.packages("tidyverse")
+```
+:::
+
+---
+
+## 1. ¿Qué es el tidyverse?
+
+El **tidyverse** no es un solo paquete, sino una colección de paquetes de R diseñados para trabajar juntos bajo una misma filosofía: los datos "ordenados" (*tidy data*), donde:
+
+- cada **variable** es una columna,
+- cada **observación** es una fila,
+- cada **valor** ocupa una celda.
+
+Al cargar `tidyverse` se cargan automáticamente varios paquetes, entre los que destacan:
+
+| Paquete | Función principal |
+|---|---|
+| `dplyr` | Manipulación de datos (filtrar, seleccionar, transformar) |
+| `ggplot2` | Visualización de datos por capas |
+| `tidyr` | Ordenar y reestructurar bases de datos |
+| `readr` | Importar datos (csv, txt) |
+| `tibble` | Una versión mejorada de los `data.frame` |
+| `purrr` | Programación funcional (iteraciones) |
+| `stringr` | Manipulación de texto |
+
+```{r}
+#| eval: false
+library(tidyverse)
+```
+
+Para esta clase usaremos la base de datos `mpg`, que viene incluida con `ggplot2` y contiene información sobre el consumo de combustible de distintos modelos de auto.
+
+```{r}
+library(tidyverse)
+
+glimpse(mpg)
+```
+
+---
+
+## 2. dplyr: los verbos básicos
+
+`dplyr` organiza la manipulación de datos en torno a un puñado de **verbos** (funciones) que hacen una cosa cada uno, y se combinan entre sí.
+
+### 2.1 `select()` — elegir columnas
+
+```{r}
+mpg |> 
+  select(manufacturer, model, year, cty, hwy)
+```
+
+También puedes **excluir** columnas con `-`:
+
+```{r}
+mpg |> 
+  select(-class, -trans)
+```
+
+### 2.2 `filter()` — elegir filas según una condición
+
+```{r}
+mpg |> 
+  filter(year == 2008)
+```
+
+Se pueden combinar condiciones con `&` (Y) o `|` (O):
+
+```{r}
+mpg |> 
+  filter(manufacturer == "audi" & year == 2008)
+```
+
+### 2.3 `mutate()` — crear o modificar variables
+
+```{r}
+mpg |> 
+  mutate(promedio_consumo = (cty + hwy) / 2) |> 
+  select(manufacturer, model, cty, hwy, promedio_consumo)
+```
+
+### 2.4 `arrange()` — ordenar filas
+
+```{r}
+mpg |> 
+  arrange(desc(hwy)) |> 
+  select(manufacturer, model, hwy)
+```
+
+### 2.5 `summarise()` y `group_by()` — resumir datos
+
+`summarise()` reduce muchas filas a un resumen (por ejemplo, un promedio). Se vuelve mucho más útil combinado con `group_by()`, que agrupa los datos antes de resumir:
+
+```{r}
+mpg |> 
+  group_by(class) |> 
+  summarise(
+    promedio_hwy = mean(hwy),
+    n_autos = n()
+  ) |> 
+  arrange(desc(promedio_hwy))
+```
+
+::: {.callout-tip collapse="true"}
+## ¿Qué es el operador `|>`?
+
+El operador *pipe* (`|>` en R base, o `%>%` si usas `magrittr`) toma lo que está a su izquierda y lo pasa como primer argumento a la función de la derecha. Esto permite leer el código como una secuencia de pasos, de arriba hacia abajo, en vez de anidar funciones unas dentro de otras.
+
+```r
+# Sin pipe (difícil de leer)
+arrange(summarise(group_by(mpg, class), promedio = mean(hwy)), desc(promedio))
+
+# Con pipe (más claro)
+mpg |> 
+  group_by(class) |> 
+  summarise(promedio = mean(hwy)) |> 
+  arrange(desc(promedio))
+```
+:::
+
+### 2.6 Encadenando todo junto
+
+Un flujo típico de trabajo combina varios verbos en una sola secuencia:
+
+```{r}
+mpg |> 
+  filter(class %in% c("compact", "suv")) |> 
+  group_by(class, drv) |> 
+  summarise(promedio_hwy = mean(hwy), .groups = "drop") |> 
+  arrange(class, desc(promedio_hwy))
+```
+
+---
+
+## 3. ggplot2: la gramática de gráficos
+
+`ggplot2` construye gráficos por **capas**. La estructura básica siempre parte igual:
+
+```r
+ggplot(data = <datos>, mapping = aes(<variables>)) +
+  <geometría>()
+```
+
+- **`data`**: la base de datos.
+- **`aes()`** (*aesthetic mappings*): qué variables van en qué ejes/colores/formas.
+- **`geom_*()`**: qué tipo de gráfico (puntos, barras, líneas, etc.).
+
+### 3.1 Gráfico de dispersión (`geom_point`)
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point()
+```
+
+### 3.2 Agregando una tercera variable con color
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point()
+```
+
+### 3.3 Gráfico de barras (`geom_bar` / `geom_col`)
+
+`geom_bar()` cuenta observaciones automáticamente:
+
+```{r}
+ggplot(mpg, aes(x = class)) +
+  geom_bar()
+```
+
+Si ya tienes los valores calculados (por ejemplo, con `summarise()`), usa `geom_col()`:
+
+```{r}
+mpg |> 
+  group_by(class) |> 
+  summarise(promedio_hwy = mean(hwy)) |> 
+  ggplot(aes(x = reorder(class, promedio_hwy), y = promedio_hwy)) +
+  geom_col() +
+  coord_flip()
+```
+
+### 3.4 Boxplot (`geom_boxplot`)
+
+Útil para comparar la distribución de una variable numérica entre grupos:
+
+```{r}
+ggplot(mpg, aes(x = class, y = hwy)) +
+  geom_boxplot()
+```
+
+### 3.5 Facetas: un panel por categoría
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  facet_wrap(~ drv)
+```
+
+### 3.6 Personalizando el gráfico
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point(size = 2, alpha = 0.7) +
+  labs(
+    title = "Relación entre cilindrada y rendimiento en autopista",
+    subtitle = "Datos de mpg (ggplot2)",
+    x = "Cilindrada del motor (litros)",
+    y = "Rendimiento en autopista (millas/galón)",
+    color = "Tipo de vehículo"
+  ) +
+  theme_minimal()
+```
+
+::: {.callout-important}
+## Combinando dplyr y ggplot2
+
+En la práctica, casi siempre vas a **transformar los datos con dplyr y graficarlos con ggplot2 en un mismo flujo**, encadenando todo con el pipe:
+
+```{r}
+mpg |> 
+  filter(class != "2seater") |> 
+  group_by(class) |> 
+  summarise(promedio_hwy = mean(hwy)) |> 
+  ggplot(aes(x = reorder(class, promedio_hwy), y = promedio_hwy, fill = class)) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  labs(x = NULL, y = "Rendimiento promedio en autopista", 
+       title = "Rendimiento promedio en autopista por tipo de vehículo")
+```
+:::
+
+---
+
+## 4. Ejercicio propuesto
+
+::: {.callout-tip collapse="true"}
+## Haz clic para ver el ejercicio
+
+Usando la base `mpg`:
+
+1. Filtra los datos para quedarte solo con autos con `cyl` (número de cilindros) igual a 4 o 6.
+2. Crea una nueva variable llamada `eficiencia`, que sea el promedio entre `cty` y `hwy`.
+3. Agrupa por `manufacturer` y calcula el promedio de `eficiencia`.
+4. Ordena de mayor a menor eficiencia.
+5. Grafica los 5 fabricantes más eficientes usando `geom_col()`.
+
+**Pista:** vas a necesitar `filter()`, `mutate()`, `group_by()`, `summarise()`, `arrange()`, `slice_head()` y `ggplot()`.
+:::
+
+---
+
+## 5. Recursos para seguir practicando
+
+- [R for Data Science (2ª edición) — Hadley Wickham](https://r4ds.hadley.nz/) (gratuito, en inglés)
+- [Cheatsheet de dplyr (Posit)](https://rstudio.github.io/cheatsheets/html/data-transformation.html)
+- [Cheatsheet de ggplot2 (Posit)](https://rstudio.github.io/cheatsheets/html/data-visualization.html)

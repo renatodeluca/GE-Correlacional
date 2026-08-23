@@ -25,7 +25,7 @@
     "href": "sesiones.html",
     "title": "Sesiones",
     "section": "",
-    "text": "Las clases se acompañan de guías prácticas. Selecciona una sesión desde el menú lateral.",
+    "text": "Descripción\nLas sesiones se realizarán en 2 partes.\n\nEn primer lugar, se presentará un tema del ramo y se explicará cómo implementarlo en R y Positron.\nEn segundo lugar, se abrirá un espacio para preguntas y respuestas.\n\nSelecciona una sesión desde el menú lateral.",
     "crumbs": [
       "Sesiones"
     ]
@@ -58,6 +58,78 @@
     "title": "Sesión 1",
     "section": "",
     "text": "En esta sesión, aprenderemos los conceptos básicos de Positron y R, dos herramientas fundamentales para el análisis de datos en estadística.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#objetivos-de-la-sesión",
+    "href": "sesiones/sesion-1.html#objetivos-de-la-sesión",
+    "title": "Sesión 1",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\nAl finalizar esta clase vas a poder:\n\nEntender qué es el tidyverse y por qué se usa en análisis de datos con R.\nManipular bases de datos con las funciones principales de dplyr.\nUsar el operador pipe (|&gt; o %&gt;%) para encadenar transformaciones.\nConstruir visualizaciones con la lógica de capas de ggplot2.\n\n\n\n\n\n\n\nNoteAntes de empezar\n\n\n\nAsegúrate de tener R y Positron instalados, y de haber corrido al menos una vez:\ninstall.packages(\"tidyverse\")",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#qué-es-el-tidyverse",
+    "href": "sesiones/sesion-1.html#qué-es-el-tidyverse",
+    "title": "Sesión 1",
+    "section": "1. ¿Qué es el tidyverse?",
+    "text": "1. ¿Qué es el tidyverse?\nEl tidyverse no es un solo paquete, sino una colección de paquetes de R diseñados para trabajar juntos bajo una misma filosofía: los datos “ordenados” (tidy data), donde:\n\ncada variable es una columna,\ncada observación es una fila,\ncada valor ocupa una celda.\n\nAl cargar tidyverse se cargan automáticamente varios paquetes, entre los que destacan:\n\n\n\nPaquete\nFunción principal\n\n\n\n\ndplyr\nManipulación de datos (filtrar, seleccionar, transformar)\n\n\nggplot2\nVisualización de datos por capas\n\n\ntidyr\nOrdenar y reestructurar bases de datos\n\n\nreadr\nImportar datos (csv, txt)\n\n\ntibble\nUna versión mejorada de los data.frame\n\n\npurrr\nProgramación funcional (iteraciones)\n\n\nstringr\nManipulación de texto\n\n\n\n\nlibrary(tidyverse)\n\nPara esta clase usaremos la base de datos mpg, que viene incluida con ggplot2 y contiene información sobre el consumo de combustible de distintos modelos de auto.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.3     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nglimpse(mpg)\n\nRows: 234\nColumns: 11\n$ manufacturer &lt;chr&gt; \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"audi\", \"…\n$ model        &lt;chr&gt; \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4\", \"a4 quattro\", \"…\n$ displ        &lt;dbl&gt; 1.8, 1.8, 2.0, 2.0, 2.8, 2.8, 3.1, 1.8, 1.8, 2.0, 2.0, 2.…\n$ year         &lt;int&gt; 1999, 1999, 2008, 2008, 1999, 1999, 2008, 1999, 1999, 200…\n$ cyl          &lt;int&gt; 4, 4, 4, 4, 6, 6, 6, 4, 4, 4, 4, 6, 6, 6, 6, 6, 6, 8, 8, …\n$ trans        &lt;chr&gt; \"auto(l5)\", \"manual(m5)\", \"manual(m6)\", \"auto(av)\", \"auto…\n$ drv          &lt;chr&gt; \"f\", \"f\", \"f\", \"f\", \"f\", \"f\", \"f\", \"4\", \"4\", \"4\", \"4\", \"4…\n$ cty          &lt;int&gt; 18, 21, 20, 21, 16, 18, 18, 18, 16, 20, 19, 15, 17, 17, 1…\n$ hwy          &lt;int&gt; 29, 29, 31, 30, 26, 26, 27, 26, 25, 28, 27, 25, 25, 25, 2…\n$ fl           &lt;chr&gt; \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p\", \"p…\n$ class        &lt;chr&gt; \"compact\", \"compact\", \"compact\", \"compact\", \"compact\", \"c…",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#dplyr-los-verbos-básicos",
+    "href": "sesiones/sesion-1.html#dplyr-los-verbos-básicos",
+    "title": "Sesión 1",
+    "section": "2. dplyr: los verbos básicos",
+    "text": "2. dplyr: los verbos básicos\ndplyr organiza la manipulación de datos en torno a un puñado de verbos (funciones) que hacen una cosa cada uno, y se combinan entre sí.\n\n2.1 select() — elegir columnas\n\nmpg |&gt; \n  select(manufacturer, model, year, cty, hwy)\n\n# A tibble: 234 × 5\n   manufacturer model       year   cty   hwy\n   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 audi         a4          1999    18    29\n 2 audi         a4          1999    21    29\n 3 audi         a4          2008    20    31\n 4 audi         a4          2008    21    30\n 5 audi         a4          1999    16    26\n 6 audi         a4          1999    18    26\n 7 audi         a4          2008    18    27\n 8 audi         a4 quattro  1999    18    26\n 9 audi         a4 quattro  1999    16    25\n10 audi         a4 quattro  2008    20    28\n# ℹ 224 more rows\n\n\nTambién puedes excluir columnas con -:\n\nmpg |&gt; \n  select(-class, -trans)\n\n# A tibble: 234 × 9\n   manufacturer model      displ  year   cyl drv     cty   hwy fl   \n   &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;\n 1 audi         a4           1.8  1999     4 f        18    29 p    \n 2 audi         a4           1.8  1999     4 f        21    29 p    \n 3 audi         a4           2    2008     4 f        20    31 p    \n 4 audi         a4           2    2008     4 f        21    30 p    \n 5 audi         a4           2.8  1999     6 f        16    26 p    \n 6 audi         a4           2.8  1999     6 f        18    26 p    \n 7 audi         a4           3.1  2008     6 f        18    27 p    \n 8 audi         a4 quattro   1.8  1999     4 4        18    26 p    \n 9 audi         a4 quattro   1.8  1999     4 4        16    25 p    \n10 audi         a4 quattro   2    2008     4 4        20    28 p    \n# ℹ 224 more rows\n\n\n\n\n2.2 filter() — elegir filas según una condición\n\nmpg |&gt; \n  filter(year == 2008)\n\n# A tibble: 117 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;\n 1 audi         a4           2    2008     4 manu… f        20    31 p     comp…\n 2 audi         a4           2    2008     4 auto… f        21    30 p     comp…\n 3 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…\n 4 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…\n 5 audi         a4 quattro   2    2008     4 auto… 4        19    27 p     comp…\n 6 audi         a4 quattro   3.1  2008     6 auto… 4        17    25 p     comp…\n 7 audi         a4 quattro   3.1  2008     6 manu… 4        15    25 p     comp…\n 8 audi         a6 quattro   3.1  2008     6 auto… 4        17    25 p     mids…\n 9 audi         a6 quattro   4.2  2008     8 auto… 4        16    23 p     mids…\n10 chevrolet    c1500 sub…   5.3  2008     8 auto… r        14    20 r     suv  \n# ℹ 107 more rows\n\n\nSe pueden combinar condiciones con & (Y) o | (O):\n\nmpg |&gt; \n  filter(manufacturer == \"audi\" & year == 2008)\n\n# A tibble: 9 × 11\n  manufacturer model      displ  year   cyl trans  drv     cty   hwy fl    class\n  &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;\n1 audi         a4           2    2008     4 manua… f        20    31 p     comp…\n2 audi         a4           2    2008     4 auto(… f        21    30 p     comp…\n3 audi         a4           3.1  2008     6 auto(… f        18    27 p     comp…\n4 audi         a4 quattro   2    2008     4 manua… 4        20    28 p     comp…\n5 audi         a4 quattro   2    2008     4 auto(… 4        19    27 p     comp…\n6 audi         a4 quattro   3.1  2008     6 auto(… 4        17    25 p     comp…\n7 audi         a4 quattro   3.1  2008     6 manua… 4        15    25 p     comp…\n8 audi         a6 quattro   3.1  2008     6 auto(… 4        17    25 p     mids…\n9 audi         a6 quattro   4.2  2008     8 auto(… 4        16    23 p     mids…\n\n\n\n\n2.3 mutate() — crear o modificar variables\n\nmpg |&gt; \n  mutate(promedio_consumo = (cty + hwy) / 2) |&gt; \n  select(manufacturer, model, cty, hwy, promedio_consumo)\n\n# A tibble: 234 × 5\n   manufacturer model        cty   hwy promedio_consumo\n   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt; &lt;int&gt;            &lt;dbl&gt;\n 1 audi         a4            18    29             23.5\n 2 audi         a4            21    29             25  \n 3 audi         a4            20    31             25.5\n 4 audi         a4            21    30             25.5\n 5 audi         a4            16    26             21  \n 6 audi         a4            18    26             22  \n 7 audi         a4            18    27             22.5\n 8 audi         a4 quattro    18    26             22  \n 9 audi         a4 quattro    16    25             20.5\n10 audi         a4 quattro    20    28             24  \n# ℹ 224 more rows\n\n\n\n\n2.4 arrange() — ordenar filas\n\nmpg |&gt; \n  arrange(desc(hwy)) |&gt; \n  select(manufacturer, model, hwy)\n\n# A tibble: 234 × 3\n   manufacturer model        hwy\n   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt;\n 1 volkswagen   jetta         44\n 2 volkswagen   new beetle    44\n 3 volkswagen   new beetle    41\n 4 toyota       corolla       37\n 5 honda        civic         36\n 6 honda        civic         36\n 7 toyota       corolla       35\n 8 toyota       corolla       35\n 9 honda        civic         34\n10 honda        civic         33\n# ℹ 224 more rows\n\n\n\n\n2.5 summarise() y group_by() — resumir datos\nsummarise() reduce muchas filas a un resumen (por ejemplo, un promedio). Se vuelve mucho más útil combinado con group_by(), que agrupa los datos antes de resumir:\n\nmpg |&gt; \n  group_by(class) |&gt; \n  summarise(\n    promedio_hwy = mean(hwy),\n    n_autos = n()\n  ) |&gt; \n  arrange(desc(promedio_hwy))\n\n# A tibble: 7 × 3\n  class      promedio_hwy n_autos\n  &lt;chr&gt;             &lt;dbl&gt;   &lt;int&gt;\n1 compact            28.3      47\n2 subcompact         28.1      35\n3 midsize            27.3      41\n4 2seater            24.8       5\n5 minivan            22.4      11\n6 suv                18.1      62\n7 pickup             16.9      33\n\n\n\n\n\n\n\n\nTip¿Qué es el operador |&gt;?\n\n\n\n\n\nEl operador pipe (|&gt; en R base, o %&gt;% si usas magrittr) toma lo que está a su izquierda y lo pasa como primer argumento a la función de la derecha. Esto permite leer el código como una secuencia de pasos, de arriba hacia abajo, en vez de anidar funciones unas dentro de otras.\n# Sin pipe (difícil de leer)\narrange(summarise(group_by(mpg, class), promedio = mean(hwy)), desc(promedio))\n\n# Con pipe (más claro)\nmpg |&gt; \n  group_by(class) |&gt; \n  summarise(promedio = mean(hwy)) |&gt; \n  arrange(desc(promedio))\n\n\n\n\n\n2.6 Encadenando todo junto\nUn flujo típico de trabajo combina varios verbos en una sola secuencia:\n\nmpg |&gt; \n  filter(class %in% c(\"compact\", \"suv\")) |&gt; \n  group_by(class, drv) |&gt; \n  summarise(promedio_hwy = mean(hwy), .groups = \"drop\") |&gt; \n  arrange(class, desc(promedio_hwy))\n\n# A tibble: 4 × 3\n  class   drv   promedio_hwy\n  &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n1 compact f             29.1\n2 compact 4             25.8\n3 suv     4             18.3\n4 suv     r             17.5",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#ggplot2-la-gramática-de-gráficos",
+    "href": "sesiones/sesion-1.html#ggplot2-la-gramática-de-gráficos",
+    "title": "Sesión 1",
+    "section": "3. ggplot2: la gramática de gráficos",
+    "text": "3. ggplot2: la gramática de gráficos\nggplot2 construye gráficos por capas. La estructura básica siempre parte igual:\nggplot(data = &lt;datos&gt;, mapping = aes(&lt;variables&gt;)) +\n  &lt;geometría&gt;()\n\ndata: la base de datos.\naes() (aesthetic mappings): qué variables van en qué ejes/colores/formas.\ngeom_*(): qué tipo de gráfico (puntos, barras, líneas, etc.).\n\n\n3.1 Gráfico de dispersión (geom_point)\n\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n\n3.2 Agregando una tercera variable con color\n\nggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n\n3.3 Gráfico de barras (geom_bar / geom_col)\ngeom_bar() cuenta observaciones automáticamente:\n\nggplot(mpg, aes(x = class)) +\n  geom_bar()\n\n\n\n\n\n\n\n\nSi ya tienes los valores calculados (por ejemplo, con summarise()), usa geom_col():\n\nmpg |&gt; \n  group_by(class) |&gt; \n  summarise(promedio_hwy = mean(hwy)) |&gt; \n  ggplot(aes(x = reorder(class, promedio_hwy), y = promedio_hwy)) +\n  geom_col() +\n  coord_flip()\n\n\n\n\n\n\n\n\n\n\n3.4 Boxplot (geom_boxplot)\nÚtil para comparar la distribución de una variable numérica entre grupos:\n\nggplot(mpg, aes(x = class, y = hwy)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\n\n\n3.5 Facetas: un panel por categoría\n\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point() +\n  facet_wrap(~ drv)\n\n\n\n\n\n\n\n\n\n\n3.6 Personalizando el gráfico\n\nggplot(mpg, aes(x = displ, y = hwy, color = class)) +\n  geom_point(size = 2, alpha = 0.7) +\n  labs(\n    title = \"Relación entre cilindrada y rendimiento en autopista\",\n    subtitle = \"Datos de mpg (ggplot2)\",\n    x = \"Cilindrada del motor (litros)\",\n    y = \"Rendimiento en autopista (millas/galón)\",\n    color = \"Tipo de vehículo\"\n  ) +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportantCombinando dplyr y ggplot2\n\n\n\nEn la práctica, casi siempre vas a transformar los datos con dplyr y graficarlos con ggplot2 en un mismo flujo, encadenando todo con el pipe:\n\nmpg |&gt; \n  filter(class != \"2seater\") |&gt; \n  group_by(class) |&gt; \n  summarise(promedio_hwy = mean(hwy)) |&gt; \n  ggplot(aes(x = reorder(class, promedio_hwy), y = promedio_hwy, fill = class)) +\n  geom_col(show.legend = FALSE) +\n  coord_flip() +\n  labs(x = NULL, y = \"Rendimiento promedio en autopista\", \n       title = \"Rendimiento promedio en autopista por tipo de vehículo\")",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#ejercicio-propuesto",
+    "href": "sesiones/sesion-1.html#ejercicio-propuesto",
+    "title": "Sesión 1",
+    "section": "4. Ejercicio propuesto",
+    "text": "4. Ejercicio propuesto\n\n\n\n\n\n\nTipHaz clic para ver el ejercicio\n\n\n\n\n\nUsando la base mpg:\n\nFiltra los datos para quedarte solo con autos con cyl (número de cilindros) igual a 4 o 6.\nCrea una nueva variable llamada eficiencia, que sea el promedio entre cty y hwy.\nAgrupa por manufacturer y calcula el promedio de eficiencia.\nOrdena de mayor a menor eficiencia.\nGrafica los 5 fabricantes más eficientes usando geom_col().\n\nPista: vas a necesitar filter(), mutate(), group_by(), summarise(), arrange(), slice_head() y ggplot().",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 1"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-1.html#recursos-para-seguir-practicando",
+    "href": "sesiones/sesion-1.html#recursos-para-seguir-practicando",
+    "title": "Sesión 1",
+    "section": "5. Recursos para seguir practicando",
+    "text": "5. Recursos para seguir practicando\n\nR for Data Science (2ª edición) — Hadley Wickham (gratuito, en inglés)\nCheatsheet de dplyr (Posit)\nCheatsheet de ggplot2 (Posit)",
     "crumbs": [
       "Sesiones",
       "Todas las sesiones",

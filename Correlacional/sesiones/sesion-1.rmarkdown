@@ -286,3 +286,4 @@ Usando la variable `Combat` (habilidad de combate):
 | `arrange()` | dplyr | Ordena filas |
 | `group_by()` + `summarise()` | dplyr | Resume datos por grupo |
 | `slice_head()` | dplyr | Se queda con las primeras n filas |
+

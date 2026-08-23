@@ -193,6 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#introducción-a-positron-y-r" id="toc-introducción-a-positron-y-r" class="nav-link active" data-scroll-target="#introducción-a-positron-y-r">Introducción a Positron y R</a></li>
   <li><a href="#objetivos-de-la-sesión" id="toc-objetivos-de-la-sesión" class="nav-link" data-scroll-target="#objetivos-de-la-sesión">Objetivos de la sesión</a></li>
+  <li><a href="#abriendo-positron" id="toc-abriendo-positron" class="nav-link" data-scroll-target="#abriendo-positron">0. Abriendo Positron</a></li>
   <li><a href="#nuestra-base-de-datos-superhéroes" id="toc-nuestra-base-de-datos-superhéroes" class="nav-link" data-scroll-target="#nuestra-base-de-datos-superhéroes">1. Nuestra base de datos: Superhéroes</a></li>
   <li><a href="#explorando-la-base-de-datos" id="toc-explorando-la-base-de-datos" class="nav-link" data-scroll-target="#explorando-la-base-de-datos">2. Explorando la base de datos</a></li>
   <li><a href="#estadística-descriptiva-básica" id="toc-estadística-descriptiva-básica" class="nav-link" data-scroll-target="#estadística-descriptiva-básica">3. Estadística descriptiva básica</a>
@@ -208,15 +209,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#arrange-ordenar" id="toc-arrange-ordenar" class="nav-link" data-scroll-target="#arrange-ordenar">4.3 <code>arrange()</code> — ordenar</a></li>
   <li><a href="#group_by-summarise-resumir-por-grupo" id="toc-group_by-summarise-resumir-por-grupo" class="nav-link" data-scroll-target="#group_by-summarise-resumir-por-grupo">4.4 <code>group_by()</code> + <code>summarise()</code> — resumir por grupo</a></li>
   </ul></li>
-  <li><a href="#primeros-gráficos-con-ggplot2" id="toc-primeros-gráficos-con-ggplot2" class="nav-link" data-scroll-target="#primeros-gráficos-con-ggplot2">5. Primeros gráficos con ggplot2</a>
-  <ul class="collapse">
-  <li><a href="#histograma-cómo-se-distribuye-la-velocidad" id="toc-histograma-cómo-se-distribuye-la-velocidad" class="nav-link" data-scroll-target="#histograma-cómo-se-distribuye-la-velocidad">5.1 Histograma: ¿cómo se distribuye la velocidad?</a></li>
-  <li><a href="#boxplot-comparando-velocidad-según-alineamiento" id="toc-boxplot-comparando-velocidad-según-alineamiento" class="nav-link" data-scroll-target="#boxplot-comparando-velocidad-según-alineamiento">5.2 Boxplot: comparando velocidad según alineamiento</a></li>
-  <li><a href="#gráfico-de-barras-velocidad-promedio-por-universo" id="toc-gráfico-de-barras-velocidad-promedio-por-universo" class="nav-link" data-scroll-target="#gráfico-de-barras-velocidad-promedio-por-universo">5.3 Gráfico de barras: velocidad promedio por universo</a></li>
-  <li><a href="#dispersión-la-fuerza-se-relaciona-con-la-velocidad" id="toc-dispersión-la-fuerza-se-relaciona-con-la-velocidad" class="nav-link" data-scroll-target="#dispersión-la-fuerza-se-relaciona-con-la-velocidad">5.4 Dispersión: ¿la fuerza se relaciona con la velocidad?</a></li>
-  </ul></li>
-  <li><a href="#actividad-práctica" id="toc-actividad-práctica" class="nav-link" data-scroll-target="#actividad-práctica">6. Actividad práctica</a></li>
-  <li><a href="#resumen-de-funciones-vistas-hoy" id="toc-resumen-de-funciones-vistas-hoy" class="nav-link" data-scroll-target="#resumen-de-funciones-vistas-hoy">7. Resumen de funciones vistas hoy</a></li>
+  <li><a href="#ahora-te-toca-a-ti" id="toc-ahora-te-toca-a-ti" class="nav-link" data-scroll-target="#ahora-te-toca-a-ti">7. Ahora te toca a ti!</a></li>
+  <li><a href="#resumen-de-funciones-vistas-hoy" id="toc-resumen-de-funciones-vistas-hoy" class="nav-link" data-scroll-target="#resumen-de-funciones-vistas-hoy">8. Resumen de funciones vistas hoy</a></li>
   </ul>
 </nav>
 </nav>
@@ -230,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sesiones/sesion-1.html">Todas las sesiones</a></li><li class="breadcrumb-item"><a href="../sesiones/sesion-1.html">Sesión 1: Primeros pasos en R</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Sesión 1: Primeros pasos en R</h1>
-<p class="subtitle lead">Estadística descriptiva, dplyr y ggplot2 con datos de superhéroes</p>
+<p class="subtitle lead">Estadística descriptiva y dplyr con datos de superhéroes</p>
 </div>
 
 
@@ -259,41 +253,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Entender qué es el <strong>tidyverse</strong> y por qué se usa en análisis de datos con R.</li>
 <li>Manipular bases de datos con las funciones principales de <strong>dplyr</strong>.</li>
 <li>Usar el operador <em>pipe</em> (<code>|&gt;</code> o <code>%&gt;%</code>) para encadenar transformaciones.</li>
-<li>Construir tus primeros gráficos con <strong>ggplot2</strong>.</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Antes de empezar
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Necesitas tener instalado el paquete <code>tidyverse</code>. Si no lo has hecho, corre una vez en la consola:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
 <hr>
+</section>
+<section id="abriendo-positron" class="level2">
+<h2 class="anchored" data-anchor-id="abriendo-positron">0. Abriendo Positron</h2>
+<p>Abre Positron y crea un nuevo proyecto. Siguiendo los pasos a continuación:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../img/positron-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="900"></p>
+</figure>
+</div>
 </section>
 <section id="nuestra-base-de-datos-superhéroes" class="level2">
 <h2 class="anchored" data-anchor-id="nuestra-base-de-datos-superhéroes">1. Nuestra base de datos: Superhéroes</h2>
 <p>Vamos a trabajar con una base de datos real de personajes de distintos universos (cómics, animes, películas), con estadísticas de combate como velocidad, fuerza e inteligencia.</p>
+<p>Necesitas tener instalado el paquete <code>tidyverse</code> y haber desactivo la notación científica. Si no lo has hecho, corre una vez en la consola:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>superheroes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://zenodo.org/records/22070395/files/Superheroes.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>superheroes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://zenodo.org/records/22070395/files/Superheroes.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>La base original trae muchas columnas, incluyendo una llamada <code>History</code> con textos narrativos larguísimos que no necesitamos para el análisis estadístico. Nos quedamos solo con las columnas relevantes:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="ot">&lt;-</span> superheroes <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Character, Alignment, Gender, Universe, Species,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>         Speed, Speed_velocity, Strength, Combat, Durability, Intelligence)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(superheroes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="ot">&lt;-</span> superheroes <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Character, Alignment, Gender, Universe, Species,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         Speed, Speed_velocity, Strength, Combat, Durability, Intelligence) <span class="sc">|&gt;</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Alignment <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Good"</span>, <span class="st">"Bad"</span>, <span class="st">"Neutral"</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(superheroes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 28,118
+<pre><code>Rows: 19,472
 Columns: 11
 $ Character      &lt;chr&gt; "Alucard", "Alucard", "Alucard", "Alucard", "Alucard", …
 $ Alignment      &lt;chr&gt; "Good", "Good", "Good", "Good", "Good", "Good", "Neutra…
@@ -369,9 +360,9 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 <h2 class="anchored" data-anchor-id="explorando-la-base-de-datos">2. Explorando la base de datos</h2>
 <p>Antes de calcular cualquier cosa, siempre es buena idea mirar la estructura de los datos.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(superheroes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(superheroes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 28,118
+<pre><code>Rows: 19,472
 Columns: 11
 $ Character      &lt;chr&gt; "Alucard", "Alucard", "Alucard", "Alucard", "Alucard", …
 $ Alignment      &lt;chr&gt; "Good", "Good", "Good", "Good", "Good", "Good", "Neutra…
@@ -387,18 +378,18 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(superheroes)  <span class="co"># número de filas (personajes)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(superheroes)  <span class="co"># número de filas (personajes)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 28118</code></pre>
+<pre><code>[1] 19472</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(superheroes)  <span class="co"># número de columnas (variables)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(superheroes)  <span class="co"># número de columnas (variables)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 11</code></pre>
 </div>
 </div>
 <p><strong>Pregunta para pensar:</strong> ¿cuántos personajes tiene nuestra base? ¿Cuántas variables estamos midiendo por cada uno?</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -407,9 +398,9 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Esta base tiene varias filas para un mismo personaje (por ejemplo, distintas versiones o actualizaciones de “Alucard” o “Android 17”). Para efectos de esta clase lo dejamos así, peroen las siguientes sesiones, podemos ver como limpiar duplicados con <code>distinct()</code>.</p>
+<p>Esta base tiene varias filas para un mismo personaje (por ejemplo, distintas versiones o actualizaciones de “Alucard” o “Android 17”). Para efectos de esta clase lo dejamos así, pero en las siguientes sesiones, podemos ver como limpiar duplicados con <code>distinct()</code>.</p>
 </div>
 </div>
 </div>
@@ -417,21 +408,21 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 </section>
 <section id="estadística-descriptiva-básica" class="level2">
 <h2 class="anchored" data-anchor-id="estadística-descriptiva-básica">3. Estadística descriptiva básica</h2>
-<p>Nos vamos a concentrar en la variable <code>Speed_velocity</code>, osea la velocidad máxima estimada de cada personaje, en km/h.</p>
+<p>Nos vamos a concentrar en la variable <code>Speed_velocity</code>, o sea la velocidad máxima estimada de cada personaje, en km/h.</p>
 <section id="medidas-de-tendencia-central" class="level3">
 <h3 class="anchored" data-anchor-id="medidas-de-tendencia-central">3.1 Medidas de tendencia central</h3>
 <p><strong>Media (promedio):</strong> suma todos los valores y divide por el número de casos.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(superheroes<span class="sc">$</span>Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(superheroes<span class="sc">$</span>Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 290297160</code></pre>
+<pre><code>[1] 250460578</code></pre>
 </div>
 </div>
 <p><strong>Mediana:</strong> el valor que queda justo al medio cuando ordenamos los datos de menor a mayor.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(superheroes<span class="sc">$</span>Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(superheroes<span class="sc">$</span>Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1500</code></pre>
+<pre><code>[1] 400</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -447,13 +438,13 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 <p>Si la media y la mediana son parecidas, los datos están relativamente “equilibrados”. Si son muy distintas, probablemente hay valores extremos (muy altos o muy bajos) que están “tirando” la media hacia un lado. En nuestra base hay personajes con velocidades extremas (miles de millones de km/h), lo que probablemente infla mucho la media respecto a la mediana. ¿Por qué crees que pasa esto con personajes de fantasía/ciencia ficción?</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Correlacional/img/nicanor.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+<p><img src="../img/nicanor.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -462,9 +453,9 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Le indica a R que ignore los valores faltantes (<code>NA</code>) al calcular. Si no lo incluimos y hay algún valor faltante en la columna, R no puede calcular el promedio y devuelve <code>NA</code> como resultado.</p>
+<p>Le indica a R que ignore los valores faltantes (<code>NA</code>) al calcular. Si no lo incluimos y hay algún valor faltante en la columna, R no puede calcular el promedio y devuelve <code>NA</code> como resultado. También podemos utilizar la función <code>na.omit()</code> para eliminar los valores faltantes de la columna antes de calcular la media, mediana, etc. Por ejemplo, si hacemos <code>mean(na.omit(superheroes$Speed_velocity))</code> obtendremos el mismo resultado que con <code>mean(superheroes$Speed_velocity, na.rm = TRUE)</code>.</p>
 </div>
 </div>
 </div>
@@ -473,35 +464,35 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 <h3 class="anchored" data-anchor-id="medidas-de-dispersión">3.2 Medidas de dispersión</h3>
 <p><strong>Rango:</strong> la distancia entre el valor mínimo y el máximo.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(superheroes<span class="sc">$</span>Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(superheroes<span class="sc">$</span>Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(superheroes<span class="sc">$</span>Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(superheroes<span class="sc">$</span>Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1e+09</code></pre>
+<pre><code>[1] 1000000000</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(superheroes<span class="sc">$</span>Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(superheroes<span class="sc">$</span>Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0e+00 1e+09</code></pre>
+<pre><code>[1]          0 1000000000</code></pre>
 </div>
 </div>
 <p><strong>Varianza:</strong> mide en promedio qué tan lejos está cada valor de la media (elevado al cuadrado).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(superheroes<span class="sc">$</span>Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(superheroes<span class="sc">$</span>Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.877375e+17</code></pre>
+<pre><code>[1] 169608825520675360</code></pre>
 </div>
 </div>
 <p><strong>Desviación estándar:</strong> es la raíz cuadrada de la varianza. Se usa más que la varianza porque queda en las mismas unidades que la variable original (km/h en este caso).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(superheroes<span class="sc">$</span>Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(superheroes<span class="sc">$</span>Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 433286853</code></pre>
+<pre><code>[1] 411835921</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -510,9 +501,9 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Nos dice, en promedio, cuánto se alejan los personajes de la velocidad promedio. Si la desviación estándar es baja, la mayoría tiene velocidades parecidas entre sí. Si es muy alta —como probablemente ocurra acá—, hay mucha variedad: desde personajes sin poderes especiales hasta seres que se mueven a velocidades absurdas.</p>
+<p>Nos dice, en promedio, cuánto se alejan los personajes de la velocidad promedio. Si la desviación estándar es baja, la mayoría tiene velocidades parecidas entre sí. Si es muy alta (como probablemente ocurra acá), hay mucha variedad: desde personajes sin poderes especiales hasta superhéroes que se mueven a velocidades absurdas.</p>
 </div>
 </div>
 </div>
@@ -521,10 +512,10 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 <h3 class="anchored" data-anchor-id="todo-junto-con-summary">3.3 Todo junto con <code>summary()</code></h3>
 <p>R tiene una función que calcula varios estadísticos de una sola vez:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(superheroes<span class="sc">$</span>Speed_velocity)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(superheroes<span class="sc">$</span>Speed_velocity)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max.       NAs 
-0.000e+00 2.200e+01 1.500e+03 2.903e+08 1.000e+09 1.000e+09       179 </code></pre>
+<pre><code>      Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+         0         20        400  250460578  333333339 1000000000 </code></pre>
 </div>
 </div>
 <hr>
@@ -532,14 +523,19 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 </section>
 <section id="primeros-pasos-con-dplyr" class="level2">
 <h2 class="anchored" data-anchor-id="primeros-pasos-con-dplyr">4. Primeros pasos con dplyr</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../img/dplyr.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+</figure>
+</div>
 <p><code>dplyr</code> nos permite explorar y manipular la base de datos de forma más flexible. Vamos a ver funciones básicas.</p>
 <section id="select-elegir-columnas" class="level3">
 <h3 class="anchored" data-anchor-id="select-elegir-columnas">4.1 <code>select()</code> — elegir columnas</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Character, Speed_velocity)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Character, Speed_velocity)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 28,118 × 2
+<pre><code># A tibble: 19,472 × 2
    Character Speed_velocity
    &lt;chr&gt;              &lt;dbl&gt;
  1 Alucard             2000
@@ -552,7 +548,7 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
  8 Bayonetta        2997925
  9 Adam                  18
 10 Adam                  18
-# ℹ 28,108 more rows</code></pre>
+# ℹ 19,462 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -560,8 +556,8 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 <h3 class="anchored" data-anchor-id="filter-elegir-filas-según-una-condición">4.2 <code>filter()</code> — elegir filas según una condición</h3>
 <p>Por ejemplo, ¿qué personajes son del bando “Bad” (villanos)?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Alignment <span class="sc">==</span> <span class="st">"Bad"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Alignment <span class="sc">==</span> <span class="st">"Bad"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6,366 × 11
    Character     Alignment Gender Universe Species Speed Speed_velocity Strength
@@ -582,10 +578,10 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 </div>
 <p>¿Y quiénes tienen una velocidad de combate (<code>Combat</code>) mayor o igual a 90?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Combat <span class="sc">&gt;=</span> <span class="dv">90</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Combat <span class="sc">&gt;=</span> <span class="dv">90</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8,485 × 11
+<pre><code># A tibble: 5,176 × 11
    Character  Alignment Gender Universe    Species Speed Speed_velocity Strength
    &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;   &lt;dbl&gt;          &lt;dbl&gt;    &lt;dbl&gt;
  1 Alucard    Good      Male   Castlevania Vampire   100     1000000000      100
@@ -594,11 +590,11 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
  4 Alucard    Good      Male   ML          None       50          10000       50
  5 Bayonetta  Neutral   Female Bayonetta   Human      50        2997925       55
  6 Bayonetta  Neutral   Female Bayonetta   Human      50        2997925       55
- 7 Alphamon   None      None   Digimon     None      100     1000000000      100
- 8 Alphamon   None      None   Digimon     None      100     1000000000      100
- 9 Alphamon   None      None   Digimon     None      100     1000000000      100
-10 Android 16 Neutral   Male   DB          Android    80      265000000      100
-# ℹ 8,475 more rows
+ 7 Android 16 Neutral   Male   DB          Android    80      265000000      100
+ 8 Android 16 Neutral   Male   DB          Android    80      265000000      100
+ 9 Android 16 Neutral   Male   DB          Android    80      265000000      100
+10 Android 17 Good      Male   DB          Android   100     1000000000      100
+# ℹ 5,166 more rows
 # ℹ 3 more variables: Combat &lt;dbl&gt;, Durability &lt;dbl&gt;, Intelligence &lt;dbl&gt;</code></pre>
 </div>
 </div>
@@ -607,24 +603,24 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 <h3 class="anchored" data-anchor-id="arrange-ordenar">4.3 <code>arrange()</code> — ordenar</h3>
 <p>Del más veloz al más lento:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Speed_velocity)) <span class="sc">|&gt;</span> </span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Character, Universe, Speed_velocity)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Speed_velocity)) <span class="sc">|&gt;</span> </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Character, Universe, Speed_velocity)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 28,118 × 3
-   Character         Universe    Speed_velocity
-   &lt;chr&gt;             &lt;chr&gt;                &lt;dbl&gt;
- 1 Alucard           Castlevania     1000000000
- 2 Alucard           Castlevania     1000000000
- 3 Alpha-Hydranoid   Bakugan         1000000000
- 4 Alpha-Hydranoid   Bakugan         1000000000
- 5 Alphamon          Digimon         1000000000
- 6 Alphamon          Digimon         1000000000
- 7 Alphamon          Digimon         1000000000
- 8 Android 17        DB              1000000000
- 9 Android 17        DB              1000000000
-10 Augustus Giovanni WOD             1000000000
-# ℹ 28,108 more rows</code></pre>
+<pre><code># A tibble: 19,472 × 3
+   Character       Universe    Speed_velocity
+   &lt;chr&gt;           &lt;chr&gt;                &lt;dbl&gt;
+ 1 Alucard         Castlevania     1000000000
+ 2 Alucard         Castlevania     1000000000
+ 3 Alpha-Hydranoid Bakugan         1000000000
+ 4 Alpha-Hydranoid Bakugan         1000000000
+ 5 Android 17      DB              1000000000
+ 6 Android 17      DB              1000000000
+ 7 Alduin          TES             1000000000
+ 8 Alduin          TES             1000000000
+ 9 Alduin          TES             1000000000
+10 Actrise         Castlevania     1000000000
+# ℹ 19,462 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -632,160 +628,120 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 <h3 class="anchored" data-anchor-id="group_by-summarise-resumir-por-grupo">4.4 <code>group_by()</code> + <code>summarise()</code> — resumir por grupo</h3>
 <p>¿Cuál es la velocidad promedio según el alineamiento del personaje?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Alignment) <span class="sc">|&gt;</span> </span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">velocidad_promedio =</span> <span class="fu">mean</span>(Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">desviacion =</span> <span class="fu">sd</span>(Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_personajes =</span> <span class="fu">n</span>()</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Alignment) <span class="sc">|&gt;</span> </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">velocidad_promedio =</span> <span class="fu">mean</span>(Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">desviacion =</span> <span class="fu">sd</span>(Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_personajes =</span> <span class="fu">n</span>()</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 7 × 4
+<pre><code># A tibble: 3 × 4
   Alignment velocidad_promedio desviacion n_personajes
   &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;        &lt;int&gt;
-1 -                 334387425. 449978234.         1089
-2 Alignment               NaN         NA             1
-3 Bad               274477736. 425913240.         6366
-4 Good              221977686. 392206592.        10256
-5 Neutral           299312270. 439993228.         2850
-6 None              388926005. 468250378.         7378
-7 &lt;NA&gt;                    NaN         NA           178</code></pre>
+1 Bad               274477736. 425913240.         6366
+2 Good              221977686. 392206592.        10256
+3 Neutral           299312270. 439993228.         2850</code></pre>
 </div>
 </div>
 <p>¿Y según el universo de origen? (mostramos solo los 10 universos con más personajes)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Universe) <span class="sc">|&gt;</span> </span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">velocidad_promedio =</span> <span class="fu">mean</span>(Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_personajes =</span> <span class="fu">n</span>()</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n_personajes)) <span class="sc">|&gt;</span> </span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Universe) <span class="sc">|&gt;</span> </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">velocidad_promedio =</span> <span class="fu">mean</span>(Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_personajes =</span> <span class="fu">n</span>()</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n_personajes)) <span class="sc">|&gt;</span> </span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 3
    Universe          velocidad_promedio n_personajes
    &lt;chr&gt;                          &lt;dbl&gt;        &lt;int&gt;
- 1 &lt;NA&gt;                      392545139.         3510
- 2 Earth-616                 358175966.         2642
- 3 Prime Earth               458503751.         1718
- 4 DB                        543569219.          684
- 5 MCU                        52611968.          610
- 6 League Of Legends          16144561.          389
- 7 WOD                      1000000000           385
- 8 Pokemon                   190603695.          328
- 9 Star Wars                 145650092.          310
-10 Cv                         24839019.          298</code></pre>
+ 1 Earth-616                 365266219.         2102
+ 2 &lt;NA&gt;                      317131958.         1979
+ 3 Prime Earth               451161178.         1258
+ 4 MCU                        31858137.          479
+ 5 DB                        587931134.          466
+ 6 League Of Legends          16227995.          387
+ 7 MtG                        44785772.          291
+ 8 Cv                         28037976.          264
+ 9 Digimon                   192627895.          230
+10 Star Wars                 161946505.          218</code></pre>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Recuerda que así se ve la diferencia entre variables cualitativas y cuantitativas, y sus niveles de medición
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Naturaleza</th>
+<th>Nivel de medición</th>
+<th>¿Cuándo se usa?</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cualitativa</td>
+<td>Nominal</td>
+<td>Cuando las categorías no tienen ningún orden lógico entre sí</td>
+<td>Sexo, nacionalidad, color de ojos</td>
+</tr>
+<tr class="even">
+<td>Cualitativa</td>
+<td>Ordinal</td>
+<td>Cuando las categorías sí tienen un orden, pero la distancia entre ellas no es constante ni medible</td>
+<td>Nivel educacional, escala Likert (muy en desacuerdo a muy de acuerdo)</td>
+</tr>
+<tr class="odd">
+<td>Cuantitativa discreta</td>
+<td>Intervalo</td>
+<td>Cuando los valores son numéricos enteros/contables, con distancias iguales pero <strong>sin cero absoluto</strong> (el cero es arbitrario)</td>
+<td>Año calendario, número de siglo o década</td>
+</tr>
+<tr class="even">
+<td>Cuantitativa discreta</td>
+<td>Razón</td>
+<td>Cuando los valores son numéricos enteros/contables, con distancias iguales y <strong>con cero absoluto</strong></td>
+<td>Número de hijos, número de goles, cantidad de hermanos</td>
+</tr>
+<tr class="odd">
+<td>Cuantitativa continua</td>
+<td>Intervalo</td>
+<td>Cuando los valores pueden tomar cualquier valor dentro de un rango (decimales incluidos), con distancias iguales pero <strong>sin cero absoluto</strong></td>
+<td>Temperatura en °C</td>
+</tr>
+<tr class="even">
+<td>Cuantitativa continua</td>
+<td>Razón</td>
+<td>Cuando los valores pueden tomar cualquier valor dentro de un rango (decimales incluidos), con distancias iguales y <strong>con cero absoluto</strong></td>
+<td>Edad, ingreso, peso, velocidad (km/h)</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <hr>
 </section>
 </section>
-<section id="primeros-gráficos-con-ggplot2" class="level2">
-<h2 class="anchored" data-anchor-id="primeros-gráficos-con-ggplot2">5. Primeros gráficos con ggplot2</h2>
-<p>Como la variable <code>Speed_velocity</code> tiene valores extremadamente altos (personajes que se mueven a velocidades cósmicas), vamos a trabajar en escala logarítmica para que los gráficos se puedan interpretar mejor.</p>
-<section id="histograma-cómo-se-distribuye-la-velocidad" class="level3">
-<h3 class="anchored" data-anchor-id="histograma-cómo-se-distribuye-la-velocidad">5.1 Histograma: ¿cómo se distribuye la velocidad?</h3>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Speed_velocity), Speed_velocity <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Speed_velocity)) <span class="sc">+</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribución de la velocidad máxima (escala log)"</span>,</span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Velocidad (km/h, escala logarítmica)"</span>,</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Número de personajes"</span></span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="sesion-1_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="boxplot-comparando-velocidad-según-alineamiento" class="level3">
-<h3 class="anchored" data-anchor-id="boxplot-comparando-velocidad-según-alineamiento">5.2 Boxplot: comparando velocidad según alineamiento</h3>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Speed_velocity), Speed_velocity <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Alignment, <span class="at">y =</span> Speed_velocity)) <span class="sc">+</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"tomato"</span>) <span class="sc">+</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Velocidad máxima según alineamiento"</span>,</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Alineamiento"</span>,</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Velocidad (km/h, escala logarítmica)"</span></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="sesion-1_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="gráfico-de-barras-velocidad-promedio-por-universo" class="level3">
-<h3 class="anchored" data-anchor-id="gráfico-de-barras-velocidad-promedio-por-universo">5.3 Gráfico de barras: velocidad promedio por universo</h3>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Universe) <span class="sc">|&gt;</span> </span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">velocidad_promedio =</span> <span class="fu">mean</span>(Speed_velocity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_personajes =</span> <span class="fu">n</span>()</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_personajes <span class="sc">&gt;=</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(velocidad_promedio)) <span class="sc">|&gt;</span> </span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Universe, velocidad_promedio), <span class="at">y =</span> velocidad_promedio)) <span class="sc">+</span></span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"darkorange"</span>) <span class="sc">+</span></span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Top 10 universos con mayor velocidad promedio"</span>,</span>
-<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Solo universos con 3 o más personajes en la base"</span>,</span>
-<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
-<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Velocidad promedio (km/h, escala logarítmica)"</span></span>
-<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="sesion-1_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="dispersión-la-fuerza-se-relaciona-con-la-velocidad" class="level3">
-<h3 class="anchored" data-anchor-id="dispersión-la-fuerza-se-relaciona-con-la-velocidad">5.4 Dispersión: ¿la fuerza se relaciona con la velocidad?</h3>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>superheroes <span class="sc">|&gt;</span> </span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Speed_velocity), <span class="sc">!</span><span class="fu">is.na</span>(Strength), Speed_velocity <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Strength, <span class="at">y =</span> Speed_velocity, <span class="at">color =</span> Alignment)) <span class="sc">+</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relación entre fuerza y velocidad máxima"</span>,</span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Fuerza (escala 0-100)"</span>,</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Velocidad (km/h, escala logarítmica)"</span>,</span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Alineamiento"</span></span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="sesion-1_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<hr>
-</section>
-</section>
-<section id="actividad-práctica" class="level2">
-<h2 class="anchored" data-anchor-id="actividad-práctica">6. Actividad práctica</h2>
+<section id="ahora-te-toca-a-ti" class="level2">
+<h2 class="anchored" data-anchor-id="ahora-te-toca-a-ti">7. Ahora te toca a ti!</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -827,36 +783,11 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Ejercicio 3: ggplot2
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Crea un histograma de la variable <code>Durability</code> (sin necesidad de escala logarítmica, ya que va de 0 a 100).</li>
-<li>Crea un gráfico de dispersión entre <code>Intelligence</code> (eje x) y <code>Combat</code> (eje y), coloreado por <code>Alignment</code>.</li>
-<li>¿Se observa alguna relación entre la inteligencia y la habilidad de combate de los personajes?</li>
-</ol>
-</div>
-</div>
-</div>
 <hr>
 </section>
 <section id="resumen-de-funciones-vistas-hoy" class="level2">
-<h2 class="anchored" data-anchor-id="resumen-de-funciones-vistas-hoy">7. Resumen de funciones vistas hoy</h2>
+<h2 class="anchored" data-anchor-id="resumen-de-funciones-vistas-hoy">8. Resumen de funciones vistas hoy</h2>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Función</th>
@@ -866,74 +797,59 @@ $ Intelligence   &lt;dbl&gt; 70, 70, 80, 80, 70, 70, 80, 80, 55, 55, 50, 50, 50,
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>read_csv()</code></td>
-<td>readr</td>
-<td>Lee un archivo <code>.csv</code> (local o desde una URL)</td>
-</tr>
-<tr class="even">
 <td><code>mean()</code></td>
 <td>base R</td>
 <td>Calcula el promedio</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>median()</code></td>
 <td>base R</td>
 <td>Calcula la mediana</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>sd()</code></td>
 <td>base R</td>
 <td>Calcula la desviación estándar</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>var()</code></td>
 <td>base R</td>
 <td>Calcula la varianza</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>range()</code></td>
 <td>base R</td>
 <td>Entrega el mínimo y máximo</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>summary()</code></td>
 <td>base R</td>
 <td>Resumen rápido de estadísticos</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>select()</code></td>
 <td>dplyr</td>
 <td>Elige columnas</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>filter()</code></td>
 <td>dplyr</td>
 <td>Elige filas según condición</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>arrange()</code></td>
 <td>dplyr</td>
 <td>Ordena filas</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>group_by()</code> + <code>summarise()</code></td>
 <td>dplyr</td>
 <td>Resume datos por grupo</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>slice_head()</code></td>
 <td>dplyr</td>
 <td>Se queda con las primeras n filas</td>
-</tr>
-<tr class="odd">
-<td><code>ggplot()</code> + <code>geom_*()</code></td>
-<td>ggplot2</td>
-<td>Construye gráficos por capas</td>
-</tr>
-<tr class="even">
-<td><code>scale_x_log10()</code> / <code>scale_y_log10()</code></td>
-<td>ggplot2</td>
-<td>Transforma un eje a escala logarítmica</td>
 </tr>
 </tbody>
 </table>

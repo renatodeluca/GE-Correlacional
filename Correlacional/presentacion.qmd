@@ -24,6 +24,11 @@ El grupo de estudio tiene cupos limitados, pero puedes inscribirte pinchando [aq
 # ¿Para qué?
 Este espacio tiene como objetivo principal fortalecer sus habilidades en **R** y **Positron**, facilitando el aprendizaje del ramo y aliviando su carga académica. Buscamos apoyar en los contenidos de inferencia estadística y estadística correlacional, además de fomentar la colaboración y el intercambio de conocimientos entre quienes participan.
 
+# ¿Por qué usamos página web?
+Los contenidos del grupo de estudio principalmente serán del software R, por tanto, es más fácil y cómodo para todxs tener un espacio donde se pueda acceder a los materiales de manera rápida y sencilla. Además, la página web permite que el grupo de estudio sea **asíncrono**, es decir, que cada persona pueda avanzar a su propio ritmo, pudiendo revisitar los contenidos y materiales en cualquier momento. 
+
+También, la pagina web permite copiar y pegar los códigos de R directamente en el software, lo que facilita la práctica y el aprendizaje.
+
 ::: {.callout-note}
 Recuerda que puedes solicitar tutorías personalizadas pinchando [aquí](https://docs.google.com/forms/d/e/1FAIpQLSdozpnwgwkn50egxmO57ObDrW-NCXBNNribf9urWjNZmU73uw/viewform).
 :::

@@ -19,7 +19,7 @@ format:
 ¡Bienvenidx a la página del Grupo de Estudio de Estadística Correlacional, organizado por el [Centro IDEA](https://www.instagram.com/tutorias_centroidea/)!
 
 # ¿Dónde me inscribo?
-El grupo de estudio tiene cupos limitados, pero puedes inscribirte pinchando [aquí](https://docs.google.com/forms/d/e/1FAIpQLSc8qSTrzC1SDlfRUdeJwxpmp7Nm-HMQbhX1UqTkCEV7x_mn9w/viewform?usp=sharing&ouid=106113533726280121425).
+El grupo de estudio tiene cupos limitados, pero puedes inscribirte pinchando [aquí](https://docs.google.com/forms/d/e/1FAIpQLSc8qSTrzC1SDlfRUdeJwxpmp7Nm-HMQbhX1UqTkCEV7x_mn9w/viewform?usp=sharing&ouid=106113533726280121425). Si no te presentas a una sesión sin justificación, se cederá tu cupo a otra persona inscrita, por tanto la asistencia es obligatoria.
 
 # ¿Para qué?
 Este espacio tiene como objetivo principal fortalecer sus habilidades en **R** y **Positron**, facilitando el aprendizaje del ramo y aliviando su carga académica. Buscamos apoyar en los contenidos de inferencia estadística y estadística correlacional, además de fomentar la colaboración y el intercambio de conocimientos entre quienes participan.

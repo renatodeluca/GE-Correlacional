@@ -198,5 +198,3 @@ Supongamos que queremos investigar si un nuevo medicamento reduce la presión ar
 - Hipotesis Bidireccional: H1: El nuevo medicamento tiene un efecto diferente en la presión arterial en comparación con el placebo (puede aumentar o disminuir).
 
 ------
-
-# Ahora les toca a ustedes!

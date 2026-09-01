@@ -139,9 +139,14 @@
   {
     "objectID": "sesiones/sesion-2.html#qué-vimos-la-sesión-pasada",
     "href": "sesiones/sesion-2.html#qué-vimos-la-sesión-pasada",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "¿Qué vimos la sesión pasada?",
-    "text": "¿Qué vimos la sesión pasada?\n\nEstadística descriptiva básica\nVerbos de dplyr\nNuestra base de datos: superhéroes"
+    "text": "¿Qué vimos la sesión pasada?\n\nEstadística descriptiva básica\nVerbos de dplyr\nNuestra base de datos: superhéroes",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#hoy-ggplot2",
@@ -167,37 +172,62 @@
   {
     "objectID": "sesiones/sesion-2.html#error-estándar",
     "href": "sesiones/sesion-2.html#error-estándar",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Error estándar",
-    "text": "Error estándar\nEl error estándar es una medida de la variabilidad de una estadística muestral, como la media o la proporción, y nos indica cuánto podemos esperar que varíe esa estadística de una muestra a otra. En otras palabras, nos dice qué tan precisos son nuestros estimadores de la población."
+    "text": "Error estándar\nEl error estándar es una medida de la variabilidad de una estadística muestral, como la media o la proporción, y nos indica cuánto podemos esperar que varíe esa estadística de una muestra a otra. En otras palabras, nos dice qué tan precisos son nuestros estimadores de la población.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#curva-normal",
     "href": "sesiones/sesion-2.html#curva-normal",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Curva normal",
-    "text": "Curva normal\n\nCaracterísticas\n\nModa, mediana y media coinciden al centro.\nSimétrica.\nÁreas bajo la curva de acuerdo a desviaciones estándar del promedio (concentran cierto porcentaje de la muestra)."
+    "text": "Curva normal\n\nCaracterísticas\n\nModa, mediana y media coinciden al centro.\nSimétrica.\nÁreas bajo la curva de acuerdo a desviaciones estándar del promedio (concentran cierto porcentaje de la muestra).",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#inferencia-estadística",
     "href": "sesiones/sesion-2.html#inferencia-estadística",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Inferencia estadística",
-    "text": "Inferencia estadística\nQué es?\nLa inferencia estadística es el proceso de utilizar datos de una muestra para hacer estimaciones o pruebas sobre una población más grande. Nos permite tomar decisiones o hacer predicciones basadas en la información obtenida de la muestra, en lugar de tener que examinar toda la población."
+    "text": "Inferencia estadística\nQué es?\nLa inferencia estadística es el proceso de utilizar datos de una muestra para hacer estimaciones o pruebas sobre una población más grande. Nos permite tomar decisiones o hacer predicciones basadas en la información obtenida de la muestra, en lugar de tener que examinar toda la población.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#inferencia-estadística-1",
     "href": "sesiones/sesion-2.html#inferencia-estadística-1",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Inferencia estadística",
-    "text": "Inferencia estadística\nPara qué?\nSe realiza por temas de\n\nCostos: Es más económico y rápido analizar una muestra que toda la población.\nTiempo: Recopilar datos de toda la población puede ser muy lento.\nAccesibilidad: A veces no es posible acceder a toda la población."
+    "text": "Inferencia estadística\nPara qué?\nSe realiza por temas de\n\nCostos: Es más económico y rápido analizar una muestra que toda la población.\nTiempo: Recopilar datos de toda la población puede ser muy lento.\nAccesibilidad: A veces no es posible acceder a toda la población.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#hoy",
     "href": "sesiones/sesion-2.html#hoy",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Hoy:",
-    "text": "Hoy:\n\nError estándar\nIntervalos de confianza\nCómo redactar una hipótesis estadística"
+    "text": "Hoy:\n\nError estándar\nIntervalos de confianza\nCómo redactar una hipótesis estadística",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#error-estándar-visualizado",
@@ -209,30 +239,50 @@
   {
     "objectID": "sesiones/sesion-2.html#error-estándar-visualizado-paso-1",
     "href": "sesiones/sesion-2.html#error-estándar-visualizado-paso-1",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Error estándar visualizado: Paso 1",
-    "text": "Error estándar visualizado: Paso 1"
+    "text": "Error estándar visualizado: Paso 1",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#error-estándar-visualizado-paso-2",
     "href": "sesiones/sesion-2.html#error-estándar-visualizado-paso-2",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Error estándar visualizado: Paso 2",
-    "text": "Error estándar visualizado: Paso 2"
+    "text": "Error estándar visualizado: Paso 2",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#error-estándar-visualizado-paso-3",
     "href": "sesiones/sesion-2.html#error-estándar-visualizado-paso-3",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Error estándar visualizado: Paso 3",
-    "text": "Error estándar visualizado: Paso 3"
+    "text": "Error estándar visualizado: Paso 3",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#inferencia-estadística-2",
     "href": "sesiones/sesion-2.html#inferencia-estadística-2",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Inferencia estadística",
-    "text": "Inferencia estadística"
+    "text": "Inferencia estadística",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#teoría-del-límite-central",
@@ -244,107 +294,182 @@
   {
     "objectID": "sesiones/sesion-2.html#teorema-del-limite-central",
     "href": "sesiones/sesion-2.html#teorema-del-limite-central",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Teorema del limite central",
-    "text": "Teorema del limite central\nEsto es importante porque nos permite hacer inferencias sobre la media poblacional utilizando la distribución normal, incluso si la población original no es normal."
+    "text": "Teorema del limite central\nEsto es importante porque nos permite hacer inferencias sobre la media poblacional utilizando la distribución normal, incluso si la población original no es normal.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#intervalos-de-confianza",
     "href": "sesiones/sesion-2.html#intervalos-de-confianza",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Intervalos de confianza",
-    "text": "Intervalos de confianza\nUn intervalo de confianza es un rango de valores, derivado de los datos de la muestra, que se utiliza para estimar un parámetro poblacional desconocido. Este intervalo tiene un nivel de confianza asociado, que indica la probabilidad de que el parámetro poblacional real se encuentre dentro del intervalo."
+    "text": "Intervalos de confianza\nUn intervalo de confianza es un rango de valores, derivado de los datos de la muestra, que se utiliza para estimar un parámetro poblacional desconocido. Este intervalo tiene un nivel de confianza asociado, que indica la probabilidad de que el parámetro poblacional real se encuentre dentro del intervalo.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#intervalos-de-confianza-1",
     "href": "sesiones/sesion-2.html#intervalos-de-confianza-1",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Intervalos de confianza",
-    "text": "Intervalos de confianza\nNivel de confianza\nEl nivel de confianza es la probabilidad de que el intervalo de confianza contenga el parámetro poblacional verdadero. Se expresa como un porcentaje, como 90%, 95% o 99%. Un nivel de confianza más alto indica una mayor certeza de que el intervalo contiene el parámetro poblacional, pero también puede resultar en un intervalo más amplio."
+    "text": "Intervalos de confianza\nNivel de confianza\nEl nivel de confianza es la probabilidad de que el intervalo de confianza contenga el parámetro poblacional verdadero. Se expresa como un porcentaje, como 90%, 95% o 99%. Un nivel de confianza más alto indica una mayor certeza de que el intervalo contiene el parámetro poblacional, pero también puede resultar en un intervalo más amplio.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#intervalos-de-confianza-2",
     "href": "sesiones/sesion-2.html#intervalos-de-confianza-2",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Intervalos de confianza",
-    "text": "Intervalos de confianza\nPasos para calcular un intervalo de confianza para un promedio:\n\nObtener la media muestral y el error estándar.\nDeterminar el nivel de confianza deseado y encontrar el valor crítico correspondiente (z o t).\nAplicar la fórmula del intervalo de confianza:"
+    "text": "Intervalos de confianza\nPasos para calcular un intervalo de confianza para un promedio:\n\nObtener la media muestral y el error estándar.\nDeterminar el nivel de confianza deseado y encontrar el valor crítico correspondiente (z o t).\nAplicar la fórmula del intervalo de confianza:\n\n\\[\\bar{X}\\pm Z*\\frac{\\sigma}{\\sqrt{N}}\\]",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#barxpm-zfracsigmasqrtn",
     "href": "sesiones/sesion-2.html#barxpm-zfracsigmasqrtn",
     "title": "Sesión 2",
     "section": "\\[\\bar{X}\\pm Z*\\frac{\\sigma}{\\sqrt{N}}\\]",
-    "text": "\\[\\bar{X}\\pm Z*\\frac{\\sigma}{\\sqrt{N}}\\]"
+    "text": "\\[\\bar{X}\\pm Z*\\frac{\\sigma}{\\sqrt{N}}\\]",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#intervalos-de-confianza-3",
     "href": "sesiones/sesion-2.html#intervalos-de-confianza-3",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Intervalos de confianza",
-    "text": "Intervalos de confianza\nFormula desglosada\n\n\\(\\bar{X}\\): Media muestral\n\\(Z\\): Valor crítico de la distribución normal (o t) correspondiente al nivel de confianza deseado\n\\(\\sigma\\): Desviación estándar de la población (o de la muestra si se desconoce la población)\n\\(N\\): Tamaño de la muestra"
+    "text": "Intervalos de confianza\nFormula desglosada\n\n\\(\\bar{X}\\): Media muestral\n\\(Z\\): Valor crítico de la distribución normal (o t) correspondiente al nivel de confianza deseado\n\\(\\sigma\\): Desviación estándar de la población (o de la muestra si se desconoce la población)\n\\(N\\): Tamaño de la muestra",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#intervalos-de-confianza-4",
     "href": "sesiones/sesion-2.html#intervalos-de-confianza-4",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Intervalos de confianza",
-    "text": "Intervalos de confianza\nValor crítico?\nPara calcular el valor crítico Z (o t), puedes usar una tabla de valores Z o una calculadora en línea. Como esta: Calculadora de valor crítico. Memoricen esto, para un nivel de confianza del 95%, el valor crítico Z es aproximadamente 1.96."
+    "text": "Intervalos de confianza\nValor crítico?\nPara calcular el valor crítico Z (o t), puedes usar una tabla de valores Z o una calculadora en línea. Como esta: Calculadora de valor crítico. Memoricen esto, para un nivel de confianza del 95%, el valor crítico Z es aproximadamente 1.96.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#teorema-del-límite-central",
     "href": "sesiones/sesion-2.html#teorema-del-límite-central",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Teorema del límite central",
-    "text": "Teorema del límite central\nCuando se toman muestras aleatorias de una población, la distribución de la media muestral tiende a ser normal, independientemente de la forma de la distribución de la población original, siempre que el tamaño de la muestra sea suficientemente grande (generalmente n &gt; 30)."
+    "text": "Teorema del límite central\nCuando se toman muestras aleatorias de una población, la distribución de la media muestral tiende a ser normal, independientemente de la forma de la distribución de la población original, siempre que el tamaño de la muestra sea suficientemente grande (generalmente n &gt; 30).",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#intervalos-de-confianza-5",
     "href": "sesiones/sesion-2.html#intervalos-de-confianza-5",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Intervalos de confianza",
-    "text": "Intervalos de confianza\nEjemplo\nSupongamos que tenemos una muestra de 100 personas y queremos estimar la media de sus ingresos. La media muestral es 50.000, la desviación estándar es 10.000 y queremos un intervalo de confianza del 95%.\nPara un nivel de confianza del 95, el valor crítico Z es 1.96. El error estándar se calcula como: \\[SE = \\frac{\\sigma}{\\sqrt{N}} = \\frac{10,000}{\\sqrt{100}} = 1.000\\]"
+    "text": "Intervalos de confianza\nEjemplo\nSupongamos que tenemos una muestra de 100 personas y queremos estimar la media de sus ingresos. La media muestral es 50.000, la desviación estándar es 10.000 y queremos un intervalo de confianza del 95%.\nPara un nivel de confianza del 95, el valor crítico Z es 1.96. El error estándar se calcula como: \\[SE = \\frac{\\sigma}{\\sqrt{N}} = \\frac{10,000}{\\sqrt{100}} = 1.000\\]",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#intervalos-de-confianza-6",
     "href": "sesiones/sesion-2.html#intervalos-de-confianza-6",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Intervalos de confianza",
-    "text": "Intervalos de confianza\nEjemplo\nAhora podemos calcular el intervalo de confianza: \\[IC = \\bar{X} \\pm Z * SE = 50,000 \\pm 1.96 * 1,000 = 50,000 \\pm 1,960\\] Por tanto, podemos afirmar con un 95% de confianza que la media poblacional de ingresos se encuentra entre 48,040 y 51,960."
+    "text": "Intervalos de confianza\nEjemplo\nAhora podemos calcular el intervalo de confianza: \\[IC = \\bar{X} \\pm Z * SE = 50,000 \\pm 1.96 * 1,000 = 50,000 \\pm 1,960\\] Por tanto, podemos afirmar con un 95% de confianza que la media poblacional de ingresos se encuentra entre 48,040 y 51,960.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#inferencia-estadística-3",
     "href": "sesiones/sesion-2.html#inferencia-estadística-3",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Inferencia estadística",
-    "text": "Inferencia estadística\nEsto también se puede aplicar con un 99% de confianza, con un valor crítico Z de 2.58."
+    "text": "Inferencia estadística\nEsto también se puede aplicar con un 99% de confianza, con un valor crítico Z de 2.58.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#cómo-redactar-una-hipótesis-estadística",
     "href": "sesiones/sesion-2.html#cómo-redactar-una-hipótesis-estadística",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Cómo redactar una hipótesis estadística",
-    "text": "Cómo redactar una hipótesis estadística\nPara redactar una hipótesis estadística, es importante seguir estos pasos:\n\nIdentificar la pregunta de investigación: Define claramente lo que quieres investigar o probar.\nFormular la hipótesis nula (H0): Indica que no hay efecto o diferencia. Es la hipótesis que se somete a prueba.\nFormular la hipótesis alternativa (H1): Indica que sí hay un efecto o diferencia. Es lo que se espera demostrar."
+    "text": "Cómo redactar una hipótesis estadística\nPara redactar una hipótesis estadística, es importante seguir estos pasos:\n\nIdentificar la pregunta de investigación: Define claramente lo que quieres investigar o probar.\nFormular la hipótesis nula (H0): Indica que no hay efecto o diferencia. Es la hipótesis que se somete a prueba.\nFormular la hipótesis alternativa (H1): Indica que sí hay un efecto o diferencia. Es lo que se espera demostrar.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#cómo-redactar-una-hipótesis-estadística-1",
     "href": "sesiones/sesion-2.html#cómo-redactar-una-hipótesis-estadística-1",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Cómo redactar una hipótesis estadística",
-    "text": "Cómo redactar una hipótesis estadística\nLas hipótesis pueden ser unidireccionales (una cola) o bidireccionales (dos colas), dependiendo de la naturaleza de la investigación."
+    "text": "Cómo redactar una hipótesis estadística\nLas hipótesis pueden ser unidireccionales (una cola) o bidireccionales (dos colas), dependiendo de la naturaleza de la investigación.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#cómo-redactar-una-hipótesis-estadística-2",
     "href": "sesiones/sesion-2.html#cómo-redactar-una-hipótesis-estadística-2",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Cómo redactar una hipótesis estadística",
-    "text": "Cómo redactar una hipótesis estadística\nEjemplo\nSupongamos que queremos investigar si un nuevo medicamento reduce la presión arterial en comparación con un placebo.\n\nHipótesis nula (H0): El nuevo medicamento no reduce la presión arterial en comparación con el placebo.\nHipótesis alternativa (H1): El nuevo medicamento reduce la presión arterial en comparación con el placebo."
+    "text": "Cómo redactar una hipótesis estadística\nEjemplo\nSupongamos que queremos investigar si un nuevo medicamento reduce la presión arterial en comparación con un placebo.\n\nHipótesis nula (H0): El nuevo medicamento no reduce la presión arterial en comparación con el placebo.\nHipótesis alternativa (H1): El nuevo medicamento reduce la presión arterial en comparación con el placebo.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#cómo-redactar-una-hipótesis-estadística-3",
     "href": "sesiones/sesion-2.html#cómo-redactar-una-hipótesis-estadística-3",
-    "title": "Sesión 2",
+    "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Cómo redactar una hipótesis estadística",
-    "text": "Cómo redactar una hipótesis estadística\nQué tipo de hipótesis es esta? Unidireccional o bidireccional?\n\nHipotesis Unidireccional: H1: El nuevo medicamento reduce la presión arterial en comparación con el placebo.\nHipotesis Bidireccional: H1: El nuevo medicamento tiene un efecto diferente en la presión arterial en comparación con el placebo (puede aumentar o disminuir).\n\n\n\nAhora les toca a ustedes!"
+    "text": "Cómo redactar una hipótesis estadística\nQué tipo de hipótesis es esta? Unidireccional o bidireccional?",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2 - Preparación para primera prueba"
+    ]
   },
   {
     "objectID": "sesiones/sesion-2.html#slide",
@@ -352,5 +477,17 @@
     "title": "Sesión 2",
     "section": "slide",
     "text": "slide"
+  },
+  {
+    "objectID": "sesiones/sesion-2.html",
+    "href": "sesiones/sesion-2.html",
+    "title": "Sesión 2",
+    "section": "",
+    "text": "Estadística descriptiva básica\nVerbos de dplyr\nNuestra base de datos: superhéroes",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 2"
+    ]
   }
 ]

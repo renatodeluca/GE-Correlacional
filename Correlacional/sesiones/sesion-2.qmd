@@ -1,10 +1,11 @@
 ---
-title: "Sesión 2"
+title: "Sesión 2 - Preparación para primera prueba"
 subtitle: "Grupo de Estudio de Estadística Correlacional"
 format:
   revealjs:
     theme: dracula
     slide-number: true
+    slide-level: 2
     logo: ../img/logoidea.png
     footer: "GE Correlacional"
 execute:
@@ -122,7 +123,8 @@ El **nivel de confianza** es la probabilidad de que el intervalo de confianza co
 2. Determinar el nivel de confianza deseado y encontrar el valor crítico correspondiente (z o t).
 3. Aplicar la fórmula del intervalo de confianza:
 :::
-$$\bar{X}\pm Z*\frac{\sigma}{\sqrt{N}}$$ 
+$$\bar{X}\pm Z*\frac{\sigma}{\sqrt{N}}$$
+
 ---
 
 ## Intervalos de confianza
@@ -142,12 +144,12 @@ Para calcular el valor crítico Z (o t), puedes usar una tabla de valores Z o un
 ## Intervalos de confianza
 ### Ejemplo
 
-
 Supongamos que tenemos una muestra de 100 personas y queremos estimar la media de sus ingresos. La media muestral es 50.000, la desviación estándar es 10.000 y queremos un intervalo de confianza del 95%.
 
 Para un nivel de confianza del 95, el valor crítico Z es 1.96. El error estándar se calcula como:
 $$SE = \frac{\sigma}{\sqrt{N}} = \frac{10,000}{\sqrt{100}} = 1.000$$
 
+---
 
 ## Intervalos de confianza
 ### Ejemplo
@@ -161,6 +163,8 @@ Por tanto, podemos afirmar con un 95% de confianza que la media poblacional de i
 ## Inferencia estadística
 
 Esto también se puede aplicar con un 99% de confianza, con un valor crítico Z de **2.58**.
+
+---
 
 ## Cómo redactar una hipótesis estadística
 
@@ -192,6 +196,8 @@ Supongamos que queremos investigar si un nuevo medicamento reduce la presión ar
 ## Cómo redactar una hipótesis estadística
 
 **Qué tipo de hipótesis es esta? Unidireccional o bidireccional?**
+
+---
 
 ::: {.incremental}
 - Hipotesis Unidireccional: H1: El nuevo medicamento reduce la presión arterial en comparación con el placebo.

@@ -21,6 +21,7 @@ website:
         - section: "Todas las sesiones"
           contents:
             - sesiones/sesion-1.qmd
+            - sesiones/sesion-2.qmd
             
 
 format:

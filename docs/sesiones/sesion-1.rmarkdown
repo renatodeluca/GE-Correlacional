@@ -1,0 +1,289 @@
+---
+title: "Sesión 1: Primeros pasos en R"
+subtitle: "Estadística descriptiva y dplyr con datos de superhéroes"
+toc: true
+toc-location: left
+execute:
+  warning: false
+  message: false
+---
+
+## Introducción a Positron y R
+
+En esta sesión aprenderemos los conceptos básicos de **Positron** y **R**, dos herramientas fundamentales para el análisis de datos en estadística.
+
+## Objetivos de la sesión
+
+Esta es nuestra primera sesión práctica, así que partimos desde cero. Al finalizar vas a poder:
+
+- Calcular e interpretar estadísticos descriptivos básicos (media, mediana, desviación estándar, varianza, rango).
+- Entender qué es el **tidyverse** y por qué se usa en análisis de datos con R.
+- Manipular bases de datos con las funciones principales de **dplyr**.
+- Usar el operador *pipe* (`|>` o `%>%`) para encadenar transformaciones.
+
+---
+
+## 0. Abriendo Positron
+
+Abre Positron y crea un nuevo proyecto. Siguiendo los pasos a continuación:
+
+![](../img/positron-1.png){fig-align="center" width="900px"}
+
+
+## 1. Nuestra base de datos: Superhéroes
+
+Vamos a trabajar con una base de datos real de personajes de distintos universos (cómics, animes, películas), con estadísticas de combate como velocidad, fuerza e inteligencia.
+
+Necesitas tener instalado el paquete `tidyverse` y haber desactivo la notación científica. Si no lo has hecho, corre una vez en la consola:
+
+```{r}
+library(tidyverse)
+options(scipen = 999)
+
+superheroes <- read_csv("https://zenodo.org/records/22070395/files/Superheroes.csv")
+```
+
+La base original trae muchas columnas, incluyendo una llamada `History` con textos narrativos larguísimos que no necesitamos para el análisis estadístico. Nos quedamos solo con las columnas relevantes:
+
+```{r}
+superheroes <- superheroes |> 
+  select(Character, Alignment, Gender, Universe, Species,
+         Speed, Speed_velocity, Strength, Combat, Durability, Intelligence) |> 
+  filter(Alignment %in% c("Good", "Bad", "Neutral"))
+
+glimpse(superheroes)
+```
+
+Las columnas con las que vamos a trabajar hoy:
+
+| Variable | Descripción |
+|---|---|
+| `Character` | Nombre del personaje |
+| `Alignment` | Alineamiento (Good, Bad, Neutral) |
+| `Gender` | Género del personaje |
+| `Universe` | Universo/franquicia de origen |
+| `Species` | Especie (humano, alien, androide, etc.) |
+| `Speed` | Velocidad en una escala de 0 a 100 |
+| `Speed_velocity` | Velocidad estimada en km/h |
+| `Strength` | Fuerza en una escala de 0 a 100 |
+| `Combat` | Habilidad de combate (0 a 100) |
+| `Durability` | Durabilidad/resistencia (0 a 100) |
+| `Intelligence` | Inteligencia (0 a 100) |
+
+---
+
+## 2. Explorando la base de datos
+
+Antes de calcular cualquier cosa, siempre es buena idea mirar la estructura de los datos.
+
+```{r}
+glimpse(superheroes)
+```
+
+```{r}
+nrow(superheroes)  # número de filas (personajes)
+ncol(superheroes)  # número de columnas (variables)
+```
+
+**Pregunta para pensar:** ¿cuántos personajes tiene nuestra base? ¿Cuántas variables estamos midiendo por cada uno?
+
+::: {.callout-note collapse="true"}
+## Ojo: personajes repetidos
+
+Esta base tiene varias filas para un mismo personaje (por ejemplo, distintas versiones o actualizaciones de "Alucard" o "Android 17"). Para efectos de esta clase lo dejamos así, pero en las siguientes sesiones, podemos ver como limpiar duplicados con `distinct()`.
+:::
+
+---
+
+## 3. Estadística descriptiva básica
+
+Nos vamos a concentrar en la variable `Speed_velocity`, o sea la velocidad máxima estimada de cada personaje, en km/h.
+
+### 3.1 Medidas de tendencia central
+
+**Media (promedio):** suma todos los valores y divide por el número de casos.
+
+```{r}
+mean(superheroes$Speed_velocity, na.rm = TRUE)
+```
+
+**Mediana:** el valor que queda justo al medio cuando ordenamos los datos de menor a mayor.
+
+```{r}
+median(superheroes$Speed_velocity, na.rm = TRUE)
+```
+
+::: {.callout-important}
+## Media vs. mediana
+
+Si la media y la mediana son parecidas, los datos están relativamente "equilibrados". Si son muy distintas, probablemente hay valores extremos (muy altos o muy bajos) que están "tirando" la media hacia un lado. En nuestra base hay personajes con velocidades extremas (miles de millones de km/h), lo que probablemente infla mucho la media respecto a la mediana. ¿Por qué crees que pasa esto con personajes de fantasía/ciencia ficción?
+
+![](../img/nicanor.jpg){fig-align="center" width="200px"}
+:::
+
+::: {.callout-tip collapse="true"}
+## ¿Qué es `na.rm = TRUE`?
+
+Le indica a R que ignore los valores faltantes (`NA`) al calcular. Si no lo incluimos y hay algún valor faltante en la columna, R no puede calcular el promedio y devuelve `NA` como resultado.
+También podemos utilizar la función `na.omit()` para eliminar los valores faltantes de la columna antes de calcular la media, mediana, etc. Por ejemplo, si hacemos `mean(na.omit(superheroes$Speed_velocity))` obtendremos el mismo resultado que con `mean(superheroes$Speed_velocity, na.rm = TRUE)`. 
+:::
+
+### 3.2 Medidas de dispersión
+
+**Rango:** la distancia entre el valor mínimo y el máximo.
+
+```{r}
+min(superheroes$Speed_velocity, na.rm = TRUE)
+max(superheroes$Speed_velocity, na.rm = TRUE)
+range(superheroes$Speed_velocity, na.rm = TRUE)
+```
+
+**Varianza:** mide en promedio qué tan lejos está cada valor de la media (elevado al cuadrado).
+
+```{r}
+var(superheroes$Speed_velocity, na.rm = TRUE)
+```
+
+**Desviación estándar:** es la raíz cuadrada de la varianza. Se usa más que la varianza porque queda en las mismas unidades que la variable original (km/h en este caso).
+
+```{r}
+sd(superheroes$Speed_velocity, na.rm = TRUE)
+```
+
+::: {.callout-tip collapse="true"}
+## ¿Cómo se interpreta la desviación estándar?
+
+Nos dice, en promedio, cuánto se alejan los personajes de la velocidad promedio. Si la desviación estándar es baja, la mayoría tiene velocidades parecidas entre sí. Si es muy alta (como probablemente ocurra acá), hay mucha variedad: desde personajes sin poderes especiales hasta superhéroes que se mueven a velocidades absurdas.
+:::
+
+### 3.3 Todo junto con `summary()`
+
+R tiene una función que calcula varios estadísticos de una sola vez:
+
+```{r}
+summary(superheroes$Speed_velocity)
+```
+
+---
+
+## 4. Primeros pasos con dplyr
+
+![](../img/dplyr.jpg){fig-align="center" width="200px"}
+
+`dplyr` nos permite explorar y manipular la base de datos de forma más flexible. Vamos a ver funciones básicas.
+
+### 4.1 `select()` — elegir columnas
+
+```{r}
+superheroes |> 
+  select(Character, Speed_velocity)
+```
+
+### 4.2 `filter()` — elegir filas según una condición
+
+Por ejemplo, ¿qué personajes son del bando "Bad" (villanos)?
+
+```{r}
+superheroes |> 
+  filter(Alignment == "Bad")
+```
+
+¿Y quiénes tienen una velocidad de combate (`Combat`) mayor o igual a 90?
+
+```{r}
+superheroes |> 
+  filter(Combat >= 90)
+```
+
+### 4.3 `arrange()` — ordenar
+
+Del más veloz al más lento:
+
+```{r}
+superheroes |> 
+  arrange(desc(Speed_velocity)) |> 
+  select(Character, Universe, Speed_velocity)
+```
+
+### 4.4 `group_by()` + `summarise()` — resumir por grupo
+
+¿Cuál es la velocidad promedio según el alineamiento del personaje?
+
+```{r}
+superheroes |> 
+  group_by(Alignment) |> 
+  summarise(
+    velocidad_promedio = mean(Speed_velocity, na.rm = TRUE),
+    desviacion = sd(Speed_velocity, na.rm = TRUE),
+    n_personajes = n()
+  )
+```
+
+¿Y según el universo de origen? (mostramos solo los 10 universos con más personajes)
+
+```{r}
+superheroes |> 
+  group_by(Universe) |> 
+  summarise(
+    velocidad_promedio = mean(Speed_velocity, na.rm = TRUE),
+    n_personajes = n()
+  ) |> 
+  arrange(desc(n_personajes)) |> 
+  slice_head(n = 10)
+```
+
+---
+
+::: {.callout-note}
+## Recuerda que así se ve la diferencia entre variables cualitativas y cuantitativas, y sus niveles de medición
+
+| Naturaleza | Nivel de medición | ¿Cuándo se usa? | Ejemplo |
+|---|---|---|---|
+| Cualitativa | Nominal | Cuando las categorías no tienen ningún orden lógico entre sí | Sexo, nacionalidad, color de ojos |
+| Cualitativa | Ordinal | Cuando las categorías sí tienen un orden, pero la distancia entre ellas no es constante ni medible | Nivel educacional, escala Likert (muy en desacuerdo a muy de acuerdo) |
+| Cuantitativa discreta | Intervalo | Cuando los valores son numéricos enteros/contables, con distancias iguales pero **sin cero absoluto** (el cero es arbitrario) | Año calendario, número de siglo o década |
+| Cuantitativa discreta | Razón | Cuando los valores son numéricos enteros/contables, con distancias iguales y **con cero absoluto** | Número de hijos, número de goles, cantidad de hermanos |
+| Cuantitativa continua | Intervalo | Cuando los valores pueden tomar cualquier valor dentro de un rango (decimales incluidos), con distancias iguales pero **sin cero absoluto** | Temperatura en °C |
+| Cuantitativa continua | Razón | Cuando los valores pueden tomar cualquier valor dentro de un rango (decimales incluidos), con distancias iguales y **con cero absoluto** | Edad, ingreso, peso, velocidad (km/h) |
+:::
+
+---
+
+## 7. Ahora te toca a ti!
+
+::: {.callout-tip collapse="true"}
+## Ejercicio 1: Estadísticos descriptivos
+
+Usando la variable `Combat` (habilidad de combate):
+
+1. Calcula la media, mediana, varianza y desviación estándar (recuerda usar `na.rm = TRUE`).
+2. ¿La media y la mediana son parecidas? ¿Qué te dice eso sobre la distribución?
+3. ¿Cuál es el personaje con mayor `Combat`? (pista: usa `arrange()`)
+:::
+
+::: {.callout-tip collapse="true"}
+## Ejercicio 2: dplyr
+
+1. Filtra los personajes que sean del género `"Female"`.
+2. De ese grupo, ordénalos de mayor a menor `Intelligence`.
+3. Calcula el promedio de `Intelligence` de ese subgrupo con `summarise()`. ¿Es mayor o menor que el promedio general de la base completa?
+:::
+
+---
+
+## 8. Resumen de funciones vistas hoy
+
+| Función | Paquete | Qué hace |
+|---|---|---|
+| `mean()` | base R | Calcula el promedio |
+| `median()` | base R | Calcula la mediana |
+| `sd()` | base R | Calcula la desviación estándar |
+| `var()` | base R | Calcula la varianza |
+| `range()` | base R | Entrega el mínimo y máximo |
+| `summary()` | base R | Resumen rápido de estadísticos |
+| `select()` | dplyr | Elige columnas |
+| `filter()` | dplyr | Elige filas según condición |
+| `arrange()` | dplyr | Ordena filas |
+| `group_by()` + `summarise()` | dplyr | Resume datos por grupo |
+| `slice_head()` | dplyr | Se queda con las primeras n filas |
+

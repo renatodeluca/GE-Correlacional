@@ -193,6 +193,14 @@ Supongamos que queremos investigar si un nuevo medicamento reduce la presión ar
 - **Hipótesis nula (H0)**: El nuevo medicamento no reduce la presión arterial en comparación con el placebo.
 - **Hipótesis alternativa (H1)**: El nuevo medicamento reduce la presión arterial en comparación con el placebo.
 
+---
+
+## Guía de ejercicios
+
+[Ver PDF de la guía](../input/Gu%C3%ADa%20de%20ejercicios.pdf)
+
+[Descargar guía en Word](../input/Gu%C3%ADa%20de%20ejercicios.docx)
+
 ## Cómo redactar una hipótesis estadística
 
 **Qué tipo de hipótesis es esta? Unidireccional o bidireccional?**

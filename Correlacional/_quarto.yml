@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: ../docs
+  resources:
+    - input/guia-ejercicios.pdf
+    - input/guia-ejercicios.docx
 
 website:
   title: "Grupo de Estudio para Estadística Correlacional"
@@ -21,7 +24,9 @@ website:
         - section: "Todas las sesiones"
           contents:
             - sesiones/sesion-1.qmd
-            - sesiones/sesion-2.qmd
+            - section: "Sesión 2"
+              contents:
+                - sesion-2-material.qmd
             
 
 format:

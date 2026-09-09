@@ -27,6 +27,10 @@ website:
             - section: "Sesión 2"
               contents:
                 - sesion-2-material.qmd
+            - section: "Sesión 3"
+              contents:
+                - sesiones/sesion-3.qmd
+              
             
 
 format:

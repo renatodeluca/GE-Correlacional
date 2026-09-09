@@ -402,5 +402,156 @@
     "title": "Sesión 2 - Preparación para primera prueba",
     "section": "Guía de ejercicios",
     "text": "Guía de ejercicios\nVer PDF de la guía\nDescargar guía en Word"
+  },
+  {
+    "objectID": "sesiones/sesion-3.html",
+    "href": "sesiones/sesion-3.html",
+    "title": "Sesión 3: Visualización de datos con ggplot2",
+    "section": "",
+    "text": "Un paquete o librería en R es un conjunto de funciones, datos y documentación que amplía las capacidades del lenguaje R. Los paquetes permiten a los usuarios realizar tareas específicas sin tener que escribir todo el código desde cero. Los más usados en R son:\n\ndplyr: para manipulación de datos.\nggplot2: para visualización de datos.\nhaven: para importar y exportar datos.\nreadr: para leer y escribir archivos de datos.\nsurvey: para análisis de encuestas con diseño complejo.\n\n\n\n\n\n\n\nNote\n\n\n\nAdemás, existen paquetes especializados en contextos específicos, entre ellos diversos paquetes desarrollados para trabajar con datos de Chile. Por ejemplo, chilemapas permite trabajar con mapas de Chile y sus distintas regiones; chileapi facilita el acceso a datos provenientes de las API del Gobierno de Chile; y calidad, desarrollado por el INE, está orientado a la evaluación de estándares de calidad en estadísticas y encuestas oficiales. Estos paquetes amplían las posibilidades de R para el análisis de datos y permiten adaptar sus herramientas a necesidades específicas del contexto nacional.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 3",
+      "Sesión 3: Visualización de datos con ggplot2"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-3.html#recordatorio-qué-es-un-paquete-o-una-librería-en-r",
+    "href": "sesiones/sesion-3.html#recordatorio-qué-es-un-paquete-o-una-librería-en-r",
+    "title": "Sesión 3: Visualización de datos con ggplot2",
+    "section": "",
+    "text": "Un paquete o librería en R es un conjunto de funciones, datos y documentación que amplía las capacidades del lenguaje R. Los paquetes permiten a los usuarios realizar tareas específicas sin tener que escribir todo el código desde cero. Los más usados en R son:\n\ndplyr: para manipulación de datos.\nggplot2: para visualización de datos.\nhaven: para importar y exportar datos.\nreadr: para leer y escribir archivos de datos.\nsurvey: para análisis de encuestas con diseño complejo.\n\n\n\n\n\n\n\nNote\n\n\n\nAdemás, existen paquetes especializados en contextos específicos, entre ellos diversos paquetes desarrollados para trabajar con datos de Chile. Por ejemplo, chilemapas permite trabajar con mapas de Chile y sus distintas regiones; chileapi facilita el acceso a datos provenientes de las API del Gobierno de Chile; y calidad, desarrollado por el INE, está orientado a la evaluación de estándares de calidad en estadísticas y encuestas oficiales. Estos paquetes amplían las posibilidades de R para el análisis de datos y permiten adaptar sus herramientas a necesidades específicas del contexto nacional.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 3",
+      "Sesión 3: Visualización de datos con ggplot2"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-3.html#lógica-de-ggplot2",
+    "href": "sesiones/sesion-3.html#lógica-de-ggplot2",
+    "title": "Sesión 3: Visualización de datos con ggplot2",
+    "section": "5. Lógica de ggplot2",
+    "text": "5. Lógica de ggplot2\n\n\n\n\n\nggplot2 es un paquete para crear gráficos de forma flexible. La idea es construir los gráficos por capas, agregando elementos uno a uno.\n\n\n\n\n\nEl orden va más o menos así:\n•⁠ ⁠Data: la base de datos que vamos a graficar. •⁠ ⁠Mapping: qué variables van en los ejes, colores, tamaños, etc. •⁠ ⁠Layers: qué tipo de gráfico queremos (barras, puntos, líneas, etc.) y cómo se ve. •⁠ ⁠Scales: cómo se ven los ejes, colores, tamaños, etc. Básicamente el tamaño. •⁠ ⁠Facets: si queremos separar el gráfico en paneles según alguna variable. •⁠ ⁠Coordinates: si queremos cambiar la orientación del gráfico o usar coordenadas polares. •⁠ ⁠Theme: cómo se ve el gráfico en general (colores, tipografía, etc.).\nSin embargo, las más básicas son estas tres: data, mapping y layers. Todo lo demás es opcional."
+  },
+  {
+    "objectID": "sesiones/sesion-3.html#visualizando-la-velocidad-de-los-superhéroes-con-ggplot2",
+    "href": "sesiones/sesion-3.html#visualizando-la-velocidad-de-los-superhéroes-con-ggplot2",
+    "title": "Sesión 3: Visualización de datos con ggplot2",
+    "section": "6. Visualizando la velocidad de los superhéroes con ggplot2",
+    "text": "6. Visualizando la velocidad de los superhéroes con ggplot2\nComo la variable ⁠ Speed_velocity ⁠ tiene valores extremadamente altos (personajes que se mueven a velocidades cósmicas), vamos a filtrar y quedarnos solo con los personajes con velocidad menor a 500 km/h, para que los gráficos se puedan interpretar mejor.\n\n6.1 Histograma: ¿cómo se distribuye la velocidad?\n``{r} superheroes |&gt; filter(Speed_velocity &gt; 0, Speed_velocity &lt; 500) |&gt; ggplot(aes(x = Speed_velocity)) + geom_histogram(bins = 30, fill = “steelblue”, color = “white”) + labs( title = “Distribución de la velocidad máxima”, subtitle = “Personajes con velocidad menor a 500 km/h”, x = “Velocidad (km/h)”, y = “Número de personajes” )\n⁠ ### 6.2 Boxplot: comparando velocidad según alineamiento\n ⁠{r} superheroes |&gt; filter(Speed_velocity &gt; 0, Speed_velocity &lt; 500) |&gt; ggplot(aes(x = Alignment, y = Speed_velocity)) + geom_boxplot(fill = “tomato”) + labs( title = “Velocidad máxima según alineamiento”, subtitle = “Personajes con velocidad menor a 500 km/h”, x = “Alineamiento”, y = “Velocidad (km/h)” )\n\n\n6.3 Gráfico de barras: velocidad promedio por universo\n``{r} superheroes |&gt; filter(Speed_velocity &lt; 500) |&gt; group_by(Universe) |&gt; summarise( velocidad_promedio = mean(Speed_velocity), n_personajes = n() ) |&gt; filter(n_personajes &gt;= 3) |&gt; arrange(desc(velocidad_promedio)) |&gt; slice_head(n = 10) |&gt; ggplot(aes(x = reorder(Universe, velocidad_promedio), y = velocidad_promedio)) + geom_col(fill = “darkorange”) + coord_flip() + labs( title = “Top 10 universos con mayor velocidad promedio”, subtitle = “Solo universos con 3+ personajes, velocidad menor a 500 km/h”, x = NULL, y = “Velocidad promedio (km/h)” )\n\nTips\n•⁠ ⁠El histograma nos permite ver la distribución de una variable continua.\n•⁠ ⁠El boxplot o gráfico de caja es especialmente útil para identificar valores atípicos (outliers) y la dispersión de los datos. En nuestro caso, podemos ver que hay personajes con velocidades extremadamente altas que podrían estar afectando la media.\n•⁠ ⁠El gráfico de barras nos permite comparar la velocidad promedio entre distintos universos, y podemos ver que algunos universos tienen personajes con velocidades mucho más altas que otros.\n\n\n\n\n\n\nTipEjercicio 3: ggplot2\n\n\n\n\n\n1.⁠ ⁠Crea un histograma de la variable ⁠ Durability ⁠. 2.⁠ ⁠Usando ⁠ group_by() ⁠ y ⁠ summarise() ⁠, calcula el promedio de ⁠ Combat ⁠ según ⁠ Alignment ⁠. 3.⁠ ⁠Con ese resultado, crea un gráfico de barras (⁠ geom_col() ⁠) que muestre el promedio de ⁠ Combat ⁠ para cada ⁠ Alignment ⁠."
+  },
+  {
+    "objectID": "sesiones/sesion-3.html#qué-es-ggplot2",
+    "href": "sesiones/sesion-3.html#qué-es-ggplot2",
+    "title": "Sesión 3: Visualización de datos con ggplot2",
+    "section": "1. Qué es ggplot2?",
+    "text": "1. Qué es ggplot2?\n\n\n\n\n\nggplot2 es un paquete para crear gráficos de forma flexible. La idea es construir los gráficos por capas, agregando elementos uno a uno.\n\n1.1 Orden de construcción de un gráfico con ggplot2\n\n\n\n\n\nEl orden va más o menos así:\n\n⁠Data: la base de datos que vamos a graficar.\n⁠Mapping: qué variables van en los ejes, colores, tamaños, etc.\n⁠Layers: qué tipo de gráfico queremos (barras, puntos, líneas, etc.) y cómo se ve.\n⁠Scales: cómo se ven los ejes, colores, tamaños, etc. Básicamente el tamaño.\n⁠Facets: si queremos separar el gráfico en paneles según alguna variable.\n⁠Coordinates: si queremos cambiar la orientación del gráfico o usar coordenadas polares.\n⁠Theme: cómo se ve el gráfico en general (colores, tipografía, etc.).\n\nSin embargo, las más básicas son estas tres: data, mapping y layers. Todo lo demás es opcional.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 3",
+      "Sesión 3: Visualización de datos con ggplot2"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-3.html#fortalezas-y-debilidades-de-ggplot2",
+    "href": "sesiones/sesion-3.html#fortalezas-y-debilidades-de-ggplot2",
+    "title": "Sesión 3: Visualización de datos con ggplot2",
+    "section": "2. Fortalezas y debilidades de ggplot2",
+    "text": "2. Fortalezas y debilidades de ggplot2\n\n\n\n\n\n\n\n\nCaracterística\nFortalezas (Ventajas)\nDebilidades\n\n\n\n\nDiseño y Estructura\nEstructura lógica y consistente basada en capas.\nCurva de aprendizaje inicial pronunciada para principiantes.\n\n\nCalidad Visual\nGráficos con calidad de publicación por defecto.\nPersonalizar detalles minuciosos puede requerir código muy largo.\n\n\nFlexibilidad\nAlta flexibilidad para combinar diferentes tipos de gráficos.\nNo está diseñado para gráficos tridimensionales (3D).\n\n\nInteractividad\nExcelente integración con extensiones modernas.\nLos gráficos nativos son estáticos, no interactivos.\n\n\nRendimiento\nExcelente manejo de datos bien estructurados (tidy data).\nPuede volverse lento con conjuntos de datos muy grandes.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 3",
+      "Sesión 3: Visualización de datos con ggplot2"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-3.html#nuestra-base-de-datos-ovnis",
+    "href": "sesiones/sesion-3.html#nuestra-base-de-datos-ovnis",
+    "title": "Sesión 3: Visualización de datos con ggplot2",
+    "section": "3. Nuestra base de datos: OVNIS",
+    "text": "3. Nuestra base de datos: OVNIS\n\n# Cargar librerías necesarias\nlibrary(tidyverse)\nlibrary(ggplot2)\n# Si tu computador no tiene instalado los paquetes tidyverse ni ggplot2, puedes instalarlos con:\n# install.packages(\"tidyverse\")\n# install.packages(\"ggplot2\")\n#Asegurate de sacarle el \"#\"!\n\nTrabajaremos con una base de datos de OVNIS (objetos voladores no identificados) en Estados Unidos. La base de datos incluye variables como la fecha del avistamiento, la ubicación, la duración, la forma del objeto, y más.\nAlgunas de sus variables son:\n\n6.1 Histograma: ¿cómo se distribuye la velocidad?\n``{r} superheroes |&gt; filter(Speed_velocity &gt; 0, Speed_velocity &lt; 500) |&gt; ggplot(aes(x = Speed_velocity)) + geom_histogram(bins = 30, fill = “steelblue”, color = “white”) + labs( title = “Distribución de la velocidad máxima”, subtitle = “Personajes con velocidad menor a 500 km/h”, x = “Velocidad (km/h)”, y = “Número de personajes” )\n⁠ ### 6.2 Boxplot: comparando velocidad según alineamiento\n ⁠{r} superheroes |&gt; filter(Speed_velocity &gt; 0, Speed_velocity &lt; 500) |&gt; ggplot(aes(x = Alignment, y = Speed_velocity)) + geom_boxplot(fill = “tomato”) + labs( title = “Velocidad máxima según alineamiento”, subtitle = “Personajes con velocidad menor a 500 km/h”, x = “Alineamiento”, y = “Velocidad (km/h)” )\n\n\n6.3 Gráfico de barras: velocidad promedio por universo\n``{r} superheroes |&gt; filter(Speed_velocity &lt; 500) |&gt; group_by(Universe) |&gt; summarise( velocidad_promedio = mean(Speed_velocity), n_personajes = n() ) |&gt; filter(n_personajes &gt;= 3) |&gt; arrange(desc(velocidad_promedio)) |&gt; slice_head(n = 10) |&gt; ggplot(aes(x = reorder(Universe, velocidad_promedio), y = velocidad_promedio)) + geom_col(fill = “darkorange”) + coord_flip() + labs( title = “Top 10 universos con mayor velocidad promedio”, subtitle = “Solo universos con 3+ personajes, velocidad menor a 500 km/h”, x = NULL, y = “Velocidad promedio (km/h)” )\n\nTips\n•⁠ ⁠El histograma nos permite ver la distribución de una variable continua.\n•⁠ ⁠El boxplot o gráfico de caja es especialmente útil para identificar valores atípicos (outliers) y la dispersión de los datos. En nuestro caso, podemos ver que hay personajes con velocidades extremadamente altas que podrían estar afectando la media.\n•⁠ ⁠El gráfico de barras nos permite comparar la velocidad promedio entre distintos universos, y podemos ver que algunos universos tienen personajes con velocidades mucho más altas que otros.\n\n\n\n\n\n\nTipEjercicio 3: ggplot2\n\n\n\n\n\n1.⁠ ⁠Crea un histograma de la variable ⁠ Durability ⁠. 2.⁠ ⁠Usando ⁠ group_by() ⁠ y ⁠ summarise() ⁠, calcula el promedio de ⁠ Combat ⁠ según ⁠ Alignment ⁠. 3.⁠ ⁠Con ese resultado, crea un gráfico de barras (⁠ geom_col() ⁠) que muestre el promedio de ⁠ Combat ⁠ para cada ⁠ Alignment ⁠."
+  },
+  {
+    "objectID": "sesiones/sesion-3.html#nuestra-base-de-datos-propinas",
+    "href": "sesiones/sesion-3.html#nuestra-base-de-datos-propinas",
+    "title": "Sesión 3: Visualización de datos con ggplot2",
+    "section": "3. Nuestra base de datos: Propinas",
+    "text": "3. Nuestra base de datos: Propinas\nTrabajaremos con una base de datos de propinas en un restaurante.\nAlgunas de sus variables son:\n\ntotal_bill: Monto total de la cuenta (en dólares).\ntip: Monto de la propina (en dólares).\nsex: Sexo del cliente que pagó la cuenta (Male o Female).\nsmoker: Indica si el cliente es fumador (Yes o No).\nday: Día de la semana en que se realizó la transacción (Thur, Fri, Sat, Sun).\ntime: Momento del día en que se realizó la transacción (Lunch o Dinner).\n\n\n3.1 Cargar librerías necesarias\nCargaremos las librerías necesarias para trabajar con la base de datos y crear gráficos, tidyverse y ggplot2. Si tu computador no tiene instalado alguno de estos paquetes, puedes instalarlos con install.packages(\"nombre_del_paquete\").\n\n# Cargar librerías necesarias\nlibrary(tidyverse)\nlibrary(ggplot2)\n# Si tu computador no tiene instalado los paquetes tidyverse ni ggplot2, puedes instalarlos con:\n# install.packages(\"tidyverse\")\n# install.packages(\"ggplot2\")\n#Asegurate de sacarle el \"#\"!",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 3",
+      "Sesión 3: Visualización de datos con ggplot2"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-3.html#cargar-la-base-de-datos",
+    "href": "sesiones/sesion-3.html#cargar-la-base-de-datos",
+    "title": "Sesión 3: Visualización de datos con ggplot2",
+    "section": "4. Cargar la base de datos",
+    "text": "4. Cargar la base de datos\nPara cargar la base de datos, utilizamos la función read_csv() del paquete readr, que forma parte del conjunto de paquetes tidyverse. Esta función permite leer archivos CSV y convertirlos en un data frame de R.\n\n# Cargar la base de datos de propinas\ntips &lt;- read_csv(\"https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv\")",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 3",
+      "Sesión 3: Visualización de datos con ggplot2"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-3.html#tipos-de-gráficos-en-ggplot2",
+    "href": "sesiones/sesion-3.html#tipos-de-gráficos-en-ggplot2",
+    "title": "Sesión 3: Visualización de datos con ggplot2",
+    "section": "5. Tipos de gráficos en ggplot2",
+    "text": "5. Tipos de gráficos en ggplot2\nExisten múltiples tipos de gráficos que podemos crear con ggplot2, cada uno con distintas características y usos, entre ellos:\n\nGráfico de dispersión (scatter plot): útil para visualizar la relación entre dos variables continuas.\nGráfico de líneas (line plot): útil para mostrar tendencias a lo largo del tiempo.\nGráfico de barras (bar plot): útil para comparar cantidades entre diferentes categorías.\nHistograma (histogram): útil para mostrar la distribución de una variable continua.\nBoxplot (gráfico de caja): útil para mostrar la distribución de una variable continua y detectar valores atípicos.\nGráfico de densidad (density plot): útil para estimar la distribución de una variable continua.\nGráfico de violín (violin plot): combina características del boxplot y del density plot para mostrar la distribución de una variable continua.\n\nHoy veremos cómo crear un histograma, un boxplot y un gráfico de barras.\n\n5.1 Histograma: ¿cómo se distribuye la propina?\n\n# Crear un histograma de la distribución de las propinas\ntips |&gt; \n  ggplot(aes(x = tip)) +\n  geom_histogram(bins = 30, fill = \"darkgreen\", color = \" black\") +\n  labs(\n    title = \"Distribución de las propinas\",\n    x = \"Propina (dólares)\",\n    y = \"Número de transacciones\"\n  )\n\n\n\n\n\n\n\n\n\nDesglosemos el código:\n\ntips |&gt; ggplot(aes(x = tip)): indica que vamos a graficar la variable tip de la base de datos tips. Aes es la función que define los aesthetics del gráfico, en este caso el eje x.\ngeom_histogram(bins = 30, fill = “darkgreen”, color = “white”): crea un histograma con 30 bins(número total de barras), relleno en verde oscuro (darkgreen) y borde negro (black).\nlabs(): agrega etiquetas al gráfico, incluyendo el título y los ejes.\n\n\n\n\n\n\n\nNote\n\n\n\nCon ggplot2 usamos “+” para agregar capas al gráfico. Cada capa puede ser un tipo de gráfico, una escala, un tema, etc. En este caso, agregamos un histograma y etiquetas al gráfico.\nRecordemos además que |&gt; es un pipe, al igual que %&gt;%, que nos permite encadenar funciones de manera más legible.\n\n\n\n\n5.1.1 Cómo interpretar el histograma\nA partir de la visualización, podemos afirmar que la mayoría de las propinas están concentradas entre 1 y 5 dólares, con un pico alrededor de los 2 dólares. Esto indica que la distribución de las propinas es asimétrica hacia la derecha, con algunas propinas más altas que son menos frecuentes.\nPor tanto, usamos el histograma para visualizar la distribución de una variable continua y detectar patrones o tendencias en los datos.\n\n\n\n5.2 Boxplot: comparando propinas según el sexo del cliente\n\ntips |&gt; \n  ggplot(aes(x = sex, y = tip)) +\n  geom_boxplot(fill = \"lightblue\") +\n  labs(\n    title = \"Propinas por sexo\",\n    x = \"Sexo\",\n    y = \"Propina (dólares)\"\n  )\n\n\n\n\n\n\n\n\n\nDesglosemos el código:\n\ntips |&gt; ggplot(aes(x = sex, y = tip)): indica que vamos a graficar la variable tip de la base de datos tips, donde sex es la variable independiente (eje x) y tip es la variable dependiente (eje y).\ngeom_boxplot(fill = “lightblue”): crea un boxplot con relleno azul claro (lightblue).\nlabs(): agrega etiquetas al gráfico, incluyendo el título y los ejes.\n\n\n\n5.2.1 Cómo interpretar el boxplot\nA partir de la visualización, podemos observar que las propinas tienden a ser ligeramente más altas para los clientes masculinos en comparación con los femeninos. Además, el boxplot nos permite identificar posibles valores atípicos (outliers) en ambas categorías.\n\n\n\n5.3 Gráfico de barras: comparando propinas según el día de la semana\n\ntips |&gt; \n  ggplot(aes(x = day, y = tip)) +\n  geom_bar(stat = \"summary\", fun = \"mean\", fill = \"orange\") +\n  labs(\n    title = \"Propinas promedio por día de la semana\",\n    x = \"Día de la semana\",\n    y = \"Propina promedio (dólares)\"\n  )\n\n\n\n\n\n\n\n\n\nDesglosemos el código:\n\ntips |&gt; ggplot(aes(x = day, y = tip)): indica que vamos a graficar la variable tip de la base de datos tips, donde day es la variable independiente (eje x) y tip es la variable dependiente (eje y).\ngeom_bar(stat = “summary”, fun = “mean”, fill = “orange”): crea un gráfico de barras donde cada barra representa la propina promedio para cada día de la semana, con relleno naranja (orange).ç\n\n\n\n\n\n\n\nNote\n\n\n\nCon fun = “mean” le indicamos a ggplot2 que queremos calcular la media de las propinas para cada día de la semana. Podría ser cualquier otra función de resumen, como la mediana (fun = “median”) o la suma (fun = “sum”). Con stat = “summary” le indicamos a ggplot2 que queremos resumir los datos en lugar de contar la cantidad de observaciones.\n\n\n\n\n5.3.1 Cómo interpretar el histograma\nA partir de la visualización, podemos observar que las propinas promedio tienden a ser más altas los fines de semana (sábado y domingo) en comparación con los días de semana (jueves y viernes). Esto podría deberse a que los clientes tienden a gastar más durante el fin de semana, lo que se refleja en propinas más generosas.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 3",
+      "Sesión 3: Visualización de datos con ggplot2"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-3.html#conclusión",
+    "href": "sesiones/sesion-3.html#conclusión",
+    "title": "Sesión 3: Visualización de datos con ggplot2",
+    "section": "6. Conclusión",
+    "text": "6. Conclusión\nEn esta sesión, hemos aprendido a utilizar ggplot2 para crear visualizaciones de datos en R. Hemos explorado diferentes tipos de gráficos, como histogramas, boxplots y gráficos de barras, y hemos aprendido a interpretar los resultados obtenidos. Además, hemos discutido las fortalezas y debilidades de ggplot2 como herramienta de visualización de datos.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 3",
+      "Sesión 3: Visualización de datos con ggplot2"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-3.html#personalización",
+    "href": "sesiones/sesion-3.html#personalización",
+    "title": "Sesión 3: Visualización de datos con ggplot2",
+    "section": "7 Personalización",
+    "text": "7 Personalización\nSe pueden usar muchos colores, y se pueden personalizar los gráficos de muchas maneras. Por ejemplo, podemos cambiar el tema del gráfico, agregar etiquetas, cambiar los colores de las barras o líneas, entre otros.\nCon colores como orange, lightblue, darkgreen, etc., podemos hacer que nuestros gráficos sean más atractivos y fáciles de interpretar. Además, podemos usar funciones como theme() para cambiar la apariencia general del gráfico, incluyendo el fondo, las fuentes y los tamaños de los elementos.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 3",
+      "Sesión 3: Visualización de datos con ggplot2"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-3.html#ahora-te-toca-a-ti",
+    "href": "sesiones/sesion-3.html#ahora-te-toca-a-ti",
+    "title": "Sesión 3: Visualización de datos con ggplot2",
+    "section": "Ahora te toca a ti!",
+    "text": "Ahora te toca a ti!\n\nCrea un histograma de la variable total_bill para visualizar la distribución de los montos totales de las cuentas en el restaurante. Ajusta el número de bins según lo consideres necesario y personaliza los colores del gráfico.\nCrea un boxplot para comparar las propinas según si el cliente es fumador o no. Analiza los resultados y comenta si hay diferencias importantes entre ambos grupos.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 3",
+      "Sesión 3: Visualización de datos con ggplot2"
+    ]
   }
 ]

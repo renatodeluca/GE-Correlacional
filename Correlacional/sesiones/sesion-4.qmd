@@ -1,0 +1,443 @@
+---
+title: "Sesión 4: Análisis Exploratorio de Datos"
+subtitle: "Combinando dplyr y ggplot2 para investigar datos"
+toc: true
+toc-location: left
+execute:
+  warning: false
+  message: false
+---
+
+## Introducción
+
+En las sesiones anteriores aprendimos **dplyr** (para trabajar con datos) y **ggplot2** (para hacer gráficos). Hoy vamos a **mezclar** estas dos herramientas para hacer un **Análisis Exploratorio de Datos**, que en inglés se llama **EDA**.
+
+## Objetivos de la sesión
+
+Al finalizar vas a poder:
+
+- Entender qué es un EDA y por qué es útil.
+- Hacer preguntas sencillas sobre tus datos.
+- Usar **dplyr** para obtener números que respondan esas preguntas.
+- Crear **gráficos** con ggplot2 que muestren lo que hay en los datos.
+- Sacar conclusiones y pensar en nuevas preguntas.
+
+---
+
+## 0. Preparación
+
+### Cargar paquetes y datos
+
+Para esta sesión usaremos el paquete `tidyverse` (que trae dplyr y ggplot2) y los datos de **Star Wars** — información de personajes de la saga.
+
+```{r}
+library(tidyverse)
+
+starwars <- starwars
+```
+
+Si ya tienes `tidyverse` cargado, `starwars` viene incluido. Si no, instala con:
+
+```{r}
+#| eval: false
+install.packages("tidyverse")
+```
+
+---
+
+## 1. ¿Qué es un Análisis Exploratorio de Datos?
+
+**EDA** es una forma de investigar un conjunto de datos para:
+
+- Entender de qué trata y cómo está organizado
+- Encontrar patrones, cosas raras o fuera de lo común
+- Ver si hay relaciones entre las columnas
+- Tener ideas para análisis más adelante
+
+Es como ser detective: **haces preguntas, buscas pistas (números y gráficos), y sacas conclusiones**.
+
+::: {.callout-important}
+## ¿Para qué sirve el EDA?
+
+Si no exploras primero, podrías usar fórmulas o modelos sin entender bien los datos, y cometer errores. Hacer EDA **evita sorpresas** después.
+:::
+
+---
+
+## 2. Conociendo los datos
+
+Antes de responder preguntas, necesitamos **saber qué tenemos**.
+
+### 2.1 Estructura básica
+
+```{r}
+glimpse(starwars)
+```
+
+```{r}
+nrow(starwars)   # cuántas filas (personajes)
+ncol(starwars)   # cuántas columnas (variables)
+```
+
+**Pregunta:** ¿Cuántos personajes hay? ¿Cuántos datos se guardan de cada uno?
+
+### 2.2 Las columnas
+
+| Columna | Qué significa |
+|---|---|
+| `name` | Nombre del personaje |
+| `height` | Altura en centímetros |
+| `mass` | Peso en kilogramos |
+| `hair_color` | Color de cabello |
+| `skin_color` | Color de piel |
+| `eye_color` | Color de ojos |
+| `birth_year` | Año de nacimiento |
+| `sex` | Sexo del personaje |
+| `gender` | Género |
+| `homeworld` | Planeta de origen |
+| `species` | Especie |
+| `films` | Películas en que aparece |
+
+### 2.3 Resumen rápido
+
+`starwars` tiene algunas columnas que guardan **listas** (`films`, `vehicles`, `starships`), y si usamos `summary()` con todo, el resultado se vuelve gigante y difícil de leer. Por eso, primero elegimos las columnas que vamos a usar:
+
+```{r}
+proc_starwars <- starwars |> 
+  select(name, height, mass, hair_color, skin_color, eye_color, 
+         birth_year, sex, gender, homeworld, species)
+
+summary(proc_starwars)
+```
+
+::: {.callout-note collapse="true"}
+## ¿Por qué pasa esto con `films`, `vehicles` y `starships`?
+
+Estas columnas tienen **listas**: cada celda puede tener varios valores (por ejemplo, un personaje puede aparecer en 3 películas). `summary()` no sabe cómo resumir eso fácilmente, así que por ahora las dejamos fuera.
+:::
+
+::: {.callout-note collapse="true"}
+## Tipos de datos
+
+Este dataset tiene **datos numéricos** (height, mass, birth_year) y **datos de texto** (species, homeworld, gender). Sirve para practicar con tipos diferentes de información.
+:::
+
+---
+
+## 3. Haciendo preguntas con dplyr
+
+Lo importante del EDA es **hacer preguntas** y usar dplyr para obtener respuestas con números.
+
+### 3.1 Pregunta 1: ¿Cuántos personajes hay por especie?
+
+```{r}
+proc_starwars |> 
+  group_by(species) |> 
+  summarise(
+    cantidad = n(),
+    porcentaje = round(n() / nrow(starwars) * 100, 1)
+  ) |> 
+  arrange(desc(cantidad))
+```
+
+**Resultado:** Los humanos son la mayoría (35%), pero hay muchas especies diferentes. Algunas tienen solo 1 o 2 personajes.
+
+### 3.2 Pregunta 2: ¿Cuánto miden en promedio por especie?
+
+```{r}
+proc_starwars |> 
+  group_by(species) |> 
+  summarise(
+    altura_promedio = mean(height, na.rm = TRUE),
+    altura_min = min(height, na.rm = TRUE),
+    altura_max = max(height, na.rm = TRUE),
+    n = n()
+  ) |> 
+  arrange(desc(altura_promedio))
+```
+
+**Resultado:** Hay **diferencias enormes** entre especies. Los Wookiees son muy altos; los Ewoks son bajitos. Los humanos están en el medio.
+
+### 3.3 Pregunta 3: ¿Quiénes son los más pesados?
+
+```{r}
+proc_starwars |> 
+  arrange(desc(mass)) |> 
+  select(name, species, height, mass, homeworld) |> 
+  head(10)
+```
+
+**Resultado:** Jabba the Hutt pesa 1358 kg, un número muy alto. Hay valores que se salen de lo normal.
+
+### 3.4 Pregunta 4: ¿La altura y el peso están relacionados?
+
+```{r}
+proc_starwars |> 
+  group_by(species) |> 
+  summarise(
+    altura_promedio = mean(height, na.rm = TRUE),
+    peso_promedio = mean(mass, na.rm = TRUE),
+    n = n()
+  ) |> 
+  filter(n >= 2) |> 
+  arrange(desc(altura_promedio))
+```
+
+**Resultado:** En general, las especies más altas tienden a ser más pesadas, pero hay excepciones.
+
+---
+
+## 4. Visualizando con ggplot2
+
+Los números ayudan, pero los **gráficos** hacen que sea más fácil ver los patrones. Vamos a dibujar lo que descubrimos.
+
+### 4.1 Gráfico 1: Altura por especie
+
+```{r}
+proc_starwars |> 
+  group_by(species) |> 
+  filter(n() >= 2) |> 
+  ungroup() |> 
+  ggplot(aes(x = fct_reorder(species, height, .fun = median), y = height, fill = species)) +
+  geom_boxplot(alpha = 0.7) +
+  geom_jitter(width = 0.2, alpha = 0.3, size = 2) +
+  coord_flip() +
+  labs(
+    title = "Altura por especie (solo especies con 2 o más personajes)",
+    x = "Especie",
+    y = "Altura (cm)",
+    fill = "Especie"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+**Cómo leerlo:**
+- La caja es donde está la mitad de los personajes
+- La línea de en medio es la mediana (el valor del centro)
+- Los puntos son personajes sueltos
+- **Los Wookiees son muy altos**, los **Ewoks son bajitos**
+
+### 4.2 Gráfico 2: Distribución del peso (histograma)
+
+```{r}
+proc_starwars |> 
+  filter(!is.na(mass)) |> 
+  ggplot(aes(x = mass)) +
+  geom_histogram(binwidth = 50, fill = "steelblue", color = "white", alpha = 0.8) +
+  labs(
+    title = "Peso de los personajes Star Wars",
+    x = "Peso (kg)",
+    y = "Cantidad de personajes"
+  ) +
+  theme_minimal()
+```
+
+**Cómo leerlo:**
+- La mayoría de los personajes pesan entre 50 y 100 kg
+- Hay una **barra separada a la derecha**: es Jabba the Hutt (1358 kg), un peso muy fuera de lo normal
+- La mayoría se concentra a la izquierda
+
+### 4.3 Gráfico 3: ¿Qué especie tiene más personajes?
+
+```{r}
+proc_starwars |> 
+  count(species) |> 
+  arrange(desc(n)) |> 
+  head(10) |> 
+  ggplot(aes(x = reorder(species, n), y = n, fill = species)) +
+  geom_col(alpha = 0.8) +
+  coord_flip() +
+  labs(
+    title = "Las 10 especies con más personajes",
+    x = "Especie",
+    y = "Cantidad de personajes",
+    fill = "Especie"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+**Cómo leerlo:**
+- **Los humanos son la mayoría** (el 35% de todos los personajes)
+- Las demás especies tienen muchos menos representantes
+
+### 4.4 Gráfico 4: Color de ojos por género
+
+```{r}
+proc_starwars |> 
+  filter(!is.na(gender), !is.na(eye_color)) |> 
+  count(gender, eye_color) |> 
+  arrange(desc(n)) |> 
+  head(15) |> 
+  ggplot(aes(x = reorder(eye_color, n), y = n, fill = gender)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  labs(
+    title = "Género y color de ojos más comunes",
+    x = "Color de ojos",
+    y = "Cantidad de personajes",
+    fill = "Género"
+  ) +
+  theme_minimal()
+```
+
+**Cómo leerlo:**
+- El **marrón** es el color de ojos más común
+- Se puede ver cómo se reparten los colores según el género
+
+---
+
+## 5. Lo que aprendimos
+
+Después de hacer preguntas con dplyr y ver gráficos con ggplot2, esto es lo que descubrimos:
+
+::: {.callout-note collapse="true"}
+## Sobre los datos de Star Wars
+
+1. **Los humanos son la mayoría**: el 35% de todos los personajes
+2. **Hay mucha variedad de especies**: desde Wookiees muy altos hasta Ewoks muy bajitos
+3. **El peso se concentra entre 50 y 100 kg** para la mayoría
+4. **Algunos valores son muy diferentes** al resto (como Jabba the Hutt con 1358 kg)
+5. **Pocas especies tienen varios personajes**: la mayoría solo tiene 1 o 2
+:::
+
+### Preguntas nuevas que nos quedan:
+
+- ¿Por qué hay personajes con pesos tan extremos?
+- ¿Hay relación entre especie y planeta de origen?
+- ¿Los personajes de películas viejas son diferentes a los de las nuevas?
+- ¿Qué colores de ojos son más comunes en cada especie?
+
+---
+
+## 6. Ejercicios para ti
+
+::: {.callout-tip collapse="true"}
+## Ejercicio 1: Usando dplyr
+
+1. ¿Cuánto miden en promedio los personajes según su **género** (variable `gender`)?
+
+2. ¿Qué **planeta** tiene más personajes?
+:::
+
+::: {.callout-tip collapse="true"}
+## Ejercicio 2: Haciendo gráficos
+
+1. Haz un **boxplot** que compare el peso por género.
+
+2. Haz un **histograma** de la altura (`height`) de los personajes.
+:::
+
+### Código de los ejercicios
+
+```{=html}
+<div id="ejercicio-1" style="margin: 10px 0;">
+  <button onclick="verCodigo('ej1', 'analista')" style="padding: 8px 16px; cursor: pointer; background: #2c3e50; color: white; border: none; border-radius: 4px;">
+    🔒 Ver código Ejercicio 1
+  </button>
+  <div id="ej1" style="display: none; margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 4px;">
+    <pre><code># Ejercicio 1a: Altura y peso por género
+proc_starwars |> 
+  group_by(gender) |> 
+  summarise(
+    altura_promedio = mean(height, na.rm = TRUE),
+    peso_promedio = mean(mass, na.rm = TRUE),
+    n = n()
+  )
+
+# Ejercicio 1b: Planeta con más personajes
+proc_starwars |> 
+  count(homeworld) |> 
+  arrange(desc(n)) |> 
+  head(10)</code></pre>
+  </div>
+</div>
+
+<div id="ejercicio-2" style="margin: 10px 0;">
+  <button onclick="verCodigo('ej2', 'analista')" style="padding: 8px 16px; cursor: pointer; background: #2c3e50; color: white; border: none; border-radius: 4px;">
+    🔒 Ver código Ejercicio 2
+  </button>
+  <div id="ej2" style="display: none; margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 4px;">
+    <pre><code># Ejercicio 2a: Boxplot de peso por género
+proc_starwars |> 
+  filter(!is.na(gender)) |> 
+  ggplot(aes(x = gender, y = mass, fill = gender)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(title = "Peso por género",
+       x = "Género", y = "Peso (kg)") +
+  theme_minimal()
+
+# Ejercicio 2b: Histograma de altura
+proc_starwars |> 
+  filter(!is.na(height)) |> 
+  ggplot(aes(x = height)) +
+  geom_histogram(binwidth = 20, fill = "darkgreen", color = "white", alpha = 0.8) +
+  labs(title = "Altura de los personajes",
+       x = "Altura (cm)", y = "Cantidad de personajes") +
+  theme_minimal()</code></pre>
+  </div>
+</div>
+
+<script>
+function verCodigo(id, passwordCorrecta) {
+  var codigo = document.getElementById(id);
+  if (codigo.style.display === "none") {
+    var input = prompt("Ingresa la contraseña:");
+    if (input === passwordCorrecta) {
+      codigo.style.display = "block";
+    } else if (input !== null) {
+      alert("Contraseña incorrecta");
+    }
+  } else {
+    codigo.style.display = "none";
+  }
+}
+</script>
+```
+
+---
+
+## 7. Funciones que usamos hoy
+
+| Función | De qué sirve | Ejemplo |
+|---|---|---|
+| `glimpse()` | Ver la estructura de los datos | `glimpse(starwars)` |
+| `filter()` | Quedarse con filas que cumplen una condición | `filter(species == "Human")` |
+| `group_by()` | Agrupar datos por una columna | `group_by(species)` |
+| `summarise()` | Calcular resúmenes por grupo | `summarise(media = mean(height))` |
+| `count()` | Contar casos por grupo | `count(homeworld)` |
+| `arrange()` | Ordenar las filas | `arrange(desc(mass))` |
+| `select()` | Elegir qué columnas ver | `select(name, height)` |
+| `ggplot()` | Empezar un gráfico | `ggplot(aes(x, y))` |
+| `geom_histogram()` | Histograma | `geom_histogram(binwidth = 50)` |
+| `geom_boxplot()` | Diagrama de caja | `geom_boxplot()` |
+| `geom_col()` | Gráfico de barras | `geom_col()` |
+| `coord_flip()` | Girar el gráfico (para leer mejor) | `coord_flip()` |
+| `labs()` | Poner títulos y etiquetas | `labs(title = "...")` |
+| `theme_minimal()` | Tema limpio y sencillo | `theme_minimal()` |
+
+---
+
+## 8. Reflexión final
+
+Hoy **combinamos dplyr y ggplot2** para investigar datos de forma sencilla:
+
+- **Hicimos preguntas** sobre los datos
+- **Usamos dplyr** para obtener respuestas con números
+- **Creamos gráficos** para ver los patrones
+- **Sacamos conclusiones** y pensamos en más preguntas
+
+**Eso es EDA**: un ciclo de curiosidad, búsqueda y descubrimiento.
+
+---
+
+## 9. Para la próxima sesión
+
+Ya sabemos explorar y visualizar datos. Ahora falta:
+
+- **Inferencia estadística** (¿son reales las diferencias o fueron por azar?)
+- **Modelos** (¿podemos predecir algo usando los datos?)
+- **Análisis más profundo** (agrupar, comparar, buscar rarezas)
+
+¡Mantén estas preguntas en mente!

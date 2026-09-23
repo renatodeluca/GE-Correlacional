@@ -32,7 +32,3 @@ También, la pagina web permite copiar y pegar los códigos de R directamente en
 ::: {.callout-note}
 Recuerda que puedes solicitar tutorías personalizadas pinchando [aquí](https://docs.google.com/forms/d/e/1FAIpQLSdozpnwgwkn50egxmO57ObDrW-NCXBNNribf9urWjNZmU73uw/viewform).
 :::
-
-
-
-### <br> <br> <span style="color: #1b4028;">De las 161 personas encuestadas, **147 (91.30%) cree que es importante** contar con un posgrado en Estudios de Género. <br> <br> Mientras que <span style="color: #DD5C61;">solo **111 (68.94%) esta interesada en estudiar**</span> un posgrado en Estudios de Género.</span>

@@ -666,7 +666,7 @@
     "href": "sesiones/sesion-4.html#para-la-próxima-sesión",
     "title": "Sesión 4: Análisis Exploratorio de Datos",
     "section": "9. Para la próxima sesión",
-    "text": "9. Para la próxima sesión\nYa sabemos explorar y visualizar datos. Ahora falta:\n\nInferencia estadística (¿son reales las diferencias o fueron por azar?)\nModelos (¿podemos predecir algo usando los datos?)\nAnálisis más profundo (agrupar, comparar, buscar rarezas)\n\n¡Mantén estas preguntas en mente!",
+    "text": "9. Para la próxima sesión\nYa sabemos explorar y visualizar datos. Ahora falta:\n\nAsociación entre variables (¿cómo se relacionan dos variables?)\n\nNo olvides la pregunta! Nos vemos en la siguiente sesión",
     "crumbs": [
       "Sesiones",
       "Todas las sesiones",

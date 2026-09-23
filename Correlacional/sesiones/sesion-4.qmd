@@ -436,8 +436,7 @@ Hoy **combinamos dplyr y ggplot2** para investigar datos de forma sencilla:
 
 Ya sabemos explorar y visualizar datos. Ahora falta:
 
-- **Inferencia estadística** (¿son reales las diferencias o fueron por azar?)
-- **Modelos** (¿podemos predecir algo usando los datos?)
-- **Análisis más profundo** (agrupar, comparar, buscar rarezas)
+- **Asociación entre variables** (¿cómo se relacionan dos variables?)
 
-¡Mantén estas preguntas en mente!
+No olvides la pregunta!
+Nos vemos en la siguiente sesión

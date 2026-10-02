@@ -33,7 +33,10 @@ website:
             - section: "Sesión 4"
               contents:
                 - sesiones/sesion-4.qmd
-              
+            - section: "Sesión 5"
+              contents:
+                - sesiones/sesion-5.qmd
+
             
 
 format:

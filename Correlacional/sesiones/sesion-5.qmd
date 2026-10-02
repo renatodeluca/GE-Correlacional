@@ -1,0 +1,645 @@
+---
+title: "Sesión 5: Refuerzo de dplyr"
+subtitle: "Repasamos lo visto y aprendemos a crear columnas nuevas con mutate()"
+lang: es
+toc: true
+toc-location: left
+execute:
+  warning: false
+  message: false
+---
+
+## Introducción
+
+En la sesión anterior combinamos **dplyr** y **ggplot2** para hacer un EDA. Hoy volvemos a **dplyr** para dos cosas: **reforzar** las funciones que ya vimos y **sumar tres herramientas nuevas**, básicas pero muy usadas.
+
+## Objetivos de la sesión
+
+Al finalizar vas a poder:
+
+- Repasar las funciones vistas: `mean()`, `median()`, `sd()`, `var()`, `range()`, `summary()`, `select()`, `filter()`, `arrange()`, `group_by()` + `summarise()` y `slice_head()`.
+- Combinarlas en un **ejercicio intermedio** que use varias a la vez.
+- Crear **columnas nuevas** con `mutate()`.
+- Crear **categorías** con `if_else()` y `case_when()`.
+- **Contar** observaciones por categoría con `count()`.
+
+::: {.callout-note}
+## Plan sugerido 
+
+| Bloque | Tema | Tiempo |
+|---|---|---|
+| 1 | Repaso de funciones | 30 min |
+| 2 | Ejercicio intermedio | 25 min |
+| 3 | Nuevo: `mutate()` | 25 min |
+| 4 | Nuevo: `if_else()` y `case_when()` | 15 min |
+| 5 | Nuevo: `count()` | 10 min |
+| 6 | Ejercicios finales | 15 min |
+:::
+
+---
+
+## 0. Preparación
+
+### Cargar paquetes y datos
+
+Hoy usaremos `tidyverse` (que trae dplyr) y el paquete `gapminder`, con datos de **esperanza de vida, población y PIB per cápita** de 142 países entre 1952 y 2007.
+
+```{r}
+library(tidyverse)
+library(gapminder)
+```
+
+Si no tienes `gapminder` instalado, instálalo con:
+
+```{r}
+#| eval: false
+install.packages("gapminder")
+```
+
+Para la mayor parte de la sesión trabajaremos solo con el año **2007**:
+
+```{r}
+gap07 <- gapminder |>
+  filter(year == 2007)
+
+glimpse(gap07)
+```
+
+### Las columnas
+
+| Columna | Qué significa |
+|---|---|
+| `country` | País |
+| `continent` | Continente |
+| `year` | Año |
+| `lifeExp` | Esperanza de vida (años) |
+| `pop` | Población |
+| `gdpPercap` | PIB per cápita (dólares) |
+
+---
+
+## 1. Repaso de lo que ya vimos
+
+### 1.1 Estadísticos básicos (base R)
+
+Estas funciones reciben una columna y devuelven **un solo valor** (salvo `range()` y `summary()`).
+
+```{r}
+mean(gap07$lifeExp)     # promedio
+median(gap07$lifeExp)   # mediana
+sd(gap07$lifeExp)       # desviación estándar
+var(gap07$lifeExp)      # varianza
+range(gap07$lifeExp)    # mínimo y máximo
+summary(gap07$lifeExp)  # resumen rápido
+```
+
+::: {.callout-warning}
+## Cuidado con los NA
+Si la columna tiene valores faltantes, el resultado es `NA`. Se soluciona con `na.rm = TRUE`.
+```{r}
+x <- c(10, 20, NA)
+mean(x)
+mean(x, na.rm = TRUE)
+```
+:::
+
+**Pregunta rápida:** si la media es mucho mayor que la mediana, ¿qué nos dice sobre la distribución? Compáralas en `gap07$gdpPercap`.
+
+::: {.callout-tip collapse="true"}
+## Solución
+```{r}
+mean(gap07$gdpPercap)
+median(gap07$gdpPercap)
+```
+La media (~11.680) es bastante mayor que la mediana (~6.124): hay pocos países muy ricos que "jalan" el promedio hacia arriba (distribución asimétrica a la derecha). Esto lo vimos [Aquí](https://renatodeluca.github.io/GE-Correlacional/sesiones/sesion-1.html#medidas-de-tendencia-central)
+:::
+
+### 1.2 `select()`: elegir columnas
+
+```{r}
+gap07 |> select(country, continent, lifeExp) |> slice_head(n = 3)
+
+# Quitar columnas con el signo menos
+gap07 |> select(-year, -pop) |> slice_head(n = 3)
+```
+
+**Cómo leerlo:** la primera línea deja solo las 3 columnas que nombramos; la segunda deja **todas menos** `year` y `pop`.
+
+### 1.3 `filter()`: elegir filas según una condición
+
+```{r}
+# Una condición
+gap07 |> filter(continent == "Americas") |> slice_head(n = 3)
+
+# Dos condiciones (Y): ambas deben cumplirse
+gap07 |> filter(continent == "Americas", lifeExp > 75) |> slice_head(n = 3)
+
+# O: una u otra
+gap07 |> filter(continent == "Asia" | continent == "Europe") |> slice_head(n = 3)
+
+# Atajo para varias opciones
+gap07 |> filter(continent %in% c("Asia", "Europe")) |> slice_head(n = 3)
+```
+
+::: {.callout-warning}
+## Error clásico
+`=` asigna, `==` compara. Dentro de `filter()` siempre se usa `==`.
+:::
+
+### 1.4 `arrange()`: ordenar filas
+
+```{r}
+gap07 |> arrange(lifeExp) |> select(country, lifeExp) |> slice_head(n = 3)
+
+# Descendente
+gap07 |> arrange(desc(lifeExp)) |> select(country, lifeExp) |> slice_head(n = 3)
+```
+
+### 1.5 `group_by()` + `summarise()`: resumir por grupo
+
+```{r}
+gap07 |>
+  group_by(continent) |>
+  summarise(
+    vida_media = mean(lifeExp),
+    vida_sd    = sd(lifeExp),
+    n_paises   = n()
+  )
+```
+
+**Resultado:** la tabla **cambió de forma**. Pasamos de 142 filas a 5 (una por continente), y solo sobreviven las columnas del grupo y las que creamos. (`n()` cuenta las filas de cada grupo.)
+
+### 1.6 `slice_head()`: quedarse con las primeras filas
+
+```{r}
+gap07 |>
+  arrange(desc(gdpPercap)) |>
+  select(country, gdpPercap) |>
+  slice_head(n = 5)
+```
+
+**Cómo leerlo:** el **orden importa**. `slice_head()` toma las primeras filas *tal como están en ese momento*, por eso lo usamos después de `arrange()`.
+
+### 1.7 Mini ejercicios de repaso
+
+::: {.callout-tip collapse="true"}
+## Mini ejercicios
+
+1. ¿Cuál es el rango (mínimo y máximo) de la población en 2007?
+
+2. Muestra solo `country` y `pop` de los países de Oceanía.
+
+3. ¿Cuáles son los 3 países con menor esperanza de vida en 2007?
+:::
+
+---
+
+## 2. Ejercicio intermedio
+
+Ahora combinamos todo. **Antes de escribir código**, piensa en voz alta: ¿qué funciones necesito y en qué orden?
+
+### 2.1 Parte A: tabla resumen por continente
+
+Construye una tabla con, **para cada continente en 2007**:
+
+- número de países
+- esperanza de vida media y mediana
+- desviación estándar de la esperanza de vida
+- PIB per cápita medio
+
+Ordénala de mayor a menor esperanza de vida media.
+
+::: {.callout-note collapse="true"}
+## Pista
+Necesitas `group_by()`, `summarise()` (con 5 columnas nuevas) y `arrange()`.
+:::
+
+### 2.2 Parte B: los países más ricos de un continente
+
+De los países de **Europa** en 2007, ¿cuáles son los 5 con mayor PIB per cápita? Muestra solo `country`, `lifeExp` y `gdpPercap`.
+
+::: {.callout-note collapse="true"}
+## Pista
+Piensa el orden: primero **filtrar**, luego **ordenar**, luego **elegir columnas** y al final **quedarte con las primeras filas**.
+:::
+
+### 2.3 Parte C: pregunta abierta
+
+¿Qué continente tiene **mayor variabilidad** (desviación estándar) en PIB per cápita? ¿Y en esperanza de vida? ¿Coinciden?
+
+*(El código de las tres partes está en la sección 7.)*
+
+---
+
+## 3. Novedad 1: `mutate()`
+
+Hasta ahora **elegíamos, filtrábamos y resumíamos**. `mutate()` permite **crear columnas nuevas** a partir de las existentes, sin perder filas.
+
+```{r}
+gap07 |>
+  mutate(pib_total = gdpPercap * pop) |>
+  select(country, gdpPercap, pop, pib_total) |>
+  slice_head(n = 5)
+```
+
+**Cómo leerlo:** aparece la columna `pib_total`, que es el PIB per cápita multiplicado por la población de cada país.
+
+### 3.1 Varias columnas a la vez
+
+Puedes crear varias columnas en un mismo `mutate()`, y usar una que acabas de crear en la siguiente:
+
+```{r}
+gap07 |>
+  mutate(
+    pob_millones = pop / 1e6, #1e6 significa 1 millón
+    pib_total    = gdpPercap * pop,
+    pib_millones = pib_total / 1e6 #1e6 significa 1 millón
+  ) |>
+  select(country, pob_millones, pib_millones) |>
+  slice_head(n = 5)
+```
+
+::: {.callout-important}
+## `mutate()` no modifica el objeto original
+Si quieres conservar la columna nueva, **guarda el resultado**:
+```{r}
+gap07 <- gap07 |>
+  mutate(pib_total = gdpPercap * pop)
+
+names(gap07)
+```
+:::
+
+### 3.2 Usar funciones que ya conoces dentro de `mutate()`
+
+Las funciones del repaso también funcionan aquí. Por ejemplo, ¿cuánto se aleja cada país del promedio mundial de esperanza de vida?
+
+```{r}
+gap07 |>
+  mutate(dif_vs_promedio = lifeExp - mean(lifeExp)) |>
+  select(country, lifeExp, dif_vs_promedio) |>
+  slice_head(n = 5)
+```
+
+**Cómo leerlo:**
+
+- Un valor **positivo** significa que el país está por encima del promedio mundial.
+- Un valor **negativo**, por debajo.
+
+### 3.3 `summarise()` vs. `mutate()` con `group_by()`
+
+Esta es **la diferencia clave** de la sesión. Calculemos la esperanza de vida media por continente de las dos maneras:
+
+```{r}
+# summarise(): COLAPSA. Una fila por grupo.
+gap07 |>
+  group_by(continent) |>
+  summarise(vida_media = mean(lifeExp))
+```
+
+```{r}
+# mutate(): CONSERVA todas las filas y repite el valor del grupo.
+gap07 |>
+  group_by(continent) |>
+  mutate(vida_media_continente = mean(lifeExp)) |>
+  ungroup() |>
+  select(country, continent, lifeExp, vida_media_continente) |>
+  slice_head(n = 5)
+```
+
+Con `mutate()` podemos comparar cada país **contra su propio continente**:
+
+```{r}
+gap07 |>
+  group_by(continent) |>
+  mutate(dif_vs_continente = lifeExp - mean(lifeExp)) |>
+  ungroup() |>
+  select(country, continent, lifeExp, dif_vs_continente) |>
+  arrange(desc(dif_vs_continente)) |>
+  slice_head(n = 5)
+```
+
+::: {.callout-tip}
+## Regla para recordar
+- `summarise()` → **resume** (menos filas).
+- `mutate()` → **agrega** (mismas filas, más columnas).
+
+Después de `group_by()` + `mutate()`, usa `ungroup()` para que el agrupamiento no afecte lo que hagas después.
+:::
+
+---
+
+## 4. Novedad 2: `if_else()` y `case_when()`
+
+Sirven para crear columnas **según condiciones**, normalmente dentro de `mutate()`.
+
+### 4.1 `if_else()`: dos categorías
+
+```{r}
+gap07 |>
+  mutate(esperanza = if_else(lifeExp >= 75, "Alta", "Baja")) |>
+  select(country, lifeExp, esperanza) |>
+  slice_head(n = 5)
+```
+
+**Cómo leerlo:** *"si se cumple la condición, pon esto; si no, pon esto otro"*.
+
+### 4.2 `case_when()`: tres o más categorías
+
+```{r}
+gap07 <- gap07 |>
+  mutate(
+    nivel_vida = case_when(
+      lifeExp >= 75 ~ "Alto",
+      lifeExp >= 60 ~ "Medio",
+      TRUE          ~ "Bajo"   # en el resto de los casos
+    )
+  )
+
+gap07 |>
+  select(country, lifeExp, nivel_vida) |>
+  slice_head(n = 5)
+```
+
+::: {.callout-warning}
+## El orden de las condiciones importa
+`case_when()` evalúa de arriba hacia abajo y se queda con la **primera** que se cumple. Si pones `lifeExp >= 60` primero, un país con 80 años caería en "Medio".
+:::
+
+---
+
+## 5. Novedad 3: `count()`
+
+Contar cuántas filas hay en cada categoría es tan común que dplyr tiene un atajo.
+
+```{r}
+# Forma larga (la que ya conoces)
+gap07 |>
+  group_by(nivel_vida) |>
+  summarise(n = n())
+
+# Forma corta
+gap07 |>
+  count(nivel_vida)
+```
+
+**Resultado:** las dos formas dan lo mismo. `count()` es simplemente más corto.
+
+Puedes contar por **dos variables** y ordenar el resultado:
+
+```{r}
+gap07 |>
+  count(continent, nivel_vida)
+
+gap07 |>
+  count(continent, sort = TRUE)
+```
+
+::: {.callout-tip}
+## Idea para tu EDA
+`mutate()` + `case_when()` + `count()` es una combinación muy usada para explorar datos: creas una categoría y ves cómo se reparten las observaciones.
+:::
+
+---
+
+## 6. Lo que aprendimos
+
+::: {.callout-note collapse="true"}
+## Resumen de la sesión
+
+1. **Repasamos** los estadísticos básicos, `select()`, `filter()`, `arrange()`, `group_by()` + `summarise()` y `slice_head()`.
+2. **`mutate()`** crea columnas nuevas y **conserva todas las filas**.
+3. **`summarise()` resume** (menos filas); **`mutate()` agrega** (mismas filas).
+4. **`if_else()` y `case_when()`** crean categorías a partir de condiciones.
+5. **`count()`** cuenta filas por categoría en una sola línea.
+:::
+
+::: {.callout-warning collapse="true"}
+## Errores comunes
+
+1. Usar `=` en lugar de `==` dentro de `filter()`.
+2. Olvidar `desc()` en `arrange()`.
+3. Poner `slice_head()` **antes** de `arrange()` y obtener filas arbitrarias.
+4. Olvidar `na.rm = TRUE` cuando hay valores faltantes.
+5. Usar `mutate()` y no guardar el resultado (`<-`), y luego "no encontrar" la columna.
+6. Olvidar `ungroup()` después de `group_by()` + `mutate()`.
+7. Escribir las condiciones de `case_when()` en el orden equivocado.
+:::
+
+---
+
+## 7. Ejercicios para ti
+
+::: {.callout-tip collapse="true"}
+## Ejercicio 1: Usando `mutate()`
+
+1. Crea la columna `pib_total` en miles de millones de dólares (`gdpPercap * pop / 1e9`) y muestra los 5 países con mayor `pib_total`.
+
+2. Para cada país, calcula cuántos años de esperanza de vida tiene **por encima o por debajo del promedio de su continente**. ¿Qué país de Asia está más por debajo de su continente?
+:::
+
+::: {.callout-tip collapse="true"}
+## Ejercicio 2: Categorías y conteos
+
+1. Crea una columna `tamano` con `case_when()`: `"Grande"` si `pop >= 100e6`, `"Mediano"` si `pop >= 10e6`, y `"Pequeño"` en el resto. Cuenta cuántos países hay en cada categoría.
+
+2. Con `count()`, ¿cuántos países de **África** tienen nivel de vida "Bajo" en 2007?
+:::
+
+::: {.callout-tip collapse="true"}
+## Desafío
+
+Crea una tabla que muestre, para cada continente, **el porcentaje de países** con nivel de vida "Alto".
+
+Pista: `group_by()` + `summarise()` con `mean(nivel_vida == "Alto")`.
+:::
+
+### Código de los ejercicios
+
+```{=html}
+<div id="ejercicio-repaso" style="margin: 10px 0;">
+  <button onclick="verCodigo('ejrepaso', 'analista')" style="padding: 8px 16px; cursor: pointer; background: #2c3e50; color: white; border: none; border-radius: 4px;">
+    🔒 Ver código: Mini ejercicios de repaso
+  </button>
+  <div id="ejrepaso" style="display: none; margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 4px;">
+    <pre><code># 1. Rango de la población
+range(gap07$pop)
+
+# 2. País y población de Oceanía
+gap07 |> 
+  filter(continent == "Oceania") |> 
+  select(country, pop)
+
+# 3. Los 3 países con menor esperanza de vida
+gap07 |> 
+  arrange(lifeExp) |> 
+  select(country, lifeExp) |> 
+  slice_head(n = 3)</code></pre>
+  </div>
+</div>
+
+<div id="ejercicio-intermedio" style="margin: 10px 0;">
+  <button onclick="verCodigo('ejintermedio', 'analista')" style="padding: 8px 16px; cursor: pointer; background: #2c3e50; color: white; border: none; border-radius: 4px;">
+    🔒 Ver código: Ejercicio intermedio (A, B y C)
+  </button>
+  <div id="ejintermedio" style="display: none; margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 4px;">
+    <pre><code># Parte A: tabla resumen por continente
+gap07 |> 
+  group_by(continent) |> 
+  summarise(
+    n_paises     = n(),
+    vida_media   = mean(lifeExp),
+    vida_mediana = median(lifeExp),
+    vida_sd      = sd(lifeExp),
+    pib_medio    = mean(gdpPercap)
+  ) |> 
+  arrange(desc(vida_media))
+
+# Parte B: los 5 países más ricos de Europa
+gap07 |> 
+  filter(continent == "Europe") |> 
+  arrange(desc(gdpPercap)) |> 
+  select(country, lifeExp, gdpPercap) |> 
+  slice_head(n = 5)
+
+# Parte C: variabilidad por continente
+gap07 |> 
+  group_by(continent) |> 
+  summarise(
+    sd_pib  = sd(gdpPercap),
+    sd_vida = sd(lifeExp)
+  ) |> 
+  arrange(desc(sd_pib))
+
+# Interpretación: Asia tiene la mayor variabilidad en PIB per cápita,
+# mientras que en esperanza de vida es África la más variable.
+# No coinciden: son dos dimensiones distintas de la desigualdad.</code></pre>
+  </div>
+</div>
+
+<div id="ejercicio-1" style="margin: 10px 0;">
+  <button onclick="verCodigo('ej1', 'analista')" style="padding: 8px 16px; cursor: pointer; background: #2c3e50; color: white; border: none; border-radius: 4px;">
+    🔒 Ver código Ejercicio 1
+  </button>
+  <div id="ej1" style="display: none; margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 4px;">
+    <pre><code># Ejercicio 1.1: Top 5 por PIB total (en miles de millones)
+gap07 |> 
+  mutate(pib_miles_millones = gdpPercap * pop / 1e9) |> 
+  arrange(desc(pib_miles_millones)) |> 
+  select(country, pib_miles_millones) |> 
+  slice_head(n = 5)
+
+# Ejercicio 1.2: Diferencia vs. el promedio del continente
+gap07 |> 
+  group_by(continent) |> 
+  mutate(dif_vs_continente = lifeExp - mean(lifeExp)) |> 
+  ungroup() |> 
+  filter(continent == "Asia") |> 
+  arrange(dif_vs_continente) |> 
+  select(country, lifeExp, dif_vs_continente) |> 
+  slice_head(n = 3)</code></pre>
+  </div>
+</div>
+
+<div id="ejercicio-2" style="margin: 10px 0;">
+  <button onclick="verCodigo('ej2', 'analista')" style="padding: 8px 16px; cursor: pointer; background: #2c3e50; color: white; border: none; border-radius: 4px;">
+    🔒 Ver código Ejercicio 2
+  </button>
+  <div id="ej2" style="display: none; margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 4px;">
+    <pre><code># Ejercicio 2.1: Tamaño de los países
+gap07 |> 
+  mutate(
+    tamano = case_when(
+      pop >= 100e6 ~ "Grande",
+      pop >= 10e6  ~ "Mediano",
+      TRUE         ~ "Pequeño"
+    )
+  ) |> 
+  count(tamano)
+
+# Ejercicio 2.2: Países de África con nivel de vida "Bajo"
+gap07 |> 
+  filter(continent == "Africa") |> 
+  count(nivel_vida)</code></pre>
+  </div>
+</div>
+
+<div id="ejercicio-desafio" style="margin: 10px 0;">
+  <button onclick="verCodigo('ejdesafio', 'analista')" style="padding: 8px 16px; cursor: pointer; background: #2c3e50; color: white; border: none; border-radius: 4px;">
+    🔒 Ver código del Desafío
+  </button>
+  <div id="ejdesafio" style="display: none; margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 4px;">
+    <pre><code># Desafío: porcentaje de países con nivel de vida "Alto" por continente
+gap07 |> 
+  group_by(continent) |> 
+  summarise(pct_alto = mean(nivel_vida == "Alto") * 100) |> 
+  arrange(desc(pct_alto))
+
+# nivel_vida == "Alto" da TRUE/FALSE, y el promedio de ese vector
+# es la proporción de TRUE.</code></pre>
+  </div>
+</div>
+
+<script>
+function verCodigo(id, passwordCorrecta) {
+  var codigo = document.getElementById(id);
+  if (codigo.style.display === "none") {
+    var input = prompt("Ingresa la contraseña:");
+    if (input === passwordCorrecta) {
+      codigo.style.display = "block";
+    } else if (input !== null) {
+      alert("Contraseña incorrecta");
+    }
+  } else {
+    codigo.style.display = "none";
+  }
+}
+</script>
+```
+
+---
+
+## 8. Funciones que usamos hoy
+
+| Función | De qué sirve | Ejemplo |
+|---|---|---|
+| `mean()`, `median()`, `sd()`, `var()` | Estadísticos de una columna | `mean(gap07$lifeExp)` |
+| `range()`, `summary()` | Rango y resumen rápido | `range(gap07$pop)` |
+| `select()` | Elegir (o quitar) columnas | `select(country, lifeExp)` |
+| `filter()` | Quedarse con filas que cumplen una condición | `filter(continent == "Asia")` |
+| `arrange()` | Ordenar las filas | `arrange(desc(lifeExp))` |
+| `group_by()` + `summarise()` | Resumir por grupo | `summarise(media = mean(lifeExp))` |
+| `slice_head()` | Quedarse con las primeras filas | `slice_head(n = 5)` |
+| **`mutate()`** | **Crear columnas nuevas** | `mutate(pib_total = gdpPercap * pop)` |
+| **`if_else()`** | **Crear una categoría de dos opciones** | `if_else(lifeExp >= 75, "Alta", "Baja")` |
+| **`case_when()`** | **Crear categorías de tres o más opciones** | `case_when(lifeExp >= 75 ~ "Alto", ...)` |
+| **`count()`** | **Contar filas por categoría** | `count(continent)` |
+| `ungroup()` | Quitar el agrupamiento | `ungroup()` |
+
+---
+
+## 9. Reflexión final
+
+Hoy **reforzamos dplyr** y dimos un paso más:
+
+- **Repasamos** lo que ya sabíamos y lo usamos en un ejercicio que combinaba varias funciones
+- **Aprendimos `mutate()`** para crear columnas nuevas sin perder filas
+- **Creamos categorías** con `if_else()` y `case_when()`
+- **Contamos casos** con `count()`
+
+**La idea clave:** `summarise()` resume y `mutate()` agrega. Si recuerdas esa diferencia, ya tienes lo más importante de la sesión.
+
+### Tarea (opcional, para que practiques en casa)
+
+Elige un año de `gapminder` distinto de 2007 (por ejemplo, 1952) y:
+
+1. Calcula la esperanza de vida media por continente.
+2. Crea una variable de categorías con `case_when()` (puedes usar `gdpPercap` o `pop`).
+3. Cuenta cuántos países hay en cada categoría por continente.
+4. Escribe 2 o 3 líneas con lo que observas al comparar tus resultados con los de 2007.
+
+---
+
+## 10. Para la próxima sesión
+
+Para la próxima sesión, veremos los ejercicios de la **segunda prueba del curso del año pasado**, y practicaremos como responder las preguntas de esa prueba.

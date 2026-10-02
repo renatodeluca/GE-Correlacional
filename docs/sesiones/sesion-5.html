@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Sesión 5: Refuerzo de dplyr – Grupo de Estudio para Estadística Correlacional</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-44d4ef5102e20cf28cce0c5bd34a3620.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../img/logoidea.png" alt="" class="navbar-logo light-content">
+    <img src="../img/logoidea.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Grupo de Estudio para Estadística Correlacional</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../presentacion.html"> 
+<span class="menu-text">Presentación</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../sesiones.html"> 
+<span class="menu-text">Sesiones</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#objetivos-de-la-sesión" id="toc-objetivos-de-la-sesión" class="nav-link" data-scroll-target="#objetivos-de-la-sesión">Objetivos de la sesión</a></li>
+  <li><a href="#preparación" id="toc-preparación" class="nav-link" data-scroll-target="#preparación">0. Preparación</a>
+  <ul class="collapse">
+  <li><a href="#cargar-paquetes-y-datos" id="toc-cargar-paquetes-y-datos" class="nav-link" data-scroll-target="#cargar-paquetes-y-datos">Cargar paquetes y datos</a></li>
+  <li><a href="#las-columnas" id="toc-las-columnas" class="nav-link" data-scroll-target="#las-columnas">Las columnas</a></li>
+  </ul></li>
+  <li><a href="#repaso-de-lo-que-ya-vimos" id="toc-repaso-de-lo-que-ya-vimos" class="nav-link" data-scroll-target="#repaso-de-lo-que-ya-vimos">1. Repaso de lo que ya vimos</a>
+  <ul class="collapse">
+  <li><a href="#estadísticos-básicos-base-r" id="toc-estadísticos-básicos-base-r" class="nav-link" data-scroll-target="#estadísticos-básicos-base-r">1.1 Estadísticos básicos (base R)</a></li>
+  <li><a href="#select-elegir-columnas" id="toc-select-elegir-columnas" class="nav-link" data-scroll-target="#select-elegir-columnas">1.2 <code>select()</code>: elegir columnas</a></li>
+  <li><a href="#filter-elegir-filas-según-una-condición" id="toc-filter-elegir-filas-según-una-condición" class="nav-link" data-scroll-target="#filter-elegir-filas-según-una-condición">1.3 <code>filter()</code>: elegir filas según una condición</a></li>
+  <li><a href="#arrange-ordenar-filas" id="toc-arrange-ordenar-filas" class="nav-link" data-scroll-target="#arrange-ordenar-filas">1.4 <code>arrange()</code>: ordenar filas</a></li>
+  <li><a href="#group_by-summarise-resumir-por-grupo" id="toc-group_by-summarise-resumir-por-grupo" class="nav-link" data-scroll-target="#group_by-summarise-resumir-por-grupo">1.5 <code>group_by()</code> + <code>summarise()</code>: resumir por grupo</a></li>
+  <li><a href="#slice_head-quedarse-con-las-primeras-filas" id="toc-slice_head-quedarse-con-las-primeras-filas" class="nav-link" data-scroll-target="#slice_head-quedarse-con-las-primeras-filas">1.6 <code>slice_head()</code>: quedarse con las primeras filas</a></li>
+  <li><a href="#mini-ejercicios-de-repaso" id="toc-mini-ejercicios-de-repaso" class="nav-link" data-scroll-target="#mini-ejercicios-de-repaso">1.7 Mini ejercicios de repaso</a></li>
+  </ul></li>
+  <li><a href="#ejercicio-intermedio" id="toc-ejercicio-intermedio" class="nav-link" data-scroll-target="#ejercicio-intermedio">2. Ejercicio intermedio</a>
+  <ul class="collapse">
+  <li><a href="#parte-a-tabla-resumen-por-continente" id="toc-parte-a-tabla-resumen-por-continente" class="nav-link" data-scroll-target="#parte-a-tabla-resumen-por-continente">2.1 Parte A: tabla resumen por continente</a></li>
+  <li><a href="#parte-b-los-países-más-ricos-de-un-continente" id="toc-parte-b-los-países-más-ricos-de-un-continente" class="nav-link" data-scroll-target="#parte-b-los-países-más-ricos-de-un-continente">2.2 Parte B: los países más ricos de un continente</a></li>
+  <li><a href="#parte-c-pregunta-abierta" id="toc-parte-c-pregunta-abierta" class="nav-link" data-scroll-target="#parte-c-pregunta-abierta">2.3 Parte C: pregunta abierta</a></li>
+  </ul></li>
+  <li><a href="#novedad-1-mutate" id="toc-novedad-1-mutate" class="nav-link" data-scroll-target="#novedad-1-mutate">3. Novedad 1: <code>mutate()</code></a>
+  <ul class="collapse">
+  <li><a href="#varias-columnas-a-la-vez" id="toc-varias-columnas-a-la-vez" class="nav-link" data-scroll-target="#varias-columnas-a-la-vez">3.1 Varias columnas a la vez</a></li>
+  <li><a href="#usar-funciones-que-ya-conoces-dentro-de-mutate" id="toc-usar-funciones-que-ya-conoces-dentro-de-mutate" class="nav-link" data-scroll-target="#usar-funciones-que-ya-conoces-dentro-de-mutate">3.2 Usar funciones que ya conoces dentro de <code>mutate()</code></a></li>
+  <li><a href="#summarise-vs.-mutate-con-group_by" id="toc-summarise-vs.-mutate-con-group_by" class="nav-link" data-scroll-target="#summarise-vs.-mutate-con-group_by">3.3 <code>summarise()</code> vs.&nbsp;<code>mutate()</code> con <code>group_by()</code></a></li>
+  </ul></li>
+  <li><a href="#novedad-2-if_else-y-case_when" id="toc-novedad-2-if_else-y-case_when" class="nav-link" data-scroll-target="#novedad-2-if_else-y-case_when">4. Novedad 2: <code>if_else()</code> y <code>case_when()</code></a>
+  <ul class="collapse">
+  <li><a href="#if_else-dos-categorías" id="toc-if_else-dos-categorías" class="nav-link" data-scroll-target="#if_else-dos-categorías">4.1 <code>if_else()</code>: dos categorías</a></li>
+  <li><a href="#case_when-tres-o-más-categorías" id="toc-case_when-tres-o-más-categorías" class="nav-link" data-scroll-target="#case_when-tres-o-más-categorías">4.2 <code>case_when()</code>: tres o más categorías</a></li>
+  </ul></li>
+  <li><a href="#novedad-3-count" id="toc-novedad-3-count" class="nav-link" data-scroll-target="#novedad-3-count">5. Novedad 3: <code>count()</code></a></li>
+  <li><a href="#lo-que-aprendimos" id="toc-lo-que-aprendimos" class="nav-link" data-scroll-target="#lo-que-aprendimos">6. Lo que aprendimos</a></li>
+  <li><a href="#ejercicios-para-ti" id="toc-ejercicios-para-ti" class="nav-link" data-scroll-target="#ejercicios-para-ti">7. Ejercicios para ti</a>
+  <ul class="collapse">
+  <li><a href="#código-de-los-ejercicios" id="toc-código-de-los-ejercicios" class="nav-link" data-scroll-target="#código-de-los-ejercicios">Código de los ejercicios</a></li>
+  </ul></li>
+  <li><a href="#funciones-que-usamos-hoy" id="toc-funciones-que-usamos-hoy" class="nav-link" data-scroll-target="#funciones-que-usamos-hoy">8. Funciones que usamos hoy</a></li>
+  <li><a href="#reflexión-final" id="toc-reflexión-final" class="nav-link" data-scroll-target="#reflexión-final">9. Reflexión final</a>
+  <ul class="collapse">
+  <li><a href="#tarea-opcional-para-que-practiques-en-casa" id="toc-tarea-opcional-para-que-practiques-en-casa" class="nav-link" data-scroll-target="#tarea-opcional-para-que-practiques-en-casa">Tarea (opcional, para que practiques en casa)</a></li>
+  </ul></li>
+  <li><a href="#para-la-próxima-sesión" id="toc-para-la-próxima-sesión" class="nav-link" data-scroll-target="#para-la-próxima-sesión">10. Para la próxima sesión</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Sesión 5: Refuerzo de dplyr</h1>
+<p class="subtitle lead">Repasamos lo visto y aprendemos a crear columnas nuevas con mutate()</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+<p>En la sesión anterior combinamos <strong>dplyr</strong> y <strong>ggplot2</strong> para hacer un EDA. Hoy volvemos a <strong>dplyr</strong> para dos cosas: <strong>reforzar</strong> las funciones que ya vimos y <strong>sumar tres herramientas nuevas</strong>, básicas pero muy usadas.</p>
+</section>
+<section id="objetivos-de-la-sesión" class="level2">
+<h2 class="anchored" data-anchor-id="objetivos-de-la-sesión">Objetivos de la sesión</h2>
+<p>Al finalizar vas a poder:</p>
+<ul>
+<li>Repasar las funciones vistas: <code>mean()</code>, <code>median()</code>, <code>sd()</code>, <code>var()</code>, <code>range()</code>, <code>summary()</code>, <code>select()</code>, <code>filter()</code>, <code>arrange()</code>, <code>group_by()</code> + <code>summarise()</code> y <code>slice_head()</code>.</li>
+<li>Combinarlas en un <strong>ejercicio intermedio</strong> que use varias a la vez.</li>
+<li>Crear <strong>columnas nuevas</strong> con <code>mutate()</code>.</li>
+<li>Crear <strong>categorías</strong> con <code>if_else()</code> y <code>case_when()</code>.</li>
+<li><strong>Contar</strong> observaciones por categoría con <code>count()</code>.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Plan sugerido
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Bloque</th>
+<th>Tema</th>
+<th>Tiempo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Repaso de funciones</td>
+<td>30 min</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Ejercicio intermedio</td>
+<td>25 min</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Nuevo: <code>mutate()</code></td>
+<td>25 min</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Nuevo: <code>if_else()</code> y <code>case_when()</code></td>
+<td>15 min</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Nuevo: <code>count()</code></td>
+<td>10 min</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Ejercicios finales</td>
+<td>15 min</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr>
+</section>
+<section id="preparación" class="level2">
+<h2 class="anchored" data-anchor-id="preparación">0. Preparación</h2>
+<section id="cargar-paquetes-y-datos" class="level3">
+<h3 class="anchored" data-anchor-id="cargar-paquetes-y-datos">Cargar paquetes y datos</h3>
+<p>Hoy usaremos <code>tidyverse</code> (que trae dplyr) y el paquete <code>gapminder</code>, con datos de <strong>esperanza de vida, población y PIB per cápita</strong> de 142 países entre 1952 y 2007.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Si no tienes <code>gapminder</code> instalado, instálalo con:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"gapminder"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Para la mayor parte de la sesión trabajaremos solo con el año <strong>2007</strong>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gap07 <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(gap07)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 142
+Columns: 6
+$ country   &lt;fct&gt; "Afghanistan", "Albania", "Algeria", "Angola", "Argentina", …
+$ continent &lt;fct&gt; Asia, Europe, Africa, Africa, Americas, Oceania, Europe, Asi…
+$ year      &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, …
+$ lifeExp   &lt;dbl&gt; 43.828, 76.423, 72.301, 42.731, 75.320, 81.235, 79.829, 75.6…
+$ pop       &lt;int&gt; 31889923, 3600523, 33333216, 12420476, 40301927, 20434176, 8…
+$ gdpPercap &lt;dbl&gt; 974.5803, 5937.0295, 6223.3675, 4797.2313, 12779.3796, 34435…</code></pre>
+</div>
+</div>
+</section>
+<section id="las-columnas" class="level3">
+<h3 class="anchored" data-anchor-id="las-columnas">Las columnas</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Columna</th>
+<th>Qué significa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>country</code></td>
+<td>País</td>
+</tr>
+<tr class="even">
+<td><code>continent</code></td>
+<td>Continente</td>
+</tr>
+<tr class="odd">
+<td><code>year</code></td>
+<td>Año</td>
+</tr>
+<tr class="even">
+<td><code>lifeExp</code></td>
+<td>Esperanza de vida (años)</td>
+</tr>
+<tr class="odd">
+<td><code>pop</code></td>
+<td>Población</td>
+</tr>
+<tr class="even">
+<td><code>gdpPercap</code></td>
+<td>PIB per cápita (dólares)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="repaso-de-lo-que-ya-vimos" class="level2">
+<h2 class="anchored" data-anchor-id="repaso-de-lo-que-ya-vimos">1. Repaso de lo que ya vimos</h2>
+<section id="estadísticos-básicos-base-r" class="level3">
+<h3 class="anchored" data-anchor-id="estadísticos-básicos-base-r">1.1 Estadísticos básicos (base R)</h3>
+<p>Estas funciones reciben una columna y devuelven <strong>un solo valor</strong> (salvo <code>range()</code> y <code>summary()</code>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(gap07<span class="sc">$</span>lifeExp)     <span class="co"># promedio</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 67.00742</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(gap07<span class="sc">$</span>lifeExp)   <span class="co"># mediana</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 71.9355</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(gap07<span class="sc">$</span>lifeExp)       <span class="co"># desviación estándar</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12.07302</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(gap07<span class="sc">$</span>lifeExp)      <span class="co"># varianza</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 145.7578</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(gap07<span class="sc">$</span>lifeExp)    <span class="co"># mínimo y máximo</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 39.613 82.603</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gap07<span class="sc">$</span>lifeExp)  <span class="co"># resumen rápido</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  39.61   57.16   71.94   67.01   76.41   82.60 </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Cuidado con los NA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si la columna tiene valores faltantes, el resultado es <code>NA</code>. Se soluciona con <code>na.rm = TRUE</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="cn">NA</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Pregunta rápida:</strong> si la media es mucho mayor que la mediana, ¿qué nos dice sobre la distribución? Compáralas en <code>gap07$gdpPercap</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(gap07<span class="sc">$</span>gdpPercap)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11680.07</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(gap07<span class="sc">$</span>gdpPercap)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6124.371</code></pre>
+</div>
+</div>
+<p>La media (~11.680) es bastante mayor que la mediana (~6.124): hay pocos países muy ricos que “jalan” el promedio hacia arriba (distribución asimétrica a la derecha). Esto lo vimos <a href="https://renatodeluca.github.io/GE-Correlacional/sesiones/sesion-1.html#medidas-de-tendencia-central">Aquí</a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="select-elegir-columnas" class="level3">
+<h3 class="anchored" data-anchor-id="select-elegir-columnas">1.2 <code>select()</code>: elegir columnas</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span> <span class="fu">select</span>(country, continent, lifeExp) <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  country     continent lifeExp
+  &lt;fct&gt;       &lt;fct&gt;       &lt;dbl&gt;
+1 Afghanistan Asia         43.8
+2 Albania     Europe       76.4
+3 Algeria     Africa       72.3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quitar columnas con el signo menos</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>year, <span class="sc">-</span>pop) <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  country     continent lifeExp gdpPercap
+  &lt;fct&gt;       &lt;fct&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1 Afghanistan Asia         43.8      975.
+2 Albania     Europe       76.4     5937.
+3 Algeria     Africa       72.3     6223.</code></pre>
+</div>
+</div>
+<p><strong>Cómo leerlo:</strong> la primera línea deja solo las 3 columnas que nombramos; la segunda deja <strong>todas menos</strong> <code>year</code> y <code>pop</code>.</p>
+</section>
+<section id="filter-elegir-filas-según-una-condición" class="level3">
+<h3 class="anchored" data-anchor-id="filter-elegir-filas-según-una-condición">1.3 <code>filter()</code>: elegir filas según una condición</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Una condición</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span> <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Americas"</span>) <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 6
+  country   continent  year lifeExp       pop gdpPercap
+  &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;     &lt;dbl&gt;
+1 Argentina Americas   2007    75.3  40301927    12779.
+2 Bolivia   Americas   2007    65.6   9119152     3822.
+3 Brazil    Americas   2007    72.4 190010647     9066.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dos condiciones (Y): ambas deben cumplirse</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span> <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Americas"</span>, lifeExp <span class="sc">&gt;</span> <span class="dv">75</span>) <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 6
+  country   continent  year lifeExp      pop gdpPercap
+  &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+1 Argentina Americas   2007    75.3 40301927    12779.
+2 Canada    Americas   2007    80.7 33390141    36319.
+3 Chile     Americas   2007    78.6 16284741    13172.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># O: una u otra</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span> <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Asia"</span> <span class="sc">|</span> continent <span class="sc">==</span> <span class="st">"Europe"</span>) <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 6
+  country     continent  year lifeExp      pop gdpPercap
+  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+1 Afghanistan Asia       2007    43.8 31889923      975.
+2 Albania     Europe     2007    76.4  3600523     5937.
+3 Austria     Europe     2007    79.8  8199783    36126.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Atajo para varias opciones</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span> <span class="fu">filter</span>(continent <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Asia"</span>, <span class="st">"Europe"</span>)) <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 6
+  country     continent  year lifeExp      pop gdpPercap
+  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+1 Afghanistan Asia       2007    43.8 31889923      975.
+2 Albania     Europe     2007    76.4  3600523     5937.
+3 Austria     Europe     2007    79.8  8199783    36126.</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Error clásico
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>=</code> asigna, <code>==</code> compara. Dentro de <code>filter()</code> siempre se usa <code>==</code>.</p>
+</div>
+</div>
+</section>
+<section id="arrange-ordenar-filas" class="level3">
+<h3 class="anchored" data-anchor-id="arrange-ordenar-filas">1.4 <code>arrange()</code>: ordenar filas</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span> <span class="fu">arrange</span>(lifeExp) <span class="sc">|&gt;</span> <span class="fu">select</span>(country, lifeExp) <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  country    lifeExp
+  &lt;fct&gt;        &lt;dbl&gt;
+1 Swaziland     39.6
+2 Mozambique    42.1
+3 Zambia        42.4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descendente</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(lifeExp)) <span class="sc">|&gt;</span> <span class="fu">select</span>(country, lifeExp) <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  country          lifeExp
+  &lt;fct&gt;              &lt;dbl&gt;
+1 Japan               82.6
+2 Hong Kong, China    82.2
+3 Iceland             81.8</code></pre>
+</div>
+</div>
+</section>
+<section id="group_by-summarise-resumir-por-grupo" class="level3">
+<h3 class="anchored" data-anchor-id="group_by-summarise-resumir-por-grupo">1.5 <code>group_by()</code> + <code>summarise()</code>: resumir por grupo</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continent) <span class="sc">|&gt;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">vida_media =</span> <span class="fu">mean</span>(lifeExp),</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">vida_sd    =</span> <span class="fu">sd</span>(lifeExp),</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_paises   =</span> <span class="fu">n</span>()</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+  continent vida_media vida_sd n_paises
+  &lt;fct&gt;          &lt;dbl&gt;   &lt;dbl&gt;    &lt;int&gt;
+1 Africa          54.8   9.63        52
+2 Americas        73.6   4.44        25
+3 Asia            70.7   7.96        33
+4 Europe          77.6   2.98        30
+5 Oceania         80.7   0.729        2</code></pre>
+</div>
+</div>
+<p><strong>Resultado:</strong> la tabla <strong>cambió de forma</strong>. Pasamos de 142 filas a 5 (una por continente), y solo sobreviven las columnas del grupo y las que creamos. (<code>n()</code> cuenta las filas de cada grupo.)</p>
+</section>
+<section id="slice_head-quedarse-con-las-primeras-filas" class="level3">
+<h3 class="anchored" data-anchor-id="slice_head-quedarse-con-las-primeras-filas">1.6 <code>slice_head()</code>: quedarse con las primeras filas</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(gdpPercap)) <span class="sc">|&gt;</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, gdpPercap) <span class="sc">|&gt;</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  country       gdpPercap
+  &lt;fct&gt;             &lt;dbl&gt;
+1 Norway           49357.
+2 Kuwait           47307.
+3 Singapore        47143.
+4 United States    42952.
+5 Ireland          40676.</code></pre>
+</div>
+</div>
+<p><strong>Cómo leerlo:</strong> el <strong>orden importa</strong>. <code>slice_head()</code> toma las primeras filas <em>tal como están en ese momento</em>, por eso lo usamos después de <code>arrange()</code>.</p>
+</section>
+<section id="mini-ejercicios-de-repaso" class="level3">
+<h3 class="anchored" data-anchor-id="mini-ejercicios-de-repaso">1.7 Mini ejercicios de repaso</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Mini ejercicios
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>¿Cuál es el rango (mínimo y máximo) de la población en 2007?</p></li>
+<li><p>Muestra solo <code>country</code> y <code>pop</code> de los países de Oceanía.</p></li>
+<li><p>¿Cuáles son los 3 países con menor esperanza de vida en 2007?</p></li>
+</ol>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="ejercicio-intermedio" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-intermedio">2. Ejercicio intermedio</h2>
+<p>Ahora combinamos todo. <strong>Antes de escribir código</strong>, piensa en voz alta: ¿qué funciones necesito y en qué orden?</p>
+<section id="parte-a-tabla-resumen-por-continente" class="level3">
+<h3 class="anchored" data-anchor-id="parte-a-tabla-resumen-por-continente">2.1 Parte A: tabla resumen por continente</h3>
+<p>Construye una tabla con, <strong>para cada continente en 2007</strong>:</p>
+<ul>
+<li>número de países</li>
+<li>esperanza de vida media y mediana</li>
+<li>desviación estándar de la esperanza de vida</li>
+<li>PIB per cápita medio</li>
+</ul>
+<p>Ordénala de mayor a menor esperanza de vida media.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Pista
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Necesitas <code>group_by()</code>, <code>summarise()</code> (con 5 columnas nuevas) y <code>arrange()</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="parte-b-los-países-más-ricos-de-un-continente" class="level3">
+<h3 class="anchored" data-anchor-id="parte-b-los-países-más-ricos-de-un-continente">2.2 Parte B: los países más ricos de un continente</h3>
+<p>De los países de <strong>Europa</strong> en 2007, ¿cuáles son los 5 con mayor PIB per cápita? Muestra solo <code>country</code>, <code>lifeExp</code> y <code>gdpPercap</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Pista
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Piensa el orden: primero <strong>filtrar</strong>, luego <strong>ordenar</strong>, luego <strong>elegir columnas</strong> y al final <strong>quedarte con las primeras filas</strong>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="parte-c-pregunta-abierta" class="level3">
+<h3 class="anchored" data-anchor-id="parte-c-pregunta-abierta">2.3 Parte C: pregunta abierta</h3>
+<p>¿Qué continente tiene <strong>mayor variabilidad</strong> (desviación estándar) en PIB per cápita? ¿Y en esperanza de vida? ¿Coinciden?</p>
+<p><em>(El código de las tres partes está en la sección 7.)</em></p>
+<hr>
+</section>
+</section>
+<section id="novedad-1-mutate" class="level2">
+<h2 class="anchored" data-anchor-id="novedad-1-mutate">3. Novedad 1: <code>mutate()</code></h2>
+<p>Hasta ahora <strong>elegíamos, filtrábamos y resumíamos</strong>. <code>mutate()</code> permite <strong>crear columnas nuevas</strong> a partir de las existentes, sin perder filas.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pib_total =</span> gdpPercap <span class="sc">*</span> pop) <span class="sc">|&gt;</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, gdpPercap, pop, pib_total) <span class="sc">|&gt;</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+  country     gdpPercap      pop     pib_total
+  &lt;fct&gt;           &lt;dbl&gt;    &lt;int&gt;         &lt;dbl&gt;
+1 Afghanistan      975. 31889923  31079291949.
+2 Albania         5937.  3600523  21376411360.
+3 Algeria         6223. 33333216 207444851958.
+4 Angola          4797. 12420476  59583895818.
+5 Argentina      12779. 40301927 515033625357.</code></pre>
+</div>
+</div>
+<p><strong>Cómo leerlo:</strong> aparece la columna <code>pib_total</code>, que es el PIB per cápita multiplicado por la población de cada país.</p>
+<section id="varias-columnas-a-la-vez" class="level3">
+<h3 class="anchored" data-anchor-id="varias-columnas-a-la-vez">3.1 Varias columnas a la vez</h3>
+<p>Puedes crear varias columnas en un mismo <code>mutate()</code>, y usar una que acabas de crear en la siguiente:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">pob_millones =</span> pop <span class="sc">/</span> <span class="fl">1e6</span>, <span class="co">#1e6 significa 1 millón</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">pib_total    =</span> gdpPercap <span class="sc">*</span> pop,</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">pib_millones =</span> pib_total <span class="sc">/</span> <span class="fl">1e6</span> <span class="co">#1e6 significa 1 millón</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, pob_millones, pib_millones) <span class="sc">|&gt;</span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  country     pob_millones pib_millones
+  &lt;fct&gt;              &lt;dbl&gt;        &lt;dbl&gt;
+1 Afghanistan        31.9        31079.
+2 Albania             3.60       21376.
+3 Algeria            33.3       207445.
+4 Angola             12.4        59584.
+5 Argentina          40.3       515034.</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span><code>mutate()</code> no modifica el objeto original
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si quieres conservar la columna nueva, <strong>guarda el resultado</strong>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>gap07 <span class="ot">&lt;-</span> gap07 <span class="sc">|&gt;</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pib_total =</span> gdpPercap <span class="sc">*</span> pop)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(gap07)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "country"   "continent" "year"      "lifeExp"   "pop"       "gdpPercap"
+[7] "pib_total"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="usar-funciones-que-ya-conoces-dentro-de-mutate" class="level3">
+<h3 class="anchored" data-anchor-id="usar-funciones-que-ya-conoces-dentro-de-mutate">3.2 Usar funciones que ya conoces dentro de <code>mutate()</code></h3>
+<p>Las funciones del repaso también funcionan aquí. Por ejemplo, ¿cuánto se aleja cada país del promedio mundial de esperanza de vida?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dif_vs_promedio =</span> lifeExp <span class="sc">-</span> <span class="fu">mean</span>(lifeExp)) <span class="sc">|&gt;</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, lifeExp, dif_vs_promedio) <span class="sc">|&gt;</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  country     lifeExp dif_vs_promedio
+  &lt;fct&gt;         &lt;dbl&gt;           &lt;dbl&gt;
+1 Afghanistan    43.8          -23.2 
+2 Albania        76.4            9.42
+3 Algeria        72.3            5.29
+4 Angola         42.7          -24.3 
+5 Argentina      75.3            8.31</code></pre>
+</div>
+</div>
+<p><strong>Cómo leerlo:</strong></p>
+<ul>
+<li>Un valor <strong>positivo</strong> significa que el país está por encima del promedio mundial.</li>
+<li>Un valor <strong>negativo</strong>, por debajo.</li>
+</ul>
+</section>
+<section id="summarise-vs.-mutate-con-group_by" class="level3">
+<h3 class="anchored" data-anchor-id="summarise-vs.-mutate-con-group_by">3.3 <code>summarise()</code> vs.&nbsp;<code>mutate()</code> con <code>group_by()</code></h3>
+<p>Esta es <strong>la diferencia clave</strong> de la sesión. Calculemos la esperanza de vida media por continente de las dos maneras:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summarise(): COLAPSA. Una fila por grupo.</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continent) <span class="sc">|&gt;</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">vida_media =</span> <span class="fu">mean</span>(lifeExp))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  continent vida_media
+  &lt;fct&gt;          &lt;dbl&gt;
+1 Africa          54.8
+2 Americas        73.6
+3 Asia            70.7
+4 Europe          77.6
+5 Oceania         80.7</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate(): CONSERVA todas las filas y repite el valor del grupo.</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continent) <span class="sc">|&gt;</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vida_media_continente =</span> <span class="fu">mean</span>(lifeExp)) <span class="sc">|&gt;</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, continent, lifeExp, vida_media_continente) <span class="sc">|&gt;</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+  country     continent lifeExp vida_media_continente
+  &lt;fct&gt;       &lt;fct&gt;       &lt;dbl&gt;                 &lt;dbl&gt;
+1 Afghanistan Asia         43.8                  70.7
+2 Albania     Europe       76.4                  77.6
+3 Algeria     Africa       72.3                  54.8
+4 Angola      Africa       42.7                  54.8
+5 Argentina   Americas     75.3                  73.6</code></pre>
+</div>
+</div>
+<p>Con <code>mutate()</code> podemos comparar cada país <strong>contra su propio continente</strong>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continent) <span class="sc">|&gt;</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dif_vs_continente =</span> lifeExp <span class="sc">-</span> <span class="fu">mean</span>(lifeExp)) <span class="sc">|&gt;</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, continent, lifeExp, dif_vs_continente) <span class="sc">|&gt;</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(dif_vs_continente)) <span class="sc">|&gt;</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+  country   continent lifeExp dif_vs_continente
+  &lt;fct&gt;     &lt;fct&gt;       &lt;dbl&gt;             &lt;dbl&gt;
+1 Reunion   Africa       76.4              21.6
+2 Libya     Africa       74.0              19.1
+3 Tunisia   Africa       73.9              19.1
+4 Mauritius Africa       72.8              18.0
+5 Algeria   Africa       72.3              17.5</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Regla para recordar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><code>summarise()</code> → <strong>resume</strong> (menos filas).</li>
+<li><code>mutate()</code> → <strong>agrega</strong> (mismas filas, más columnas).</li>
+</ul>
+<p>Después de <code>group_by()</code> + <code>mutate()</code>, usa <code>ungroup()</code> para que el agrupamiento no afecte lo que hagas después.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="novedad-2-if_else-y-case_when" class="level2">
+<h2 class="anchored" data-anchor-id="novedad-2-if_else-y-case_when">4. Novedad 2: <code>if_else()</code> y <code>case_when()</code></h2>
+<p>Sirven para crear columnas <strong>según condiciones</strong>, normalmente dentro de <code>mutate()</code>.</p>
+<section id="if_else-dos-categorías" class="level3">
+<h3 class="anchored" data-anchor-id="if_else-dos-categorías">4.1 <code>if_else()</code>: dos categorías</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">esperanza =</span> <span class="fu">if_else</span>(lifeExp <span class="sc">&gt;=</span> <span class="dv">75</span>, <span class="st">"Alta"</span>, <span class="st">"Baja"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, lifeExp, esperanza) <span class="sc">|&gt;</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  country     lifeExp esperanza
+  &lt;fct&gt;         &lt;dbl&gt; &lt;chr&gt;    
+1 Afghanistan    43.8 Baja     
+2 Albania        76.4 Alta     
+3 Algeria        72.3 Baja     
+4 Angola         42.7 Baja     
+5 Argentina      75.3 Alta     </code></pre>
+</div>
+</div>
+<p><strong>Cómo leerlo:</strong> <em>“si se cumple la condición, pon esto; si no, pon esto otro”</em>.</p>
+</section>
+<section id="case_when-tres-o-más-categorías" class="level3">
+<h3 class="anchored" data-anchor-id="case_when-tres-o-más-categorías">4.2 <code>case_when()</code>: tres o más categorías</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>gap07 <span class="ot">&lt;-</span> gap07 <span class="sc">|&gt;</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">nivel_vida =</span> <span class="fu">case_when</span>(</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>      lifeExp <span class="sc">&gt;=</span> <span class="dv">75</span> <span class="sc">~</span> <span class="st">"Alto"</span>,</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>      lifeExp <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"Medio"</span>,</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>          <span class="sc">~</span> <span class="st">"Bajo"</span>   <span class="co"># en el resto de los casos</span></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span></span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(country, lifeExp, nivel_vida) <span class="sc">|&gt;</span></span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  country     lifeExp nivel_vida
+  &lt;fct&gt;         &lt;dbl&gt; &lt;chr&gt;     
+1 Afghanistan    43.8 Bajo      
+2 Albania        76.4 Alto      
+3 Algeria        72.3 Medio     
+4 Angola         42.7 Bajo      
+5 Argentina      75.3 Alto      </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>El orden de las condiciones importa
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>case_when()</code> evalúa de arriba hacia abajo y se queda con la <strong>primera</strong> que se cumple. Si pones <code>lifeExp &gt;= 60</code> primero, un país con 80 años caería en “Medio”.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="novedad-3-count" class="level2">
+<h2 class="anchored" data-anchor-id="novedad-3-count">5. Novedad 3: <code>count()</code></h2>
+<p>Contar cuántas filas hay en cada categoría es tan común que dplyr tiene un atajo.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Forma larga (la que ya conoces)</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(nivel_vida) <span class="sc">|&gt;</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  nivel_vida     n
+  &lt;chr&gt;      &lt;int&gt;
+1 Alto          44
+2 Bajo          43
+3 Medio         55</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Forma corta</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(nivel_vida)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  nivel_vida     n
+  &lt;chr&gt;      &lt;int&gt;
+1 Alto          44
+2 Bajo          43
+3 Medio         55</code></pre>
+</div>
+</div>
+<p><strong>Resultado:</strong> las dos formas dan lo mismo. <code>count()</code> es simplemente más corto.</p>
+<p>Puedes contar por <strong>dos variables</strong> y ordenar el resultado:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(continent, nivel_vida)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 11 × 3
+   continent nivel_vida     n
+   &lt;fct&gt;     &lt;chr&gt;      &lt;int&gt;
+ 1 Africa    Alto           1
+ 2 Africa    Bajo          40
+ 3 Africa    Medio         11
+ 4 Americas  Alto          10
+ 5 Americas  Medio         15
+ 6 Asia      Alto           9
+ 7 Asia      Bajo           3
+ 8 Asia      Medio         21
+ 9 Europe    Alto          22
+10 Europe    Medio          8
+11 Oceania   Alto           2</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>gap07 <span class="sc">|&gt;</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(continent, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  continent     n
+  &lt;fct&gt;     &lt;int&gt;
+1 Africa       52
+2 Asia         33
+3 Europe       30
+4 Americas     25
+5 Oceania       2</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Idea para tu EDA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>mutate()</code> + <code>case_when()</code> + <code>count()</code> es una combinación muy usada para explorar datos: creas una categoría y ves cómo se reparten las observaciones.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="lo-que-aprendimos" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-aprendimos">6. Lo que aprendimos</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Resumen de la sesión
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Repasamos</strong> los estadísticos básicos, <code>select()</code>, <code>filter()</code>, <code>arrange()</code>, <code>group_by()</code> + <code>summarise()</code> y <code>slice_head()</code>.</li>
+<li><strong><code>mutate()</code></strong> crea columnas nuevas y <strong>conserva todas las filas</strong>.</li>
+<li><strong><code>summarise()</code> resume</strong> (menos filas); <strong><code>mutate()</code> agrega</strong> (mismas filas).</li>
+<li><strong><code>if_else()</code> y <code>case_when()</code></strong> crean categorías a partir de condiciones.</li>
+<li><strong><code>count()</code></strong> cuenta filas por categoría en una sola línea.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Errores comunes
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Usar <code>=</code> en lugar de <code>==</code> dentro de <code>filter()</code>.</li>
+<li>Olvidar <code>desc()</code> en <code>arrange()</code>.</li>
+<li>Poner <code>slice_head()</code> <strong>antes</strong> de <code>arrange()</code> y obtener filas arbitrarias.</li>
+<li>Olvidar <code>na.rm = TRUE</code> cuando hay valores faltantes.</li>
+<li>Usar <code>mutate()</code> y no guardar el resultado (<code>&lt;-</code>), y luego “no encontrar” la columna.</li>
+<li>Olvidar <code>ungroup()</code> después de <code>group_by()</code> + <code>mutate()</code>.</li>
+<li>Escribir las condiciones de <code>case_when()</code> en el orden equivocado.</li>
+</ol>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="ejercicios-para-ti" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-para-ti">7. Ejercicios para ti</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejercicio 1: Usando <code>mutate()</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Crea la columna <code>pib_total</code> en miles de millones de dólares (<code>gdpPercap * pop / 1e9</code>) y muestra los 5 países con mayor <code>pib_total</code>.</p></li>
+<li><p>Para cada país, calcula cuántos años de esperanza de vida tiene <strong>por encima o por debajo del promedio de su continente</strong>. ¿Qué país de Asia está más por debajo de su continente?</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ejercicio 2: Categorías y conteos
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Crea una columna <code>tamano</code> con <code>case_when()</code>: <code>"Grande"</code> si <code>pop &gt;= 100e6</code>, <code>"Mediano"</code> si <code>pop &gt;= 10e6</code>, y <code>"Pequeño"</code> en el resto. Cuenta cuántos países hay en cada categoría.</p></li>
+<li><p>Con <code>count()</code>, ¿cuántos países de <strong>África</strong> tienen nivel de vida “Bajo” en 2007?</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Desafío
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Crea una tabla que muestre, para cada continente, <strong>el porcentaje de países</strong> con nivel de vida “Alto”.</p>
+<p>Pista: <code>group_by()</code> + <code>summarise()</code> con <code>mean(nivel_vida == "Alto")</code>.</p>
+</div>
+</div>
+</div>
+<section id="código-de-los-ejercicios" class="level3">
+<h3 class="anchored" data-anchor-id="código-de-los-ejercicios">Código de los ejercicios</h3>
+<div id="ejercicio-repaso" style="margin: 10px 0;">
+  <button onclick="verCodigo('ejrepaso', 'analista')" style="padding: 8px 16px; cursor: pointer; background: #2c3e50; color: white; border: none; border-radius: 4px;">
+    🔒 Ver código: Mini ejercicios de repaso
+  </button>
+  <div id="ejrepaso" style="display: none; margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 4px;">
+    <pre><code># 1. Rango de la población
+range(gap07$pop)
+
+# 2. País y población de Oceanía
+gap07 |&gt; 
+  filter(continent == "Oceania") |&gt; 
+  select(country, pop)
+
+# 3. Los 3 países con menor esperanza de vida
+gap07 |&gt; 
+  arrange(lifeExp) |&gt; 
+  select(country, lifeExp) |&gt; 
+  slice_head(n = 3)</code></pre>
+  </div>
+</div>
+
+<div id="ejercicio-intermedio" style="margin: 10px 0;">
+  <button onclick="verCodigo('ejintermedio', 'analista')" style="padding: 8px 16px; cursor: pointer; background: #2c3e50; color: white; border: none; border-radius: 4px;">
+    🔒 Ver código: Ejercicio intermedio (A, B y C)
+  </button>
+  <div id="ejintermedio" style="display: none; margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 4px;">
+    <pre><code># Parte A: tabla resumen por continente
+gap07 |&gt; 
+  group_by(continent) |&gt; 
+  summarise(
+    n_paises     = n(),
+    vida_media   = mean(lifeExp),
+    vida_mediana = median(lifeExp),
+    vida_sd      = sd(lifeExp),
+    pib_medio    = mean(gdpPercap)
+  ) |&gt; 
+  arrange(desc(vida_media))
+
+# Parte B: los 5 países más ricos de Europa
+gap07 |&gt; 
+  filter(continent == "Europe") |&gt; 
+  arrange(desc(gdpPercap)) |&gt; 
+  select(country, lifeExp, gdpPercap) |&gt; 
+  slice_head(n = 5)
+
+# Parte C: variabilidad por continente
+gap07 |&gt; 
+  group_by(continent) |&gt; 
+  summarise(
+    sd_pib  = sd(gdpPercap),
+    sd_vida = sd(lifeExp)
+  ) |&gt; 
+  arrange(desc(sd_pib))
+
+# Interpretación: Asia tiene la mayor variabilidad en PIB per cápita,
+# mientras que en esperanza de vida es África la más variable.
+# No coinciden: son dos dimensiones distintas de la desigualdad.</code></pre>
+  </div>
+</div>
+
+<div id="ejercicio-1" style="margin: 10px 0;">
+  <button onclick="verCodigo('ej1', 'analista')" style="padding: 8px 16px; cursor: pointer; background: #2c3e50; color: white; border: none; border-radius: 4px;">
+    🔒 Ver código Ejercicio 1
+  </button>
+  <div id="ej1" style="display: none; margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 4px;">
+    <pre><code># Ejercicio 1.1: Top 5 por PIB total (en miles de millones)
+gap07 |&gt; 
+  mutate(pib_miles_millones = gdpPercap * pop / 1e9) |&gt; 
+  arrange(desc(pib_miles_millones)) |&gt; 
+  select(country, pib_miles_millones) |&gt; 
+  slice_head(n = 5)
+
+# Ejercicio 1.2: Diferencia vs. el promedio del continente
+gap07 |&gt; 
+  group_by(continent) |&gt; 
+  mutate(dif_vs_continente = lifeExp - mean(lifeExp)) |&gt; 
+  ungroup() |&gt; 
+  filter(continent == "Asia") |&gt; 
+  arrange(dif_vs_continente) |&gt; 
+  select(country, lifeExp, dif_vs_continente) |&gt; 
+  slice_head(n = 3)</code></pre>
+  </div>
+</div>
+
+<div id="ejercicio-2" style="margin: 10px 0;">
+  <button onclick="verCodigo('ej2', 'analista')" style="padding: 8px 16px; cursor: pointer; background: #2c3e50; color: white; border: none; border-radius: 4px;">
+    🔒 Ver código Ejercicio 2
+  </button>
+  <div id="ej2" style="display: none; margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 4px;">
+    <pre><code># Ejercicio 2.1: Tamaño de los países
+gap07 |&gt; 
+  mutate(
+    tamano = case_when(
+      pop &gt;= 100e6 ~ "Grande",
+      pop &gt;= 10e6  ~ "Mediano",
+      TRUE         ~ "Pequeño"
+    )
+  ) |&gt; 
+  count(tamano)
+
+# Ejercicio 2.2: Países de África con nivel de vida "Bajo"
+gap07 |&gt; 
+  filter(continent == "Africa") |&gt; 
+  count(nivel_vida)</code></pre>
+  </div>
+</div>
+
+<div id="ejercicio-desafio" style="margin: 10px 0;">
+  <button onclick="verCodigo('ejdesafio', 'analista')" style="padding: 8px 16px; cursor: pointer; background: #2c3e50; color: white; border: none; border-radius: 4px;">
+    🔒 Ver código del Desafío
+  </button>
+  <div id="ejdesafio" style="display: none; margin-top: 10px; padding: 10px; background: #f5f5f5; border-radius: 4px;">
+    <pre><code># Desafío: porcentaje de países con nivel de vida "Alto" por continente
+gap07 |&gt; 
+  group_by(continent) |&gt; 
+  summarise(pct_alto = mean(nivel_vida == "Alto") * 100) |&gt; 
+  arrange(desc(pct_alto))
+
+# nivel_vida == "Alto" da TRUE/FALSE, y el promedio de ese vector
+# es la proporción de TRUE.</code></pre>
+  </div>
+</div>
+
+<script>
+function verCodigo(id, passwordCorrecta) {
+  var codigo = document.getElementById(id);
+  if (codigo.style.display === "none") {
+    var input = prompt("Ingresa la contraseña:");
+    if (input === passwordCorrecta) {
+      codigo.style.display = "block";
+    } else if (input !== null) {
+      alert("Contraseña incorrecta");
+    }
+  } else {
+    codigo.style.display = "none";
+  }
+}
+</script>
+<hr>
+</section>
+</section>
+<section id="funciones-que-usamos-hoy" class="level2">
+<h2 class="anchored" data-anchor-id="funciones-que-usamos-hoy">8. Funciones que usamos hoy</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Función</th>
+<th>De qué sirve</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>mean()</code>, <code>median()</code>, <code>sd()</code>, <code>var()</code></td>
+<td>Estadísticos de una columna</td>
+<td><code>mean(gap07$lifeExp)</code></td>
+</tr>
+<tr class="even">
+<td><code>range()</code>, <code>summary()</code></td>
+<td>Rango y resumen rápido</td>
+<td><code>range(gap07$pop)</code></td>
+</tr>
+<tr class="odd">
+<td><code>select()</code></td>
+<td>Elegir (o quitar) columnas</td>
+<td><code>select(country, lifeExp)</code></td>
+</tr>
+<tr class="even">
+<td><code>filter()</code></td>
+<td>Quedarse con filas que cumplen una condición</td>
+<td><code>filter(continent == "Asia")</code></td>
+</tr>
+<tr class="odd">
+<td><code>arrange()</code></td>
+<td>Ordenar las filas</td>
+<td><code>arrange(desc(lifeExp))</code></td>
+</tr>
+<tr class="even">
+<td><code>group_by()</code> + <code>summarise()</code></td>
+<td>Resumir por grupo</td>
+<td><code>summarise(media = mean(lifeExp))</code></td>
+</tr>
+<tr class="odd">
+<td><code>slice_head()</code></td>
+<td>Quedarse con las primeras filas</td>
+<td><code>slice_head(n = 5)</code></td>
+</tr>
+<tr class="even">
+<td><strong><code>mutate()</code></strong></td>
+<td><strong>Crear columnas nuevas</strong></td>
+<td><code>mutate(pib_total = gdpPercap * pop)</code></td>
+</tr>
+<tr class="odd">
+<td><strong><code>if_else()</code></strong></td>
+<td><strong>Crear una categoría de dos opciones</strong></td>
+<td><code>if_else(lifeExp &gt;= 75, "Alta", "Baja")</code></td>
+</tr>
+<tr class="even">
+<td><strong><code>case_when()</code></strong></td>
+<td><strong>Crear categorías de tres o más opciones</strong></td>
+<td><code>case_when(lifeExp &gt;= 75 ~ "Alto", ...)</code></td>
+</tr>
+<tr class="odd">
+<td><strong><code>count()</code></strong></td>
+<td><strong>Contar filas por categoría</strong></td>
+<td><code>count(continent)</code></td>
+</tr>
+<tr class="even">
+<td><code>ungroup()</code></td>
+<td>Quitar el agrupamiento</td>
+<td><code>ungroup()</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="reflexión-final" class="level2">
+<h2 class="anchored" data-anchor-id="reflexión-final">9. Reflexión final</h2>
+<p>Hoy <strong>reforzamos dplyr</strong> y dimos un paso más:</p>
+<ul>
+<li><strong>Repasamos</strong> lo que ya sabíamos y lo usamos en un ejercicio que combinaba varias funciones</li>
+<li><strong>Aprendimos <code>mutate()</code></strong> para crear columnas nuevas sin perder filas</li>
+<li><strong>Creamos categorías</strong> con <code>if_else()</code> y <code>case_when()</code></li>
+<li><strong>Contamos casos</strong> con <code>count()</code></li>
+</ul>
+<p><strong>La idea clave:</strong> <code>summarise()</code> resume y <code>mutate()</code> agrega. Si recuerdas esa diferencia, ya tienes lo más importante de la sesión.</p>
+<section id="tarea-opcional-para-que-practiques-en-casa" class="level3">
+<h3 class="anchored" data-anchor-id="tarea-opcional-para-que-practiques-en-casa">Tarea (opcional, para que practiques en casa)</h3>
+<p>Elige un año de <code>gapminder</code> distinto de 2007 (por ejemplo, 1952) y:</p>
+<ol type="1">
+<li>Calcula la esperanza de vida media por continente.</li>
+<li>Crea una variable de categorías con <code>case_when()</code> (puedes usar <code>gdpPercap</code> o <code>pop</code>).</li>
+<li>Cuenta cuántos países hay en cada categoría por continente.</li>
+<li>Escribe 2 o 3 líneas con lo que observas al comparar tus resultados con los de 2007.</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="para-la-próxima-sesión" class="level2">
+<h2 class="anchored" data-anchor-id="para-la-próxima-sesión">10. Para la próxima sesión</h2>
+<p>Para la próxima sesión, veremos los ejercicios de la <strong>segunda prueba del curso del año pasado</strong>, y practicaremos como responder las preguntas de esa prueba.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

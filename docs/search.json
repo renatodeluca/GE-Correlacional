@@ -1051,5 +1051,61 @@
       "Sesión 5",
       "Sesión 5: Refuerzo de dplyr"
     ]
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#variable-nominal",
+    "href": "sesiones/sesion-6.html#variable-nominal",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Variable nominal",
+    "text": "Variable nominal\nVariable que representa categorías sin un orden específico. Ejemplos: color de ojos, tipo de sangre."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#variable-ordinal",
+    "href": "sesiones/sesion-6.html#variable-ordinal",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Variable ordinal",
+    "text": "Variable ordinal\nVariable que representa categorías con un orden específico, pero sin una distancia uniforme entre ellas. Ejemplos: nivel educativo (primaria, secundaria, universidad), clasificación de satisfacción (bajo, medio, alto)."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#variable-de-razón",
+    "href": "sesiones/sesion-6.html#variable-de-razón",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Variable de razón",
+    "text": "Variable de razón\nVariable que representa categorías con un orden específico, una distancia uniforme entre ellas y un punto cero absoluto. Ejemplos: altura, peso, edad."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#variable-de-intervalo",
+    "href": "sesiones/sesion-6.html#variable-de-intervalo",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Variable de intervalo",
+    "text": "Variable de intervalo\nVariable que representa categorías con un orden específico y una distancia uniforme entre ellas, pero sin un punto cero absoluto. Ejemplos: temperatura en grados Celsius o Fahrenheit, años del calendario."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#continua-o-discreta",
+    "href": "sesiones/sesion-6.html#continua-o-discreta",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Continua o discreta?",
+    "text": "Continua o discreta?\nOtra clasificación de las variables cuantitativas es si son continuas o discretas."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cómo-interpretamos-una-correlación",
+    "href": "sesiones/sesion-6.html#cómo-interpretamos-una-correlación",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Cómo interpretamos una correlación?",
+    "text": "Cómo interpretamos una correlación?\nProbemos Aquí con un ejemplo interactivo."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#coeficientes",
+    "href": "sesiones/sesion-6.html#coeficientes",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Coeficientes",
+    "text": "Coeficientes\nCoeficientes de correlación\nLas interpretaciones de los coeficientes de correlación varían según el tipo de variable y la relación que se esté evaluando. Los más comunes son:\n\nCoeficiente de correlación de Pearson (r): mide la relación lineal entre dos variables continuas. Su valor varía entre -1 y 1, donde -1 indica una correlación negativa perfecta, 0 indica ausencia de correlación y 1 indica una correlación positiva perfecta."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#coeficientes-1",
+    "href": "sesiones/sesion-6.html#coeficientes-1",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Coeficientes",
+    "text": "Coeficientes\nSpearman\n\nCoeficiente de correlación de Spearman (ρ o rs): mide la relación monotónica entre dos variables ordinales o continuas. Su valor también varía entre -1 y 1, con interpretaciones similares a las del coeficiente de Pearson."
   }
 ]

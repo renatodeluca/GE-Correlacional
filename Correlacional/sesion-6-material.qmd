@@ -1,0 +1,25 @@
+---
+title: "Sesión 6"
+page-layout: full
+format:
+  html:
+    theme: minty
+    css: styles.css
+---
+
+::: {.columns}
+::: {.column width="68%"}
+<iframe src="sesiones/sesion-6.html" style="width:100%; height:85vh; border:none;"></iframe>
+:::
+
+Apretando F pones la presentación en pantalla completa. Para salir de pantalla completa, aprieta F nuevamente.
+:::
+
+---
+
+::: {.column width="50%"}
+## Próxima sesión
+
+La próxima sesión veremos la prueba del año pasado, para resolverla en conjunto y aclarar dudas. Por tanto, es importante que asistas!!
+:::
+

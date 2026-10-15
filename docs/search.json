@@ -1057,35 +1057,35 @@
     "href": "sesiones/sesion-6.html#variable-nominal",
     "title": "Sesión 6 - Preparación para segunda prueba",
     "section": "Variable nominal",
-    "text": "Variable nominal\nVariable que representa categorías sin un orden específico. Ejemplos: color de ojos, tipo de sangre."
+    "text": "Variable nominal\nRepresenta categorías sin un orden intrínseco.\nEjemplos:\n\nNacionalidad.\nTipo de sangre.\nComuna de residencia."
   },
   {
     "objectID": "sesiones/sesion-6.html#variable-ordinal",
     "href": "sesiones/sesion-6.html#variable-ordinal",
     "title": "Sesión 6 - Preparación para segunda prueba",
     "section": "Variable ordinal",
-    "text": "Variable ordinal\nVariable que representa categorías con un orden específico, pero sin una distancia uniforme entre ellas. Ejemplos: nivel educativo (primaria, secundaria, universidad), clasificación de satisfacción (bajo, medio, alto)."
+    "text": "Variable ordinal\nRepresenta categorías ordenadas, pero sin distancias necesariamente uniformes entre ellas.\nEjemplos:\n\nNivel educativo.\nNivel de satisfacción.\nPosición en un ranking."
   },
   {
     "objectID": "sesiones/sesion-6.html#variable-de-razón",
     "href": "sesiones/sesion-6.html#variable-de-razón",
     "title": "Sesión 6 - Preparación para segunda prueba",
     "section": "Variable de razón",
-    "text": "Variable de razón\nVariable que representa categorías con un orden específico, una distancia uniforme entre ellas y un punto cero absoluto. Ejemplos: altura, peso, edad."
+    "text": "Variable de razón\nPresenta valores ordenados, distancias uniformes y un cero absoluto.\nEjemplos:\n\nEdad.\nPeso.\nIngreso.\nNúmero de hijos."
   },
   {
     "objectID": "sesiones/sesion-6.html#variable-de-intervalo",
     "href": "sesiones/sesion-6.html#variable-de-intervalo",
     "title": "Sesión 6 - Preparación para segunda prueba",
     "section": "Variable de intervalo",
-    "text": "Variable de intervalo\nVariable que representa categorías con un orden específico y una distancia uniforme entre ellas, pero sin un punto cero absoluto. Ejemplos: temperatura en grados Celsius o Fahrenheit, años del calendario."
+    "text": "Variable de intervalo\nPresenta valores ordenados y distancias uniformes, pero no posee un cero absoluto.\nEjemplos:\n\nTemperatura en grados Celsius.\nAños del calendario."
   },
   {
     "objectID": "sesiones/sesion-6.html#continua-o-discreta",
     "href": "sesiones/sesion-6.html#continua-o-discreta",
     "title": "Sesión 6 - Preparación para segunda prueba",
-    "section": "Continua o discreta?",
-    "text": "Continua o discreta?\nOtra clasificación de las variables cuantitativas es si son continuas o discretas."
+    "section": "¿Continua o discreta?",
+    "text": "¿Continua o discreta?\nOtra clasificación distingue entre variables cuantitativas continuas y discretas.\nDiscretas: toman valores separados y contables.\nEjemplo: número de hijos.\nContinuas: pueden tomar cualquier valor dentro de un intervalo.\nEjemplo: estatura."
   },
   {
     "objectID": "sesiones/sesion-6.html#cómo-interpretamos-una-correlación",
@@ -1107,5 +1107,863 @@
     "title": "Sesión 6 - Preparación para segunda prueba",
     "section": "Coeficientes",
     "text": "Coeficientes\nSpearman\n\nCoeficiente de correlación de Spearman (ρ o rs): mide la relación monotónica entre dos variables ordinales o continuas. Su valor también varía entre -1 y 1, con interpretaciones similares a las del coeficiente de Pearson."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#probemos",
+    "href": "sesiones/sesion-6.html#probemos",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¡Probemos!",
+    "text": "¡Probemos!\n¿Qué tipo de variable es cada una?\n\nNúmero de hermanos.\nSatisfacción (muy baja a muy alta).\nTemperatura en Celsius.\nPreferencia electoral.\nIngreso mensual."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#diagramas-de-dispersión",
+    "href": "sesiones/sesion-6.html#diagramas-de-dispersión",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Diagramas de dispersión",
+    "text": "Diagramas de dispersión"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#qué-observamos",
+    "href": "sesiones/sesion-6.html#qué-observamos",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Qué observamos?",
+    "text": "¿Qué observamos?"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#dirección-y-magnitud",
+    "href": "sesiones/sesion-6.html#dirección-y-magnitud",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Dirección y magnitud",
+    "text": "Dirección y magnitud"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#qué-es-la-covarianza",
+    "href": "sesiones/sesion-6.html#qué-es-la-covarianza",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Qué es la covarianza?",
+    "text": "¿Qué es la covarianza?\nIndica cómo varían conjuntamente dos variables cuantitativas.\n\nPositiva: ambas tienden a aumentar conjuntamente.\nNegativa: cuando una aumenta, la otra tiende a disminuir.\nCercana a cero: no existe una tendencia lineal conjunta clara."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#fórmula-de-covarianza-muestral",
+    "href": "sesiones/sesion-6.html#fórmula-de-covarianza-muestral",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Fórmula de covarianza muestral",
+    "text": "Fórmula de covarianza muestral\n\\[\ns_{XY} =\n\\frac{\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})}{n-1}\n\\]\nDonde:\n\n\\(x_i\\) e \\(y_i\\): observaciones individuales.\n\\(\\bar{x}\\) e \\(\\bar{y}\\): medias de las variables.\n\\(n\\): tamaño muestral."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cuál-es-el-problema-de-la-covarianza",
+    "href": "sesiones/sesion-6.html#cuál-es-el-problema-de-la-covarianza",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Cuál es el problema de la covarianza?",
+    "text": "¿Cuál es el problema de la covarianza?\nSu magnitud depende de las unidades de medición.\nPor ejemplo, la covarianza entre ingreso y escolaridad cambia si expresamos el ingreso en pesos o miles de pesos.\n¿Cómo solucionamos este problema?\nEstandarizando la covarianza mediante Pearson."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cómo-interpretamos-pearson",
+    "href": "sesiones/sesion-6.html#cómo-interpretamos-pearson",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Cómo interpretamos Pearson?",
+    "text": "¿Cómo interpretamos Pearson?\n\n\\(r = 1\\): relación lineal positiva perfecta.\n\\(r = -1\\): relación lineal negativa perfecta.\n\\(r = 0\\): ausencia de correlación lineal.\n\nImportante: un coeficiente igual a cero no descarta la existencia de una relación no lineal."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#ejemplo",
+    "href": "sesiones/sesion-6.html#ejemplo",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nEntre años de escolaridad e ingreso mensual: \\(r = 0.65\\)\n\nAsociación positiva.\nMagnitud considerable.\nA más escolaridad, tienden a observarse mayores ingresos.\nNo podemos decir que una cause la otra."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#correlación-no-implica-causalidad",
+    "href": "sesiones/sesion-6.html#correlación-no-implica-causalidad",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Correlación no implica causalidad",
+    "text": "Correlación no implica causalidad\nEncontrar una asociación estadística no demuestra que una variable produzca cambios en la otra.\nPueden existir:\n\nTerceras variables.\nRelaciones inversas.\nAsociaciones espurias."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#probemos-1",
+    "href": "sesiones/sesion-6.html#probemos-1",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¡Probemos!",
+    "text": "¡Probemos!\nUtilicemos este simulador:\nSimulador interactivo de correlación\n¿Qué ocurre con el coeficiente cuando modificamos la distribución de los puntos?"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#spearman-rho_s",
+    "href": "sesiones/sesion-6.html#spearman-rho_s",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Spearman (\\(\\rho_s\\))",
+    "text": "Spearman (\\(\\rho_s\\))\n\nReemplaza los valores por su posición (ranking) y calcula la correlación entre rankings.\nSirve para variables ordinales o cuantitativas con relación monótona.\nVa de -1 a 1, y se interpreta como Pearson."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#qué-es-una-relación-monótona",
+    "href": "sesiones/sesion-6.html#qué-es-una-relación-monótona",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Qué es una relación monótona?",
+    "text": "¿Qué es una relación monótona?\nUna relación es monótona cuando, al aumentar una variable, la otra tiende a aumentar o disminuir consistentemente.\nNo necesariamente tiene que ser lineal."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#kendall-tau",
+    "href": "sesiones/sesion-6.html#kendall-tau",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Kendall (\\(\\tau\\))",
+    "text": "Kendall (\\(\\tau\\))\n\nCompara pares de casos: ¿van en el mismo sentido o en sentido contrario?\nConcordante: quien tiene más en X también tiene más en Y.\nDiscordante: quien tiene más en X tiene menos en Y.\nTambién va de -1 a 1."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#qué-son-los-empates",
+    "href": "sesiones/sesion-6.html#qué-son-los-empates",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Qué son los empates?",
+    "text": "¿Qué son los empates?\nOcurren cuando dos o más observaciones presentan el mismo valor o rango.\nSon habituales en variables ordinales con pocas categorías.\nPor ejemplo, cuando varias personas responden 4 en una escala de satisfacción de 1 a 5.\nKendall \\(\\tau_b\\) incorpora ajustes para considerar estos empates."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#comparación",
+    "href": "sesiones/sesion-6.html#comparación",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Comparación",
+    "text": "Comparación\n\n\n\nCoeficiente\nRelación\nVariables\n\n\n\n\nPearson\nLineal\nCuantitativas\n\n\nSpearman\nMonótona\nOrdinales o cuantitativas\n\n\nKendall\nConcordancia ordinal\nOrdinales"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#a-practicar",
+    "href": "sesiones/sesion-6.html#a-practicar",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¡A practicar!",
+    "text": "¡A practicar!\nObservando la matriz anterior:\n\n¿Cuál es la asociación más fuerte?\n¿Cuál presenta dirección negativa?\n¿Por qué la diagonal contiene unos?\n¿Podemos conocer la significación estadística solamente con esta matriz?"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#respuestas",
+    "href": "sesiones/sesion-6.html#respuestas",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Respuestas",
+    "text": "Respuestas\n\nEscolaridad e ingreso.\nEscolaridad-ingreso y horas de estudio-nota.\nNo. La correlación no demuestra causalidad."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#estadística-descriptiva-e-inferencial",
+    "href": "sesiones/sesion-6.html#estadística-descriptiva-e-inferencial",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Estadística descriptiva e inferencial",
+    "text": "Estadística descriptiva e inferencial\nLa estadística descriptiva resume las características de nuestros datos.\nLa estadística inferencial permite evaluar hipótesis sobre una población utilizando información muestral."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#contraste-de-hipótesis",
+    "href": "sesiones/sesion-6.html#contraste-de-hipótesis",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Contraste de hipótesis",
+    "text": "Contraste de hipótesis\nPara Pearson:\n\\[\nH_0: \\rho = 0\n\\]\n\\[\nH_1: \\rho \\neq 0\n\\]\n\nH0: no existe correlación lineal poblacional.\nH1: existe correlación lineal poblacional.\n\nEste ejemplo corresponde a un contraste bilateral."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#qué-es-el-p-valor",
+    "href": "sesiones/sesion-6.html#qué-es-el-p-valor",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Qué es el p-valor?",
+    "text": "¿Qué es el p-valor?\nEs la probabilidad de obtener un resultado tan extremo como el observado, o más extremo, suponiendo verdadera la hipótesis nula.\nUsualmente trabajamos con:\n\\[\n\\alpha = 0.05\n\\]"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#regla-de-decisión",
+    "href": "sesiones/sesion-6.html#regla-de-decisión",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Regla de decisión",
+    "text": "Regla de decisión\n\nSi \\(p &lt; 0.05\\): rechazamos H0.\nSi \\(p \\geq 0.05\\): no rechazamos H0.\n\nNo rechazar H0 no significa demostrar que H0 sea verdadera."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#contraste-para-pearson",
+    "href": "sesiones/sesion-6.html#contraste-para-pearson",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Contraste para Pearson",
+    "text": "Contraste para Pearson\nBajo los supuestos correspondientes:\n\\[\nt = r\\sqrt{\\frac{n-2}{1-r^2}}\n\\]\nCon:\n\\[\ngl = n-2\n\\]\nDonde:\n\n\\(r\\): correlación muestral.\n\\(n\\): tamaño muestral.\n\\(gl\\): grados de libertad."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#qué-diferencia-hay-entre-magnitud-y-significación",
+    "href": "sesiones/sesion-6.html#qué-diferencia-hay-entre-magnitud-y-significación",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Qué diferencia hay entre magnitud y significación?",
+    "text": "¿Qué diferencia hay entre magnitud y significación?\nEl coeficiente informa sobre la dirección y magnitud de la asociación.\nEl p-valor informa sobre la evidencia estadística frente a la hipótesis nula.\nUna asociación estadísticamente significativa no necesariamente es sustantivamente importante."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#ejercicio",
+    "href": "sesiones/sesion-6.html#ejercicio",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Ejercicio",
+    "text": "Ejercicio\nConsideremos los siguientes resultados hipotéticos:\n\n\n\nVariables\nr\np\n\n\n\n\nEscolaridad e ingreso\n0.62\n0.001\n\n\nEdad y satisfacción\n-0.12\n0.280\n\n\nHoras de estudio y nota\n0.41\n0.012\n\n\n\nPreguntas:\n\n¿Cuál presenta mayor magnitud?\n¿Cuáles son estadísticamente significativas?\n¿Podemos afirmar causalidad?"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#por-qué-es-importante",
+    "href": "sesiones/sesion-6.html#por-qué-es-importante",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Por qué es importante?",
+    "text": "¿Por qué es importante?\nPorque el nivel de medición condiciona las técnicas estadísticas que podemos utilizar.\nNo todas las variables pueden analizarse mediante los mismos procedimientos."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#resumen",
+    "href": "sesiones/sesion-6.html#resumen",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Resumen",
+    "text": "Resumen\n\n\n\nNivel\nCaracterística\nEjemplo\n\n\n\n\nNominal\nSin orden\nNacionalidad\n\n\nOrdinal\nOrden sin distancia uniforme\nSatisfacción\n\n\nIntervalo\nSin cero absoluto\nTemperatura °C\n\n\nRazón\nCon cero absoluto\nEdad"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#por-qué-importa",
+    "href": "sesiones/sesion-6.html#por-qué-importa",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Por qué importa?",
+    "text": "¿Por qué importa?\nEl nivel de medición condiciona las técnicas estadísticas que podemos utilizar.\nLa elección de una prueba depende de las características de nuestras variables y de la pregunta de investigación."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#covarianza-muestral",
+    "href": "sesiones/sesion-6.html#covarianza-muestral",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Covarianza muestral",
+    "text": "Covarianza muestral\n\\[\ns_{XY} =\n\\frac{\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})}{n-1}\n\\]\nDonde:\n\n\\(x_i\\) e \\(y_i\\): observaciones individuales.\n\\(\\bar{x}\\) e \\(\\bar{y}\\): medias.\n\\(n\\): tamaño muestral."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#interpretación",
+    "href": "sesiones/sesion-6.html#interpretación",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Interpretación",
+    "text": "Interpretación\n\nCerca de 0: asociación débil.\nCerca de 1: asociación fuerte.\nNo indican la dirección de la relación.\n\nEn nuestro ejemplo: hay asociación significativa (\\(p \\approx 0.003\\)) y de magnitud moderada (\\(\\phi \\approx 0.30\\))."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#qué-ocurre-con-los-valores-atípicos",
+    "href": "sesiones/sesion-6.html#qué-ocurre-con-los-valores-atípicos",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Qué ocurre con los valores atípicos?",
+    "text": "¿Qué ocurre con los valores atípicos?\nPearson es sensible a observaciones extremas.\nUn solo caso puede modificar considerablemente el coeficiente.\nPor eso es importante revisar previamente el diagrama de dispersión."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#supuestos-y-precauciones",
+    "href": "sesiones/sesion-6.html#supuestos-y-precauciones",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Supuestos y precauciones",
+    "text": "Supuestos y precauciones\nPara el uso e inferencia habitual de Pearson debemos considerar:\n\nVariables cuantitativas.\nRelación aproximadamente lineal.\nIndependencia de observaciones.\nAusencia de valores atípicos excesivamente influyentes.\nCondiciones distribucionales apropiadas para el contraste."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#coeficiente-punto-biserial",
+    "href": "sesiones/sesion-6.html#coeficiente-punto-biserial",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Coeficiente punto-biserial",
+    "text": "Coeficiente punto-biserial\nEl coeficiente punto-biserial (\\(r_{pb}\\)) mide la asociación entre:\n\nUna variable cuantitativa.\nUna variable dicotómica genuina.\n\nEs matemáticamente equivalente a Pearson cuando la variable dicotómica se codifica como 0 y 1."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#fórmula",
+    "href": "sesiones/sesion-6.html#fórmula",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Fórmula",
+    "text": "Fórmula\n\\[\nr_{pb} =\n\\frac{\\bar{X}_1-\\bar{X}_0}{s_X}\n\\sqrt{\\frac{n_1n_0}{n(n-1)}}\n\\]\nDonde:\n\n\\(\\bar{X}_1\\): media del grupo 1.\n\\(\\bar{X}_0\\): media del grupo 0.\n\\(s_X\\): desviación estándar muestral de la variable cuantitativa.\n\\(n_1\\) y \\(n_0\\): tamaños de los grupos."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#ejemplo-1",
+    "href": "sesiones/sesion-6.html#ejemplo-1",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nQueremos estudiar la asociación entre participación en tutorías y nota final.\nCodificamos:\n\n0 = No participa.\n1 = Participa.\n\nObtenemos:\n\\[\nr_{pb} = 0.42\n\\]\n¿Cómo lo interpretamos?"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#interpretación-1",
+    "href": "sesiones/sesion-6.html#interpretación-1",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Interpretación",
+    "text": "Interpretación\n\nExiste una asociación positiva.\nQuienes participan en tutorías tienden a presentar notas mayores.\nLa magnitud de la asociación es de 0.42.\nNo podemos afirmar que participar en tutorías cause mejores notas.\n\nImportante: si invertimos la codificación 0/1, cambia el signo del coeficiente."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#punto-biserial-o-spearman",
+    "href": "sesiones/sesion-6.html#punto-biserial-o-spearman",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Punto-biserial o Spearman?",
+    "text": "¿Punto-biserial o Spearman?\n\n\n\nVariables\nCoeficiente\n\n\n\n\nEdad e ingreso\nPearson\n\n\nSatisfacción y confianza ordinal\nSpearman/Kendall\n\n\nParticipación (sí/no) y nota\nPunto-biserial\n\n\nDos rankings\nSpearman/Kendall"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#magnitud-vs.-significación",
+    "href": "sesiones/sesion-6.html#magnitud-vs.-significación",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Magnitud vs. significación",
+    "text": "Magnitud vs. significación\n\n\n\nVariables\nr\np\n\n\n\n\nEscolaridad e ingreso\n0.62\n0.001\n\n\nEdad y satisfacción\n-0.12\n0.280\n\n\nHoras de estudio y nota\n0.41\n0.012\n\n\n\n\nMayor tamaño del efecto: escolaridad e ingreso.\nSignificativas: la 1.ª y la 3.ª.\nCon muestras muy grandes, un \\(r\\) minúsculo puede ser significativo sin ser importante."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#ejemplo-2",
+    "href": "sesiones/sesion-6.html#ejemplo-2",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n\n\n\nVariable\nEdad\nIngreso\nEscolaridad\n\n\n\n\nEdad\n1.00\n0.35\n-0.12\n\n\nIngreso\n0.35\n1.00\n0.68\n\n\nEscolaridad\n-0.12\n0.68\n1.00"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cómo-interpretamos-una-matriz",
+    "href": "sesiones/sesion-6.html#cómo-interpretamos-una-matriz",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Cómo interpretamos una matriz?",
+    "text": "¿Cómo interpretamos una matriz?\n\nLa diagonal principal contiene unos.\nLa matriz es simétrica.\nCada celda representa la asociación entre dos variables.\nLos coeficientes pueden acompañarse de p-valores y tamaños muestrales."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#matrices-en-r",
+    "href": "sesiones/sesion-6.html#matrices-en-r",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Matrices en R",
+    "text": "Matrices en R\nPodemos construir una matriz mediante:\n\n\n                 edad   ingreso escolaridad\nedad        1.0000000 0.9894757   0.8907690\ningreso     0.9894757 1.0000000   0.9208597\nescolaridad 0.8907690 0.9208597   1.0000000"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#qué-pasa-con-los-valores-perdidos",
+    "href": "sesiones/sesion-6.html#qué-pasa-con-los-valores-perdidos",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Qué pasa con los valores perdidos?",
+    "text": "¿Qué pasa con los valores perdidos?\nEn bases de datos reales es habitual encontrar valores perdidos.\nEn R se representan mediante:\nNA\nPor ejemplo:\n\n\n\nPersona\nEdad\nIngreso\nEscolaridad\n\n\n\n\nA\n20\n450\n12\n\n\nB\n25\nNA\n14\n\n\nC\n30\n650\nNA\n\n\nD\n35\n700\n16\n\n\nE\n40\n850\n18"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cómo-tratamos-los-na",
+    "href": "sesiones/sesion-6.html#cómo-tratamos-los-na",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Cómo tratamos los NA?",
+    "text": "¿Cómo tratamos los NA?\nExisten distintas estrategias.\nPara construir matrices de correlación, dos procedimientos habituales son:\n\nEliminación por casos completos (listwise).\nEliminación por pares disponibles (pairwise)."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#ejemplo-listwise",
+    "href": "sesiones/sesion-6.html#ejemplo-listwise",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Ejemplo listwise",
+    "text": "Ejemplo listwise\n\n\n\nPersona\nEdad\nIngreso\nEscolaridad\n¿Se incluye?\n\n\n\n\nA\n20\n450\n12\nSí\n\n\nB\n25\nNA\n14\nNo\n\n\nC\n30\n650\nNA\nNo\n\n\nD\n35\n700\n16\nSí\n\n\nE\n40\n850\n18\nSí\n\n\n\nEn este ejemplo trabajamos con tres casos completos."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#listwise-en-r",
+    "href": "sesiones/sesion-6.html#listwise-en-r",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Listwise en R",
+    "text": "Listwise en R\n\n\n                 edad   ingreso escolaridad\nedad        1.0000000 0.9905361   0.9958706\ningreso     0.9905361 1.0000000   0.9989061\nescolaridad 0.9958706 0.9989061   1.0000000"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#ventajas-y-limitaciones",
+    "href": "sesiones/sesion-6.html#ventajas-y-limitaciones",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Ventajas y limitaciones",
+    "text": "Ventajas y limitaciones\nVentaja:\nTodas las correlaciones utilizan exactamente las mismas observaciones.\nLimitaciones:\n\nPodemos perder una cantidad importante de casos.\nLa eliminación puede introducir sesgos si los datos perdidos no son completamente aleatorios."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#ejemplo-pairwise",
+    "href": "sesiones/sesion-6.html#ejemplo-pairwise",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Ejemplo pairwise",
+    "text": "Ejemplo pairwise\n\n\n\nPersona\nEdad\nIngreso\nEscolaridad\n\n\n\n\nA\n20\n450\n12\n\n\nB\n25\nNA\n14\n\n\nC\n30\n650\nNA\n\n\nD\n35\n700\n16\n\n\nE\n40\n850\n18\n\n\n\n¿Cuántos casos utilizaríamos para cada correlación?"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#respuesta",
+    "href": "sesiones/sesion-6.html#respuesta",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Respuesta",
+    "text": "Respuesta\n\n\n\nCorrelación\nCasos disponibles\n\n\n\n\nEdad - Ingreso\n4\n\n\nEdad - Escolaridad\n4\n\n\nIngreso - Escolaridad\n3\n\n\n\nCada correlación puede calcularse con un tamaño muestral diferente."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#pairwise-en-r",
+    "href": "sesiones/sesion-6.html#pairwise-en-r",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Pairwise en R",
+    "text": "Pairwise en R\n\n\n                 edad   ingreso escolaridad\nedad        1.0000000 0.9894757   0.9899495\ningreso     0.9894757 1.0000000   0.9989061\nescolaridad 0.9899495 0.9989061   1.0000000"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#listwise-vs.-pairwise",
+    "href": "sesiones/sesion-6.html#listwise-vs.-pairwise",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Listwise vs. pairwise",
+    "text": "Listwise vs. pairwise\n\n\n\n\n\n\n\n\n\nListwise\nPairwise\n\n\n\n\nCasos usados\nSolo completos\nLos disponibles por par\n\n\nTamaño muestral\nIgual para toda la matriz\nPuede variar\n\n\nAprovecha más datos\nMenos\nMás\n\n\nProblema\nSe pierden muchos casos\nCada coeficiente usa una muestra distinta\n\n\n\nNo hay una opción universal: hay que justificar y reportar cuál se usó."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cuidado-con-pairwise",
+    "href": "sesiones/sesion-6.html#cuidado-con-pairwise",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¡Cuidado con Pairwise!",
+    "text": "¡Cuidado con Pairwise!\nAunque aprovecha más observaciones, tiene limitaciones:\n\nCada correlación puede utilizar una muestra diferente.\nLas comparaciones entre coeficientes pueden complicarse.\nLa matriz resultante puede no ser semidefinida positiva.\nNo soluciona automáticamente el problema de los datos perdidos."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cuál-utilizamos",
+    "href": "sesiones/sesion-6.html#cuál-utilizamos",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Cuál utilizamos?",
+    "text": "¿Cuál utilizamos?\nNo existe una respuesta universal.\nDebemos considerar:\n\nCantidad de valores perdidos.\nPatrón y mecanismo de ausencia.\nObjetivo del análisis.\nNecesidad de mantener una muestra común.\n\nLa elección debe justificarse y reportarse."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#tablas-de-contingencia",
+    "href": "sesiones/sesion-6.html#tablas-de-contingencia",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Tablas de contingencia",
+    "text": "Tablas de contingencia\nSupongamos que encuestamos a 100 personas:\n\n\n\n\nUsa transporte público\nNo utiliza\nTotal\n\n\n\n\nMujeres\n35\n15\n50\n\n\nHombres\n20\n30\n50\n\n\nTotal\n55\n45\n100\n\n\n\n¿Qué podemos observar?"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#porcentajes",
+    "href": "sesiones/sesion-6.html#porcentajes",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Porcentajes",
+    "text": "Porcentajes\nPara interpretar correctamente una tabla debemos identificar qué variable utilizamos como referencia.\nEn nuestro ejemplo:\n\nEl 70% de las mujeres utiliza transporte público.\nEl 40% de los hombres utiliza transporte público.\n\n¿Parece existir una asociación?"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#independencia-estadística",
+    "href": "sesiones/sesion-6.html#independencia-estadística",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Independencia estadística",
+    "text": "Independencia estadística\nDos variables categóricas son independientes cuando la distribución de una no cambia según las categorías de la otra.\nSi fueran independientes, esperaríamos proporciones similares de uso de transporte público entre ambos grupos."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#hipótesis",
+    "href": "sesiones/sesion-6.html#hipótesis",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Hipótesis",
+    "text": "Hipótesis\n\\[\nH_0: \\text{Las variables son independientes}\n\\]\n\\[\nH_1: \\text{Las variables no son independientes}\n\\]\nSi rechazamos H0, encontramos evidencia estadística de asociación."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#frecuencias-observadas",
+    "href": "sesiones/sesion-6.html#frecuencias-observadas",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Frecuencias observadas",
+    "text": "Frecuencias observadas\nSon las frecuencias que efectivamente encontramos en nuestra muestra.\n\n\n\n\nUsa transporte\nNo utiliza\n\n\n\n\nMujeres\n35\n15\n\n\nHombres\n20\n30\n\n\n\nPero…\n¿Cuántos casos esperaríamos si las variables fueran independientes?"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#frecuencias-esperadas",
+    "href": "sesiones/sesion-6.html#frecuencias-esperadas",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Frecuencias esperadas",
+    "text": "Frecuencias esperadas\n\\[\nE_{ij} = \\frac{Total\\ fila_i \\times Total\\ columna_j}{n}\n\\]\nMujeres que usan transporte: \\(E = \\frac{50 \\times 55}{100} = 27.5\\)\n\n\n\n\nUsa transporte\nNo usa\n\n\n\n\nMujeres\n27.5\n22.5\n\n\nHombres\n27.5\n22.5"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#tabla-de-frecuencias-esperadas",
+    "href": "sesiones/sesion-6.html#tabla-de-frecuencias-esperadas",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Tabla de frecuencias esperadas",
+    "text": "Tabla de frecuencias esperadas\n\n\n\n\nUsa transporte\nNo utiliza\n\n\n\n\nMujeres\n27.5\n22.5\n\n\nHombres\n27.5\n22.5\n\n\n\nAhora podemos comparar las frecuencias observadas con las esperadas."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cálculo-de-chi-cuadrado",
+    "href": "sesiones/sesion-6.html#cálculo-de-chi-cuadrado",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Cálculo de chi-cuadrado",
+    "text": "Cálculo de chi-cuadrado\n\\[\n\\chi^2 =\n\\frac{(35-27.5)^2}{27.5}\n+\n\\frac{(15-22.5)^2}{22.5}\n\\]\n\\[\n+\n\\frac{(20-27.5)^2}{27.5}\n+\n\\frac{(30-22.5)^2}{22.5}\n\\]\nObtenemos:\n\\[\n\\chi^2 \\approx 9.09\n\\]"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#grados-de-libertad",
+    "href": "sesiones/sesion-6.html#grados-de-libertad",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Grados de libertad",
+    "text": "Grados de libertad\nPara una tabla de contingencia:\n\\[\ngl = (r-1)(c-1)\n\\]\nDonde:\n\nr: número de filas.\nc: número de columnas.\n\nEn una tabla 2x2:\n\\[\ngl = (2-1)(2-1) = 1\n\\]"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cómo-interpretamos-el-resultado",
+    "href": "sesiones/sesion-6.html#cómo-interpretamos-el-resultado",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Cómo interpretamos el resultado?",
+    "text": "¿Cómo interpretamos el resultado?\nPara nuestro ejemplo:\n\\[\n\\chi^2(1) = 9.09\n\\]\n\\[\np \\approx 0.003\n\\]\nComo \\(p &lt; 0.05\\), rechazamos H0.\nExiste evidencia estadística de asociación entre ambas variables."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#chi-cuadrado-en-r",
+    "href": "sesiones/sesion-6.html#chi-cuadrado-en-r",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Chi-cuadrado en R",
+    "text": "Chi-cuadrado en R\n\n\n\n    Pearson's Chi-squared test\n\ndata:  tabla\nX-squared = 9.0909, df = 1, p-value = 0.002569\n\n\nUtilizamos correct = FALSE para reproducir el cálculo manual del chi-cuadrado de Pearson sin corrección de continuidad."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#supuestos-y-precauciones-1",
+    "href": "sesiones/sesion-6.html#supuestos-y-precauciones-1",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Supuestos y precauciones",
+    "text": "Supuestos y precauciones\nPara interpretar adecuadamente chi-cuadrado debemos considerar:\n\nIndependencia de las observaciones.\nFrecuencias esperadas suficientemente grandes.\nUso de frecuencias, no directamente de porcentajes.\nCaracterísticas del diseño muestral.\n\nCuando las frecuencias esperadas son demasiado pequeñas, pueden requerirse procedimientos alternativos."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#qué-no-nos-dice-chi-cuadrado",
+    "href": "sesiones/sesion-6.html#qué-no-nos-dice-chi-cuadrado",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Qué NO nos dice chi-cuadrado?",
+    "text": "¿Qué NO nos dice chi-cuadrado?\nLa prueba permite evaluar la existencia de evidencia estadística de asociación.\nPero no informa directamente:\n\nLa magnitud de la asociación.\nQué celdas presentan las principales discrepancias.\nUna relación causal.\n\nPara ello necesitamos medidas complementarias."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#coeficiente-phi",
+    "href": "sesiones/sesion-6.html#coeficiente-phi",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Coeficiente Phi",
+    "text": "Coeficiente Phi\nEspecialmente utilizado en tablas 2x2.\nSu magnitud puede calcularse mediante:\n\\[\n|\\phi| = \\sqrt{\\frac{\\chi^2}{n}}\n\\]\nDonde:\n\n\\(\\chi^2\\): estadístico chi-cuadrado de Pearson.\n\\(n\\): tamaño muestral."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#ejemplo-phi",
+    "href": "sesiones/sesion-6.html#ejemplo-phi",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Ejemplo Phi",
+    "text": "Ejemplo Phi\nUtilizando nuestro ejemplo:\n\\[\n|\\phi| = \\sqrt{\\frac{9.09}{100}}\n\\]\n\\[\n|\\phi| \\approx 0.30\n\\]\nEste resultado cuantifica la magnitud de la asociación.\nEl chi-cuadrado por sí solo no informa sobre la dirección de la relación."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#v-de-cramer",
+    "href": "sesiones/sesion-6.html#v-de-cramer",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "V de Cramer",
+    "text": "V de Cramer\n\\[\nV =\n\\sqrt{\n\\frac{\\chi^2}\n{n \\cdot \\min(r-1,c-1)}\n}\n\\]\nDonde:\n\nn: tamaño muestral.\nr: número de filas.\nc: número de columnas.\n\nSu valor se encuentra entre 0 y 1."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cuándo-usamos-cada-uno",
+    "href": "sesiones/sesion-6.html#cuándo-usamos-cada-uno",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Cuándo usamos cada uno?",
+    "text": "¿Cuándo usamos cada uno?\n\n\n\nMedida\nUso habitual\n\n\n\n\nPhi\nTablas 2x2\n\n\nV de Cramer\nTablas de distintas dimensiones\n\n\n\nEn una tabla 2x2, V de Cramer coincide con el valor absoluto de Phi."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#interpretación-2",
+    "href": "sesiones/sesion-6.html#interpretación-2",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Interpretación",
+    "text": "Interpretación\n\nValores cercanos a 0 indican una asociación débil.\nValores más próximos a 1 indican una asociación más fuerte.\nV de Cramer no informa sobre la dirección.\n\nLa interpretación sustantiva depende del contexto de investigación."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#residuos",
+    "href": "sesiones/sesion-6.html#residuos",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Residuos",
+    "text": "Residuos\nLos residuos comparan las frecuencias observadas con las esperadas.\n\\[\nR = O-E\n\\]\n\nPositivo: observamos más casos de los esperados.\nNegativo: observamos menos casos de los esperados."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#residuos-estandarizados-de-pearson",
+    "href": "sesiones/sesion-6.html#residuos-estandarizados-de-pearson",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Residuos estandarizados de Pearson",
+    "text": "Residuos estandarizados de Pearson\n\\[\nR_{ij} =\n\\frac{O_{ij}-E_{ij}}{\\sqrt{E_{ij}}}\n\\]\nPermiten examinar la contribución de cada celda a las discrepancias respecto de la independencia."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#ejemplo-3",
+    "href": "sesiones/sesion-6.html#ejemplo-3",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nPara mujeres que utilizan transporte público:\n\\[\nR = \\frac{35-27.5}{\\sqrt{27.5}}\n\\]\n\\[\nR \\approx 1.43\n\\]\nObservamos más mujeres utilizando transporte público de las que esperaríamos bajo independencia."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#residuos-ajustados",
+    "href": "sesiones/sesion-6.html#residuos-ajustados",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Residuos ajustados",
+    "text": "Residuos ajustados\nLos residuos ajustados incorporan además las proporciones marginales de filas y columnas.\n\\[\nRA_{ij} =\n\\frac{O_{ij}-E_{ij}}\n{\\sqrt{E_{ij}(1-p_{i+})(1-p_{+j})}}\n\\]\nDonde:\n\n\\(p_{i+}\\): proporción marginal de la fila.\n\\(p_{+j}\\): proporción marginal de la columna."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cómo-interpretamos-los-residuos-ajustados",
+    "href": "sesiones/sesion-6.html#cómo-interpretamos-los-residuos-ajustados",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Cómo interpretamos los residuos ajustados?",
+    "text": "¿Cómo interpretamos los residuos ajustados?\nComo referencia habitual para una evaluación bilateral individual:\n\nValores superiores a 1.96: exceso respecto de lo esperado.\nValores inferiores a -1.96: déficit respecto de lo esperado.\nValores entre -1.96 y 1.96: discrepancia insuficiente para ese umbral.\n\nEsta interpretación aproximada requiere considerar los supuestos y las comparaciones múltiples."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#chi-cuadrado-y-residuos-en-r",
+    "href": "sesiones/sesion-6.html#chi-cuadrado-y-residuos-en-r",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Chi-cuadrado y residuos en R",
+    "text": "Chi-cuadrado y residuos en R\n\n\n\n    Pearson's Chi-squared test\n\ndata:  tabla\nX-squared = 9.0909, df = 1, p-value = 0.002569\n\n\n         Transporte\nSexo       Usa No usa\n  Mujeres 27.5   22.5\n  Hombres 27.5   22.5\n\n\n         Transporte\nSexo            Usa    No usa\n  Mujeres  1.430194 -1.581139\n  Hombres -1.430194  1.581139\n\n\n         Transporte\nSexo            Usa    No usa\n  Mujeres  3.015113 -3.015113\n  Hombres -3.015113  3.015113"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#respuestas-1",
+    "href": "sesiones/sesion-6.html#respuestas-1",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Respuestas",
+    "text": "Respuestas\n\n\n\nPregunta\nTécnica\n\n\n\n\nEdad e ingreso\nPearson\n\n\nSatisfacción y confianza ordinal\nSpearman / Kendall\n\n\nParticipación y nota\nPunto-biserial\n\n\nSexo y preferencia electoral\nChi-cuadrado\n\n\nMagnitud de asociación nominal\nPhi / V de Cramer\n\n\nDiscrepancias por celda\nResiduos estandarizados"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#ejercicio-final",
+    "href": "sesiones/sesion-6.html#ejercicio-final",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Ejercicio final",
+    "text": "Ejercicio final\nUna investigación encuentra una asociación entre sexo y participación en organizaciones sociales.\nSe obtiene:\n\\[\n\\chi^2(1) = 8.50,\\quad p = 0.004\n\\]\n\\[\nV = 0.21\n\\]\nRespondan:\n\n¿Qué hipótesis estamos contrastando?\n¿Existe evidencia estadística de asociación?\n¿Qué representa V de Cramer?\n¿Podemos afirmar que el sexo determina la participación?"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#respuestas-2",
+    "href": "sesiones/sesion-6.html#respuestas-2",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Respuestas",
+    "text": "Respuestas\n\nH0 plantea independencia entre ambas variables.\nSí, rechazamos H0 con un nivel de significación de 0.05.\nV de Cramer informa sobre la magnitud de la asociación.\nNo podemos establecer causalidad a partir de estos resultados."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#mapa-de-la-sesión",
+    "href": "sesiones/sesion-6.html#mapa-de-la-sesión",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Mapa de la sesión",
+    "text": "Mapa de la sesión\n¿Qué herramienta uso según mis variables?\n\n\n\nVariables\nHerramienta\n\n\n\n\nDos cuantitativas\nPearson\n\n\nUna cuantitativa y una dicotómica\nPunto-biserial\n\n\nDos ordinales (o rankings)\nSpearman / Kendall\n\n\nDos nominales\nChi-cuadrado, Phi / V de Cramer\n\n\n\nPrimero identifico el tipo de variable, después elijo la técnica."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#qué-es-una-asociación",
+    "href": "sesiones/sesion-6.html#qué-es-una-asociación",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Qué es una asociación?",
+    "text": "¿Qué es una asociación?\nDos variables están asociadas cuando los valores de una cambian junto con los valores de la otra.\nEjemplos:\n\n¿Más años de estudio se asocian con más ingreso?\n¿Más horas de estudio se asocian con mejores notas?"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#covarianza",
+    "href": "sesiones/sesion-6.html#covarianza",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Covarianza",
+    "text": "Covarianza\nMide si dos variables cuantitativas se mueven juntas.\n\nPositiva: cuando una sube, la otra tiende a subir.\nNegativa: cuando una sube, la otra tiende a bajar.\nCercana a cero: no hay una tendencia lineal clara.\n\n\\[\ns_{XY} = \\frac{\\sum (x_i-\\bar{x})(y_i-\\bar{y})}{n-1}\n\\]"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#el-problema-de-la-covarianza",
+    "href": "sesiones/sesion-6.html#el-problema-de-la-covarianza",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "El problema de la covarianza",
+    "text": "El problema de la covarianza\nSu valor depende de las unidades de medida.\nEjemplo: la covarianza entre ingreso y escolaridad cambia si el ingreso está en pesos o en miles de pesos, aunque la relación sea la misma.\nEntonces:\n\nNo sirve para comparar relaciones.\nNo sabemos si el valor es “grande” o “pequeño”.\n\nSolución: estandarizarla → correlación."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#covarianza-vs.-correlación",
+    "href": "sesiones/sesion-6.html#covarianza-vs.-correlación",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Covarianza vs. correlación",
+    "text": "Covarianza vs. correlación\n\n\n\n\nCovarianza\nCorrelación\n\n\n\n\nDice la dirección\nSí\nSí\n\n\nDice la magnitud\nNo (depende de las unidades)\nSí\n\n\nRango\nCualquier valor\nEntre -1 y 1\n\n\nComparable entre variables\nNo\nSí"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#qué-mide-pearson",
+    "href": "sesiones/sesion-6.html#qué-mide-pearson",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Qué mide Pearson?",
+    "text": "¿Qué mide Pearson?\nLa dirección y la fuerza de la relación lineal entre dos variables cuantitativas.\n\\[\nr = \\frac{Cov(X,Y)}{S_X S_Y}\n\\]\nEs la covarianza dividida por las desviaciones estándar. Por eso queda entre -1 y 1."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#primero-mira-el-gráfico",
+    "href": "sesiones/sesion-6.html#primero-mira-el-gráfico",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Primero: mira el gráfico",
+    "text": "Primero: mira el gráfico\nAntes de calcular, hay que hacer un diagrama de dispersión (cada punto es una persona)."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cómo-se-lee",
+    "href": "sesiones/sesion-6.html#cómo-se-lee",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Cómo se lee?",
+    "text": "¿Cómo se lee?\n\n\nPuntos que suben de izquierda a derecha → positiva.\nPuntos que bajan → negativa.\nPuntos muy cerca de una línea → más fuerte.\nNube sin forma → cercana a 0."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#interpretación-del-valor",
+    "href": "sesiones/sesion-6.html#interpretación-del-valor",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Interpretación del valor",
+    "text": "Interpretación del valor\n\n\\(r = 1\\): relación lineal positiva perfecta.\n\\(r = -1\\): relación lineal negativa perfecta.\n\\(r = 0\\): no hay relación lineal.\n\nUna regla orientadora (varía según el campo): cerca de 0.1 es débil, de 0.3 moderada y de 0.5 o más fuerte.\nOjo: \\(r = 0\\) no descarta una relación no lineal (por eso miramos el gráfico)."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#precauciones",
+    "href": "sesiones/sesion-6.html#precauciones",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Precauciones",
+    "text": "Precauciones\n\nSirve solo para variables cuantitativas.\nMide relaciones lineales.\nEs sensible a valores atípicos: un solo caso extremo puede cambiar mucho el resultado.\n\nPor eso: siempre revisar el diagrama de dispersión."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#es-significativa",
+    "href": "sesiones/sesion-6.html#es-significativa",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Es significativa?",
+    "text": "¿Es significativa?\nHasta ahora describimos la muestra. Para saber si hay evidencia de asociación en la población usamos un contraste:\n\\[\nH_0: \\rho = 0 \\qquad H_1: \\rho \\neq 0\n\\]\n\np &lt; 0.05: rechazamos H0 (hay evidencia de correlación).\np ≥ 0.05: no rechazamos H0 (no hay evidencia suficiente)."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#por-qué-otros-coeficientes",
+    "href": "sesiones/sesion-6.html#por-qué-otros-coeficientes",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Por qué otros coeficientes?",
+    "text": "¿Por qué otros coeficientes?\nPearson necesita variables cuantitativas y relaciones lineales.\nPero muchas variables son ordinales (satisfacción, nivel educativo, rankings): tienen orden, pero no distancias iguales.\nPara estos casos usamos coeficientes basados en el orden."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#relación-monótona",
+    "href": "sesiones/sesion-6.html#relación-monótona",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Relación monótona",
+    "text": "Relación monótona\nUna relación es monótona cuando, al subir una variable, la otra siempre tiende a subir (o siempre a bajar), aunque no sea en línea recta.\nSpearman y Kendall miden este tipo de relación."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#los-empates",
+    "href": "sesiones/sesion-6.html#los-empates",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Los empates",
+    "text": "Los empates\nHay empates cuando varias personas tienen el mismo valor.\nEs común en escalas cortas: muchas personas responden “4” en una escala de 1 a 5.\nKendall \\(\\tau_b\\) corrige por los empates."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cuál-uso",
+    "href": "sesiones/sesion-6.html#cuál-uso",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Cuál uso?",
+    "text": "¿Cuál uso?\n\n\n\nSituación\nCoeficiente\n\n\n\n\nDos variables cuantitativas, relación lineal\nPearson\n\n\nVariables ordinales o relación monótona\nSpearman\n\n\nVariables ordinales con muchos empates\nKendall (\\(\\tau_b\\))"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#otro-caso-variable-dicotómica",
+    "href": "sesiones/sesion-6.html#otro-caso-variable-dicotómica",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Otro caso: variable dicotómica",
+    "text": "Otro caso: variable dicotómica\n¿Y si una variable es cuantitativa y la otra tiene solo dos categorías?\n\nIngreso y situación laboral (ocupado/desocupado).\nNota final y aprobación (sí/no).\nEdad y participación electoral (sí/no).\n\nPara esto usamos la correlación punto-biserial."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#punto-biserial-r_pb",
+    "href": "sesiones/sesion-6.html#punto-biserial-r_pb",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Punto-biserial (\\(r_{pb}\\))",
+    "text": "Punto-biserial (\\(r_{pb}\\))\nMide la asociación entre:\n\nUna variable cuantitativa.\nUna variable dicotómica (codificada 0 y 1).\n\nEs equivalente a Pearson cuando la variable dicotómica se codifica 0/1.\nLa idea: ¿qué tan distintas son las medias de los dos grupos?"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#ejemplo-punto-biserial",
+    "href": "sesiones/sesion-6.html#ejemplo-punto-biserial",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Ejemplo punto-biserial",
+    "text": "Ejemplo punto-biserial\nParticipación en tutorías (0 = no, 1 = sí) y nota final: \\(r_{pb} = 0.42\\)\n\nAsociación positiva.\nQuienes participan tienden a tener notas mayores.\nMagnitud: 0.42.\nNo podemos afirmar que las tutorías causen mejores notas.\n\nSi invertimos la codificación 0/1, cambia el signo del coeficiente."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#resumen-cuál-coeficiente",
+    "href": "sesiones/sesion-6.html#resumen-cuál-coeficiente",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Resumen: ¿cuál coeficiente?",
+    "text": "Resumen: ¿cuál coeficiente?\n\n\n\nVariables\nCoeficiente\n\n\n\n\nEdad e ingreso\nPearson\n\n\nSatisfacción y confianza (ordinales)\nSpearman / Kendall\n\n\nParticipación (sí/no) y nota\nPunto-biserial\n\n\nDos rankings\nSpearman / Kendall"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#qué-es-una-matriz-de-correlación",
+    "href": "sesiones/sesion-6.html#qué-es-una-matriz-de-correlación",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Qué es una matriz de correlación?",
+    "text": "¿Qué es una matriz de correlación?\nUna tabla que muestra todas las correlaciones entre varias variables a la vez.\n\n\n\nVariable\nEdad\nIngreso\nEscolaridad\n\n\n\n\nEdad\n1.00\n0.35\n-0.12\n\n\nIngreso\n0.35\n1.00\n0.68\n\n\nEscolaridad\n-0.12\n0.68\n1.00"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cómo-se-lee-1",
+    "href": "sesiones/sesion-6.html#cómo-se-lee-1",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Cómo se lee?",
+    "text": "¿Cómo se lee?\n\nLa diagonal son unos (cada variable con ella misma).\nEs simétrica (Edad-Ingreso = Ingreso-Edad).\nCada celda es la correlación de un par de variables.\nMás fuerte: Ingreso-Escolaridad (0.68). Negativa: Edad-Escolaridad (-0.12)."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#en-r",
+    "href": "sesiones/sesion-6.html#en-r",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "En R",
+    "text": "En R\n\n\n                 edad   ingreso escolaridad\nedad        1.0000000 0.9894757   0.8907690\ningreso     0.9894757 1.0000000   0.9208597\nescolaridad 0.8907690 0.9208597   1.0000000"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#casos-perdidos-na",
+    "href": "sesiones/sesion-6.html#casos-perdidos-na",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Casos perdidos (NA)",
+    "text": "Casos perdidos (NA)\nEn datos reales hay respuestas que faltan. En R se llaman NA.\n\n\n\nPersona\nEdad\nIngreso\nEscolaridad\n\n\n\n\nA\n20\n450\n12\n\n\nB\n25\nNA\n14\n\n\nC\n30\n650\nNA\n\n\nD\n35\n700\n16\n\n\nE\n40\n850\n18\n\n\n\n¿Qué hacemos con ellos? Dos opciones: listwise y pairwise."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#listwise-casos-completos",
+    "href": "sesiones/sesion-6.html#listwise-casos-completos",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Listwise (casos completos)",
+    "text": "Listwise (casos completos)\nSe usan solo las personas sin ningún NA en las variables de la matriz.\n\n\n\nPersona\n¿Se incluye?\n\n\n\n\nA\nSí\n\n\nB\nNo (NA en ingreso)\n\n\nC\nNo (NA en escolaridad)\n\n\nD\nSí\n\n\nE\nSí\n\n\n\nTodas las correlaciones usan los mismos 3 casos."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#pairwise-pares-disponibles",
+    "href": "sesiones/sesion-6.html#pairwise-pares-disponibles",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Pairwise (pares disponibles)",
+    "text": "Pairwise (pares disponibles)\nCada correlación usa todas las personas que tienen datos en ese par.\n\n\n\nCorrelación\nCasos usados\n\n\n\n\nEdad - Ingreso\n4\n\n\nEdad - Escolaridad\n4\n\n\nIngreso - Escolaridad\n3\n\n\n\nCada correlación puede tener un n distinto."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#tamaño-del-efecto",
+    "href": "sesiones/sesion-6.html#tamaño-del-efecto",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Tamaño del efecto",
+    "text": "Tamaño del efecto\nTamaño del efecto = qué tan grande es la asociación, independiente del tamaño de la muestra.\n\nEl p-valor dice si hay evidencia de asociación en la población.\nEl tamaño del efecto dice cuánta asociación hay.\n\nEn correlación, el propio coeficiente (\\(r\\), \\(\\rho_s\\), \\(\\tau\\), \\(r_{pb}\\)) es un tamaño del efecto."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cómo-interpretar-la-magnitud",
+    "href": "sesiones/sesion-6.html#cómo-interpretar-la-magnitud",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Cómo interpretar la magnitud?",
+    "text": "¿Cómo interpretar la magnitud?\nReferencia habitual (Cohen), usando \\(|r|\\):\n\n\n\n\nr\n\n\n\n\n≈ 0.10\nPequeña\n\n\n≈ 0.30\nMediana\n\n\n≈ 0.50 o más\nGrande\n\n\n\nSon convenciones orientadoras: la interpretación depende del contexto de la investigación."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#coeficiente-de-determinación-r2",
+    "href": "sesiones/sesion-6.html#coeficiente-de-determinación-r2",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Coeficiente de determinación (\\(r^2\\))",
+    "text": "Coeficiente de determinación (\\(r^2\\))\nElevar \\(r\\) al cuadrado indica la proporción de variación compartida entre las variables (en Pearson).\n\n\n\nr\nr²\nSe comparte\n\n\n\n\n0.30\n0.09\n9%\n\n\n0.50\n0.25\n25%\n\n\n0.70\n0.49\n49%\n\n\n\nEjemplo: \\(r = 0.65\\) → \\(r^2 \\approx 0.42\\) → comparten cerca del 42% de su variación."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#qué-reportar",
+    "href": "sesiones/sesion-6.html#qué-reportar",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Qué reportar?",
+    "text": "¿Qué reportar?\n\nEl coeficiente (dirección y magnitud).\nEl p-valor (evidencia).\nEl n utilizado (sobre todo con pairwise).\nUna interpretación sustantiva, sin hablar de causalidad."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#y-si-las-variables-son-categorías",
+    "href": "sesiones/sesion-6.html#y-si-las-variables-son-categorías",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "¿Y si las variables son categorías?",
+    "text": "¿Y si las variables son categorías?\nPara dos variables nominales (sexo, preferencia electoral, comuna) no se usa Pearson.\nUsamos:\n\nTablas de contingencia para ver los datos.\nChi-cuadrado para saber si hay asociación.\nPhi / V de Cramer para saber su magnitud."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#tabla-de-contingencia",
+    "href": "sesiones/sesion-6.html#tabla-de-contingencia",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Tabla de contingencia",
+    "text": "Tabla de contingencia\nCruza dos variables. Ejemplo con 100 personas:\n\n\n\n\nUsa transporte público\nNo usa\nTotal\n\n\n\n\nMujeres\n35\n15\n50\n\n\nHombres\n20\n30\n50\n\n\nTotal\n55\n45\n100\n\n\n\nPorcentajes por fila: usa transporte público el 70% de las mujeres y el 40% de los hombres.\n¿Parece haber asociación?"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#independencia",
+    "href": "sesiones/sesion-6.html#independencia",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Independencia",
+    "text": "Independencia\nDos variables son independientes si la distribución de una no cambia según la otra.\nSi sexo y transporte fueran independientes, el porcentaje que usa transporte público sería similar en hombres y mujeres.\nChi-cuadrado compara lo que observamos con lo que esperaríamos si fueran independientes."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#chi-cuadrado-la-idea",
+    "href": "sesiones/sesion-6.html#chi-cuadrado-la-idea",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Chi-cuadrado: la idea",
+    "text": "Chi-cuadrado: la idea\n\\[\n\\chi^2 = \\sum \\frac{(O-E)^2}{E}\n\\]\n\nO: frecuencia observada.\nE: frecuencia esperada si fueran independientes.\n\nMientras más se alejan O y E, mayor es el chi-cuadrado.\n\\(H_0\\): las variables son independientes. \\(H_1\\): las variables están asociadas."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#cálculo-e-interpretación",
+    "href": "sesiones/sesion-6.html#cálculo-e-interpretación",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Cálculo e interpretación",
+    "text": "Cálculo e interpretación\nSumamos \\((O-E)^2/E\\) de las cuatro celdas:\n\\[\n\\chi^2 \\approx 9.09\n\\]\nGrados de libertad: \\(gl = (filas-1)(columnas-1) = 1\\)\nResultado: \\(\\chi^2(1) = 9.09,\\ p \\approx 0.003\\)\nComo \\(p &lt; 0.05\\), rechazamos H0: hay evidencia de asociación entre sexo y uso de transporte público."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#en-r-1",
+    "href": "sesiones/sesion-6.html#en-r-1",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "En R",
+    "text": "En R\n\n\n\n    Pearson's Chi-squared test\n\ndata:  tabla\nX-squared = 9.0909, df = 1, p-value = 0.002569"
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#precauciones-1",
+    "href": "sesiones/sesion-6.html#precauciones-1",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Precauciones",
+    "text": "Precauciones\n\nSe usan frecuencias (conteos), no porcentajes.\nLas observaciones deben ser independientes.\nLas frecuencias esperadas no deben ser muy pequeñas (regla habitual: al menos 5 por celda).\n\nChi-cuadrado solo dice si hay asociación. No dice qué tan fuerte es ni si hay causalidad."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#phi-y-v-de-cramer-el-tamaño-del-efecto",
+    "href": "sesiones/sesion-6.html#phi-y-v-de-cramer-el-tamaño-del-efecto",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Phi y V de Cramer: el tamaño del efecto",
+    "text": "Phi y V de Cramer: el tamaño del efecto\nSon los tamaños del efecto para variables categóricas: miden qué tan fuerte es la asociación, de 0 a 1.\nPhi (tablas 2x2):\n\\[\n|\\phi| = \\sqrt{\\frac{\\chi^2}{n}} = \\sqrt{\\frac{9.09}{100}} \\approx 0.30\n\\]\nV de Cramer (cualquier tamaño de tabla):\n\\[\nV = \\sqrt{\\frac{\\chi^2}{n \\cdot \\min(r-1,\\,c-1)}}\n\\]\nEn una tabla 2x2, V es igual al valor absoluto de Phi."
+  },
+  {
+    "objectID": "sesiones/sesion-6.html#resumen-qué-sirve-para-qué",
+    "href": "sesiones/sesion-6.html#resumen-qué-sirve-para-qué",
+    "title": "Sesión 6 - Preparación para segunda prueba",
+    "section": "Resumen: ¿qué sirve para qué?",
+    "text": "Resumen: ¿qué sirve para qué?\n\n\n\nPregunta\nHerramienta\n\n\n\n\n¿Hay asociación?\nChi-cuadrado (p-valor)\n\n\n¿Qué tan fuerte es?\nPhi (2x2) o V de Cramer\n\n\n¿Cómo se ve?\nTabla de contingencia (porcentajes)"
+  },
+  {
+    "objectID": "sesion-6-material.html",
+    "href": "sesion-6-material.html",
+    "title": "Sesión 6",
+    "section": "",
+    "text": "Apretando F pones la presentación en pantalla completa. Para salir de pantalla completa, aprieta F nuevamente.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 6",
+      "Sesión 6"
+    ]
+  },
+  {
+    "objectID": "sesion-6-material.html#guía-de-ejercicios",
+    "href": "sesion-6-material.html#guía-de-ejercicios",
+    "title": "Sesión 6",
+    "section": "Guía de ejercicios",
+    "text": "Guía de ejercicios\n\n\nDescargar guía en Word",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 6",
+      "Sesión 6"
+    ]
+  },
+  {
+    "objectID": "sesion-6-material.html#próxima-sesión",
+    "href": "sesion-6-material.html#próxima-sesión",
+    "title": "Sesión 6",
+    "section": "Próxima sesión",
+    "text": "Próxima sesión\nLa próxima sesión veremos la prueba del año pasado, para resolverla en conjunto y aclarar dudas. Por tanto, es importante que asistas!!",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 6",
+      "Sesión 6"
+    ]
   }
 ]

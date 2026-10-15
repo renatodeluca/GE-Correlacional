@@ -31,7 +31,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-f18d10cd35f09f319b8e5f1ae14878a2.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-e98d7bd19b45dce9b8c2cd1e21ec6ced.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -136,155 +136,873 @@
 </div>
 
 </section>
+<section>
 <section id="qué-veremos" class="title-slide slide level1 center">
-<h1>Qué veremos?</h1>
+<h1>¿Qué veremos?</h1>
 <ol type="1">
-<li class="fragment">Tipos de variables</li>
-<li class="fragment">Correlación</li>
-<li class="fragment">Inferencia</li>
+<li class="fragment">Asociación: covarianza vs.&nbsp;correlación</li>
+<li class="fragment">Correlación de Pearson</li>
+<li class="fragment">Correlación con variables ordinales (y punto-biserial)</li>
+<li class="fragment">Matrices y tamaños de efecto en correlación</li>
+<li class="fragment">Asociación con variables categóricas</li>
 </ol>
 </section>
-
-<section>
-<section id="tipos-de-variable" class="title-slide slide level1 center">
-<h1>Tipos de variable</h1>
-<p>Existen distintos tipos de variables, cada una respondiendo a su nivel de medición. Pueden ser cualitativas y cuantitativas.</p>
-<ul>
-<li class="fragment">Variables nominales</li>
-<li class="fragment">Variables ordinales</li>
-<li class="fragment">Variables intervalares (o de intervalo)</li>
-<li class="fragment">Variables de razón</li>
-</ul>
-</section>
-<section id="variable-nominal" class="slide level2">
-<h2>Variable nominal</h2>
-<p>Variable que representa categorías sin un orden específico. Ejemplos: color de ojos, tipo de sangre.</p>
-</section>
-<section id="variable-ordinal" class="slide level2">
-<h2>Variable ordinal</h2>
-<p>Variable que representa categorías con un orden específico, pero sin una distancia uniforme entre ellas. Ejemplos: nivel educativo (primaria, secundaria, universidad), clasificación de satisfacción (bajo, medio, alto).</p>
-</section>
-<section id="variable-de-intervalo" class="slide level2">
-<h2>Variable de intervalo</h2>
-<p>Variable que representa categorías con un orden específico y una distancia uniforme entre ellas, pero sin un punto cero absoluto. Ejemplos: temperatura en grados Celsius o Fahrenheit, años del calendario.</p>
-</section>
-<section id="variable-de-razón" class="slide level2">
-<h2>Variable de razón</h2>
-<p>Variable que representa categorías con un orden específico, una distancia uniforme entre ellas y un punto cero absoluto. Ejemplos: altura, peso, edad.</p>
-</section>
-<section id="continua-o-discreta" class="slide level2">
-<h2>Continua o discreta?</h2>
-<p>Otra clasificación de las variables cuantitativas es si son continuas o discretas.</p>
-</section>
-<section class="slide level2">
-
-<h3 id="variables-discretas">Variables discretas</h3>
-<p>Son aquellas que solo pueden tomar valores enteros y contables. Ejemplos: número de hijos, número de autos en un hogar.</p>
-<h3 id="variables-continuas">Variables continuas</h3>
-<p>Son aquellas que sí pueden tomar cualquier valor dentro de un rango, incluyendo decimales. Ejemplos: altura, peso, temperatura.</p>
-</section>
-<section class="slide level2">
-
-<div class="tabla-resumen">
+<section id="mapa-de-la-sesión" class="slide level2">
+<h2>Mapa de la sesión</h2>
+<p>¿Qué herramienta uso según mis variables?</p>
 <table class="caption-top">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>Naturaleza</th>
-<th>Nivel de medición</th>
-<th>¿Cuándo se usa?</th>
-<th>Ejemplo</th>
+<th>Variables</th>
+<th>Herramienta</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Cualitativa</td>
-<td>Nominal</td>
-<td>Cuando las categorías no tienen ningún orden lógico entre sí</td>
-<td>Sexo, nacionalidad, color de ojos</td>
+<td>Dos cuantitativas</td>
+<td>Pearson</td>
 </tr>
 <tr class="even">
-<td>Cualitativa</td>
-<td>Ordinal</td>
-<td>Cuando las categorías sí tienen un orden, pero la distancia entre ellas no es constante ni medible</td>
-<td>Nivel educacional, escala Likert (muy en desacuerdo a muy de acuerdo)</td>
+<td>Una cuantitativa y una dicotómica</td>
+<td>Punto-biserial</td>
 </tr>
 <tr class="odd">
-<td>Cuantitativa discreta</td>
-<td>Intervalo</td>
-<td>Cuando los valores son numéricos enteros/contables, con distancias iguales pero <strong>sin cero absoluto</strong> (el cero es arbitrario)</td>
-<td>Año calendario, número de siglo o década</td>
+<td>Dos ordinales (o rankings)</td>
+<td>Spearman / Kendall</td>
 </tr>
 <tr class="even">
-<td>Cuantitativa discreta</td>
-<td>Razón</td>
-<td>Cuando los valores son numéricos enteros/contables, con distancias iguales y <strong>con cero absoluto</strong></td>
-<td>Número de hijos, número de goles, cantidad de hermanos</td>
-</tr>
-<tr class="odd">
-<td>Cuantitativa continua</td>
-<td>Intervalo</td>
-<td>Cuando los valores pueden tomar cualquier valor dentro de un rango (decimales incluidos), con distancias iguales pero <strong>sin cero absoluto</strong></td>
-<td>Temperatura en °C</td>
-</tr>
-<tr class="even">
-<td>Cuantitativa continua</td>
-<td>Razón</td>
-<td>Cuando los valores pueden tomar cualquier valor dentro de un rango (decimales incluidos), con distancias iguales y <strong>con cero absoluto</strong></td>
-<td>Edad, ingreso, peso, velocidad (km/h)</td>
+<td>Dos nominales</td>
+<td>Chi-cuadrado, Phi / V de Cramer</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Primero identifico el tipo de variable, después elijo la técnica.</strong></p>
+</section></section>
+<section>
+<section id="introducción-a-la-asociación" class="title-slide slide level1 center">
+<h1>1. Introducción a la asociación</h1>
+
+</section>
+<section id="qué-es-una-asociación" class="slide level2">
+<h2>¿Qué es una asociación?</h2>
+<p>Dos variables están <strong>asociadas</strong> cuando los valores de una cambian junto con los valores de la otra.</p>
+<p>Ejemplos:</p>
+<ul>
+<li>¿Más años de estudio se asocian con más ingreso?</li>
+<li>¿Más horas de estudio se asocian con mejores notas?</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Nos interesa saber:</p>
+<ul>
+<li class="fragment"><strong>Si</strong> existe asociación.</li>
+<li class="fragment"><strong>Hacia dónde</strong> va (dirección).</li>
+<li class="fragment"><strong>Qué tan fuerte</strong> es (magnitud).</li>
+</ul>
+</section>
+<section id="covarianza" class="slide level2">
+<h2>Covarianza</h2>
+<p>Mide si dos variables cuantitativas <strong>se mueven juntas</strong>.</p>
+<ul>
+<li class="fragment"><strong>Positiva:</strong> cuando una sube, la otra tiende a subir.</li>
+<li class="fragment"><strong>Negativa:</strong> cuando una sube, la otra tiende a bajar.</li>
+<li class="fragment"><strong>Cercana a cero:</strong> no hay una tendencia lineal clara.</li>
+</ul>
+<p><span class="math display">\[
+s_{XY} = \frac{\sum (x_i-\bar{x})(y_i-\bar{y})}{n-1}
+\]</span></p>
+</section>
+<section id="el-problema-de-la-covarianza" class="slide level2">
+<h2>El problema de la covarianza</h2>
+<p>Su valor <strong>depende de las unidades</strong> de medida.</p>
+<p>Ejemplo: la covarianza entre ingreso y escolaridad cambia si el ingreso está en pesos o en miles de pesos, aunque la relación sea la misma.</p>
+<p>Entonces:</p>
+<ul>
+<li>No sirve para comparar relaciones.</li>
+<li>No sabemos si el valor es “grande” o “pequeño”.</li>
+</ul>
+<p><strong>Solución: estandarizarla → correlación.</strong></p>
+</section>
+<section id="covarianza-vs.-correlación" class="slide level2">
+<h2>Covarianza vs.&nbsp;correlación</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Covarianza</th>
+<th>Correlación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dice la dirección</td>
+<td>Sí</td>
+<td>Sí</td>
+</tr>
+<tr class="even">
+<td>Dice la magnitud</td>
+<td>No (depende de las unidades)</td>
+<td>Sí</td>
+</tr>
+<tr class="odd">
+<td>Rango</td>
+<td>Cualquier valor</td>
+<td>Entre -1 y 1</td>
+</tr>
+<tr class="even">
+<td>Comparable entre variables</td>
+<td>No</td>
+<td>Sí</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="correlación-de-pearson" class="title-slide slide level1 center">
+<h1>2. Correlación de Pearson</h1>
+
+</section>
+<section id="qué-mide-pearson" class="slide level2">
+<h2>¿Qué mide Pearson?</h2>
+<p>La <strong>dirección</strong> y la <strong>fuerza</strong> de la relación <strong>lineal</strong> entre dos variables cuantitativas.</p>
+<p><span class="math display">\[
+r = \frac{Cov(X,Y)}{S_X S_Y}
+\]</span></p>
+<p>Es la covarianza dividida por las desviaciones estándar. Por eso queda entre <strong>-1 y 1</strong>.</p>
+</section>
+<section id="primero-mira-el-gráfico" class="slide level2">
+<h2>Primero: mira el gráfico</h2>
+<p>Antes de calcular, hay que hacer un <strong>diagrama de dispersión</strong> (cada punto es una persona).</p>
+
+<img data-src="../img/scatters.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"></section>
+<section id="cómo-se-lee" class="slide level2">
+<h2>¿Cómo se lee?</h2>
+
+<img data-src="../img/scatters3.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"><ul>
+<li class="fragment">Puntos que suben de izquierda a derecha → <strong>positiva</strong>.</li>
+<li class="fragment">Puntos que bajan → <strong>negativa</strong>.</li>
+<li class="fragment">Puntos muy cerca de una línea → <strong>más fuerte</strong>.</li>
+<li class="fragment">Nube sin forma → <strong>cercana a 0</strong>.</li>
+</ul>
+</section>
+<section id="interpretación-del-valor" class="slide level2">
+<h2>Interpretación del valor</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(r = 1\)</span>: relación lineal positiva perfecta.</li>
+<li class="fragment"><span class="math inline">\(r = -1\)</span>: relación lineal negativa perfecta.</li>
+<li class="fragment"><span class="math inline">\(r = 0\)</span>: no hay relación lineal.</li>
+</ul>
+<p>Una regla orientadora (varía según el campo): cerca de 0.1 es débil, de 0.3 moderada y de 0.5 o más fuerte.</p>
+<p><strong>Ojo:</strong> <span class="math inline">\(r = 0\)</span> no descarta una relación no lineal (por eso miramos el gráfico).</p>
+</section>
+<section id="ejemplo" class="slide level2">
+<h2>Ejemplo</h2>
+<p>Entre años de escolaridad e ingreso mensual: <span class="math inline">\(r = 0.65\)</span></p>
+<ol type="1">
+<li class="fragment">Asociación <strong>positiva</strong>.</li>
+<li class="fragment">Magnitud <strong>considerable</strong>.</li>
+<li class="fragment">A más escolaridad, tienden a observarse mayores ingresos.</li>
+<li class="fragment"><strong>No podemos decir que una cause la otra.</strong></li>
+</ol>
+</section>
+<section id="precauciones" class="slide level2">
+<h2>Precauciones</h2>
+<ul>
+<li>Sirve solo para variables <strong>cuantitativas</strong>.</li>
+<li>Mide relaciones <strong>lineales</strong>.</li>
+<li>Es <strong>sensible a valores atípicos</strong>: un solo caso extremo puede cambiar mucho el resultado.</li>
+</ul>
+<p>Por eso: <strong>siempre revisar el diagrama de dispersión.</strong></p>
+</section>
+<section id="es-significativa" class="slide level2">
+<h2>¿Es significativa?</h2>
+<p>Hasta ahora describimos la muestra. Para saber si hay evidencia de asociación en la <strong>población</strong> usamos un contraste:</p>
+<p><span class="math display">\[
+H_0: \rho = 0 \qquad H_1: \rho \neq 0
+\]</span></p>
+<ul>
+<li><strong>p &lt; 0.05:</strong> rechazamos H0 (hay evidencia de correlación).</li>
+<li><strong>p ≥ 0.05:</strong> no rechazamos H0 (no hay evidencia suficiente).</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="correlación-con-variables-ordinales" class="title-slide slide level1 center">
+<h1>3. Correlación con variables ordinales</h1>
+
+</section>
+<section id="por-qué-otros-coeficientes" class="slide level2">
+<h2>¿Por qué otros coeficientes?</h2>
+<p>Pearson necesita variables cuantitativas y relaciones lineales.</p>
+<p>Pero muchas variables son <strong>ordinales</strong> (satisfacción, nivel educativo, rankings): tienen orden, pero no distancias iguales.</p>
+<p>Para estos casos usamos coeficientes basados en el <strong>orden</strong>.</p>
+</section>
+<section id="relación-monótona" class="slide level2">
+<h2>Relación monótona</h2>
+<p>Una relación es <strong>monótona</strong> cuando, al subir una variable, la otra <strong>siempre tiende a subir</strong> (o siempre a bajar), aunque no sea en línea recta.</p>
+<p>Spearman y Kendall miden este tipo de relación.</p>
+</section>
+<section id="spearman-rho_s" class="slide level2">
+<h2>Spearman (<span class="math inline">\(\rho_s\)</span>)</h2>
+<ul>
+<li>Reemplaza los valores por su <strong>posición</strong> (ranking) y calcula la correlación entre rankings.</li>
+<li>Sirve para variables <strong>ordinales</strong> o cuantitativas con relación monótona.</li>
+<li>Va de <strong>-1 a 1</strong>, y se interpreta como Pearson.</li>
+</ul>
+</section>
+<section id="kendall-tau" class="slide level2">
+<h2>Kendall (<span class="math inline">\(\tau\)</span>)</h2>
+<ul>
+<li>Compara <strong>pares de casos</strong>: ¿van en el mismo sentido o en sentido contrario?</li>
+<li><strong>Concordante:</strong> quien tiene más en X también tiene más en Y.</li>
+<li><strong>Discordante:</strong> quien tiene más en X tiene menos en Y.</li>
+<li>También va de <strong>-1 a 1</strong>.</li>
+</ul>
+</section>
+<section id="los-empates" class="slide level2">
+<h2>Los empates</h2>
+<p>Hay <strong>empates</strong> cuando varias personas tienen el mismo valor.</p>
+<p>Es común en escalas cortas: muchas personas responden “4” en una escala de 1 a 5.</p>
+<p><strong>Kendall <span class="math inline">\(\tau_b\)</span></strong> corrige por los empates.</p>
+</section>
+<section id="cuál-uso" class="slide level2">
+<h2>¿Cuál uso?</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Situación</th>
+<th>Coeficiente</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dos variables cuantitativas, relación lineal</td>
+<td>Pearson</td>
+</tr>
+<tr class="even">
+<td>Variables ordinales o relación monótona</td>
+<td>Spearman</td>
+</tr>
+<tr class="odd">
+<td>Variables ordinales con muchos empates</td>
+<td>Kendall (<span class="math inline">\(\tau_b\)</span>)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="otro-caso-variable-dicotómica" class="slide level2">
+<h2>Otro caso: variable dicotómica</h2>
+<p>¿Y si una variable es <strong>cuantitativa</strong> y la otra tiene <strong>solo dos categorías</strong>?</p>
+<ul>
+<li>Ingreso y situación laboral (ocupado/desocupado).</li>
+<li>Nota final y aprobación (sí/no).</li>
+<li>Edad y participación electoral (sí/no).</li>
+</ul>
+<p>Para esto usamos la <strong>correlación punto-biserial</strong>.</p>
+</section>
+<section id="punto-biserial-r_pb" class="slide level2">
+<h2>Punto-biserial (<span class="math inline">\(r_{pb}\)</span>)</h2>
+<p>Mide la asociación entre:</p>
+<ul>
+<li>Una variable <strong>cuantitativa</strong>.</li>
+<li>Una variable <strong>dicotómica</strong> (codificada 0 y 1).</li>
+</ul>
+<p>Es equivalente a Pearson cuando la variable dicotómica se codifica 0/1.</p>
+<p>La idea: <strong>¿qué tan distintas son las medias de los dos grupos?</strong></p>
+</section>
+<section id="ejemplo-punto-biserial" class="slide level2">
+<h2>Ejemplo punto-biserial</h2>
+<p>Participación en tutorías (0 = no, 1 = sí) y nota final: <span class="math inline">\(r_{pb} = 0.42\)</span></p>
+<ol type="1">
+<li class="fragment">Asociación <strong>positiva</strong>.</li>
+<li class="fragment">Quienes participan tienden a tener <strong>notas mayores</strong>.</li>
+<li class="fragment">Magnitud: 0.42.</li>
+<li class="fragment"><strong>No podemos afirmar que las tutorías causen mejores notas.</strong></li>
+</ol>
+<p>Si invertimos la codificación 0/1, <strong>cambia el signo</strong> del coeficiente.</p>
+</section>
+<section id="resumen-cuál-coeficiente" class="slide level2">
+<h2>Resumen: ¿cuál coeficiente?</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Variables</th>
+<th>Coeficiente</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Edad e ingreso</td>
+<td>Pearson</td>
+</tr>
+<tr class="even">
+<td>Satisfacción y confianza (ordinales)</td>
+<td>Spearman / Kendall</td>
+</tr>
+<tr class="odd">
+<td>Participación (sí/no) y nota</td>
+<td>Punto-biserial</td>
+</tr>
+<tr class="even">
+<td>Dos rankings</td>
+<td>Spearman / Kendall</td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="matrices-y-tamaños-de-efecto-en-correlación" class="title-slide slide level1 center">
+<h1>4. Matrices y tamaños de efecto en correlación</h1>
+
+</section>
+<section id="qué-es-una-matriz-de-correlación" class="slide level2">
+<h2>¿Qué es una matriz de correlación?</h2>
+<p>Una tabla que muestra <strong>todas las correlaciones</strong> entre varias variables a la vez.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th style="text-align: right;">Edad</th>
+<th style="text-align: right;">Ingreso</th>
+<th style="text-align: right;">Escolaridad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Edad</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">-0.12</td>
+</tr>
+<tr class="even">
+<td>Ingreso</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.68</td>
+</tr>
+<tr class="odd">
+<td>Escolaridad</td>
+<td style="text-align: right;">-0.12</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cómo-se-lee-1" class="slide level2">
+<h2>¿Cómo se lee?</h2>
+<ol type="1">
+<li class="fragment">La <strong>diagonal</strong> son unos (cada variable con ella misma).</li>
+<li class="fragment">Es <strong>simétrica</strong> (Edad-Ingreso = Ingreso-Edad).</li>
+<li class="fragment">Cada celda es la correlación de <strong>un par</strong> de variables.</li>
+<li class="fragment">Más fuerte: Ingreso-Escolaridad (0.68). Negativa: Edad-Escolaridad (-0.12).</li>
+</ol>
+</section>
+<section id="en-r" class="slide level2">
+<h2>En R</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                 edad   ingreso escolaridad
+edad        1.0000000 0.9894757   0.8907690
+ingreso     0.9894757 1.0000000   0.9208597
+escolaridad 0.8907690 0.9208597   1.0000000</code></pre>
+</div>
 </div>
 </section>
 <section class="slide level2">
 
-<h3 id="por-qué-es-importante-conocer-el-tipo-de-variable">Por qué es importante conocer el tipo de variable?</h3>
-<p>Es importante conocer el tipo de variable porque nos permite elegir las técnicas estadísticas adecuadas para analizar los datos. Por ejemplo, algunas pruebas estadísticas requieren variables de razón o intervalo, mientras que otras pueden aplicarse a variables ordinales o nominales.</p>
+<h3 id="matriz-visual">Matriz visual</h3>
+
+<img data-src="sesion-6_files/figure-revealjs/unnamed-chunk-2-1.png" width="576" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="matriz-de-círculos">Matriz de círculos</h3>
+
+<img data-src="sesion-6_files/figure-revealjs/unnamed-chunk-3-1.png" width="576" class="r-stretch"></section>
+<section id="casos-perdidos-na" class="slide level2">
+<h2>Casos perdidos (NA)</h2>
+<p>En datos reales hay respuestas que faltan. En R se llaman <code>NA</code>.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Persona</th>
+<th style="text-align: right;">Edad</th>
+<th style="text-align: right;">Ingreso</th>
+<th style="text-align: right;">Escolaridad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">450</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">650</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">700</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="odd">
+<td>E</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">850</td>
+<td style="text-align: right;">18</td>
+</tr>
+</tbody>
+</table>
+<p>¿Qué hacemos con ellos? Dos opciones: <strong>listwise</strong> y <strong>pairwise</strong>.</p>
+</section>
+<section id="listwise-casos-completos" class="slide level2">
+<h2>Listwise (casos completos)</h2>
+<p>Se usan <strong>solo las personas sin ningún NA</strong> en las variables de la matriz.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Persona</th>
+<th>¿Se incluye?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>Sí</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>No (NA en ingreso)</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>No (NA en escolaridad)</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>Sí</td>
+</tr>
+<tr class="odd">
+<td>E</td>
+<td>Sí</td>
+</tr>
+</tbody>
+</table>
+<p>Todas las correlaciones usan <strong>los mismos 3 casos</strong>.</p>
+</section>
+<section id="pairwise-pares-disponibles" class="slide level2">
+<h2>Pairwise (pares disponibles)</h2>
+<p>Cada correlación usa <strong>todas las personas que tienen datos en ese par</strong>.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Correlación</th>
+<th style="text-align: right;">Casos usados</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Edad - Ingreso</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td>Edad - Escolaridad</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td>Ingreso - Escolaridad</td>
+<td style="text-align: right;">3</td>
+</tr>
+</tbody>
+</table>
+<p>Cada correlación puede tener un <strong>n distinto</strong>.</p>
+</section>
+<section id="listwise-vs.-pairwise" class="slide level2">
+<h2>Listwise vs.&nbsp;pairwise</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Listwise</th>
+<th>Pairwise</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Casos usados</td>
+<td>Solo completos</td>
+<td>Los disponibles por par</td>
+</tr>
+<tr class="even">
+<td>Tamaño muestral</td>
+<td>Igual para toda la matriz</td>
+<td>Puede variar</td>
+</tr>
+<tr class="odd">
+<td>Aprovecha más datos</td>
+<td>Menos</td>
+<td>Más</td>
+</tr>
+<tr class="even">
+<td>Problema</td>
+<td>Se pierden muchos casos</td>
+<td>Cada coeficiente usa una muestra distinta</td>
+</tr>
+</tbody>
+</table>
+<p><strong>No hay una opción universal: hay que justificar y reportar cuál se usó.</strong></p>
+</section>
+<section id="tamaño-del-efecto" class="slide level2">
+<h2>Tamaño del efecto</h2>
+<p><strong>Tamaño del efecto = qué tan grande es la asociación</strong>, independiente del tamaño de la muestra.</p>
+<ul>
+<li>El <strong>p-valor</strong> dice si hay evidencia de asociación en la población.</li>
+<li>El <strong>tamaño del efecto</strong> dice <strong>cuánta</strong> asociación hay.</li>
+</ul>
+<p>En correlación, el propio coeficiente (<span class="math inline">\(r\)</span>, <span class="math inline">\(\rho_s\)</span>, <span class="math inline">\(\tau\)</span>, <span class="math inline">\(r_{pb}\)</span>) es un tamaño del efecto.</p>
+</section>
+<section id="cómo-interpretar-la-magnitud" class="slide level2">
+<h2>¿Cómo interpretar la magnitud?</h2>
+<p>Referencia habitual (Cohen), usando <span class="math inline">\(|r|\)</span>:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>r</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>≈ 0.10</td>
+<td>Pequeña</td>
+</tr>
+<tr class="even">
+<td>≈ 0.30</td>
+<td>Mediana</td>
+</tr>
+<tr class="odd">
+<td>≈ 0.50 o más</td>
+<td>Grande</td>
+</tr>
+</tbody>
+</table>
+<p>Son <strong>convenciones orientadoras</strong>: la interpretación depende del contexto de la investigación.</p>
+</section>
+<section id="coeficiente-de-determinación-r2" class="slide level2">
+<h2>Coeficiente de determinación (<span class="math inline">\(r^2\)</span>)</h2>
+<p>Elevar <span class="math inline">\(r\)</span> al cuadrado indica la <strong>proporción de variación compartida</strong> entre las variables (en Pearson).</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>r</th>
+<th>r²</th>
+<th>Se comparte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.30</td>
+<td>0.09</td>
+<td>9%</td>
+</tr>
+<tr class="even">
+<td>0.50</td>
+<td>0.25</td>
+<td>25%</td>
+</tr>
+<tr class="odd">
+<td>0.70</td>
+<td>0.49</td>
+<td>49%</td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo: <span class="math inline">\(r = 0.65\)</span> → <span class="math inline">\(r^2 \approx 0.42\)</span> → comparten cerca del <strong>42%</strong> de su variación.</p>
+</section>
+<section id="magnitud-vs.-significación" class="slide level2">
+<h2>Magnitud vs.&nbsp;significación</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Variables</th>
+<th style="text-align: right;">r</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Escolaridad e ingreso</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">0.001</td>
+</tr>
+<tr class="even">
+<td>Edad y satisfacción</td>
+<td style="text-align: right;">-0.12</td>
+<td style="text-align: right;">0.280</td>
+</tr>
+<tr class="odd">
+<td>Horas de estudio y nota</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.012</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li class="fragment">Mayor tamaño del efecto: escolaridad e ingreso.</li>
+<li class="fragment">Significativas: la 1.ª y la 3.ª.</li>
+<li class="fragment">Con muestras muy grandes, <strong>un <span class="math inline">\(r\)</span> minúsculo puede ser significativo</strong> sin ser importante.</li>
+</ul>
+</section>
+<section id="qué-reportar" class="slide level2">
+<h2>¿Qué reportar?</h2>
+<ol type="1">
+<li class="fragment">El <strong>coeficiente</strong> (dirección y magnitud).</li>
+<li class="fragment">El <strong>p-valor</strong> (evidencia).</li>
+<li class="fragment">El <strong>n</strong> utilizado (sobre todo con pairwise).</li>
+<li class="fragment">Una <strong>interpretación sustantiva</strong>, sin hablar de causalidad.</li>
+</ol>
 </section></section>
 <section>
-<section id="correlación" class="title-slide slide level1 center">
-<h1>Correlación</h1>
-<p>La correlación es una medida estadística que indica la relación entre dos variables. Se utiliza para determinar si existe una relación lineal entre ellas y, en caso afirmativo, qué tan fuerte es esa relación.</p>
+<section id="asociación-con-variables-categóricas" class="title-slide slide level1 center">
+<h1>5. Asociación con variables categóricas</h1>
+
 </section>
-<section class="slide level2">
-
-
-<img data-src="../img/scatters.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"></section>
-<section class="slide level2">
-
-
-<img data-src="../img/scatters2.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"></section>
-<section class="slide level2">
-
-
-<img data-src="../img/scatters3.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"></section>
-<section id="cómo-interpretamos-una-correlación" class="slide level2">
-<h2>Cómo interpretamos una correlación?</h2>
-<p>Probemos <a href="https://gabcortes97.github.io/correlacion/significancia-correlacion.html">Aquí</a> con un ejemplo interactivo.</p>
-</section>
-<section id="coeficientes" class="slide level2">
-<h2>Coeficientes</h2>
-<h3 id="coeficientes-de-correlación">Coeficientes de correlación</h3>
-<p>Las interpretaciones de los coeficientes de correlación varían según el tipo de variable y la relación que se esté evaluando. Los más comunes son:</p>
+<section id="y-si-las-variables-son-categorías" class="slide level2">
+<h2>¿Y si las variables son categorías?</h2>
+<p>Para dos variables <strong>nominales</strong> (sexo, preferencia electoral, comuna) no se usa Pearson.</p>
+<p>Usamos:</p>
 <ul>
-<li class="fragment">Coeficiente de correlación de Pearson (r): mide la relación lineal entre dos variables continuas. Su valor varía entre -1 y 1, donde -1 indica una correlación negativa perfecta, 0 indica ausencia de correlación y 1 indica una correlación positiva perfecta.</li>
+<li class="fragment"><strong>Tablas de contingencia</strong> para ver los datos.</li>
+<li class="fragment"><strong>Chi-cuadrado</strong> para saber si hay asociación.</li>
+<li class="fragment"><strong>Phi / V de Cramer</strong> para saber su magnitud.</li>
 </ul>
 </section>
-<section class="slide level2">
-
-<p>Coeficiente de correlación de Spearman (ρ o rs): mide la relación monotónica entre dos variables ordinales o continuas. Su valor también varía entre -1 y 1, <strong>con interpretaciones similares a las del coeficiente de Pearson.</strong></p>
+<section id="tabla-de-contingencia" class="slide level2">
+<h2>Tabla de contingencia</h2>
+<p>Cruza dos variables. Ejemplo con 100 personas:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">Usa transporte público</th>
+<th style="text-align: right;">No usa</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mujeres</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="even">
+<td>Hombres</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">100</td>
+</tr>
+</tbody>
+</table>
+<p>Porcentajes por fila: usa transporte público el <strong>70%</strong> de las mujeres y el <strong>40%</strong> de los hombres.</p>
+<p>¿Parece haber asociación?</p>
+</section>
+<section id="independencia" class="slide level2">
+<h2>Independencia</h2>
+<p>Dos variables son <strong>independientes</strong> si la distribución de una <strong>no cambia</strong> según la otra.</p>
+<p>Si sexo y transporte fueran independientes, el porcentaje que usa transporte público sería <strong>similar</strong> en hombres y mujeres.</p>
+<p>Chi-cuadrado compara lo que <strong>observamos</strong> con lo que <strong>esperaríamos</strong> si fueran independientes.</p>
+</section>
+<section id="chi-cuadrado-la-idea" class="slide level2">
+<h2>Chi-cuadrado: la idea</h2>
+<p><span class="math display">\[
+\chi^2 = \sum \frac{(O-E)^2}{E}
+\]</span></p>
 <ul>
-<li class="fragment">Coeficiente de correlación de Kendall (τ): mide la relación ordinal entre dos variables. Su valor varía entre -1 y 1, <strong>con interpretaciones similares a las del coeficiente de Pearson.</strong></li>
+<li><strong>O:</strong> frecuencia observada.</li>
+<li><strong>E:</strong> frecuencia esperada si fueran independientes.</li>
 </ul>
+<p>Mientras <strong>más se alejan</strong> O y E, <strong>mayor</strong> es el chi-cuadrado.</p>
+<p><span class="math inline">\(H_0\)</span>: las variables son independientes. <span class="math inline">\(H_1\)</span>: las variables están asociadas.</p>
+</section>
+<section id="frecuencias-esperadas" class="slide level2">
+<h2>Frecuencias esperadas</h2>
+<p><span class="math display">\[
+E_{ij} = \frac{Total\ fila_i \times Total\ columna_j}{n}
+\]</span></p>
+<p>Mujeres que usan transporte: <span class="math inline">\(E = \frac{50 \times 55}{100} = 27.5\)</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">Usa transporte</th>
+<th style="text-align: right;">No usa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mujeres</td>
+<td style="text-align: right;">27.5</td>
+<td style="text-align: right;">22.5</td>
+</tr>
+<tr class="even">
+<td>Hombres</td>
+<td style="text-align: right;">27.5</td>
+<td style="text-align: right;">22.5</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cálculo-e-interpretación" class="slide level2">
+<h2>Cálculo e interpretación</h2>
+<p>Sumamos <span class="math inline">\((O-E)^2/E\)</span> de las cuatro celdas:</p>
+<p><span class="math display">\[
+\chi^2 \approx 9.09
+\]</span></p>
+<p>Grados de libertad: <span class="math inline">\(gl = (filas-1)(columnas-1) = 1\)</span></p>
+<p>Resultado: <span class="math inline">\(\chi^2(1) = 9.09,\ p \approx 0.003\)</span></p>
+<p>Como <span class="math inline">\(p &lt; 0.05\)</span>, <strong>rechazamos H0</strong>: hay evidencia de asociación entre sexo y uso de transporte público.</p>
+</section>
+<section id="en-r-1" class="slide level2">
+<h2>En R</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
 
+data:  tabla
+X-squared = 9.0909, df = 1, p-value = 0.002569</code></pre>
+</div>
+</div>
+</section>
+<section id="precauciones-1" class="slide level2">
+<h2>Precauciones</h2>
+<ul>
+<li>Se usan <strong>frecuencias</strong> (conteos), no porcentajes.</li>
+<li>Las observaciones deben ser <strong>independientes</strong>.</li>
+<li>Las frecuencias esperadas no deben ser muy pequeñas (regla habitual: al menos 5 por celda).</li>
+</ul>
+<p><strong>Chi-cuadrado solo dice si hay asociación. No dice qué tan fuerte es ni si hay causalidad.</strong></p>
+</section>
+<section id="phi-y-v-de-cramer-el-tamaño-del-efecto" class="slide level2">
+<h2>Phi y V de Cramer: el tamaño del efecto</h2>
+<p>Son los <strong>tamaños del efecto</strong> para variables categóricas: miden <strong>qué tan fuerte</strong> es la asociación, de 0 a 1.</p>
+<p><strong>Phi</strong> (tablas 2x2):</p>
+<p><span class="math display">\[
+|\phi| = \sqrt{\frac{\chi^2}{n}} = \sqrt{\frac{9.09}{100}} \approx 0.30
+\]</span></p>
+<p><strong>V de Cramer</strong> (cualquier tamaño de tabla):</p>
+<p><span class="math display">\[
+V = \sqrt{\frac{\chi^2}{n \cdot \min(r-1,\,c-1)}}
+\]</span></p>
+<p>En una tabla 2x2, V es igual al valor absoluto de Phi.</p>
+</section>
+<section id="interpretación" class="slide level2">
+<h2>Interpretación</h2>
+<ul>
+<li class="fragment">Cerca de <strong>0</strong>: asociación débil.</li>
+<li class="fragment">Cerca de <strong>1</strong>: asociación fuerte.</li>
+<li class="fragment"><strong>No indican la dirección</strong> de la relación.</li>
+</ul>
+<p>En nuestro ejemplo: hay asociación significativa (<span class="math inline">\(p \approx 0.003\)</span>) y de magnitud <strong>moderada</strong> (<span class="math inline">\(\phi \approx 0.30\)</span>).</p>
+</section>
+<section id="resumen-qué-sirve-para-qué" class="slide level2">
+<h2>Resumen: ¿qué sirve para qué?</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Pregunta</th>
+<th>Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>¿Hay asociación?</td>
+<td>Chi-cuadrado (p-valor)</td>
+</tr>
+<tr class="even">
+<td>¿Qué tan fuerte es?</td>
+<td>Phi (2x2) o V de Cramer</td>
+</tr>
+<tr class="odd">
+<td>¿Cómo se ve?</td>
+<td>Tabla de contingencia (porcentajes)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="slide level2">
 
 </section></section>
+<section id="para-la-prueba-recuerden" class="title-slide slide level1 center">
+<h1>Para la prueba, recuerden:</h1>
+<ol type="1">
+<li class="fragment">Identificar el <strong>nivel de medición</strong> de las variables.</li>
+<li class="fragment">Elegir la técnica: <strong>Pearson</strong>, <strong>punto-biserial</strong>, <strong>Spearman/Kendall</strong> o <strong>chi-cuadrado</strong>.</li>
+<li class="fragment">Mirar el <strong>gráfico o la tabla</strong> antes de calcular.</li>
+<li class="fragment">Interpretar la <strong>magnitud (tamaño del efecto) y la dirección</strong>, y revisar el <strong>p-valor</strong>.</li>
+<li class="fragment">Si hay NA, decir si usaron <strong>listwise o pairwise</strong>.</li>
+<li class="fragment">Concluir con palabras: <strong>asociación no es causalidad</strong>.</li>
+</ol>
+</section>
+
+<section>
+<section id="escoge-el-coeficiente" class="title-slide slide level1 center">
+<h1>Escoge el coeficiente</h1>
+<ul>
+<li class="fragment">Años de estudio e ingreso</li>
+<li class="fragment">Satisfacción laboral (1-5) y estrés (1-5)</li>
+<li class="fragment">Asistió a tutorías (sí/no) y nota final</li>
+<li class="fragment">Región de residencia y medio de transporte</li>
+<li class="fragment">Sexo y uso de redes sociales (sí/no)</li>
+<li class="fragment">Posición de 10 ciudades en dos rankings de seguridad</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section id="escoge-el-coeficiente-1" class="title-slide slide level1 center">
+<h1>Escoge el coeficiente</h1>
+<ul>
+<li class="fragment">Edad y votó en la última elección (sí/no)</li>
+<li class="fragment">Horas de sueño y minutos de ejercicio a la semana</li>
+<li class="fragment">Nivel educativo (3 niveles) y confianza en el gobierno (4 niveles)</li>
+<li class="fragment">Ocupación y religión</li>
+</ul>
+</section>
+
+<section id="nos-vemos-la-próxima-sesión" class="title-slide slide level1 center">
+<h1>Nos vemos la próxima sesión!</h1>
+<p>Grupo de Estudio de Estadística Correlacional</p>
+<p>Centro IDEA - FACSO</p>
+
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../img/logoidea.png" class="slide-logo"></p>
@@ -501,6 +1219,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

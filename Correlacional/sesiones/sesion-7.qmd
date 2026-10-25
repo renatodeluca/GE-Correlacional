@@ -163,6 +163,9 @@ En el test Chi-cuadrado se comparan las frecuencias observadas en cada categorí
 
 En otras palabras, se mide la diferencia entre lo que efectivamente se observa en los datos y lo que se esperaría si no existiera relación entre las variables. Cuanto mayores sean esas diferencias (ajustadas al tamaño de la muestra), mayor será el valor de χ2.
 
+# Ahora tú
+
+Calcula la correlación entre sexo y apoyo a la democracia y reportala:
 
 
 
@@ -171,4 +174,4 @@ En otras palabras, se mide la diferencia entre lo que efectivamente se observa e
 
 - Llegar unos minutos antes del inicio de la prueba (8:30) para prender su computador, abrir Positron, u-cursos, etc. y así aprovechar al máximo el tiempo disponible para la prueba.
 - Responder las preguntas de la prueba en un archivo de código de .R, y al final cortar y pegar las respuestas en el formulario que les darán
-- Se sugiere guardar sus respuestas en un documento aparte para tenerlo como respald
+- Se sugiere guardar sus respuestas en un documento aparte para tenerlo como respaldo.

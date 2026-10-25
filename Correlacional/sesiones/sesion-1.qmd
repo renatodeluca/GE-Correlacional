@@ -43,6 +43,7 @@ options(scipen = 999)
 superheroes <- read_csv("https://zenodo.org/records/22071337/files/Superheroes.csv")
 ```
 
+
 La base original trae muchas columnas, incluyendo una llamada `History` con textos narrativos larguísimos que no necesitamos para el análisis estadístico. Nos quedamos solo con las columnas relevantes:
 
 ```{r}

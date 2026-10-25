@@ -1965,5 +1965,85 @@
       "Sesión 6",
       "Sesión 6"
     ]
+  },
+  {
+    "objectID": "sesiones/sesion-7.html",
+    "href": "sesiones/sesion-7.html",
+    "title": "Sesión 7: Preparación práctica para la prueba",
+    "section": "",
+    "text": "En esta sesión resolveremos la prueba del año pasado, para que puedan practicar y familiarizarse con el tipo de preguntas que se hacen en la prueba.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 7",
+      "Sesión 7: Preparación práctica para la prueba"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-7.html#estime-la-correlación-entre-ambas-variables-utilizando-r-y-genere-un-diagrama-de-dispersión-nube-de-puntosscatterplot.-corte-y-pegue-el-código-en-el-recuadro-de-abajo.-1p",
+    "href": "sesiones/sesion-7.html#estime-la-correlación-entre-ambas-variables-utilizando-r-y-genere-un-diagrama-de-dispersión-nube-de-puntosscatterplot.-corte-y-pegue-el-código-en-el-recuadro-de-abajo.-1p",
+    "title": "Sesión 7: Preparación práctica para la prueba",
+    "section": "Estime la correlación entre ambas variables utilizando R y genere un diagrama de dispersión (nube de puntos/scatterplot). Corte y pegue el código en el recuadro de abajo. (1p)",
+    "text": "Estime la correlación entre ambas variables utilizando R y genere un diagrama de dispersión (nube de puntos/scatterplot). Corte y pegue el código en el recuadro de abajo. (1p)"
+  },
+  {
+    "objectID": "sesiones/sesion-7.html#pregunta-1-en-qué-medida-se-relacionan-los-ingresos-en-pesos-de-las-personas-con-sus-niveles-de-apoyo-a-la-democracia",
+    "href": "sesiones/sesion-7.html#pregunta-1-en-qué-medida-se-relacionan-los-ingresos-en-pesos-de-las-personas-con-sus-niveles-de-apoyo-a-la-democracia",
+    "title": "Sesión 7: Preparación práctica para la prueba",
+    "section": "Pregunta 1 ¿En qué medida se relacionan los ingresos (en pesos) de las personas con sus niveles de apoyo a la democracia?",
+    "text": "Pregunta 1 ¿En qué medida se relacionan los ingresos (en pesos) de las personas con sus niveles de apoyo a la democracia?\n\n1.1 Estime la correlación entre ambas variables utilizando R y genere un diagrama de dispersión (nube de puntos/scatterplot). Corte y pegue el código en el recuadro de abajo. (1p)\nAcá nos piden hacer un análisis de correlación entre dos variables cuantitativas continuas: ingresos y apoyo a la democracia. Para ello, utilizaremos el coeficiente de correlación de Pearson, que es apropiado para variables continuas y normalmente distribuidas, de la siguiente manera:\n\ncor.test(dataset1$ingresos, dataset1$apoyo_dem, complete.obs = TRUE, method = \"pearson\")\n\n\n    Pearson's product-moment correlation\n\ndata:  dataset1$ingresos and dataset1$apoyo_dem\nt = 39.93, df = 839, p-value &lt; 2.2e-16\nalternative hypothesis: true correlation is not equal to 0\n95 percent confidence interval:\n 0.7847979 0.8315542\nsample estimates:\n      cor \n0.8094554 \n\nsjPlot::plot_scatter(data = dataset1, x = ingresos, y = apoyo_dem)\n\n\n\n\n\n\n\n\n\n\n1.2 Justifique la elección del coeficiente de correlación seleccionado e interprete el resultado considerando visualización, inferencia estadística, magnitud y sentido del efecto. (3p)\nSe empleó el coeficiente de correlación de Pearson debido a la naturaleza de las variables, en tanto ingresos y apoyo_dem corresponden a variables númericas de razón. El coeficiente da cuenta de una relacion positiva y grande, siguiendo los criterios de Cohen (1988) (\\(r\\) = 0.80). Es decir, a medida que aumentan los ingresos de las personas, también aumentan sus niveles de apoyo_dem. La relación es estadísticamente significativa (\\(p\\) &lt; 0.001), por ende es posible rechazar \\(H_0\\) sobre no asociación entre variables, entregando evidencia a favor de una relación entre ambas variables con un 99.9% de confianza.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 7",
+      "Sesión 7: Preparación práctica para la prueba"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-7.html#pregunta-2-cómo-se-relacionan-el-sexo-apoyo-a-la-democracia-y-los-ingresos",
+    "href": "sesiones/sesion-7.html#pregunta-2-cómo-se-relacionan-el-sexo-apoyo-a-la-democracia-y-los-ingresos",
+    "title": "Sesión 7: Preparación práctica para la prueba",
+    "section": "Pregunta 2: ¿Cómo se relacionan el sexo, apoyo a la democracia y los ingresos?",
+    "text": "Pregunta 2: ¿Cómo se relacionan el sexo, apoyo a la democracia y los ingresos?\n\n2.1 Estime y reporte la matriz de correlaciones de las variables sexo, apoyo a la democracia y los ingresos. Corte y pegue el código de R correspondiente (1p)\nAcá nos piden calcular la matriz de correlaciones entre las variables sexo, apoyo_dem y ingresos. Dado que sexo es una variable cualitativa nominal, utilizaremos el coeficiente de correlación de Pearson para las variables cuantitativas y el coeficiente de correlación punto-biserial para la relación entre sexo y las otras dos variables. El código en R sería el siguiente:\n\ncormat &lt;- dataset1 %&gt;% \n  dplyr::select(sexo, apoyo_dem, ingresos)\nsjPlot::tab_corr(cormat, \n                 na.deletion = \"pairwise\", # espeficicamos tratamiento NA\n                 triangle = \"lower\")\n\n\n\n\n \nSexo\nApoyo a la democracia\nIngresos\n\n\nSexo\n \n \n \n\n\nApoyo a la democracia\n-0.037\n \n \n\n\nIngresos\n-0.030\n0.809***\n \n\n\nComputed correlation used pearson-method with pairwise-deletion.\n\n\n\n\nsjPlot::tab_corr(cormat, \n                 na.deletion = \"listwise\", # espeficicamos tratamiento NA\n                 triangle = \"lower\")\n\n\n\n\n \nSexo\nApoyo a la democracia\nIngresos\n\n\nSexo\n \n \n \n\n\nApoyo a la democracia\n-0.038\n \n \n\n\nIngresos\n-0.027\n0.809***\n \n\n\nComputed correlation used pearson-method with listwise-deletion.\n\n\n\n\n\n\n\n2.2a ¿Qué correlaciones de la matriz son estadísticamente significativas?¿Con qué nivel de confianza se puede rechazar la hipótesis nula en estos casos? (1p)\n\nPairwise: La correlación de Pearson entre ingresos y apoyo_dem es positiva y estadísticamente significativa (\\(r\\) = 0.809, \\(p\\) &lt; 0.001). La hipótesis nula se puede rechazar con un 99.9% de confianza. * Listwise: La correlación de Pearson entre ingresos y apoyo_dem es positiva y estadísticamente significativa (\\(r\\) = 0.809, \\(p\\) &lt; 0.001). La hipótesis nula se puede rechazar con un 99.9% de confianza.\n\n\n\n2.2b ¿Qué decisión tomó sobre los casos perdidos en el cálculo de la matriz? ¿Por qué?(1p)\n\nPairwise: Se optó por el método de eliminación de pares (pairwise) para el tratamiento de casos perdidos con el fin de mantener la mayor cantidad de casos a la hora de calcular los coeficientes de correlación.\nListwise: Se optó por el método de eliminación por lista (listwise) para el tratamiento de casos perdidos con el fin de mantener el mismo número de casos para todas las correlaciones.\n\n\n\n2.2c ¿Cómo se denomina el tipo de correlación que se calcula entre sexo e ingreso? (1p)\n\nLa correlación entre la variable sexo (0=“Hombre”; 1=“Mujer”) y la variable continúa ingresos se denomina correlación punto biserial.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 7",
+      "Sesión 7: Preparación práctica para la prueba"
+    ]
+  },
+  {
+    "objectID": "sesiones/sesion-7.html#reporte-tabla-de-contingencia-y-el-cálculo-de-chi2.-corte-y-pegue-el-código-abajo.-1p",
+    "href": "sesiones/sesion-7.html#reporte-tabla-de-contingencia-y-el-cálculo-de-chi2.-corte-y-pegue-el-código-abajo.-1p",
+    "title": "Sesión 7: Preparación práctica para la prueba",
+    "section": "3.1 Reporte tabla de contingencia y el cálculo de Chi2. Corte y pegue el código abajo. (1p)",
+    "text": "3.1 Reporte tabla de contingencia y el cálculo de Chi2. Corte y pegue el código abajo. (1p)"
+  },
+  {
+    "objectID": "sesiones/sesion-7.html#interprete-el-chi2-en-términos-de-inferencia-y-magnitud-del-efecto.-2p",
+    "href": "sesiones/sesion-7.html#interprete-el-chi2-en-términos-de-inferencia-y-magnitud-del-efecto.-2p",
+    "title": "Sesión 7: Preparación práctica para la prueba",
+    "section": "3.2 Interprete el Chi2 en términos de inferencia y magnitud del efecto. (2p)",
+    "text": "3.2 Interprete el Chi2 en términos de inferencia y magnitud del efecto. (2p)"
+  },
+  {
+    "objectID": "sesiones/sesion-7.html#a-chi2-también-se-le-denomina-test-de-diferencia-qué-es-lo-que-se-compara-para-hacer-esta-diferencia-1p",
+    "href": "sesiones/sesion-7.html#a-chi2-también-se-le-denomina-test-de-diferencia-qué-es-lo-que-se-compara-para-hacer-esta-diferencia-1p",
+    "title": "Sesión 7: Preparación práctica para la prueba",
+    "section": "A Chi2 también se le denomina “test de diferencia”, ¿Qué es lo que se compara para hacer esta diferencia? (1p)",
+    "text": "A Chi2 también se le denomina “test de diferencia”, ¿Qué es lo que se compara para hacer esta diferencia? (1p)"
+  },
+  {
+    "objectID": "sesiones/sesion-7.html#pregunta-3-cómo-se-relaciona-el-sexo-con-los-ingresos",
+    "href": "sesiones/sesion-7.html#pregunta-3-cómo-se-relaciona-el-sexo-con-los-ingresos",
+    "title": "Sesión 7: Preparación práctica para la prueba",
+    "section": "Pregunta 3: ¿Cómo se relaciona el sexo con los ingresos?",
+    "text": "Pregunta 3: ¿Cómo se relaciona el sexo con los ingresos?\n\n3.1 Reporte tabla de contingencia y el cálculo de Chi2. Corte y pegue el código abajo. (1p)\nAcá nos piden calcular la tabla de contingencia entre las variables sexo e ingresos, y realizar el test de Chi-cuadrado para evaluar la asociación entre ambas variables. El código en R sería el siguiente:\n\npacman::p_load(sjPlot)\ndataset1 %&gt;%\n  sjtab(sexo,\n        ingresos_rec)\n\n\n \n Sexo\n Ingresosrecodificado\n Total\n \n \n\n Bajos ingresos\n Medios ingresos\n Altos ingresos\n \n \n \nHombre\n162\n262\n103\n527 \n\n \n \nMujer\n92\n180\n51\n323 \n\n \n \nTotal\n254\n442\n154\n850 \n\nχ2=3.292 · df=2 · Cramer's V=0.062 · p=0.193 \n\n \n\n\nchisq.test(dataset1$sexo, dataset1$ingresos_rec) # adicional, ya que el Chi2 aparece en sjtab\n\n\n    Pearson's Chi-squared test\n\ndata:  dataset1$sexo and dataset1$ingresos_rec\nX-squared = 3.2921, df = 2, p-value = 0.1928\n\n\n\n\n3.2 Interprete el Chi2 en términos de inferencia y magnitud del efecto. (2p)\nχ2=3.292 · df=2 · Cramer’s V=0.062 · p=0.193\nChi cuadrado no es estadísticamente significativo (1pt)\n(p &gt; 0.05) (1pt)\ntamaño de efecto pequeño/débil según la V de Cramer (1pt)\n\n\n3.3 A Chi2 también se le denomina “test de diferencia”, ¿Qué es lo que se compara para hacer esta diferencia? (1p)\nEn el test Chi-cuadrado se comparan las frecuencias observadas en cada categoría de una tabla de contingencia con las frecuencias esperadas bajo la hipótesis nula de independencia o no asociación.\nEn otras palabras, se mide la diferencia entre lo que efectivamente se observa en los datos y lo que se esperaría si no existiera relación entre las variables. Cuanto mayores sean esas diferencias (ajustadas al tamaño de la muestra), mayor será el valor de χ2.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 7",
+      "Sesión 7: Preparación práctica para la prueba"
+    ]
   }
 ]

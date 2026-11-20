@@ -12,8 +12,3 @@ Las sesiones se realizarán en 2 partes.
 
 Selecciona una sesión desde el menú lateral.
 
-::: {.callout-note}
-## Sesión 8: Preparación para la tercera prueba
-
-[Ver material y presentación de la sesión 8](sesion-8-material.html)
-:::

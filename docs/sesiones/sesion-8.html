@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
+
+  <title>Grupo de Estudio para Estadística Correlacional – Sesión 8 - Preparación para la tercera prueba</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-e98d7bd19b45dce9b8c2cd1e21ec6ced.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <style>
+  .reveal .slides section.fit-95 { font-size: 0.95em; }
+  .reveal .slides section.fit-90 { font-size: 0.90em; }
+  .reveal .slides section.fit-85 { font-size: 0.85em; }
+  .reveal .slides section.fit-80 { font-size: 0.80em; }
+  .reveal .slides section.fit-75 { font-size: 0.75em; }
+  .reveal .slides section.fit-70 { font-size: 0.70em; }
+  .reveal .slides section.fit-65 { font-size: 0.65em; }
+  .reveal .slides section.fit-60 { font-size: 0.60em; }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Sesión 8 - Preparación para la tercera prueba</h1>
+  <p class="subtitle">Grupo de Estudio de Estadística Correlacional</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="contenidos-del-repaso" class="slide level2">
+<h2>Contenidos del repaso</h2>
+<ol type="1">
+<li>Asociación, covarianza y correlación</li>
+<li>Matrices de correlación</li>
+<li>Tablas de contingencia y Chi cuadrado</li>
+<li>Inferencia en asociación</li>
+<li>Ejercicios tipo prueba y checklist final</li>
+</ol>
+</section>
+<section>
+<section id="asociación-covarianza-y-correlación" class="title-slide slide level1 center">
+<h1>1. Asociación, covarianza y correlación</h1>
+
+</section>
+<section id="qué-es-asociación" class="slide level2 fit-80">
+<h2>¿Qué es asociación?</h2>
+<ul>
+<li>Dos variables están <strong>asociadas</strong> cuando los valores de una <strong>cambian junto con</strong> los de la otra.</li>
+<li>No implica causalidad.</li>
+<li>Se explora primero <strong>gráficamente</strong>: el <strong>gráfico de dispersión</strong> (scatterplot) para dos variables numéricas.</li>
+</ul>
+<p>Qué mirar en un gráfico de dispersión:</p>
+<ul>
+<li><strong>Dirección</strong>: positiva, negativa o sin patrón</li>
+<li><strong>Forma</strong>: lineal, curva, otra</li>
+<li><strong>Fuerza</strong>: qué tan cerca están los puntos de un patrón</li>
+<li><strong>Casos atípicos</strong> (outliers)</li>
+</ul>
+</section>
+<section id="ejemplo-gráficos-de-dispersión" class="slide level2">
+<h2>Ejemplo: gráficos de dispersión</h2>
+
+<img data-src="sesion-8_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<section id="covarianza" class="slide level2">
+<h2>Covarianza</h2>
+<p><span class="math display">\[
+\text{cov}(X,Y)=\frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{n-1}
+\]</span></p>
+<ul>
+<li><strong>Signo</strong>: positiva (crecen juntas), negativa (una sube, otra baja), cercana a 0 (sin relación lineal).</li>
+<li><strong>Magnitud</strong>: depende de las <strong>unidades</strong> de las variables → <strong>no es comparable</strong> ni fácil de interpretar.</li>
+<li>Solución: <strong>estandarizarla</strong> → correlación.</li>
+</ul>
+</section>
+<section id="correlación-de-pearson-r" class="slide level2">
+<h2>Correlación de Pearson (r)</h2>
+<p><span class="math display">\[
+r=\frac{\text{cov}(X,Y)}{s_X\, s_Y}
+\]</span></p>
+<ul>
+<li>Covarianza estandarizada: <strong>-1 ≤ r ≤ 1</strong></li>
+<li>Signo = dirección; valor absoluto = fuerza de la relación <strong>lineal</strong></li>
+<li>No depende de las unidades</li>
+<li>Requiere dos variables <strong>numéricas</strong> (intervalo/razón)</li>
+</ul>
+</section>
+<section id="interpretación-de-la-magnitud" class="slide level2">
+<h2>Interpretación de la magnitud</h2>
+<p>Referencia común (Cohen), según <span class="math inline">\(|r|\)</span>:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(|r|\)</span></th>
+<th>Magnitud</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>≈ 0,10</td>
+<td>Pequeña / débil</td>
+</tr>
+<tr class="even">
+<td>≈ 0,30</td>
+<td>Mediana / moderada</td>
+</tr>
+<tr class="odd">
+<td>≥ 0,50</td>
+<td>Grande / fuerte</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Siempre interpretar <strong>en contexto</strong>: variables, dirección, fuerza y unidades de análisis. Ejemplo: <em>“A mayor escolaridad, mayor ingreso (r = 0,45): asociación positiva, moderada-fuerte.”</em></p>
+</div>
+</div>
+</div>
+</section>
+<section id="coeficiente-de-determinación-r²" class="slide level2">
+<h2>Coeficiente de determinación (r²)</h2>
+<p><span class="math display">\[
+r^2 = \text{varianza compartida}
+\]</span></p>
+<ul>
+<li>Proporción de la variabilidad de una variable que <strong>se comparte</strong> con la otra.</li>
+<li>Ejemplo: <span class="math inline">\(r = 0{,}30 \Rightarrow r^2 = 0{,}09\)</span> → <strong>9 %</strong> de varianza compartida (91 % no compartida).</li>
+<li><span class="math inline">\(r=0{,}60 \Rightarrow r^2=0{,}36\)</span> → el doble de r <strong>no</strong> es el doble de varianza compartida.</li>
+</ul>
+</section>
+<section id="limitaciones-de-pearson" class="slide level2">
+<h2>Limitaciones de Pearson</h2>
+<ul>
+<li class="fragment">Sólo mide relaciones <strong>lineales</strong>: una relación en U puede dar r ≈ 0 y estar fuertemente asociada.</li>
+<li class="fragment">Sensible a <strong>valores extremos</strong> (outliers): pueden inflar, reducir o incluso cambiar el signo de r.</li>
+<li class="fragment"><strong>Restricción de rango</strong>: si se observa un rango acotado, r se subestima.</li>
+<li class="fragment"><strong>Correlación ≠ causalidad</strong> (posibles variables confusoras o causalidad inversa).</li>
+<li class="fragment">Siempre <strong>graficar</strong> antes de calcular.</li>
+</ul>
+</section>
+<section id="ejemplo-relación-no-lineal-y-outlier" class="slide level2">
+<h2>Ejemplo: relación no lineal y outlier</h2>
+
+<img data-src="sesion-8_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="correlación-con-variables-no-continuas" class="slide level2 fit-85">
+<h2>Correlación con variables no continuas</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variables</th>
+<th>Coeficiente</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Numérica – numérica (lineal)</td>
+<td><strong>Pearson</strong></td>
+</tr>
+<tr class="even">
+<td>Ordinal – ordinal (o relación monótona, outliers)</td>
+<td><strong>Spearman</strong> (rho), <strong>Tau de Kendall</strong></td>
+</tr>
+<tr class="odd">
+<td>Numérica – dicotómica</td>
+<td><strong>Punto biserial</strong> (equivale a Pearson con variable 0/1)</td>
+</tr>
+<tr class="even">
+<td>Numérica – categórica (varias categorías)</td>
+<td><strong>Eta (η)</strong> / eta cuadrado</td>
+</tr>
+<tr class="odd">
+<td>Categórica – categórica</td>
+<td><strong>Phi</strong> (2×2), <strong>V de Cramer</strong></td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section>
+<section id="matrices-de-correlación" class="title-slide slide level1 center">
+<h1>2. Matrices de correlación</h1>
+
+</section>
+<section id="lectura-de-una-matriz-de-correlación" class="slide level2 fit-75">
+<h2>Lectura de una matriz de correlación</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Escolaridad</th>
+<th style="text-align: right;">Ingreso</th>
+<th style="text-align: right;">Horas trabajo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Escolaridad</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">0.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ingreso</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-0.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Horas trabajo</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">-0.20</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><strong>Diagonal = 1</strong>: cada variable con ella misma.</li>
+<li>Es <strong>simétrica</strong>: se lee sólo un triángulo.</li>
+<li>Cada celda: coeficiente entre la variable de la fila y la de la columna.</li>
+<li>Describir: <strong>dirección</strong>, <strong>fuerza</strong>, y (si se informa) <strong>significación</strong>.</li>
+<li>Ej.: <em>Escolaridad–Ingreso</em> r = 0,45: relación positiva moderada; <em>Ingreso–Horas</em> r = −0,20: negativa débil.</li>
+</ul>
+</section>
+<section id="casos-perdidos-listwise-vs-pairwise" class="slide level2 fit-60">
+<h2>Casos perdidos: listwise vs pairwise</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Listwise (por lista)</strong></th>
+<th><strong>Pairwise (por pares)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Qué hace</td>
+<td>Elimina todo caso con <strong>algún</strong> dato perdido en <strong>cualquier</strong> variable de la matriz</td>
+<td>Para cada par, usa los casos con datos en <strong>ambas</strong> variables</td>
+</tr>
+<tr class="even">
+<td>N</td>
+<td><strong>Único</strong> y constante en toda la matriz</td>
+<td><strong>Varía</strong> de celda en celda</td>
+</tr>
+<tr class="odd">
+<td>Ventaja</td>
+<td>Misma muestra para todo</td>
+<td>Aprovecha más información</td>
+</tr>
+<tr class="even">
+<td>Desventaja</td>
+<td>Puede perder muchos casos</td>
+<td>Muestras distintas por coeficiente; difícil comparar</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>El <strong>N</strong> afecta la <strong>precisión</strong> y la <strong>significación</strong>. Al interpretar una matriz, revisar siempre cuál N se usó.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="ejemplo-efecto-sobre-el-n" class="slide level2">
+<h2>Ejemplo: efecto sobre el N</h2>
+<p>Base de 100 casos: 10 pierden dato en X, 8 en Y, 5 en Z (sin solaparse).</p>
+<ul>
+<li><strong>Listwise</strong>: N = 100 − 10 − 8 − 5 = <strong>77</strong> para todas las correlaciones.</li>
+<li><strong>Pairwise</strong>:
+<ul>
+<li>r(X,Y): N = 100 − 10 − 8 = <strong>82</strong></li>
+<li>r(X,Z): N = 100 − 10 − 5 = <strong>85</strong></li>
+<li>r(Y,Z): N = 100 − 8 − 5 = <strong>87</strong></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="tablas-de-contingencia-y-chi-cuadrado" class="title-slide slide level1 center">
+<h1>3. Tablas de contingencia y Chi cuadrado</h1>
+
+</section>
+<section id="tabla-de-contingencia" class="slide level2">
+<h2>Tabla de contingencia</h2>
+<p>Cruza <strong>dos variables categóricas</strong>. Celdas con <strong>frecuencias absolutas</strong>; márgenes con <strong>totales</strong>.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Sí</th>
+<th>No</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Hombres</strong></td>
+<td>30</td>
+<td>20</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td><strong>Mujeres</strong></td>
+<td>20</td>
+<td>30</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td>50</td>
+<td>50</td>
+<td><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="porcentajes-por-fila-o-por-columna" class="slide level2">
+<h2>Porcentajes: ¿por fila o por columna?</h2>
+<ul>
+<li><strong>% por fila</strong>: dentro de cada categoría de la variable en filas. Ej.: de los hombres, 60 % dijo Sí; de las mujeres, 40 %.</li>
+<li><strong>% por columna</strong>: dentro de cada categoría de la variable en columnas. Ej.: de quienes dijeron Sí, 60 % son hombres.</li>
+<li><strong>% del total</strong>: respecto a N.</li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Regla práctica: calcular el porcentaje <strong>dentro de la variable explicativa (independiente)</strong> y comparar entre sus categorías.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="independencia-estadística-y-frecuencias-esperadas" class="slide level2 fit-90">
+<h2>Independencia estadística y frecuencias esperadas</h2>
+<ul>
+<li><strong>Independencia</strong>: la distribución de una variable es la misma en todas las categorías de la otra.</li>
+<li><strong>Frecuencia esperada</strong> (si hubiera independencia):</li>
+</ul>
+<p><span class="math display">\[
+E_{ij}=\frac{(\text{total fila}_i)(\text{total columna}_j)}{N}
+\]</span></p>
+<ul>
+<li>Ej.: Hombres–Sí: <span class="math inline">\(E = \dfrac{50 \cdot 50}{100}=25\)</span></li>
+</ul>
+</section>
+<section id="estadístico-chi-cuadrado" class="slide level2 fit-85">
+<h2>Estadístico Chi cuadrado</h2>
+<p><span class="math display">\[
+\chi^2=\sum\frac{(O-E)^2}{E}
+\qquad
+gl=(f-1)(c-1)
+\]</span></p>
+<p>Con el ejemplo (todas las <span class="math inline">\(E=25\)</span>):</p>
+<p><span class="math display">\[
+\chi^2 = 4\cdot\frac{(30-25)^2}{25}=4 \qquad gl=(2-1)(2-1)=1
+\]</span></p>
+<ul>
+<li>Valor crítico (α = 0,05, gl = 1): <strong>3,84</strong> → 4 &gt; 3,84 → <strong>se rechaza H₀</strong> (p ≈ 0,046).</li>
+<li><strong>Supuesto</strong>: frecuencias esperadas ≥ 5 en (casi) todas las celdas.</li>
+<li>χ² siempre ≥ 0; <strong>crece con N</strong>.</li>
+</ul>
+</section>
+<section id="magnitud-de-la-asociación-phi-y-v-de-cramer" class="slide level2 fit-95">
+<h2>Magnitud de la asociación: Phi y V de Cramer</h2>
+<p>χ² indica si hay evidencia de asociación, <strong>no qué tan fuerte es</strong>.</p>
+<p><span class="math display">\[
+\phi=\sqrt{\frac{\chi^2}{N}}
+\qquad
+V=\sqrt{\frac{\chi^2}{N\cdot \min(f-1,\,c-1)}}
+\]</span></p>
+<ul>
+<li><strong>Phi</strong>: tablas <strong>2×2</strong>. <strong>V de Cramer</strong>: tablas de cualquier tamaño (en 2×2, V = φ).</li>
+<li>Rango de 0 (sin asociación) a 1 (asociación perfecta).</li>
+<li>Ejemplo: <span class="math inline">\(\phi=\sqrt{4/100}=0{,}20\)</span> → asociación <strong>débil</strong> (aunque χ² sea significativo).</li>
+</ul>
+</section></section>
+<section>
+<section id="inferencia-en-asociación" class="title-slide slide level1 center">
+<h1>4. Inferencia en asociación</h1>
+
+</section>
+<section id="repaso-de-la-unidad-1-aplicado-a-asociación" class="slide level2">
+<h2>Repaso de la Unidad 1 aplicado a asociación</h2>
+<ul>
+<li><strong>Inferencia</strong>: generalizar de la <strong>muestra</strong> a la <strong>población</strong>.</li>
+<li><strong>Parámetro</strong> (ρ, población) vs <strong>estimador</strong> (r, muestra).</li>
+<li><strong>Error muestral</strong>: el r de una muestra no es exactamente ρ.</li>
+<li><strong>Test de hipótesis</strong> + <strong>nivel de significación (α)</strong> + <strong>intervalo de confianza</strong>.</li>
+<li><strong>Error tipo I</strong> (rechazar H₀ siendo verdadera; probabilidad = α) y <strong>error tipo II</strong> (no rechazarla siendo falsa).</li>
+</ul>
+</section>
+<section id="hipótesis-en-correlación" class="slide level2">
+<h2>Hipótesis en correlación</h2>
+<p><span class="math display">\[
+H_0:\ \rho = 0 \quad (\text{no hay asociación lineal en la población})
+\]</span> <span class="math display">\[
+H_1:\ \rho \neq 0 \quad (\text{bilateral})
+\]</span></p>
+<p>(unilaterales: <span class="math inline">\(\rho&gt;0\)</span> o <span class="math inline">\(\rho&lt;0\)</span>, si hay hipótesis direccional)</p>
+</section>
+<section id="hipótesis-en-chi-cuadrado" class="slide level2">
+<h2>Hipótesis en Chi cuadrado</h2>
+<p><span class="math display">\[
+H_0:\ \text{las variables son independientes (no hay asociación en la población)}
+\]</span> <span class="math display">\[
+H_1:\ \text{las variables están asociadas}
+\]</span></p>
+<p>Siempre redactar en <strong>términos del contexto</strong>: <em>“H₀: el género y la opinión son independientes en la población.”</em></p>
+</section>
+<section id="prueba-de-significación-de-la-correlación" class="slide level2 fit-85">
+<h2>Prueba de significación de la correlación</h2>
+<p><span class="math display">\[
+t=\frac{r\sqrt{n-2}}{\sqrt{1-r^2}}\qquad gl=n-2
+\]</span></p>
+<p>Ejemplo: <span class="math inline">\(r=0{,}30,\ n=50\)</span></p>
+<p><span class="math display">\[
+t=\frac{0{,}30\sqrt{48}}{\sqrt{1-0{,}09}}\approx 2{,}18 \qquad gl=48
+\]</span></p>
+<ul>
+<li>t crítico (α = 0,05, bilateral) ≈ <strong>2,01</strong> → |t| &gt; 2,01</li>
+<li><strong>p ≈ 0,034 &lt; 0,05 → se rechaza H₀</strong>: hay evidencia de correlación en la población.</li>
+</ul>
+</section>
+<section id="cómo-decidir" class="slide level2 fit-85">
+<h2>Cómo decidir</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Con valor p</strong></p>
+<ul>
+<li>p &lt; α → <strong>rechazar H₀</strong></li>
+<li>p ≥ α → <strong>no rechazar H₀</strong></li>
+</ul>
+<p>p = probabilidad de obtener un resultado igual o más extremo que el observado <strong>si H₀ fuera verdadera</strong>.</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Con valor crítico</strong></p>
+<ul>
+<li>|estadístico| &gt; valor crítico → <strong>rechazar H₀</strong></li>
+<li>χ²: estadístico &gt; crítico → rechazar</li>
+</ul>
+<p>Nivel de significación <strong>α</strong>: se fija <strong>antes</strong> (comúnmente 0,05).</p>
+</div></div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Nunca</strong> se “acepta” H₀: sólo se <strong>rechaza</strong> o <strong>no se rechaza</strong>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="intervalo-de-confianza-para-ρ" class="slide level2">
+<h2>Intervalo de confianza para ρ</h2>
+<p>Se obtiene con la <strong>transformación de Fisher</strong>:</p>
+<p><span class="math display">\[
+z=\tanh^{-1}(r),\qquad EE=\frac{1}{\sqrt{n-3}}
+\]</span></p>
+<p>IC: <span class="math inline">\(z \pm 1{,}96\cdot EE\)</span> y luego se vuelve a la escala de r.</p>
+<p>Ejemplo (<span class="math inline">\(r=0{,}30\)</span>, <span class="math inline">\(n=50\)</span>): IC 95 % ≈ <strong>[0,02 ; 0,53]</strong></p>
+<ul>
+<li>El IC <strong>no incluye 0</strong> → coherente con rechazar H₀ (α = 0,05).</li>
+<li>Es <strong>muy amplio</strong>: estimación imprecisa de ρ.</li>
+</ul>
+</section>
+<section id="significación-magnitud" class="slide level2">
+<h2>Significación ≠ magnitud</h2>
+<ul>
+<li><strong>Significación estadística</strong>: ¿hay evidencia de que la asociación <strong>existe</strong> en la población?</li>
+<li><strong>Magnitud (tamaño del efecto)</strong>: ¿<strong>qué tan fuerte</strong> es? (r, r², φ, V).</li>
+</ul>
+<ul>
+<li class="fragment">Con <strong>N grande</strong>, asociaciones muy <strong>pequeñas</strong> resultan significativas.</li>
+<li class="fragment">Con <strong>N pequeño</strong>, asociaciones <strong>grandes</strong> pueden no serlo.</li>
+<li class="fragment">Por eso se reporta <strong>siempre ambas</strong>: significación <strong>y</strong> tamaño del efecto.</li>
+</ul>
+</section>
+<section id="generalización-e-interpretación-sustantiva" class="slide level2 fit-70">
+<h2>Generalización e interpretación sustantiva</h2>
+<p>Cómo redactar una conclusión completa:</p>
+<ol type="1">
+<li><strong>Hipótesis</strong> (H₀ y H₁) en contexto</li>
+<li><strong>Estadístico</strong> y <strong>gl</strong> (o N), <strong>valor p</strong>, α</li>
+<li><strong>Decisión</strong> sobre H₀</li>
+<li><strong>Magnitud</strong> y dirección de la asociación</li>
+<li><strong>Interpretación sustantiva</strong>: qué significa para las variables y <strong>a qué población</strong> se puede generalizar (según el diseño muestral)</li>
+</ol>
+<blockquote>
+<p><em>“Con α = 0,05 se rechaza H₀ (r = 0,30; p = 0,034): hay evidencia de una asociación positiva y moderada entre X e Y en la población. Comparten un 9 % de varianza. Esto no implica causalidad.”</em></p>
+</blockquote>
+</section></section>
+<section id="práctica" class="title-slide slide level1 center">
+<h1>5. Práctica</h1>
+<p>Resuelvan la guía entregada, con errores o aciertos en la forma.</p>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="../img/logoidea.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>GE Correlacional</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

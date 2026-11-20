@@ -1,0 +1,28 @@
+---
+title: "Sesión 8"
+page-layout: full
+format:
+  html:
+    theme: minty
+    css: styles.css
+---
+
+::: {.columns}
+::: {.column width="68%"}
+<iframe src="sesiones/sesion-8.html" style="width:100%; height:85vh; border:none;"></iframe>
+:::
+
+Apretando F pones la presentación en pantalla completa. Para salir de pantalla completa, aprieta F nuevamente.
+:::
+
+---
+
+::: {.column width="50%"}
+## Tercera prueba
+
+**Lunes 16 de noviembre · 8:30 · Sala C6**
+
+Revisen las guías de preparación, las clases y los prácticos.
+
+[Descargar guía de ejercicios](input/guia-ejercicios.docx)
+:::

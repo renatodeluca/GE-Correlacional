@@ -2045,5 +2045,276 @@
       "Sesión 7",
       "Sesión 7: Preparación práctica para la prueba"
     ]
+  },
+  {
+    "objectID": "sesiones/sesion-8.html",
+    "href": "sesiones/sesion-8.html",
+    "title": "Sesión 8: Preparación para la tercera prueba",
+    "section": "",
+    "text": "Asociación, covarianza y correlación\nMatrices de correlación\nTablas de contingencia y Chi cuadrado\nInferencia en asociación\nEjercicios tipo prueba y checklist final"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#contenidos-del-repaso",
+    "href": "sesiones/sesion-8.html#contenidos-del-repaso",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Contenidos del repaso",
+    "text": "Contenidos del repaso\n\nAsociación, covarianza y correlación\nMatrices de correlación\nTablas de contingencia y Chi cuadrado\nInferencia en asociación\nEjercicios tipo prueba y checklist final"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#qué-es-asociación",
+    "href": "sesiones/sesion-8.html#qué-es-asociación",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "¿Qué es asociación?",
+    "text": "¿Qué es asociación?\n\nDos variables están asociadas cuando los valores de una cambian junto con los de la otra.\nNo implica causalidad.\nSe explora primero gráficamente: el gráfico de dispersión (scatterplot) para dos variables numéricas.\n\nQué mirar en un gráfico de dispersión:\n\nDirección: positiva, negativa o sin patrón\nForma: lineal, curva, otra\nFuerza: qué tan cerca están los puntos de un patrón\nCasos atípicos (outliers)"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#ejemplo-gráficos-de-dispersión",
+    "href": "sesiones/sesion-8.html#ejemplo-gráficos-de-dispersión",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Ejemplo: gráficos de dispersión",
+    "text": "Ejemplo: gráficos de dispersión"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#covarianza",
+    "href": "sesiones/sesion-8.html#covarianza",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Covarianza",
+    "text": "Covarianza\n\\[\n\\text{cov}(X,Y)=\\frac{\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})}{n-1}\n\\]\n\nSigno: positiva (crecen juntas), negativa (una sube, otra baja), cercana a 0 (sin relación lineal).\nMagnitud: depende de las unidades de las variables → no es comparable ni fácil de interpretar.\nSolución: estandarizarla → correlación."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#correlación-de-pearson-r",
+    "href": "sesiones/sesion-8.html#correlación-de-pearson-r",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Correlación de Pearson (r)",
+    "text": "Correlación de Pearson (r)\n\\[\nr=\\frac{\\text{cov}(X,Y)}{s_X\\, s_Y}\n\\]\n\nCovarianza estandarizada: -1 ≤ r ≤ 1\nSigno = dirección; valor absoluto = fuerza de la relación lineal\nNo depende de las unidades\nRequiere dos variables numéricas (intervalo/razón)"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#interpretación-de-la-magnitud",
+    "href": "sesiones/sesion-8.html#interpretación-de-la-magnitud",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Interpretación de la magnitud",
+    "text": "Interpretación de la magnitud\nReferencia común (Cohen), según \\(|r|\\):\n\n\n\n\\(|r|\\)\nMagnitud\n\n\n\n\n≈ 0,10\nPequeña / débil\n\n\n≈ 0,30\nMediana / moderada\n\n\n≥ 0,50\nGrande / fuerte\n\n\n\n\n\n\n\n\n\nNote\n\n\nSiempre interpretar en contexto: variables, dirección, fuerza y unidades de análisis. Ejemplo: “A mayor escolaridad, mayor ingreso (r = 0,45): asociación positiva, moderada-fuerte.”"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#coeficiente-de-determinación-r²",
+    "href": "sesiones/sesion-8.html#coeficiente-de-determinación-r²",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Coeficiente de determinación (r²)",
+    "text": "Coeficiente de determinación (r²)\n\\[\nr^2 = \\text{varianza compartida}\n\\]\n\nProporción de la variabilidad de una variable que se comparte con la otra.\nEjemplo: \\(r = 0{,}30 \\Rightarrow r^2 = 0{,}09\\) → 9 % de varianza compartida (91 % no compartida).\n\\(r=0{,}60 \\Rightarrow r^2=0{,}36\\) → el doble de r no es el doble de varianza compartida."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#limitaciones-de-pearson",
+    "href": "sesiones/sesion-8.html#limitaciones-de-pearson",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Limitaciones de Pearson",
+    "text": "Limitaciones de Pearson\n\nSólo mide relaciones lineales: una relación en U puede dar r ≈ 0 y estar fuertemente asociada.\nSensible a valores extremos (outliers): pueden inflar, reducir o incluso cambiar el signo de r.\nRestricción de rango: si se observa un rango acotado, r se subestima.\nCorrelación ≠ causalidad (posibles variables confusoras o causalidad inversa).\nSiempre graficar antes de calcular."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#ejemplo-relación-no-lineal-y-outlier",
+    "href": "sesiones/sesion-8.html#ejemplo-relación-no-lineal-y-outlier",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Ejemplo: relación no lineal y outlier",
+    "text": "Ejemplo: relación no lineal y outlier"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#correlación-con-variables-no-continuas",
+    "href": "sesiones/sesion-8.html#correlación-con-variables-no-continuas",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Correlación con variables no continuas",
+    "text": "Correlación con variables no continuas\n\n\n\n\n\n\n\nVariables\nCoeficiente\n\n\n\n\nNumérica – numérica (lineal)\nPearson\n\n\nOrdinal – ordinal (o relación monótona, outliers)\nSpearman (rho), Tau de Kendall\n\n\nNumérica – dicotómica\nPunto biserial (equivale a Pearson con variable 0/1)\n\n\nNumérica – categórica (varias categorías)\nEta (η) / eta cuadrado\n\n\nCategórica – categórica\nPhi (2×2), V de Cramer"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#lectura-de-una-matriz-de-correlación",
+    "href": "sesiones/sesion-8.html#lectura-de-una-matriz-de-correlación",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Lectura de una matriz de correlación",
+    "text": "Lectura de una matriz de correlación\n\n\n\n\n\n\nEscolaridad\nIngreso\nHoras trabajo\n\n\n\n\nEscolaridad\n1.00\n0.45\n0.3\n\n\nIngreso\n0.45\n1.00\n-0.2\n\n\nHoras trabajo\n0.30\n-0.20\n1.0\n\n\n\n\n\n\nDiagonal = 1: cada variable con ella misma.\nEs simétrica: se lee sólo un triángulo.\nCada celda: coeficiente entre la variable de la fila y la de la columna.\nDescribir: dirección, fuerza, y (si se informa) significación.\nEj.: Escolaridad–Ingreso r = 0,45: relación positiva moderada; Ingreso–Horas r = −0,20: negativa débil."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#casos-perdidos-listwise-vs-pairwise",
+    "href": "sesiones/sesion-8.html#casos-perdidos-listwise-vs-pairwise",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Casos perdidos: listwise vs pairwise",
+    "text": "Casos perdidos: listwise vs pairwise\n\n\n\n\n\n\n\n\n\nListwise (por lista)\nPairwise (por pares)\n\n\n\n\nQué hace\nElimina todo caso con algún dato perdido en cualquier variable de la matriz\nPara cada par, usa los casos con datos en ambas variables\n\n\nN\nÚnico y constante en toda la matriz\nVaría de celda en celda\n\n\nVentaja\nMisma muestra para todo\nAprovecha más información\n\n\nDesventaja\nPuede perder muchos casos\nMuestras distintas por coeficiente; difícil comparar\n\n\n\n\n\n\n\n\n\nWarning\n\n\nEl N afecta la precisión y la significación. Al interpretar una matriz, revisar siempre cuál N se usó."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#ejemplo-efecto-sobre-el-n",
+    "href": "sesiones/sesion-8.html#ejemplo-efecto-sobre-el-n",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Ejemplo: efecto sobre el N",
+    "text": "Ejemplo: efecto sobre el N\nBase de 100 casos: 10 pierden dato en X, 8 en Y, 5 en Z (sin solaparse).\n\nListwise: N = 100 − 10 − 8 − 5 = 77 para todas las correlaciones.\nPairwise:\n\nr(X,Y): N = 100 − 10 − 8 = 82\nr(X,Z): N = 100 − 10 − 5 = 85\nr(Y,Z): N = 100 − 8 − 5 = 87"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#tabla-de-contingencia",
+    "href": "sesiones/sesion-8.html#tabla-de-contingencia",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Tabla de contingencia",
+    "text": "Tabla de contingencia\nCruza dos variables categóricas. Celdas con frecuencias absolutas; márgenes con totales.\n\n\n\n\nSí\nNo\nTotal\n\n\n\n\nHombres\n30\n20\n50\n\n\nMujeres\n20\n30\n50\n\n\nTotal\n50\n50\n100"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#porcentajes-por-fila-o-por-columna",
+    "href": "sesiones/sesion-8.html#porcentajes-por-fila-o-por-columna",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Porcentajes: ¿por fila o por columna?",
+    "text": "Porcentajes: ¿por fila o por columna?\n\n% por fila: dentro de cada categoría de la variable en filas. Ej.: de los hombres, 60 % dijo Sí; de las mujeres, 40 %.\n% por columna: dentro de cada categoría de la variable en columnas. Ej.: de quienes dijeron Sí, 60 % son hombres.\n% del total: respecto a N.\n\n\n\n\n\n\n\nTip\n\n\nRegla práctica: calcular el porcentaje dentro de la variable explicativa (independiente) y comparar entre sus categorías."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#independencia-estadística-y-frecuencias-esperadas",
+    "href": "sesiones/sesion-8.html#independencia-estadística-y-frecuencias-esperadas",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Independencia estadística y frecuencias esperadas",
+    "text": "Independencia estadística y frecuencias esperadas\n\nIndependencia: la distribución de una variable es la misma en todas las categorías de la otra.\nFrecuencia esperada (si hubiera independencia):\n\n\\[\nE_{ij}=\\frac{(\\text{total fila}_i)(\\text{total columna}_j)}{N}\n\\]\n\nEj.: Hombres–Sí: \\(E = \\dfrac{50 \\cdot 50}{100}=25\\)"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#estadístico-chi-cuadrado",
+    "href": "sesiones/sesion-8.html#estadístico-chi-cuadrado",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Estadístico Chi cuadrado",
+    "text": "Estadístico Chi cuadrado\n\\[\n\\chi^2=\\sum\\frac{(O-E)^2}{E}\n\\qquad\ngl=(f-1)(c-1)\n\\]\nCon el ejemplo (todas las \\(E=25\\)):\n\\[\n\\chi^2 = 4\\cdot\\frac{(30-25)^2}{25}=4 \\qquad gl=(2-1)(2-1)=1\n\\]\n\nValor crítico (α = 0,05, gl = 1): 3,84 → 4 &gt; 3,84 → se rechaza H₀ (p ≈ 0,046).\nSupuesto: frecuencias esperadas ≥ 5 en (casi) todas las celdas.\nχ² siempre ≥ 0; crece con N."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#magnitud-de-la-asociación-phi-y-v-de-cramer",
+    "href": "sesiones/sesion-8.html#magnitud-de-la-asociación-phi-y-v-de-cramer",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Magnitud de la asociación: Phi y V de Cramer",
+    "text": "Magnitud de la asociación: Phi y V de Cramer\nχ² indica si hay evidencia de asociación, no qué tan fuerte es.\n\\[\n\\phi=\\sqrt{\\frac{\\chi^2}{N}}\n\\qquad\nV=\\sqrt{\\frac{\\chi^2}{N\\cdot \\min(f-1,\\,c-1)}}\n\\]\n\nPhi: tablas 2×2. V de Cramer: tablas de cualquier tamaño (en 2×2, V = φ).\nRango de 0 (sin asociación) a 1 (asociación perfecta).\nEjemplo: \\(\\phi=\\sqrt{4/100}=0{,}20\\) → asociación débil (aunque χ² sea significativo)."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#repaso-de-la-unidad-1-aplicado-a-asociación",
+    "href": "sesiones/sesion-8.html#repaso-de-la-unidad-1-aplicado-a-asociación",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Repaso de la Unidad 1 aplicado a asociación",
+    "text": "Repaso de la Unidad 1 aplicado a asociación\n\nInferencia: generalizar de la muestra a la población.\nParámetro (ρ, población) vs estimador (r, muestra).\nError muestral: el r de una muestra no es exactamente ρ.\nTest de hipótesis + nivel de significación (α) + intervalo de confianza.\nError tipo I (rechazar H₀ siendo verdadera; probabilidad = α) y error tipo II (no rechazarla siendo falsa)."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#hipótesis-en-correlación",
+    "href": "sesiones/sesion-8.html#hipótesis-en-correlación",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Hipótesis en correlación",
+    "text": "Hipótesis en correlación\n\\[\nH_0:\\ \\rho = 0 \\quad (\\text{no hay asociación lineal en la población})\n\\] \\[\nH_1:\\ \\rho \\neq 0 \\quad (\\text{bilateral})\n\\]\n(unilaterales: \\(\\rho&gt;0\\) o \\(\\rho&lt;0\\), si hay hipótesis direccional)"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#hipótesis-en-chi-cuadrado",
+    "href": "sesiones/sesion-8.html#hipótesis-en-chi-cuadrado",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Hipótesis en Chi cuadrado",
+    "text": "Hipótesis en Chi cuadrado\n\\[\nH_0:\\ \\text{las variables son independientes (no hay asociación en la población)}\n\\] \\[\nH_1:\\ \\text{las variables están asociadas}\n\\]\nSiempre redactar en términos del contexto: “H₀: el género y la opinión son independientes en la población.”"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#prueba-de-significación-de-la-correlación",
+    "href": "sesiones/sesion-8.html#prueba-de-significación-de-la-correlación",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Prueba de significación de la correlación",
+    "text": "Prueba de significación de la correlación\n\\[\nt=\\frac{r\\sqrt{n-2}}{\\sqrt{1-r^2}}\\qquad gl=n-2\n\\]\nEjemplo: \\(r=0{,}30,\\ n=50\\)\n\\[\nt=\\frac{0{,}30\\sqrt{48}}{\\sqrt{1-0{,}09}}\\approx 2{,}18 \\qquad gl=48\n\\]\n\nt crítico (α = 0,05, bilateral) ≈ 2,01 → |t| &gt; 2,01\np ≈ 0,034 &lt; 0,05 → se rechaza H₀: hay evidencia de correlación en la población."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#cómo-decidir",
+    "href": "sesiones/sesion-8.html#cómo-decidir",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Cómo decidir",
+    "text": "Cómo decidir\n\n\nCon valor p\n\np &lt; α → rechazar H₀\np ≥ α → no rechazar H₀\n\np = probabilidad de obtener un resultado igual o más extremo que el observado si H₀ fuera verdadera.\n\nCon valor crítico\n\n|estadístico| &gt; valor crítico → rechazar H₀\nχ²: estadístico &gt; crítico → rechazar\n\nNivel de significación α: se fija antes (comúnmente 0,05).\n\n\n\n\n\n\n\nImportant\n\n\nNunca se “acepta” H₀: sólo se rechaza o no se rechaza."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#intervalo-de-confianza-para-ρ",
+    "href": "sesiones/sesion-8.html#intervalo-de-confianza-para-ρ",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Intervalo de confianza para ρ",
+    "text": "Intervalo de confianza para ρ\nSe obtiene con la transformación de Fisher:\n\\[\nz=\\tanh^{-1}(r),\\qquad EE=\\frac{1}{\\sqrt{n-3}}\n\\]\nIC: \\(z \\pm 1{,}96\\cdot EE\\) y luego se vuelve a la escala de r.\nEjemplo (\\(r=0{,}30\\), \\(n=50\\)): IC 95 % ≈ [0,02 ; 0,53]\n\nEl IC no incluye 0 → coherente con rechazar H₀ (α = 0,05).\nEs muy amplio: estimación imprecisa de ρ."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#significación-magnitud",
+    "href": "sesiones/sesion-8.html#significación-magnitud",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Significación ≠ magnitud",
+    "text": "Significación ≠ magnitud\n\nSignificación estadística: ¿hay evidencia de que la asociación existe en la población?\nMagnitud (tamaño del efecto): ¿qué tan fuerte es? (r, r², φ, V).\n\n\nCon N grande, asociaciones muy pequeñas resultan significativas.\nCon N pequeño, asociaciones grandes pueden no serlo.\nPor eso se reporta siempre ambas: significación y tamaño del efecto."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#generalización-e-interpretación-sustantiva",
+    "href": "sesiones/sesion-8.html#generalización-e-interpretación-sustantiva",
+    "title": "Sesión 8 - Preparación para la tercera prueba",
+    "section": "Generalización e interpretación sustantiva",
+    "text": "Generalización e interpretación sustantiva\nCómo redactar una conclusión completa:\n\nHipótesis (H₀ y H₁) en contexto\nEstadístico y gl (o N), valor p, α\nDecisión sobre H₀\nMagnitud y dirección de la asociación\nInterpretación sustantiva: qué significa para las variables y a qué población se puede generalizar (según el diseño muestral)\n\n\n“Con α = 0,05 se rechaza H₀ (r = 0,30; p = 0,034): hay evidencia de una asociación positiva y moderada entre X e Y en la población. Comparten un 9 % de varianza. Esto no implica causalidad.”"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#ejercicio-1-tabla-de-contingencia",
+    "href": "sesiones/sesion-8.html#ejercicio-1-tabla-de-contingencia",
+    "title": "Sesión 8: Preparación para la tercera prueba",
+    "section": "Ejercicio 1: tabla de contingencia",
+    "text": "Ejercicio 1: tabla de contingencia\n\n\n\n\nAprueba\nReprueba\nTotal\n\n\n\n\nAsiste\n60\n20\n80\n\n\nNo asiste\n20\n20\n40\n\n\nTotal\n80\n40\n120\n\n\n\n\nCalcule % por fila. b) Frecuencias esperadas. c) χ² y gl. d) φ. e) Decisión (crítico 3,84)."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#solución-ejercicio-1",
+    "href": "sesiones/sesion-8.html#solución-ejercicio-1",
+    "title": "Sesión 8: Preparación para la tercera prueba",
+    "section": "Solución Ejercicio 1",
+    "text": "Solución Ejercicio 1\n\nAsiste: 75 % aprueba; No asiste: 50 % aprueba.\n\\(E_{11}=\\frac{80\\cdot80}{120}=53{,}3\\); \\(E_{12}=26{,}7\\); \\(E_{21}=26{,}7\\); \\(E_{22}=13{,}3\\)\n\\[\n\\chi^2=\\frac{(60-53{,}3)^2}{53{,}3}+\\frac{(20-26{,}7)^2}{26{,}7}+\\frac{(20-26{,}7)^2}{26{,}7}+\\frac{(20-13{,}3)^2}{13{,}3}\\approx 7{,}5\n\\quad gl=1\n\\]\n\\(\\phi=\\sqrt{7{,}5/120}\\approx 0{,}25\\) (asociación débil-moderada)\n7,5 &gt; 3,84 → se rechaza H₀: asistencia y aprobación están asociadas."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#ejercicio-2-correlación",
+    "href": "sesiones/sesion-8.html#ejercicio-2-correlación",
+    "title": "Sesión 8: Preparación para la tercera prueba",
+    "section": "Ejercicio 2: correlación",
+    "text": "Ejercicio 2: correlación\nEntre horas de estudio y nota se obtiene \\(r=0{,}50\\) con \\(n=27\\).\n\nPlantee H₀ y H₁. b) Calcule t y gl. c) Decida (t crítico ≈ 2,06). d) Calcule r². e) Interprete."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#solución-ejercicio-2",
+    "href": "sesiones/sesion-8.html#solución-ejercicio-2",
+    "title": "Sesión 8: Preparación para la tercera prueba",
+    "section": "Solución Ejercicio 2",
+    "text": "Solución Ejercicio 2\n\n\\(H_0:\\rho=0\\); \\(H_1:\\rho\\neq0\\)\n\\(t=\\dfrac{0{,}5\\sqrt{25}}{\\sqrt{1-0{,}25}}=\\dfrac{2{,}5}{0{,}866}\\approx2{,}89\\); \\(gl=25\\)\n2,89 &gt; 2,06 → se rechaza H₀ (p &lt; 0,05)\n\\(r^2=0{,}25\\) → 25 % de varianza compartida\nHay evidencia de una asociación positiva y fuerte entre horas de estudio y nota en la población; a más horas de estudio, mayor nota, sin que esto pruebe causalidad."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#ejercicio-3-conceptual",
+    "href": "sesiones/sesion-8.html#ejercicio-3-conceptual",
+    "title": "Sesión 8: Preparación para la tercera prueba",
+    "section": "Ejercicio 3: conceptual",
+    "text": "Ejercicio 3: conceptual\nVerdadero o falso, justifique:\n\nUna correlación de r = −0,70 es más débil que una de r = 0,40.\nSi r = 0 no puede haber ninguna asociación entre X e Y.\nUn χ² significativo indica que la asociación es fuerte.\nEn listwise el N puede ser distinto en cada celda de la matriz.\nSi p = 0,20 con α = 0,05, se concluye que H₀ es verdadera."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#solución-ejercicio-3",
+    "href": "sesiones/sesion-8.html#solución-ejercicio-3",
+    "title": "Sesión 8: Preparación para la tercera prueba",
+    "section": "Solución Ejercicio 3",
+    "text": "Solución Ejercicio 3\n\nFalso: importa el valor absoluto; |−0,70| &gt; |0,40|. El signo es sólo dirección.\nFalso: r = 0 sólo descarta relación lineal (puede haber relación curva).\nFalso: χ² es sensible a N; la fuerza se mide con φ o V.\nFalso: eso ocurre en pairwise; listwise usa un N único.\nFalso: sólo no se rechaza H₀; no hay evidencia suficiente, pero no se demuestra que sea verdadera."
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#checklist-final",
+    "href": "sesiones/sesion-8.html#checklist-final",
+    "title": "Sesión 8: Preparación para la tercera prueba",
+    "section": "Checklist final",
+    "text": "Checklist final\n\nLeer un scatter: dirección, forma, fuerza, outliers\nDiferenciar covarianza, r y r²\nInterpretar r en contexto (y recordar sus límites)\nElegir coeficiente según tipo de variable\nLeer matrices de correlación; listwise vs pairwise y efecto en N\n% por fila/columna; esperadas; χ²; gl; φ y V\nRedactar H₀ y H₁ (correlación y χ²)\nDecidir con p, α o valor crítico; interpretar IC\nSignificación vs magnitud\nConclusión sustantiva y generalización a la población"
+  },
+  {
+    "objectID": "sesiones/sesion-8.html#éxito-en-la-evaluación",
+    "href": "sesiones/sesion-8.html#éxito-en-la-evaluación",
+    "title": "Sesión 8: Preparación para la tercera prueba",
+    "section": "¡Éxito en la evaluación! 🍀",
+    "text": "¡Éxito en la evaluación! 🍀\nLunes 16 de noviembre · 8:30 · Sala C6\nRevisen las guías de preparación, las clases y los prácticos."
+  },
+  {
+    "objectID": "sesion-8-material.html",
+    "href": "sesion-8-material.html",
+    "title": "Sesión 8",
+    "section": "",
+    "text": "Apretando F pones la presentación en pantalla completa. Para salir de pantalla completa, aprieta F nuevamente.",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 8",
+      "Sesión 8"
+    ]
+  },
+  {
+    "objectID": "sesion-8-material.html#tercera-prueba",
+    "href": "sesion-8-material.html#tercera-prueba",
+    "title": "Sesión 8",
+    "section": "Tercera prueba",
+    "text": "Tercera prueba\nLunes 16 de noviembre · 8:30 · Sala C6\nRevisen las guías de preparación, las clases y los prácticos.\nDescargar guía de ejercicios",
+    "crumbs": [
+      "Sesiones",
+      "Todas las sesiones",
+      "Sesión 8",
+      "Sesión 8"
+    ]
   }
 ]

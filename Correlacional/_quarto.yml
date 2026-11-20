@@ -42,6 +42,9 @@ website:
             - section: "Sesión 7"
               contents:
                 - sesiones/sesion-7.qmd    
+            - section: "Sesión 8"
+              contents:
+                - sesion-8-material.qmd
 
             
 

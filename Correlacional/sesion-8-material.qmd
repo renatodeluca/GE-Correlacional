@@ -16,13 +16,3 @@ Apretando F pones la presentación en pantalla completa. Para salir de pantalla 
 :::
 
 ---
-
-::: {.column width="50%"}
-## Tercera prueba
-
-**Lunes 16 de noviembre · 8:30 · Sala C6**
-
-Revisen las guías de preparación, las clases y los prácticos.
-
-[Descargar guía de ejercicios](input/guia-ejercicios.docx)
-:::
